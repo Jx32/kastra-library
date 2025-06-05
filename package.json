@@ -1,0 +1,28 @@
+{
+  "name": "kastra-library",
+  "version": "1.0.0",
+  "description": "Kastra library for shared functionality",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf ./dist",
+    "build": "npm run clean && tsup"
+  },
+  "author": "Jorge Fernandez",
+  "license": "ISC",
+  "repository": {
+    "url": "https://github.com/Jx32/kastra-library"
+  },
+  "devDependencies": {
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "rimraf": "^6.0.1"
+  }
+}
