@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 export interface PatchUser {
     name?: string;
     email?: string;
@@ -6,3 +8,14 @@ export interface PatchUser {
     houseNumber?: string;
     street?: string;
 }
+
+const patchUserSchema = z.object({
+    name: z.string().optional(),
+    email: z.string().email().optional(),
+    phone_number: z.string().optional(),
+    firstLogin: z.boolean().optional(),
+    houseNumber: z.string().optional(),
+    street: z.string().optional(),
+}).strict();
+
+export type PatchUserType = z.infer<typeof patchUserSchema>;

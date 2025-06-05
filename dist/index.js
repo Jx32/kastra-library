@@ -3,6 +3,10 @@ var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
 var __copyProps = (to, from, except, desc) => {
   if (from && typeof from === "object" || typeof from === "function") {
     for (let key of __getOwnPropNames(from))
@@ -15,5 +19,49 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 
 // src/index.ts
 var src_exports = {};
+__export(src_exports, {
+  UserRoleEnum: () => UserRoleEnum,
+  userSchema: () => userSchema
+});
 module.exports = __toCommonJS(src_exports);
+
+// src/dto/user.interface.ts
+var import_zod = require("zod");
+var userSchema = import_zod.z.object({
+  sub: import_zod.z.string().uuid(),
+  name: import_zod.z.string(),
+  email: import_zod.z.string().email(),
+  email_verified: import_zod.z.boolean(),
+  phone_number: import_zod.z.string().optional(),
+  phone_number_verified: import_zod.z.boolean().optional(),
+  firstLogin: import_zod.z.boolean(),
+  houseNumber: import_zod.z.string(),
+  role: import_zod.z.enum(["houseOwner", "houseRelated", "helpDesk", "admin"]),
+  street: import_zod.z.string()
+}).strict();
+
+// src/dto/patch-user.interface.ts
+var import_zod2 = require("zod");
+var patchUserSchema = import_zod2.z.object({
+  name: import_zod2.z.string().optional(),
+  email: import_zod2.z.string().email().optional(),
+  phone_number: import_zod2.z.string().optional(),
+  firstLogin: import_zod2.z.boolean().optional(),
+  houseNumber: import_zod2.z.string().optional(),
+  street: import_zod2.z.string().optional()
+}).strict();
+
+// src/enum/role.enum.ts
+var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
+  UserRoleEnum2["HOUSE_OWNER"] = "houseOwner";
+  UserRoleEnum2["HOUSE_RELATED"] = "houseRelated";
+  UserRoleEnum2["HELP_DESK"] = "helpDesk";
+  UserRoleEnum2["ADMIN"] = "admin";
+  return UserRoleEnum2;
+})(UserRoleEnum || {});
+// Annotate the CommonJS export names for ESM import in node:
+0 && (module.exports = {
+  UserRoleEnum,
+  userSchema
+});
 //# sourceMappingURL=index.js.map
