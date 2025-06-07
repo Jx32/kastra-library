@@ -28,8 +28,8 @@ module.exports = __toCommonJS(src_exports);
 // src/dto/user.interface.ts
 var import_zod = require("zod");
 var userSchema = import_zod.z.object({
-  sub: import_zod.z.string(),
-  // Won't use uuid() so Cognito user registration will populate it when registering a new user
+  sub: import_zod.z.string().uuid().optional(),
+  username: import_zod.z.string().optional(),
   name: import_zod.z.string(),
   email: import_zod.z.string().email(),
   email_verified: import_zod.z.boolean(),

@@ -1,7 +1,8 @@
 import { z } from 'zod';
 
 interface User {
-    sub: string;
+    sub?: string;
+    username?: string;
     name: string;
     email: string;
     email_verified: boolean;
@@ -15,7 +16,8 @@ interface User {
     houseOwnerSub?: string;
 }
 declare const userSchema: z.ZodObject<{
-    sub: z.ZodString;
+    sub: z.ZodOptional<z.ZodString>;
+    username: z.ZodOptional<z.ZodString>;
     name: z.ZodString;
     email: z.ZodString;
     email_verified: z.ZodBoolean;
@@ -28,7 +30,6 @@ declare const userSchema: z.ZodObject<{
     residentialId: z.ZodString;
     houseOwnerSub: z.ZodOptional<z.ZodString>;
 }, "strict", z.ZodTypeAny, {
-    sub: string;
     name: string;
     email: string;
     email_verified: boolean;
@@ -37,11 +38,12 @@ declare const userSchema: z.ZodObject<{
     role: "houseOwner" | "houseRelated" | "helpDesk" | "admin";
     street: string;
     residentialId: string;
+    sub?: string | undefined;
+    username?: string | undefined;
     phone_number?: string | undefined;
     phone_number_verified?: boolean | undefined;
     houseOwnerSub?: string | undefined;
 }, {
-    sub: string;
     name: string;
     email: string;
     email_verified: boolean;
@@ -50,6 +52,8 @@ declare const userSchema: z.ZodObject<{
     role: "houseOwner" | "houseRelated" | "helpDesk" | "admin";
     street: string;
     residentialId: string;
+    sub?: string | undefined;
+    username?: string | undefined;
     phone_number?: string | undefined;
     phone_number_verified?: boolean | undefined;
     houseOwnerSub?: string | undefined;

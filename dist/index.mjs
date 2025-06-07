@@ -1,8 +1,8 @@
 // src/dto/user.interface.ts
 import { z } from "zod";
 var userSchema = z.object({
-  sub: z.string(),
-  // Won't use uuid() so Cognito user registration will populate it when registering a new user
+  sub: z.string().uuid().optional(),
+  username: z.string().optional(),
   name: z.string(),
   email: z.string().email(),
   email_verified: z.boolean(),
