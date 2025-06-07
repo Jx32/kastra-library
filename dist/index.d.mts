@@ -88,6 +88,11 @@ declare const patchUserSchema: z.ZodObject<{
 }>;
 type PatchUserType = z.infer<typeof patchUserSchema>;
 
+interface RegisterUserResponse {
+    sub: string;
+    temporaryPassword: string;
+}
+
 declare enum UserRoleEnum {
     HOUSE_OWNER = "houseOwner",
     HOUSE_RELATED = "houseRelated",
@@ -95,4 +100,4 @@ declare enum UserRoleEnum {
     ADMIN = "admin"
 }
 
-export { type PatchUser, type PatchUserType, type User, UserRoleEnum, type UserType, userSchema };
+export { type PatchUser, type PatchUserType, type RegisterUserResponse, type User, UserRoleEnum, type UserType, userSchema };
