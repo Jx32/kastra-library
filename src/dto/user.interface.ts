@@ -16,7 +16,7 @@ export interface User {
 }
 
 export const userSchema = z.object({
-    sub: z.string().uuid(),
+    sub: z.string(), // Won't use uuid() so Cognito user registration will populate it when registering a new user
     name: z.string(),
     email: z.string().email(),
     email_verified: z.boolean(),
