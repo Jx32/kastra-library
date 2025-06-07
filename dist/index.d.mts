@@ -96,6 +96,7 @@ interface RegisterUserResponse {
     sub: string;
     temporaryPassword: string;
     username: string;
+    name: string;
 }
 
 declare enum UserRoleEnum {
