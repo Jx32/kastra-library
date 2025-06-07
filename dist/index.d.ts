@@ -19,8 +19,8 @@ declare const userSchema: z.ZodObject<{
     sub: z.ZodOptional<z.ZodString>;
     username: z.ZodOptional<z.ZodString>;
     name: z.ZodString;
-    email: z.ZodOptional<z.ZodString>;
-    email_verified: z.ZodBoolean;
+    email: z.ZodString;
+    email_verified: z.ZodOptional<z.ZodBoolean>;
     phone_number: z.ZodOptional<z.ZodString>;
     phone_number_verified: z.ZodOptional<z.ZodBoolean>;
     firstLogin: z.ZodBoolean;
@@ -31,7 +31,7 @@ declare const userSchema: z.ZodObject<{
     houseOwnerSub: z.ZodOptional<z.ZodString>;
 }, "strict", z.ZodTypeAny, {
     name: string;
-    email_verified: boolean;
+    email: string;
     firstLogin: boolean;
     houseNumber: string;
     role: "houseOwner" | "houseRelated" | "helpDesk" | "admin";
@@ -39,13 +39,13 @@ declare const userSchema: z.ZodObject<{
     residentialId: string;
     sub?: string | undefined;
     username?: string | undefined;
-    email?: string | undefined;
+    email_verified?: boolean | undefined;
     phone_number?: string | undefined;
     phone_number_verified?: boolean | undefined;
     houseOwnerSub?: string | undefined;
 }, {
     name: string;
-    email_verified: boolean;
+    email: string;
     firstLogin: boolean;
     houseNumber: string;
     role: "houseOwner" | "houseRelated" | "helpDesk" | "admin";
@@ -53,7 +53,7 @@ declare const userSchema: z.ZodObject<{
     residentialId: string;
     sub?: string | undefined;
     username?: string | undefined;
-    email?: string | undefined;
+    email_verified?: boolean | undefined;
     phone_number?: string | undefined;
     phone_number_verified?: boolean | undefined;
     houseOwnerSub?: string | undefined;
