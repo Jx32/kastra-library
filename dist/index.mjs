@@ -4,7 +4,7 @@ var userSchema = z.object({
   sub: z.string().uuid().optional(),
   username: z.string().optional(),
   name: z.string(),
-  email: z.string().email(),
+  email: z.string().email().optional(),
   email_verified: z.boolean(),
   phone_number: z.string().optional(),
   phone_number_verified: z.boolean().optional(),

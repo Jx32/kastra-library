@@ -31,7 +31,7 @@ var userSchema = import_zod.z.object({
   sub: import_zod.z.string().uuid().optional(),
   username: import_zod.z.string().optional(),
   name: import_zod.z.string(),
-  email: import_zod.z.string().email(),
+  email: import_zod.z.string().email().optional(),
   email_verified: import_zod.z.boolean(),
   phone_number: import_zod.z.string().optional(),
   phone_number_verified: import_zod.z.boolean().optional(),
