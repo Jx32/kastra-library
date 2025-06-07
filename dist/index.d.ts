@@ -95,6 +95,7 @@ type PatchUserType = z.infer<typeof patchUserSchema>;
 interface RegisterUserResponse {
     sub: string;
     temporaryPassword: string;
+    username: string;
 }
 
 declare enum UserRoleEnum {
