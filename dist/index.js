@@ -37,7 +37,9 @@ var userSchema = import_zod.z.object({
   firstLogin: import_zod.z.boolean(),
   houseNumber: import_zod.z.string(),
   role: import_zod.z.enum(["houseOwner", "houseRelated", "helpDesk", "admin"]),
-  street: import_zod.z.string()
+  street: import_zod.z.string(),
+  residentialId: import_zod.z.string(),
+  houseOwnerSub: import_zod.z.string().uuid().optional()
 }).strict();
 
 // src/dto/patch-user.interface.ts

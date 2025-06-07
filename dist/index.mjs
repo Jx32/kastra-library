@@ -10,7 +10,9 @@ var userSchema = z.object({
   firstLogin: z.boolean(),
   houseNumber: z.string(),
   role: z.enum(["houseOwner", "houseRelated", "helpDesk", "admin"]),
-  street: z.string()
+  street: z.string(),
+  residentialId: z.string(),
+  houseOwnerSub: z.string().uuid().optional()
 }).strict();
 
 // src/dto/patch-user.interface.ts

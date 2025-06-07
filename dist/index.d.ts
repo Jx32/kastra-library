@@ -11,6 +11,8 @@ interface User {
     houseNumber: string;
     role: "houseOwner" | "houseRelated" | "helpDesk" | "admin";
     street: string;
+    residentialId: string;
+    houseOwnerSub?: string;
 }
 declare const userSchema: z.ZodObject<{
     sub: z.ZodString;
@@ -23,6 +25,8 @@ declare const userSchema: z.ZodObject<{
     houseNumber: z.ZodString;
     role: z.ZodEnum<["houseOwner", "houseRelated", "helpDesk", "admin"]>;
     street: z.ZodString;
+    residentialId: z.ZodString;
+    houseOwnerSub: z.ZodOptional<z.ZodString>;
 }, "strict", z.ZodTypeAny, {
     sub: string;
     name: string;
@@ -32,8 +36,10 @@ declare const userSchema: z.ZodObject<{
     houseNumber: string;
     role: "houseOwner" | "houseRelated" | "helpDesk" | "admin";
     street: string;
+    residentialId: string;
     phone_number?: string | undefined;
     phone_number_verified?: boolean | undefined;
+    houseOwnerSub?: string | undefined;
 }, {
     sub: string;
     name: string;
@@ -43,8 +49,10 @@ declare const userSchema: z.ZodObject<{
     houseNumber: string;
     role: "houseOwner" | "houseRelated" | "helpDesk" | "admin";
     street: string;
+    residentialId: string;
     phone_number?: string | undefined;
     phone_number_verified?: boolean | undefined;
+    houseOwnerSub?: string | undefined;
 }>;
 type UserType = z.infer<typeof userSchema>;
 

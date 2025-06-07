@@ -11,6 +11,8 @@ export interface User {
     houseNumber: string;
     role: "houseOwner" | "houseRelated" | "helpDesk" | "admin";
     street: string;
+    residentialId: string;
+    houseOwnerSub?: string;
 }
 
 export const userSchema = z.object({
@@ -24,6 +26,8 @@ export const userSchema = z.object({
     houseNumber: z.string(),
     role: z.enum(["houseOwner", "houseRelated", "helpDesk", "admin"]),
     street: z.string(),
+    residentialId: z.string(),
+    houseOwnerSub: z.string().uuid().optional(),
 }).strict();
 
 export type UserType = z.infer<typeof userSchema>;
