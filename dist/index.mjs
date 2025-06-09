@@ -41,6 +41,7 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
 export {
   PHONE_REGEX,
   UserRoleEnum,
+  patchUserSchema,
   userSchema
 };
 //# sourceMappingURL=index.mjs.map

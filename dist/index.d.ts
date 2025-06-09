@@ -108,4 +108,4 @@ declare enum UserRoleEnum {
     ADMIN = "admin"
 }
 
-export { PHONE_REGEX, type PatchUser, type PatchUserType, type RegisterUserResponse, type User, UserRoleEnum, type UserType, userSchema };
+export { PHONE_REGEX, type PatchUser, type PatchUserType, type RegisterUserResponse, type User, UserRoleEnum, type UserType, patchUserSchema, userSchema };

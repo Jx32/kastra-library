@@ -22,6 +22,7 @@ var src_exports = {};
 __export(src_exports, {
   PHONE_REGEX: () => PHONE_REGEX,
   UserRoleEnum: () => UserRoleEnum,
+  patchUserSchema: () => patchUserSchema,
   userSchema: () => userSchema
 });
 module.exports = __toCommonJS(src_exports);
@@ -70,6 +71,7 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
 0 && (module.exports = {
   PHONE_REGEX,
   UserRoleEnum,
+  patchUserSchema,
   userSchema
 });
 //# sourceMappingURL=index.js.map

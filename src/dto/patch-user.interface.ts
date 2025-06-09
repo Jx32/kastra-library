@@ -10,7 +10,7 @@ export interface PatchUser {
     street?: string;
 }
 
-const patchUserSchema = z.object({
+export const patchUserSchema = z.object({
     name: z.string().optional(),
     email: z.string().email().optional(),
     phone_number: z.string().regex(PHONE_REGEX).optional(),
