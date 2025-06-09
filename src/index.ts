@@ -1,3 +1,5 @@
+export * from "./constants/constants";
+
 export * from "./dto/user.interface";
 export * from "./dto/patch-user.interface"
 export * from "./dto/register-user-response.interface";

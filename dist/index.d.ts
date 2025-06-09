@@ -1,5 +1,7 @@
 import { z } from 'zod';
 
+declare const PHONE_REGEX: RegExp;
+
 interface User {
     sub?: string;
     username?: string;
@@ -106,4 +108,4 @@ declare enum UserRoleEnum {
     ADMIN = "admin"
 }
 
-export { type PatchUser, type PatchUserType, type RegisterUserResponse, type User, UserRoleEnum, type UserType, userSchema };
+export { PHONE_REGEX, type PatchUser, type PatchUserType, type RegisterUserResponse, type User, UserRoleEnum, type UserType, userSchema };

@@ -20,18 +20,17 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // src/index.ts
 var src_exports = {};
 __export(src_exports, {
+  PHONE_REGEX: () => PHONE_REGEX,
   UserRoleEnum: () => UserRoleEnum,
   userSchema: () => userSchema
 });
 module.exports = __toCommonJS(src_exports);
 
-// src/dto/user.interface.ts
-var import_zod = require("zod");
-
 // src/constants/constants.ts
 var PHONE_REGEX = /^(\+[1-9]{2})\d{10}$/;
 
 // src/dto/user.interface.ts
+var import_zod = require("zod");
 var userSchema = import_zod.z.object({
   sub: import_zod.z.string().uuid().optional(),
   username: import_zod.z.string().optional(),
@@ -69,6 +68,7 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
 })(UserRoleEnum || {});
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
+  PHONE_REGEX,
   UserRoleEnum,
   userSchema
 });

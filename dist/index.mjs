@@ -1,10 +1,8 @@
-// src/dto/user.interface.ts
-import { z } from "zod";
-
 // src/constants/constants.ts
 var PHONE_REGEX = /^(\+[1-9]{2})\d{10}$/;
 
 // src/dto/user.interface.ts
+import { z } from "zod";
 var userSchema = z.object({
   sub: z.string().uuid().optional(),
   username: z.string().optional(),
@@ -41,6 +39,7 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   return UserRoleEnum2;
 })(UserRoleEnum || {});
 export {
+  PHONE_REGEX,
   UserRoleEnum,
   userSchema
 };
