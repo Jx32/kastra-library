@@ -1,12 +1,17 @@
 // src/dto/user.interface.ts
 import { z } from "zod";
+
+// src/constants/constants.ts
+var PHONE_REGEX = /^(\+[1-9]{2})\d{10}$/;
+
+// src/dto/user.interface.ts
 var userSchema = z.object({
   sub: z.string().uuid().optional(),
   username: z.string().optional(),
   name: z.string(),
   email: z.string().email(),
   email_verified: z.boolean().optional(),
-  phone_number: z.string().optional(),
+  phone_number: z.string().regex(PHONE_REGEX).optional(),
   phone_number_verified: z.boolean().optional(),
   firstLogin: z.boolean(),
   houseNumber: z.string(),
@@ -21,7 +26,7 @@ import { z as z2 } from "zod";
 var patchUserSchema = z2.object({
   name: z2.string().optional(),
   email: z2.string().email().optional(),
-  phone_number: z2.string().optional(),
+  phone_number: z2.string().regex(PHONE_REGEX).optional(),
   firstLogin: z2.boolean().optional(),
   houseNumber: z2.string().optional(),
   street: z2.string().optional()

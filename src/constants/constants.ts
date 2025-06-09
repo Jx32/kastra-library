@@ -1,0 +1,1 @@
+export const PHONE_REGEX = /^(\+[1-9]{2})\d{10}$/;

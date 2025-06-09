@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { PHONE_REGEX } from "../constants/constants";
 
 export interface User {
     sub?: string;
@@ -22,7 +23,7 @@ export const userSchema = z.object({
     name: z.string(),
     email: z.string().email(),
     email_verified: z.boolean().optional(),
-    phone_number: z.string().optional(),
+    phone_number: z.string().regex(PHONE_REGEX).optional(),
     phone_number_verified: z.boolean().optional(),
     firstLogin: z.boolean(),
     houseNumber: z.string(),

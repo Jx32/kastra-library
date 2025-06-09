@@ -27,13 +27,18 @@ module.exports = __toCommonJS(src_exports);
 
 // src/dto/user.interface.ts
 var import_zod = require("zod");
+
+// src/constants/constants.ts
+var PHONE_REGEX = /^(\+[1-9]{2})\d{10}$/;
+
+// src/dto/user.interface.ts
 var userSchema = import_zod.z.object({
   sub: import_zod.z.string().uuid().optional(),
   username: import_zod.z.string().optional(),
   name: import_zod.z.string(),
   email: import_zod.z.string().email(),
   email_verified: import_zod.z.boolean().optional(),
-  phone_number: import_zod.z.string().optional(),
+  phone_number: import_zod.z.string().regex(PHONE_REGEX).optional(),
   phone_number_verified: import_zod.z.boolean().optional(),
   firstLogin: import_zod.z.boolean(),
   houseNumber: import_zod.z.string(),
@@ -48,7 +53,7 @@ var import_zod2 = require("zod");
 var patchUserSchema = import_zod2.z.object({
   name: import_zod2.z.string().optional(),
   email: import_zod2.z.string().email().optional(),
-  phone_number: import_zod2.z.string().optional(),
+  phone_number: import_zod2.z.string().regex(PHONE_REGEX).optional(),
   firstLogin: import_zod2.z.boolean().optional(),
   houseNumber: import_zod2.z.string().optional(),
   street: import_zod2.z.string().optional()
