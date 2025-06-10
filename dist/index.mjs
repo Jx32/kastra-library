@@ -1,5 +1,6 @@
 // src/constants/constants.ts
 var PHONE_REGEX = /^(\+[1-9]{2})\d{10}$/;
+var MONGODB_ID_REGEX = /^[a-f\d]{24}$/i;
 
 // src/dto/user.interface.ts
 import { z } from "zod";
@@ -39,6 +40,7 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   return UserRoleEnum2;
 })(UserRoleEnum || {});
 export {
+  MONGODB_ID_REGEX,
   PHONE_REGEX,
   UserRoleEnum,
   patchUserSchema,

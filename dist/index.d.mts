@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 declare const PHONE_REGEX: RegExp;
+declare const MONGODB_ID_REGEX: RegExp;
 
 interface User {
     sub?: string;
@@ -108,4 +109,4 @@ declare enum UserRoleEnum {
     ADMIN = "admin"
 }
 
-export { PHONE_REGEX, type PatchUser, type PatchUserType, type RegisterUserResponse, type User, UserRoleEnum, type UserType, patchUserSchema, userSchema };
+export { MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type RegisterUserResponse, type User, UserRoleEnum, type UserType, patchUserSchema, userSchema };
