@@ -43,7 +43,8 @@ var residentialSchema = z3.object({
   country: z3.string(),
   postalCode: z3.string(),
   contactNumber: z3.string().optional(),
-  status: z3.enum(["active", "inactive"])
+  status: z3.enum(["active", "inactive"]),
+  topicName: z3.string()
 }).strict();
 
 // src/dto/remote-opening-action.interface.ts

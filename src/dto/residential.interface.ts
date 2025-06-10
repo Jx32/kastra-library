@@ -19,6 +19,7 @@ export interface Residential {
     postalCode: string;
     contactNumber?: string;
     status: "active" | "inactive";
+    topicName: string;
 }
 
 export const residentialSchema = z.object({
@@ -31,6 +32,7 @@ export const residentialSchema = z.object({
     postalCode: z.string(),
     contactNumber: z.string().optional(),
     status: z.enum(["active", "inactive"]),
+    topicName: z.string(),
 }).strict();
 
 export type ResidentialType = z.infer<typeof residentialSchema>;

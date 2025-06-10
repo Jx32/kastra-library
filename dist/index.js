@@ -86,7 +86,8 @@ var residentialSchema = import_zod3.default.object({
   country: import_zod3.default.string(),
   postalCode: import_zod3.default.string(),
   contactNumber: import_zod3.default.string().optional(),
-  status: import_zod3.default.enum(["active", "inactive"])
+  status: import_zod3.default.enum(["active", "inactive"]),
+  topicName: import_zod3.default.string()
 }).strict();
 
 // src/dto/remote-opening-action.interface.ts
