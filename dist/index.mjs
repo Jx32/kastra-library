@@ -82,6 +82,7 @@ export {
   patchUserSchema,
   remoteDeviceSchema,
   remoteOpeningActionSchema,
+  residentialSchema,
   userSchema
 };
 //# sourceMappingURL=index.mjs.map

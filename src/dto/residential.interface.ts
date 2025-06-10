@@ -20,7 +20,7 @@ export interface Residential {
     status: "active" | "inactive";
 }
 
-const residentialSchema = z.object({
+export const residentialSchema = z.object({
     _id: z.string().regex(MONGODB_ID_REGEX, "Invalid ID format, must be a valid hex value").optional(),
     name: z.string(),
     address: z.string(),

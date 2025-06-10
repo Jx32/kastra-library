@@ -36,6 +36,7 @@ __export(src_exports, {
   patchUserSchema: () => patchUserSchema,
   remoteDeviceSchema: () => remoteDeviceSchema,
   remoteOpeningActionSchema: () => remoteOpeningActionSchema,
+  residentialSchema: () => residentialSchema,
   userSchema: () => userSchema
 });
 module.exports = __toCommonJS(src_exports);
@@ -125,6 +126,7 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   patchUserSchema,
   remoteDeviceSchema,
   remoteOpeningActionSchema,
+  residentialSchema,
   userSchema
 });
 //# sourceMappingURL=index.js.map

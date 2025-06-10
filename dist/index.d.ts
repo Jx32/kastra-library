@@ -236,4 +236,4 @@ declare enum UserRoleEnum {
     ADMIN = "admin"
 }
 
-export { MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type RegisterUserResponse, type RemoteDevice, type RemoteDeviceType, type RemoteOpeningAction, type RemoteOpeningActionType, type Residential, type ResidentialType, type User, UserRoleEnum, type UserType, patchUserSchema, remoteDeviceSchema, remoteOpeningActionSchema, userSchema };
+export { MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type RegisterUserResponse, type RemoteDevice, type RemoteDeviceType, type RemoteOpeningAction, type RemoteOpeningActionType, type Residential, type ResidentialType, type User, UserRoleEnum, type UserType, patchUserSchema, remoteDeviceSchema, remoteOpeningActionSchema, residentialSchema, userSchema };
