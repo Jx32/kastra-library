@@ -12,7 +12,6 @@
  */
 
 import z from "zod";
-import { MONGODB_ID_REGEX } from "../constants/constants";
 import { ObjectId } from "mongodb";
 
 export interface RemoteOpeningAction {

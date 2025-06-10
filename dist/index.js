@@ -34,7 +34,7 @@ __export(src_exports, {
   PHONE_REGEX: () => PHONE_REGEX,
   UserRoleEnum: () => UserRoleEnum,
   patchUserSchema: () => patchUserSchema,
-  remoteDeviceSchema: () => remoteDeviceSchema,
+  remoteGateSchema: () => remoteGateSchema,
   remoteOpeningActionSchema: () => remoteOpeningActionSchema,
   residentialSchema: () => residentialSchema,
   userSchema: () => userSchema
@@ -107,11 +107,11 @@ var remoteOpeningActionSchema = import_zod4.default.object({
 // src/dto/remote-device.interface.ts
 var import_zod5 = require("zod");
 var import_mongodb3 = require("mongodb");
-var remoteDeviceSchema = import_zod5.z.object({
+var remoteGateSchema = import_zod5.z.object({
   _id: import_zod5.z.string().transform((val) => new import_mongodb3.ObjectId(val)).optional(),
-  residentialId: import_zod5.z.string().regex(MONGODB_ID_REGEX, "Invalid residential ID format, must be a valid hex value"),
+  residentialId: import_zod5.z.string().transform((val) => new import_mongodb3.ObjectId(val)),
   name: import_zod5.z.string(),
-  type: import_zod5.z.enum(["entranceGate", "exitGate"])
+  type: import_zod5.z.enum(["entrance", "exit"])
 }).strict();
 
 // src/enum/role.enum.ts
@@ -128,7 +128,7 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   PHONE_REGEX,
   UserRoleEnum,
   patchUserSchema,
-  remoteDeviceSchema,
+  remoteGateSchema,
   remoteOpeningActionSchema,
   residentialSchema,
   userSchema

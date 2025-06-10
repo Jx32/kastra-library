@@ -204,35 +204,35 @@ declare const remoteOpeningActionSchema: z$1.ZodObject<{
 type RemoteOpeningActionType = z$1.infer<typeof remoteOpeningActionSchema>;
 
 /**
- * RemoteDevice Interface represents a device that can be controlled remotely,
+ * RemoteDevice Interface represents a gate that can be controlled remotely,
  * and are installed physically at the entrance or exit of a residential area.
  *
- * @interface RemoteDevice
+ * @interface RemoteGate
  */
 
-interface RemoteDevice {
+interface RemoteGate {
     _id?: string;
     residentialId: string;
     name: string;
-    type: "entranceGate" | "exitGate";
+    type: "entrance" | "exit";
 }
-declare const remoteDeviceSchema: z.ZodObject<{
+declare const remoteGateSchema: z.ZodObject<{
     _id: z.ZodOptional<z.ZodEffects<z.ZodString, ObjectId, string>>;
-    residentialId: z.ZodString;
+    residentialId: z.ZodEffects<z.ZodString, ObjectId, string>;
     name: z.ZodString;
-    type: z.ZodEnum<["entranceGate", "exitGate"]>;
+    type: z.ZodEnum<["entrance", "exit"]>;
 }, "strict", z.ZodTypeAny, {
     name: string;
-    type: "entranceGate" | "exitGate";
-    residentialId: string;
+    type: "entrance" | "exit";
+    residentialId: ObjectId;
     _id?: ObjectId | undefined;
 }, {
     name: string;
-    type: "entranceGate" | "exitGate";
+    type: "entrance" | "exit";
     residentialId: string;
     _id?: string | undefined;
 }>;
-type RemoteDeviceType = z.infer<typeof remoteDeviceSchema>;
+type RemoteGateType = z.infer<typeof remoteGateSchema>;
 
 declare enum UserRoleEnum {
     HOUSE_OWNER = "houseOwner",
@@ -241,4 +241,4 @@ declare enum UserRoleEnum {
     ADMIN = "admin"
 }
 
-export { MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type RegisterUserResponse, type RemoteDevice, type RemoteDeviceType, type RemoteOpeningAction, type RemoteOpeningActionType, type Residential, type ResidentialType, type User, UserRoleEnum, type UserType, patchUserSchema, remoteDeviceSchema, remoteOpeningActionSchema, residentialSchema, userSchema };
+export { MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type RegisterUserResponse, type RemoteGate, type RemoteGateType, type RemoteOpeningAction, type RemoteOpeningActionType, type Residential, type ResidentialType, type User, UserRoleEnum, type UserType, patchUserSchema, remoteGateSchema, remoteOpeningActionSchema, residentialSchema, userSchema };

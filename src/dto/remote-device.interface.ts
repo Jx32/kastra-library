@@ -1,26 +1,25 @@
 /**
- * RemoteDevice Interface represents a device that can be controlled remotely,
+ * RemoteDevice Interface represents a gate that can be controlled remotely,
  * and are installed physically at the entrance or exit of a residential area.
  * 
- * @interface RemoteDevice
+ * @interface RemoteGate
  */
 
 import { z } from "zod";
-import { MONGODB_ID_REGEX } from "../constants/constants";
 import { ObjectId } from "mongodb";
 
-export interface RemoteDevice {
+export interface RemoteGate {
     _id?: string;
     residentialId: string;
     name: string;
-    type: "entranceGate" | "exitGate";
+    type: "entrance" | "exit";
 }
 
-export const remoteDeviceSchema = z.object({
+export const remoteGateSchema = z.object({
     _id: z.string().transform(val => new ObjectId(val)).optional(),
-    residentialId: z.string().regex(MONGODB_ID_REGEX, "Invalid residential ID format, must be a valid hex value"),
+    residentialId: z.string().transform(val => new ObjectId(val)),
     name: z.string(),
-    type: z.enum(["entranceGate", "exitGate"]),
+    type: z.enum(["entrance", "exit"]),
 }).strict();
 
-export type RemoteDeviceType = z.infer<typeof remoteDeviceSchema>;
+export type RemoteGateType = z.infer<typeof remoteGateSchema>;

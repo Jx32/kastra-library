@@ -64,11 +64,11 @@ var remoteOpeningActionSchema = z4.object({
 // src/dto/remote-device.interface.ts
 import { z as z5 } from "zod";
 import { ObjectId as ObjectId3 } from "mongodb";
-var remoteDeviceSchema = z5.object({
+var remoteGateSchema = z5.object({
   _id: z5.string().transform((val) => new ObjectId3(val)).optional(),
-  residentialId: z5.string().regex(MONGODB_ID_REGEX, "Invalid residential ID format, must be a valid hex value"),
+  residentialId: z5.string().transform((val) => new ObjectId3(val)),
   name: z5.string(),
-  type: z5.enum(["entranceGate", "exitGate"])
+  type: z5.enum(["entrance", "exit"])
 }).strict();
 
 // src/enum/role.enum.ts
@@ -84,7 +84,7 @@ export {
   PHONE_REGEX,
   UserRoleEnum,
   patchUserSchema,
-  remoteDeviceSchema,
+  remoteGateSchema,
   remoteOpeningActionSchema,
   residentialSchema,
   userSchema
