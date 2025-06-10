@@ -9,14 +9,14 @@ import { z } from "zod";
 import { MONGODB_ID_REGEX } from "../constants/constants";
 
 export interface RemoteDevice {
-    _id: string;
+    _id?: string;
     residentialId: string;
     name: string;
     type: "entranceGate" | "exitGate";
 }
 
 export const remoteDeviceSchema = z.object({
-    _id: z.string().regex(MONGODB_ID_REGEX, "Invalid ID format, must be a valid hex value"),
+    _id: z.string().regex(MONGODB_ID_REGEX, "Invalid ID format, must be a valid hex value").optional(),
     residentialId: z.string().regex(MONGODB_ID_REGEX, "Invalid residential ID format, must be a valid hex value"),
     name: z.string(),
     type: z.enum(["entranceGate", "exitGate"]),
