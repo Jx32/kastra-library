@@ -76,8 +76,9 @@ var patchUserSchema = import_zod2.z.object({
 
 // src/dto/residential.interface.ts
 var import_zod3 = __toESM(require("zod"));
+var import_mongodb = require("mongodb");
 var residentialSchema = import_zod3.default.object({
-  _id: import_zod3.default.string().regex(MONGODB_ID_REGEX, "Invalid ID format, must be a valid hex value").optional(),
+  _id: import_zod3.default.string().transform((val) => new import_mongodb.ObjectId(val)).optional(),
   name: import_zod3.default.string(),
   address: import_zod3.default.string(),
   city: import_zod3.default.string(),
@@ -90,8 +91,9 @@ var residentialSchema = import_zod3.default.object({
 
 // src/dto/remote-opening-action.interface.ts
 var import_zod4 = __toESM(require("zod"));
+var import_mongodb2 = require("mongodb");
 var remoteOpeningActionSchema = import_zod4.default.object({
-  remoteDeviceId: import_zod4.default.string().regex(MONGODB_ID_REGEX, "Invalid remote device ID format, must be a valid hex value").optional(),
+  remoteDeviceId: import_zod4.default.string().transform((val) => new import_mongodb2.ObjectId(val)).optional(),
   action: import_zod4.default.enum(["open", "close"]),
   timestamp: import_zod4.default.string().refine((val) => !isNaN(Date.parse(val)), {
     message: "Invalid timestamp format, must be ISO 8601"
@@ -103,8 +105,9 @@ var remoteOpeningActionSchema = import_zod4.default.object({
 
 // src/dto/remote-device.interface.ts
 var import_zod5 = require("zod");
+var import_mongodb3 = require("mongodb");
 var remoteDeviceSchema = import_zod5.z.object({
-  _id: import_zod5.z.string().regex(MONGODB_ID_REGEX, "Invalid ID format, must be a valid hex value").optional(),
+  _id: import_zod5.z.string().transform((val) => new import_mongodb3.ObjectId(val)).optional(),
   residentialId: import_zod5.z.string().regex(MONGODB_ID_REGEX, "Invalid residential ID format, must be a valid hex value"),
   name: import_zod5.z.string(),
   type: import_zod5.z.enum(["entranceGate", "exitGate"])

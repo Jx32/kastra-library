@@ -13,6 +13,7 @@
 
 import z from "zod";
 import { MONGODB_ID_REGEX } from "../constants/constants";
+import { ObjectId } from "mongodb";
 
 export interface RemoteOpeningAction {
     remoteDeviceId: string;
@@ -24,7 +25,7 @@ export interface RemoteOpeningAction {
 }
 
 export const remoteOpeningActionSchema = z.object({
-    remoteDeviceId: z.string().regex(MONGODB_ID_REGEX, "Invalid remote device ID format, must be a valid hex value").optional(),
+    remoteDeviceId: z.string().transform(val => new ObjectId(val)).optional(),
     action: z.enum(["open", "close"]),
     timestamp: z.string().refine((val) => !isNaN(Date.parse(val)), {
         message: "Invalid timestamp format, must be ISO 8601",

@@ -1,4 +1,5 @@
 import z$1, { z } from 'zod';
+import { ObjectId } from 'mongodb';
 
 declare const PHONE_REGEX: RegExp;
 declare const MONGODB_ID_REGEX: RegExp;
@@ -121,7 +122,7 @@ interface Residential {
     status: "active" | "inactive";
 }
 declare const residentialSchema: z$1.ZodObject<{
-    _id: z$1.ZodOptional<z$1.ZodString>;
+    _id: z$1.ZodOptional<z$1.ZodEffects<z$1.ZodString, ObjectId, string>>;
     name: z$1.ZodString;
     address: z$1.ZodString;
     city: z$1.ZodString;
@@ -138,7 +139,7 @@ declare const residentialSchema: z$1.ZodObject<{
     state: string;
     country: string;
     postalCode: string;
-    _id?: string | undefined;
+    _id?: ObjectId | undefined;
     contactNumber?: string | undefined;
 }, {
     name: string;
@@ -175,7 +176,7 @@ interface RemoteOpeningAction {
     additionalInfo?: any;
 }
 declare const remoteOpeningActionSchema: z$1.ZodObject<{
-    remoteDeviceId: z$1.ZodOptional<z$1.ZodString>;
+    remoteDeviceId: z$1.ZodOptional<z$1.ZodEffects<z$1.ZodString, ObjectId, string>>;
     action: z$1.ZodEnum<["open", "close"]>;
     timestamp: z$1.ZodEffects<z$1.ZodString, string, string>;
     userSub: z$1.ZodString;
@@ -185,7 +186,7 @@ declare const remoteOpeningActionSchema: z$1.ZodObject<{
     action: "open" | "close";
     timestamp: string;
     userSub: string;
-    remoteDeviceId?: string | undefined;
+    remoteDeviceId?: ObjectId | undefined;
     reason?: string | undefined;
     additionalInfo?: any;
 }, {
@@ -212,7 +213,7 @@ interface RemoteDevice {
     type: "entranceGate" | "exitGate";
 }
 declare const remoteDeviceSchema: z.ZodObject<{
-    _id: z.ZodOptional<z.ZodString>;
+    _id: z.ZodOptional<z.ZodEffects<z.ZodString, ObjectId, string>>;
     residentialId: z.ZodString;
     name: z.ZodString;
     type: z.ZodEnum<["entranceGate", "exitGate"]>;
@@ -220,7 +221,7 @@ declare const remoteDeviceSchema: z.ZodObject<{
     name: string;
     type: "entranceGate" | "exitGate";
     residentialId: string;
-    _id?: string | undefined;
+    _id?: ObjectId | undefined;
 }, {
     name: string;
     type: "entranceGate" | "exitGate";

@@ -33,8 +33,9 @@ var patchUserSchema = z2.object({
 
 // src/dto/residential.interface.ts
 import z3 from "zod";
+import { ObjectId } from "mongodb";
 var residentialSchema = z3.object({
-  _id: z3.string().regex(MONGODB_ID_REGEX, "Invalid ID format, must be a valid hex value").optional(),
+  _id: z3.string().transform((val) => new ObjectId(val)).optional(),
   name: z3.string(),
   address: z3.string(),
   city: z3.string(),
@@ -47,8 +48,9 @@ var residentialSchema = z3.object({
 
 // src/dto/remote-opening-action.interface.ts
 import z4 from "zod";
+import { ObjectId as ObjectId2 } from "mongodb";
 var remoteOpeningActionSchema = z4.object({
-  remoteDeviceId: z4.string().regex(MONGODB_ID_REGEX, "Invalid remote device ID format, must be a valid hex value").optional(),
+  remoteDeviceId: z4.string().transform((val) => new ObjectId2(val)).optional(),
   action: z4.enum(["open", "close"]),
   timestamp: z4.string().refine((val) => !isNaN(Date.parse(val)), {
     message: "Invalid timestamp format, must be ISO 8601"
@@ -60,8 +62,9 @@ var remoteOpeningActionSchema = z4.object({
 
 // src/dto/remote-device.interface.ts
 import { z as z5 } from "zod";
+import { ObjectId as ObjectId3 } from "mongodb";
 var remoteDeviceSchema = z5.object({
-  _id: z5.string().regex(MONGODB_ID_REGEX, "Invalid ID format, must be a valid hex value").optional(),
+  _id: z5.string().transform((val) => new ObjectId3(val)).optional(),
   residentialId: z5.string().regex(MONGODB_ID_REGEX, "Invalid residential ID format, must be a valid hex value"),
   name: z5.string(),
   type: z5.enum(["entranceGate", "exitGate"])

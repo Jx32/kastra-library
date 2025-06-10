@@ -7,6 +7,7 @@
 
 import z from "zod";
 import { MONGODB_ID_REGEX } from "../constants/constants";
+import { ObjectId } from "mongodb";
 
 export interface Residential {
     _id: string;
@@ -21,7 +22,7 @@ export interface Residential {
 }
 
 export const residentialSchema = z.object({
-    _id: z.string().regex(MONGODB_ID_REGEX, "Invalid ID format, must be a valid hex value").optional(),
+    _id: z.string().transform(val => new ObjectId(val)).optional(),
     name: z.string(),
     address: z.string(),
     city: z.string(),
