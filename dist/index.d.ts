@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import z$1, { z } from 'zod';
 
 declare const PHONE_REGEX: RegExp;
 declare const MONGODB_ID_REGEX: RegExp;
@@ -102,6 +102,133 @@ interface RegisterUserResponse {
     name: string;
 }
 
+/**
+ * Residential interface represents a residential area where remote devices are installed,
+ * and where users can live or have a house.
+ *
+ * @interface Residential
+ */
+
+interface Residential {
+    _id: string;
+    name: string;
+    address: string;
+    city: string;
+    state: string;
+    country: string;
+    postalCode: string;
+    contactNumber?: string;
+    status: "active" | "inactive";
+}
+declare const residentialSchema: z$1.ZodObject<{
+    _id: z$1.ZodOptional<z$1.ZodString>;
+    name: z$1.ZodString;
+    address: z$1.ZodString;
+    city: z$1.ZodString;
+    state: z$1.ZodString;
+    country: z$1.ZodString;
+    postalCode: z$1.ZodString;
+    contactNumber: z$1.ZodOptional<z$1.ZodString>;
+    status: z$1.ZodEnum<["active", "inactive"]>;
+}, "strict", z$1.ZodTypeAny, {
+    name: string;
+    status: "active" | "inactive";
+    address: string;
+    city: string;
+    state: string;
+    country: string;
+    postalCode: string;
+    _id?: string | undefined;
+    contactNumber?: string | undefined;
+}, {
+    name: string;
+    status: "active" | "inactive";
+    address: string;
+    city: string;
+    state: string;
+    country: string;
+    postalCode: string;
+    _id?: string | undefined;
+    contactNumber?: string | undefined;
+}>;
+type ResidentialType = z$1.infer<typeof residentialSchema>;
+
+/**
+ * RemoteOpeningAction interface represents an action that will be performed on a remote device,
+ * such as opening or closing a gate, and includes metadata about the action.
+ * Also can be used to log actions performed by users or systems.
+ *
+ * Those actions will be used to control devices like gates, doors, etc.,
+ * and can be triggered by users or automated systems.
+ *
+ * A remote opening action it's indentended to be in the residential MQTT topic.
+ *
+ * @interface RemoteOpeningAction
+ */
+
+interface RemoteOpeningAction {
+    remoteDeviceId: string;
+    action: "open" | "close";
+    timestamp: string;
+    userSub: string;
+    reason?: string;
+    additionalInfo?: any;
+}
+declare const remoteOpeningActionSchema: z$1.ZodObject<{
+    remoteDeviceId: z$1.ZodOptional<z$1.ZodString>;
+    action: z$1.ZodEnum<["open", "close"]>;
+    timestamp: z$1.ZodEffects<z$1.ZodString, string, string>;
+    userSub: z$1.ZodString;
+    reason: z$1.ZodOptional<z$1.ZodString>;
+    additionalInfo: z$1.ZodOptional<z$1.ZodAny>;
+}, "strict", z$1.ZodTypeAny, {
+    action: "open" | "close";
+    timestamp: string;
+    userSub: string;
+    remoteDeviceId?: string | undefined;
+    reason?: string | undefined;
+    additionalInfo?: any;
+}, {
+    action: "open" | "close";
+    timestamp: string;
+    userSub: string;
+    remoteDeviceId?: string | undefined;
+    reason?: string | undefined;
+    additionalInfo?: any;
+}>;
+type RemoteOpeningActionType = z$1.infer<typeof remoteOpeningActionSchema>;
+
+/**
+ * RemoteDevice Interface represents a device that can be controlled remotely,
+ * and are installed physically at the entrance or exit of a residential area.
+ *
+ * @interface RemoteDevice
+ */
+
+interface RemoteDevice {
+    _id?: string;
+    residentialId: string;
+    name: string;
+    type: "entranceGate" | "exitGate";
+}
+declare const remoteDeviceSchema: z.ZodObject<{
+    _id: z.ZodOptional<z.ZodString>;
+    residentialId: z.ZodString;
+    name: z.ZodString;
+    type: z.ZodEnum<["entranceGate", "exitGate"]>;
+}, "strict", z.ZodTypeAny, {
+    name: string;
+    type: "entranceGate" | "exitGate";
+    residentialId: string;
+    _id?: string | undefined;
+}, {
+    name: string;
+    type: "entranceGate" | "exitGate";
+    residentialId: string;
+    _id?: string | undefined;
+}>;
+type RemoteDeviceType = z.infer<typeof remoteDeviceSchema>;
+
 declare enum UserRoleEnum {
     HOUSE_OWNER = "houseOwner",
     HOUSE_RELATED = "houseRelated",
@@ -109,4 +236,4 @@ declare enum UserRoleEnum {
     ADMIN = "admin"
 }
 
-export { MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type RegisterUserResponse, type User, UserRoleEnum, type UserType, patchUserSchema, userSchema };
+export { MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type RegisterUserResponse, type RemoteDevice, type RemoteDeviceType, type RemoteOpeningAction, type RemoteOpeningActionType, type Residential, type ResidentialType, type User, UserRoleEnum, type UserType, patchUserSchema, remoteDeviceSchema, remoteOpeningActionSchema, userSchema };
