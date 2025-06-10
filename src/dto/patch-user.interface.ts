@@ -8,6 +8,7 @@ export interface PatchUser {
     firstLogin?: boolean;
     houseNumber?: string;
     street?: string;
+    currentPinAccess?: string;
 }
 
 export const patchUserSchema = z.object({
@@ -17,6 +18,7 @@ export const patchUserSchema = z.object({
     firstLogin: z.boolean().optional(),
     houseNumber: z.string().optional(),
     street: z.string().optional(),
+    currentPinAccess: z.string().length(4, "Current PIN must be 4 digits length").optional(),
 }).strict();
 
 export type PatchUserType = z.infer<typeof patchUserSchema>;

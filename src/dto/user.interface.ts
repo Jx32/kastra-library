@@ -15,6 +15,7 @@ export interface User {
     street: string;
     residentialId: string;
     houseOwnerSub?: string;
+    currentPinAccess?: string;
 }
 
 export const userSchema = z.object({
@@ -31,6 +32,7 @@ export const userSchema = z.object({
     street: z.string(),
     residentialId: z.string(),
     houseOwnerSub: z.string().uuid().optional(),
+    currentPinAccess: z.string().length(4, "Current PIN must be 4 digits length").optional(),
 }).strict();
 
 export type UserType = z.infer<typeof userSchema>;

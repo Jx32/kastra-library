@@ -18,6 +18,7 @@ interface User {
     street: string;
     residentialId: string;
     houseOwnerSub?: string;
+    currentPinAccess?: string;
 }
 declare const userSchema: z.ZodObject<{
     sub: z.ZodOptional<z.ZodString>;
@@ -33,6 +34,7 @@ declare const userSchema: z.ZodObject<{
     street: z.ZodString;
     residentialId: z.ZodString;
     houseOwnerSub: z.ZodOptional<z.ZodString>;
+    currentPinAccess: z.ZodOptional<z.ZodString>;
 }, "strict", z.ZodTypeAny, {
     name: string;
     email: string;
@@ -47,6 +49,7 @@ declare const userSchema: z.ZodObject<{
     phone_number?: string | undefined;
     phone_number_verified?: boolean | undefined;
     houseOwnerSub?: string | undefined;
+    currentPinAccess?: string | undefined;
 }, {
     name: string;
     email: string;
@@ -61,6 +64,7 @@ declare const userSchema: z.ZodObject<{
     phone_number?: string | undefined;
     phone_number_verified?: boolean | undefined;
     houseOwnerSub?: string | undefined;
+    currentPinAccess?: string | undefined;
 }>;
 type UserType = z.infer<typeof userSchema>;
 
@@ -71,6 +75,7 @@ interface PatchUser {
     firstLogin?: boolean;
     houseNumber?: string;
     street?: string;
+    currentPinAccess?: string;
 }
 declare const patchUserSchema: z.ZodObject<{
     name: z.ZodOptional<z.ZodString>;
@@ -79,6 +84,7 @@ declare const patchUserSchema: z.ZodObject<{
     firstLogin: z.ZodOptional<z.ZodBoolean>;
     houseNumber: z.ZodOptional<z.ZodString>;
     street: z.ZodOptional<z.ZodString>;
+    currentPinAccess: z.ZodOptional<z.ZodString>;
 }, "strict", z.ZodTypeAny, {
     name?: string | undefined;
     email?: string | undefined;
@@ -86,6 +92,7 @@ declare const patchUserSchema: z.ZodObject<{
     firstLogin?: boolean | undefined;
     houseNumber?: string | undefined;
     street?: string | undefined;
+    currentPinAccess?: string | undefined;
 }, {
     name?: string | undefined;
     email?: string | undefined;
@@ -93,6 +100,7 @@ declare const patchUserSchema: z.ZodObject<{
     firstLogin?: boolean | undefined;
     houseNumber?: string | undefined;
     street?: string | undefined;
+    currentPinAccess?: string | undefined;
 }>;
 type PatchUserType = z.infer<typeof patchUserSchema>;
 

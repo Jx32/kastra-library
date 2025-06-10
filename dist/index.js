@@ -60,7 +60,8 @@ var userSchema = import_zod.z.object({
   role: import_zod.z.enum(["houseOwner", "houseRelated", "helpDesk", "admin"]),
   street: import_zod.z.string(),
   residentialId: import_zod.z.string(),
-  houseOwnerSub: import_zod.z.string().uuid().optional()
+  houseOwnerSub: import_zod.z.string().uuid().optional(),
+  currentPinAccess: import_zod.z.string().length(4, "Current PIN must be 4 digits length").optional()
 }).strict();
 
 // src/dto/patch-user.interface.ts
@@ -71,7 +72,8 @@ var patchUserSchema = import_zod2.z.object({
   phone_number: import_zod2.z.string().regex(PHONE_REGEX).optional(),
   firstLogin: import_zod2.z.boolean().optional(),
   houseNumber: import_zod2.z.string().optional(),
-  street: import_zod2.z.string().optional()
+  street: import_zod2.z.string().optional(),
+  currentPinAccess: import_zod2.z.string().length(4, "Current PIN must be 4 digits length").optional()
 }).strict();
 
 // src/dto/residential.interface.ts
@@ -104,7 +106,7 @@ var remoteOpeningActionSchema = import_zod4.default.object({
   additionalInfo: import_zod4.default.any().optional()
 }).strict();
 
-// src/dto/remote-device.interface.ts
+// src/dto/remote-gate.interface.ts
 var import_zod5 = require("zod");
 var import_mongodb3 = require("mongodb");
 var remoteGateSchema = import_zod5.z.object({

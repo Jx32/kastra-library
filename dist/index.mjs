@@ -17,7 +17,8 @@ var userSchema = z.object({
   role: z.enum(["houseOwner", "houseRelated", "helpDesk", "admin"]),
   street: z.string(),
   residentialId: z.string(),
-  houseOwnerSub: z.string().uuid().optional()
+  houseOwnerSub: z.string().uuid().optional(),
+  currentPinAccess: z.string().length(4, "Current PIN must be 4 digits length").optional()
 }).strict();
 
 // src/dto/patch-user.interface.ts
@@ -28,7 +29,8 @@ var patchUserSchema = z2.object({
   phone_number: z2.string().regex(PHONE_REGEX).optional(),
   firstLogin: z2.boolean().optional(),
   houseNumber: z2.string().optional(),
-  street: z2.string().optional()
+  street: z2.string().optional(),
+  currentPinAccess: z2.string().length(4, "Current PIN must be 4 digits length").optional()
 }).strict();
 
 // src/dto/residential.interface.ts
@@ -61,7 +63,7 @@ var remoteOpeningActionSchema = z4.object({
   additionalInfo: z4.any().optional()
 }).strict();
 
-// src/dto/remote-device.interface.ts
+// src/dto/remote-gate.interface.ts
 import { z as z5 } from "zod";
 import { ObjectId as ObjectId3 } from "mongodb";
 var remoteGateSchema = z5.object({
