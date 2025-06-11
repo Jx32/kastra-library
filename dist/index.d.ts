@@ -1,5 +1,6 @@
 import z$1, { z } from 'zod';
 import { ObjectId } from 'mongodb';
+import * as bson from 'bson';
 
 declare const PHONE_REGEX: RegExp;
 declare const MONGODB_ID_REGEX: RegExp;
@@ -242,6 +243,51 @@ declare const remoteGateSchema: z.ZodObject<{
 }>;
 type RemoteGateType = z.infer<typeof remoteGateSchema>;
 
+interface UserSummary {
+    remoteGates: RemoteGate[];
+    currentPinAccess: string;
+    topicName: string;
+}
+declare const userSummarySchema: z$1.ZodObject<{
+    remoteGates: z$1.ZodArray<z$1.ZodObject<{
+        _id: z$1.ZodOptional<z$1.ZodEffects<z$1.ZodString, bson.ObjectId, string>>;
+        residentialId: z$1.ZodEffects<z$1.ZodString, bson.ObjectId, string>;
+        name: z$1.ZodString;
+        type: z$1.ZodEnum<["entrance", "exit"]>;
+    }, "strict", z$1.ZodTypeAny, {
+        name: string;
+        type: "entrance" | "exit";
+        residentialId: bson.ObjectId;
+        _id?: bson.ObjectId | undefined;
+    }, {
+        name: string;
+        type: "entrance" | "exit";
+        residentialId: string;
+        _id?: string | undefined;
+    }>, "many">;
+    currentPinAccess: z$1.ZodString;
+    topicName: z$1.ZodString;
+}, "strict", z$1.ZodTypeAny, {
+    currentPinAccess: string;
+    topicName: string;
+    remoteGates: {
+        name: string;
+        type: "entrance" | "exit";
+        residentialId: bson.ObjectId;
+        _id?: bson.ObjectId | undefined;
+    }[];
+}, {
+    currentPinAccess: string;
+    topicName: string;
+    remoteGates: {
+        name: string;
+        type: "entrance" | "exit";
+        residentialId: string;
+        _id?: string | undefined;
+    }[];
+}>;
+type UserSummaryType = z$1.infer<typeof userSummarySchema>;
+
 declare enum UserRoleEnum {
     HOUSE_OWNER = "houseOwner",
     HOUSE_RELATED = "houseRelated",
@@ -249,4 +295,4 @@ declare enum UserRoleEnum {
     ADMIN = "admin"
 }
 
-export { MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type RegisterUserResponse, type RemoteGate, type RemoteGateType, type RemoteOpeningAction, type RemoteOpeningActionType, type Residential, type ResidentialType, type User, UserRoleEnum, type UserType, patchUserSchema, remoteGateSchema, remoteOpeningActionSchema, residentialSchema, userSchema };
+export { MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type RegisterUserResponse, type RemoteGate, type RemoteGateType, type RemoteOpeningAction, type RemoteOpeningActionType, type Residential, type ResidentialType, type User, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, patchUserSchema, remoteGateSchema, remoteOpeningActionSchema, residentialSchema, userSchema, userSummarySchema };

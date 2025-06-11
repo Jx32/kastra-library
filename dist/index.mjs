@@ -73,6 +73,14 @@ var remoteGateSchema = z5.object({
   type: z5.enum(["entrance", "exit"])
 }).strict();
 
+// src/dto/user-summary.interface.ts
+import z6 from "zod";
+var userSummarySchema = z6.object({
+  remoteGates: z6.array(remoteGateSchema),
+  currentPinAccess: z6.string().length(4, "Current PIN must be 4 digits length"),
+  topicName: z6.string().min(1, "Topic name cannot be empty")
+}).strict();
+
 // src/enum/role.enum.ts
 var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   UserRoleEnum2["HOUSE_OWNER"] = "houseOwner";
@@ -89,6 +97,7 @@ export {
   remoteGateSchema,
   remoteOpeningActionSchema,
   residentialSchema,
-  userSchema
+  userSchema,
+  userSummarySchema
 };
 //# sourceMappingURL=index.mjs.map

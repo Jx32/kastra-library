@@ -37,7 +37,8 @@ __export(src_exports, {
   remoteGateSchema: () => remoteGateSchema,
   remoteOpeningActionSchema: () => remoteOpeningActionSchema,
   residentialSchema: () => residentialSchema,
-  userSchema: () => userSchema
+  userSchema: () => userSchema,
+  userSummarySchema: () => userSummarySchema
 });
 module.exports = __toCommonJS(src_exports);
 
@@ -116,6 +117,14 @@ var remoteGateSchema = import_zod5.z.object({
   type: import_zod5.z.enum(["entrance", "exit"])
 }).strict();
 
+// src/dto/user-summary.interface.ts
+var import_zod6 = __toESM(require("zod"));
+var userSummarySchema = import_zod6.default.object({
+  remoteGates: import_zod6.default.array(remoteGateSchema),
+  currentPinAccess: import_zod6.default.string().length(4, "Current PIN must be 4 digits length"),
+  topicName: import_zod6.default.string().min(1, "Topic name cannot be empty")
+}).strict();
+
 // src/enum/role.enum.ts
 var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   UserRoleEnum2["HOUSE_OWNER"] = "houseOwner";
@@ -133,6 +142,7 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   remoteGateSchema,
   remoteOpeningActionSchema,
   residentialSchema,
-  userSchema
+  userSchema,
+  userSummarySchema
 });
 //# sourceMappingURL=index.js.map
