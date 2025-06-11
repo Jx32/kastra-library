@@ -1,3 +1,6 @@
+// src/index.ts
+import { ObjectId as ObjectId4 } from "mongodb";
+
 // src/constants/constants.ts
 var PHONE_REGEX = /^(\+[1-9]{2})\d{10}$/;
 var MONGODB_ID_REGEX = /^[a-f\d]{24}$/i;
@@ -91,6 +94,7 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
 })(UserRoleEnum || {});
 export {
   MONGODB_ID_REGEX,
+  ObjectId4 as ObjectId,
   PHONE_REGEX,
   UserRoleEnum,
   patchUserSchema,

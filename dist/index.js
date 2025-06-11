@@ -31,6 +31,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 var src_exports = {};
 __export(src_exports, {
   MONGODB_ID_REGEX: () => MONGODB_ID_REGEX,
+  ObjectId: () => import_mongodb4.ObjectId,
   PHONE_REGEX: () => PHONE_REGEX,
   UserRoleEnum: () => UserRoleEnum,
   patchUserSchema: () => patchUserSchema,
@@ -41,6 +42,7 @@ __export(src_exports, {
   userSummarySchema: () => userSummarySchema
 });
 module.exports = __toCommonJS(src_exports);
+var import_mongodb4 = require("mongodb");
 
 // src/constants/constants.ts
 var PHONE_REGEX = /^(\+[1-9]{2})\d{10}$/;
@@ -136,6 +138,7 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   MONGODB_ID_REGEX,
+  ObjectId,
   PHONE_REGEX,
   UserRoleEnum,
   patchUserSchema,
