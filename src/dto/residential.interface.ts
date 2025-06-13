@@ -20,6 +20,7 @@ export interface Residential {
     status: "active" | "inactive";
     topicName: string;
     monthlyPaymentStripePriceId?: string;
+    monthlyPaymentAmount: number;
 }
 
 export const residentialSchema = z.object({
@@ -33,7 +34,8 @@ export const residentialSchema = z.object({
     contactNumber: z.string().optional(),
     status: z.enum(["active", "inactive"]),
     topicName: z.string(),
-    monthlyPaymentStripePriceId: z.string().optional()
+    monthlyPaymentStripePriceId: z.string().optional(),
+    monthlyPaymentAmount: z.number().min(0, "Monthly payment amount must be a non-negative number")
 }).strict();
 
 export type ResidentialType = z.infer<typeof residentialSchema>;
