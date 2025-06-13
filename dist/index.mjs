@@ -51,7 +51,8 @@ var residentialSchema = z3.object({
   postalCode: z3.string(),
   contactNumber: z3.string().optional(),
   status: z3.enum(["active", "inactive"]),
-  topicName: z3.string()
+  topicName: z3.string(),
+  monthlyPaymentStripePriceId: z3.string().optional()
 }).strict();
 
 // src/dto/remote-opening-action.interface.ts

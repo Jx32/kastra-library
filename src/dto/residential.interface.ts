@@ -19,6 +19,7 @@ export interface Residential {
     contactNumber?: string;
     status: "active" | "inactive";
     topicName: string;
+    monthlyPaymentStripePriceId?: string;
 }
 
 export const residentialSchema = z.object({
@@ -32,6 +33,7 @@ export const residentialSchema = z.object({
     contactNumber: z.string().optional(),
     status: z.enum(["active", "inactive"]),
     topicName: z.string(),
+    monthlyPaymentStripePriceId: z.string().optional()
 }).strict();
 
 export type ResidentialType = z.infer<typeof residentialSchema>;

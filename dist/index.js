@@ -94,7 +94,8 @@ var residentialSchema = import_zod3.default.object({
   postalCode: import_zod3.default.string(),
   contactNumber: import_zod3.default.string().optional(),
   status: import_zod3.default.enum(["active", "inactive"]),
-  topicName: import_zod3.default.string()
+  topicName: import_zod3.default.string(),
+  monthlyPaymentStripePriceId: import_zod3.default.string().optional()
 }).strict();
 
 // src/dto/remote-opening-action.interface.ts
