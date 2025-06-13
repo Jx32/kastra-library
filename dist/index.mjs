@@ -53,7 +53,7 @@ var residentialSchema = z3.object({
   status: z3.enum(["active", "inactive"]),
   topicName: z3.string(),
   monthlyPaymentStripePriceId: z3.string().optional(),
-  monthlyPaymentAmount: z3.number().min(0, "Monthly payment amount must be a non-negative number")
+  monthlyPaymentAmount: z3.string()
 }).strict();
 
 // src/dto/remote-opening-action.interface.ts

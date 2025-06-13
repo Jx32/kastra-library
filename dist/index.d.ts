@@ -136,7 +136,7 @@ interface Residential {
     status: "active" | "inactive";
     topicName: string;
     monthlyPaymentStripePriceId?: string;
-    monthlyPaymentAmount: number;
+    monthlyPaymentAmount: string;
 }
 declare const residentialSchema: z$1.ZodObject<{
     _id: z$1.ZodOptional<z$1.ZodEffects<z$1.ZodString, ObjectId, string>>;
@@ -150,7 +150,7 @@ declare const residentialSchema: z$1.ZodObject<{
     status: z$1.ZodEnum<["active", "inactive"]>;
     topicName: z$1.ZodString;
     monthlyPaymentStripePriceId: z$1.ZodOptional<z$1.ZodString>;
-    monthlyPaymentAmount: z$1.ZodNumber;
+    monthlyPaymentAmount: z$1.ZodString;
 }, "strict", z$1.ZodTypeAny, {
     name: string;
     status: "active" | "inactive";
@@ -160,7 +160,7 @@ declare const residentialSchema: z$1.ZodObject<{
     country: string;
     postalCode: string;
     topicName: string;
-    monthlyPaymentAmount: number;
+    monthlyPaymentAmount: string;
     _id?: ObjectId | undefined;
     contactNumber?: string | undefined;
     monthlyPaymentStripePriceId?: string | undefined;
@@ -173,7 +173,7 @@ declare const residentialSchema: z$1.ZodObject<{
     country: string;
     postalCode: string;
     topicName: string;
-    monthlyPaymentAmount: number;
+    monthlyPaymentAmount: string;
     _id?: string | undefined;
     contactNumber?: string | undefined;
     monthlyPaymentStripePriceId?: string | undefined;

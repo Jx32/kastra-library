@@ -96,7 +96,7 @@ var residentialSchema = import_zod3.default.object({
   status: import_zod3.default.enum(["active", "inactive"]),
   topicName: import_zod3.default.string(),
   monthlyPaymentStripePriceId: import_zod3.default.string().optional(),
-  monthlyPaymentAmount: import_zod3.default.number().min(0, "Monthly payment amount must be a non-negative number")
+  monthlyPaymentAmount: import_zod3.default.string()
 }).strict();
 
 // src/dto/remote-opening-action.interface.ts
