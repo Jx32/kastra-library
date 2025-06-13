@@ -301,6 +301,11 @@ declare const userSummarySchema: z$1.ZodObject<{
 }>;
 type UserSummaryType = z$1.infer<typeof userSummarySchema>;
 
+interface UserBalance {
+    balance: number;
+    currency: string;
+}
+
 declare enum UserRoleEnum {
     HOUSE_OWNER = "houseOwner",
     HOUSE_RELATED = "houseRelated",
@@ -308,4 +313,4 @@ declare enum UserRoleEnum {
     ADMIN = "admin"
 }
 
-export { MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type RegisterUserResponse, type RemoteGate, type RemoteGateType, type RemoteOpeningAction, type RemoteOpeningActionType, type Residential, type ResidentialType, type User, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, patchUserSchema, remoteGateSchema, remoteOpeningActionSchema, residentialSchema, userSchema, userSummarySchema };
+export { MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type RegisterUserResponse, type RemoteGate, type RemoteGateType, type RemoteOpeningAction, type RemoteOpeningActionType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, patchUserSchema, remoteGateSchema, remoteOpeningActionSchema, residentialSchema, userSchema, userSummarySchema };
