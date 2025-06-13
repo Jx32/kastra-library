@@ -21,6 +21,7 @@ interface User {
     residentialId: string;
     houseOwnerSub?: string;
     currentPinAccess?: string;
+    stripeCustomerId?: string;
 }
 declare const userSchema: z.ZodObject<{
     sub: z.ZodOptional<z.ZodString>;
@@ -37,6 +38,7 @@ declare const userSchema: z.ZodObject<{
     residentialId: z.ZodString;
     houseOwnerSub: z.ZodOptional<z.ZodString>;
     currentPinAccess: z.ZodOptional<z.ZodString>;
+    stripeCustomerId: z.ZodOptional<z.ZodString>;
 }, "strict", z.ZodTypeAny, {
     name: string;
     email: string;
@@ -52,6 +54,7 @@ declare const userSchema: z.ZodObject<{
     phone_number_verified?: boolean | undefined;
     houseOwnerSub?: string | undefined;
     currentPinAccess?: string | undefined;
+    stripeCustomerId?: string | undefined;
 }, {
     name: string;
     email: string;
@@ -67,6 +70,7 @@ declare const userSchema: z.ZodObject<{
     phone_number_verified?: boolean | undefined;
     houseOwnerSub?: string | undefined;
     currentPinAccess?: string | undefined;
+    stripeCustomerId?: string | undefined;
 }>;
 type UserType = z.infer<typeof userSchema>;
 

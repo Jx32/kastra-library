@@ -21,7 +21,9 @@ var userSchema = z.object({
   street: z.string(),
   residentialId: z.string(),
   houseOwnerSub: z.string().uuid().optional(),
-  currentPinAccess: z.string().length(4, "Current PIN must be 4 digits length").optional()
+  currentPinAccess: z.string().length(4, "Current PIN must be 4 digits length").optional(),
+  stripeCustomerId: z.string().optional()
+  // Optional field for Stripe customer ID
 }).strict();
 
 // src/dto/patch-user.interface.ts

@@ -64,7 +64,9 @@ var userSchema = import_zod.z.object({
   street: import_zod.z.string(),
   residentialId: import_zod.z.string(),
   houseOwnerSub: import_zod.z.string().uuid().optional(),
-  currentPinAccess: import_zod.z.string().length(4, "Current PIN must be 4 digits length").optional()
+  currentPinAccess: import_zod.z.string().length(4, "Current PIN must be 4 digits length").optional(),
+  stripeCustomerId: import_zod.z.string().optional()
+  // Optional field for Stripe customer ID
 }).strict();
 
 // src/dto/patch-user.interface.ts
