@@ -13,6 +13,7 @@ export interface RemoteGate {
     residentialId: string;
     name: string;
     type: "entrance" | "exit";
+    thingName: string;
 }
 
 export const remoteGateSchema = z.object({
@@ -20,6 +21,7 @@ export const remoteGateSchema = z.object({
     residentialId: z.string().transform(val => new ObjectId(val)),
     name: z.string(),
     type: z.enum(["entrance", "exit"]),
+    thingName: z.string(),
 }).strict();
 
 export type RemoteGateType = z.infer<typeof remoteGateSchema>;

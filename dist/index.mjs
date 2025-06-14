@@ -77,7 +77,8 @@ var remoteGateSchema = z5.object({
   _id: z5.string().transform((val) => new ObjectId3(val)).optional(),
   residentialId: z5.string().transform((val) => new ObjectId3(val)),
   name: z5.string(),
-  type: z5.enum(["entrance", "exit"])
+  type: z5.enum(["entrance", "exit"]),
+  thingName: z5.string()
 }).strict();
 
 // src/dto/user-summary.interface.ts

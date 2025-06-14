@@ -237,21 +237,25 @@ interface RemoteGate {
     residentialId: string;
     name: string;
     type: "entrance" | "exit";
+    thingName: string;
 }
 declare const remoteGateSchema: z.ZodObject<{
     _id: z.ZodOptional<z.ZodEffects<z.ZodString, ObjectId, string>>;
     residentialId: z.ZodEffects<z.ZodString, ObjectId, string>;
     name: z.ZodString;
     type: z.ZodEnum<["entrance", "exit"]>;
+    thingName: z.ZodString;
 }, "strict", z.ZodTypeAny, {
     name: string;
     type: "entrance" | "exit";
     residentialId: ObjectId;
+    thingName: string;
     _id?: ObjectId | undefined;
 }, {
     name: string;
     type: "entrance" | "exit";
     residentialId: string;
+    thingName: string;
     _id?: string | undefined;
 }>;
 type RemoteGateType = z.infer<typeof remoteGateSchema>;
@@ -267,15 +271,18 @@ declare const userSummarySchema: z$1.ZodObject<{
         residentialId: z$1.ZodEffects<z$1.ZodString, bson.ObjectId, string>;
         name: z$1.ZodString;
         type: z$1.ZodEnum<["entrance", "exit"]>;
+        thingName: z$1.ZodString;
     }, "strict", z$1.ZodTypeAny, {
         name: string;
         type: "entrance" | "exit";
         residentialId: bson.ObjectId;
+        thingName: string;
         _id?: bson.ObjectId | undefined;
     }, {
         name: string;
         type: "entrance" | "exit";
         residentialId: string;
+        thingName: string;
         _id?: string | undefined;
     }>, "many">;
     currentPinAccess: z$1.ZodString;
@@ -287,6 +294,7 @@ declare const userSummarySchema: z$1.ZodObject<{
         name: string;
         type: "entrance" | "exit";
         residentialId: bson.ObjectId;
+        thingName: string;
         _id?: bson.ObjectId | undefined;
     }[];
 }, {
@@ -296,6 +304,7 @@ declare const userSummarySchema: z$1.ZodObject<{
         name: string;
         type: "entrance" | "exit";
         residentialId: string;
+        thingName: string;
         _id?: string | undefined;
     }[];
 }>;

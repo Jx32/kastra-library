@@ -120,7 +120,8 @@ var remoteGateSchema = import_zod5.z.object({
   _id: import_zod5.z.string().transform((val) => new import_mongodb3.ObjectId(val)).optional(),
   residentialId: import_zod5.z.string().transform((val) => new import_mongodb3.ObjectId(val)),
   name: import_zod5.z.string(),
-  type: import_zod5.z.enum(["entrance", "exit"])
+  type: import_zod5.z.enum(["entrance", "exit"]),
+  thingName: import_zod5.z.string()
 }).strict();
 
 // src/dto/user-summary.interface.ts
