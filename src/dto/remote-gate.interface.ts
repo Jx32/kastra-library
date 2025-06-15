@@ -14,6 +14,7 @@ export interface RemoteGate {
     name: string;
     type: "entrance" | "exit";
     thingName: string;
+    enabled?: boolean; // Optional field to indicate if the gate is enabled
 }
 
 export const remoteGateSchema = z.object({
@@ -22,6 +23,7 @@ export const remoteGateSchema = z.object({
     name: z.string(),
     type: z.enum(["entrance", "exit"]),
     thingName: z.string(),
+    enabled: z.boolean().optional(), // Optional field to indicate if the gate is enabled
 }).strict();
 
 export type RemoteGateType = z.infer<typeof remoteGateSchema>;

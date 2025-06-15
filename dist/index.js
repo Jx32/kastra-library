@@ -122,7 +122,9 @@ var remoteGateSchema = import_zod5.z.object({
   residentialId: import_zod5.z.string().transform((val) => new import_mongodb3.ObjectId(val)),
   name: import_zod5.z.string(),
   type: import_zod5.z.enum(["entrance", "exit"]),
-  thingName: import_zod5.z.string()
+  thingName: import_zod5.z.string(),
+  enabled: import_zod5.z.boolean().optional()
+  // Optional field to indicate if the gate is enabled
 }).strict();
 
 // src/dto/user-summary.interface.ts

@@ -237,6 +237,7 @@ interface RemoteGate {
     name: string;
     type: "entrance" | "exit";
     thingName: string;
+    enabled?: boolean;
 }
 declare const remoteGateSchema: z.ZodObject<{
     _id: z.ZodOptional<z.ZodEffects<z.ZodString, ObjectId, string>>;
@@ -244,18 +245,21 @@ declare const remoteGateSchema: z.ZodObject<{
     name: z.ZodString;
     type: z.ZodEnum<["entrance", "exit"]>;
     thingName: z.ZodString;
+    enabled: z.ZodOptional<z.ZodBoolean>;
 }, "strict", z.ZodTypeAny, {
     name: string;
     type: "entrance" | "exit";
     residentialId: ObjectId;
     thingName: string;
     _id?: ObjectId | undefined;
+    enabled?: boolean | undefined;
 }, {
     name: string;
     type: "entrance" | "exit";
     residentialId: string;
     thingName: string;
     _id?: string | undefined;
+    enabled?: boolean | undefined;
 }>;
 type RemoteGateType = z.infer<typeof remoteGateSchema>;
 
@@ -271,18 +275,21 @@ declare const userSummarySchema: z$1.ZodObject<{
         name: z$1.ZodString;
         type: z$1.ZodEnum<["entrance", "exit"]>;
         thingName: z$1.ZodString;
+        enabled: z$1.ZodOptional<z$1.ZodBoolean>;
     }, "strict", z$1.ZodTypeAny, {
         name: string;
         type: "entrance" | "exit";
         residentialId: bson.ObjectId;
         thingName: string;
         _id?: bson.ObjectId | undefined;
+        enabled?: boolean | undefined;
     }, {
         name: string;
         type: "entrance" | "exit";
         residentialId: string;
         thingName: string;
         _id?: string | undefined;
+        enabled?: boolean | undefined;
     }>, "many">;
     currentPinAccess: z$1.ZodString;
     topicName: z$1.ZodString;
@@ -295,6 +302,7 @@ declare const userSummarySchema: z$1.ZodObject<{
         residentialId: bson.ObjectId;
         thingName: string;
         _id?: bson.ObjectId | undefined;
+        enabled?: boolean | undefined;
     }[];
 }, {
     currentPinAccess: string;
@@ -305,6 +313,7 @@ declare const userSummarySchema: z$1.ZodObject<{
         residentialId: string;
         thingName: string;
         _id?: string | undefined;
+        enabled?: boolean | undefined;
     }[];
 }>;
 type UserSummaryType = z$1.infer<typeof userSummarySchema>;

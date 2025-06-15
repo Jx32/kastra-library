@@ -79,7 +79,9 @@ var remoteGateSchema = z5.object({
   residentialId: z5.string().transform((val) => new ObjectId3(val)),
   name: z5.string(),
   type: z5.enum(["entrance", "exit"]),
-  thingName: z5.string()
+  thingName: z5.string(),
+  enabled: z5.boolean().optional()
+  // Optional field to indicate if the gate is enabled
 }).strict();
 
 // src/dto/user-summary.interface.ts
