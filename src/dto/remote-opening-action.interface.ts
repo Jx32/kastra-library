@@ -16,7 +16,6 @@ import { ObjectId } from "mongodb";
 
 export interface RemoteOpeningAction {
     remoteGateId: string;
-    action: "open" | "close";
     timestamp: string; // ISO 8601 format
     userSub: string; // Optional, if the action is performed by a user
     reason?: string; // Optional, for logging purposes
@@ -25,7 +24,6 @@ export interface RemoteOpeningAction {
 
 export const remoteOpeningActionSchema = z.object({
     remoteGateId: z.string().transform(val => new ObjectId(val)).optional(),
-    action: z.enum(["open", "close"]),
     timestamp: z.string().refine((val) => !isNaN(Date.parse(val)), {
         message: "Invalid timestamp format, must be ISO 8601",
     }),

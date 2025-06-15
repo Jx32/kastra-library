@@ -195,7 +195,6 @@ type ResidentialType = z$1.infer<typeof residentialSchema>;
 
 interface RemoteOpeningAction {
     remoteGateId: string;
-    action: "open" | "close";
     timestamp: string;
     userSub: string;
     reason?: string;
@@ -203,20 +202,17 @@ interface RemoteOpeningAction {
 }
 declare const remoteOpeningActionSchema: z$1.ZodObject<{
     remoteGateId: z$1.ZodOptional<z$1.ZodEffects<z$1.ZodString, ObjectId, string>>;
-    action: z$1.ZodEnum<["open", "close"]>;
     timestamp: z$1.ZodEffects<z$1.ZodString, string, string>;
     userSub: z$1.ZodString;
     reason: z$1.ZodOptional<z$1.ZodString>;
     additionalInfo: z$1.ZodOptional<z$1.ZodAny>;
 }, "strict", z$1.ZodTypeAny, {
-    action: "open" | "close";
     timestamp: string;
     userSub: string;
     remoteGateId?: ObjectId | undefined;
     reason?: string | undefined;
     additionalInfo?: any;
 }, {
-    action: "open" | "close";
     timestamp: string;
     userSub: string;
     remoteGateId?: string | undefined;
