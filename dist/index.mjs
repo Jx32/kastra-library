@@ -60,7 +60,7 @@ var residentialSchema = z3.object({
 import z4 from "zod";
 import { ObjectId as ObjectId2 } from "mongodb";
 var remoteOpeningActionSchema = z4.object({
-  remoteDeviceId: z4.string().transform((val) => new ObjectId2(val)).optional(),
+  remoteGateId: z4.string().transform((val) => new ObjectId2(val)).optional(),
   action: z4.enum(["open", "close"]),
   timestamp: z4.string().refine((val) => !isNaN(Date.parse(val)), {
     message: "Invalid timestamp format, must be ISO 8601"
