@@ -65,8 +65,9 @@ var userSchema = import_zod.z.object({
   residentialId: import_zod.z.string(),
   houseOwnerSub: import_zod.z.string().uuid().optional(),
   currentPinAccess: import_zod.z.string().length(4, "Current PIN must be 4 digits length").optional(),
-  stripeCustomerId: import_zod.z.string().optional()
+  stripeCustomerId: import_zod.z.string().optional(),
   // Optional field for Stripe customer ID
+  iaBehaviour: import_zod.z.enum(["formal", "friendly", "funny"]).optional()
 }).strict();
 
 // src/dto/patch-user.interface.ts
@@ -78,7 +79,8 @@ var patchUserSchema = import_zod2.z.object({
   firstLogin: import_zod2.z.boolean().optional(),
   houseNumber: import_zod2.z.string().optional(),
   street: import_zod2.z.string().optional(),
-  currentPinAccess: import_zod2.z.string().length(4, "Current PIN must be 4 digits length").optional()
+  currentPinAccess: import_zod2.z.string().length(4, "Current PIN must be 4 digits length").optional(),
+  iaBehaviour: import_zod2.z.enum(["formal", "friendly", "funny"]).optional()
 }).strict();
 
 // src/dto/residential.interface.ts

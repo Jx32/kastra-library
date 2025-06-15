@@ -22,8 +22,9 @@ var userSchema = z.object({
   residentialId: z.string(),
   houseOwnerSub: z.string().uuid().optional(),
   currentPinAccess: z.string().length(4, "Current PIN must be 4 digits length").optional(),
-  stripeCustomerId: z.string().optional()
+  stripeCustomerId: z.string().optional(),
   // Optional field for Stripe customer ID
+  iaBehaviour: z.enum(["formal", "friendly", "funny"]).optional()
 }).strict();
 
 // src/dto/patch-user.interface.ts
@@ -35,7 +36,8 @@ var patchUserSchema = z2.object({
   firstLogin: z2.boolean().optional(),
   houseNumber: z2.string().optional(),
   street: z2.string().optional(),
-  currentPinAccess: z2.string().length(4, "Current PIN must be 4 digits length").optional()
+  currentPinAccess: z2.string().length(4, "Current PIN must be 4 digits length").optional(),
+  iaBehaviour: z2.enum(["formal", "friendly", "funny"]).optional()
 }).strict();
 
 // src/dto/residential.interface.ts

@@ -22,6 +22,7 @@ interface User {
     houseOwnerSub?: string;
     currentPinAccess?: string;
     stripeCustomerId?: string;
+    iaBehaviour?: "formal" | "friendly" | "funny";
 }
 declare const userSchema: z.ZodObject<{
     sub: z.ZodOptional<z.ZodString>;
@@ -39,6 +40,7 @@ declare const userSchema: z.ZodObject<{
     houseOwnerSub: z.ZodOptional<z.ZodString>;
     currentPinAccess: z.ZodOptional<z.ZodString>;
     stripeCustomerId: z.ZodOptional<z.ZodString>;
+    iaBehaviour: z.ZodOptional<z.ZodEnum<["formal", "friendly", "funny"]>>;
 }, "strict", z.ZodTypeAny, {
     name: string;
     email: string;
@@ -55,6 +57,7 @@ declare const userSchema: z.ZodObject<{
     houseOwnerSub?: string | undefined;
     currentPinAccess?: string | undefined;
     stripeCustomerId?: string | undefined;
+    iaBehaviour?: "formal" | "friendly" | "funny" | undefined;
 }, {
     name: string;
     email: string;
@@ -71,6 +74,7 @@ declare const userSchema: z.ZodObject<{
     houseOwnerSub?: string | undefined;
     currentPinAccess?: string | undefined;
     stripeCustomerId?: string | undefined;
+    iaBehaviour?: "formal" | "friendly" | "funny" | undefined;
 }>;
 type UserType = z.infer<typeof userSchema>;
 
@@ -82,6 +86,7 @@ interface PatchUser {
     houseNumber?: string;
     street?: string;
     currentPinAccess?: string;
+    iaBehaviour?: "formal" | "friendly" | "funny";
 }
 declare const patchUserSchema: z.ZodObject<{
     name: z.ZodOptional<z.ZodString>;
@@ -91,6 +96,7 @@ declare const patchUserSchema: z.ZodObject<{
     houseNumber: z.ZodOptional<z.ZodString>;
     street: z.ZodOptional<z.ZodString>;
     currentPinAccess: z.ZodOptional<z.ZodString>;
+    iaBehaviour: z.ZodOptional<z.ZodEnum<["formal", "friendly", "funny"]>>;
 }, "strict", z.ZodTypeAny, {
     name?: string | undefined;
     email?: string | undefined;
@@ -99,6 +105,7 @@ declare const patchUserSchema: z.ZodObject<{
     houseNumber?: string | undefined;
     street?: string | undefined;
     currentPinAccess?: string | undefined;
+    iaBehaviour?: "formal" | "friendly" | "funny" | undefined;
 }, {
     name?: string | undefined;
     email?: string | undefined;
@@ -107,6 +114,7 @@ declare const patchUserSchema: z.ZodObject<{
     houseNumber?: string | undefined;
     street?: string | undefined;
     currentPinAccess?: string | undefined;
+    iaBehaviour?: "formal" | "friendly" | "funny" | undefined;
 }>;
 type PatchUserType = z.infer<typeof patchUserSchema>;
 

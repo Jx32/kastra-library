@@ -17,6 +17,7 @@ export interface User {
     houseOwnerSub?: string;
     currentPinAccess?: string;
     stripeCustomerId?: string; // Optional field for Stripe customer ID
+    iaBehaviour?: "formal" | "friendly" | "funny",
 }
 
 export const userSchema = z.object({
@@ -34,7 +35,8 @@ export const userSchema = z.object({
     residentialId: z.string(),
     houseOwnerSub: z.string().uuid().optional(),
     currentPinAccess: z.string().length(4, "Current PIN must be 4 digits length").optional(),
-    stripeCustomerId: z.string().optional() // Optional field for Stripe customer ID
+    stripeCustomerId: z.string().optional(), // Optional field for Stripe customer ID
+    iaBehaviour: z.enum(["formal", "friendly", "funny"]).optional(),
 }).strict();
 
 export type UserType = z.infer<typeof userSchema>;

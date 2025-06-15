@@ -9,6 +9,7 @@ export interface PatchUser {
     houseNumber?: string;
     street?: string;
     currentPinAccess?: string;
+    iaBehaviour?: "formal" | "friendly" | "funny",
 }
 
 export const patchUserSchema = z.object({
@@ -19,6 +20,7 @@ export const patchUserSchema = z.object({
     houseNumber: z.string().optional(),
     street: z.string().optional(),
     currentPinAccess: z.string().length(4, "Current PIN must be 4 digits length").optional(),
+    iaBehaviour: z.enum(["formal", "friendly", "funny"]).optional(),
 }).strict();
 
 export type PatchUserType = z.infer<typeof patchUserSchema>;
