@@ -199,17 +199,23 @@ interface RemoteGateLog {
 }
 declare const remoteGateLogSchema: z$1.ZodObject<{
     remoteGateId: z$1.ZodOptional<z$1.ZodEffects<z$1.ZodString, ObjectId, string>>;
+    source: z$1.ZodEnum<["app", "totem"]>;
+    action: z$1.ZodEnum<["open", "enable", "disable", "create", "delete", "update"]>;
     timestamp: z$1.ZodEffects<z$1.ZodString, string, string>;
     userSub: z$1.ZodString;
     reason: z$1.ZodOptional<z$1.ZodString>;
     additionalInfo: z$1.ZodOptional<z$1.ZodAny>;
 }, "strict", z$1.ZodTypeAny, {
+    source: "app" | "totem";
+    action: "open" | "enable" | "disable" | "create" | "delete" | "update";
     timestamp: string;
     userSub: string;
     remoteGateId?: ObjectId | undefined;
     reason?: string | undefined;
     additionalInfo?: any;
 }, {
+    source: "app" | "totem";
+    action: "open" | "enable" | "disable" | "create" | "delete" | "update";
     timestamp: string;
     userSub: string;
     remoteGateId?: string | undefined;

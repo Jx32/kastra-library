@@ -104,6 +104,8 @@ var import_zod4 = __toESM(require("zod"));
 var import_mongodb2 = require("mongodb");
 var remoteGateLogSchema = import_zod4.default.object({
   remoteGateId: import_zod4.default.string().transform((val) => new import_mongodb2.ObjectId(val)).optional(),
+  source: import_zod4.default.enum(["app", "totem"]),
+  action: import_zod4.default.enum(["open", "enable", "disable", "create", "delete", "update"]),
   timestamp: import_zod4.default.string().refine((val) => !isNaN(Date.parse(val)), {
     message: "Invalid timestamp format, must be ISO 8601"
   }),

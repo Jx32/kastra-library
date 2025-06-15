@@ -21,6 +21,8 @@ export interface RemoteGateLog {
 
 export const remoteGateLogSchema = z.object({
     remoteGateId: z.string().transform(val => new ObjectId(val)).optional(),
+    source: z.enum(["app", "totem"]),
+    action: z.enum(["open", "enable", "disable", "create", "delete", "update"]),
     timestamp: z.string().refine((val) => !isNaN(Date.parse(val)), {
         message: "Invalid timestamp format, must be ISO 8601",
     }),
