@@ -185,22 +185,19 @@ type ResidentialType = z$1.infer<typeof residentialSchema>;
  * such as opening or closing a gate, and includes metadata about the action.
  * Also can be used to log actions performed by users or systems.
  *
- * Those actions will be used to control devices like gates, doors, etc.,
- * and can be triggered by users or automated systems.
- *
- * A remote opening action it's indentended to be in the residential MQTT topic.
- *
- * @interface RemoteOpeningAction
+ * @interface RemoteGateLog
  */
 
-interface RemoteOpeningAction {
+interface RemoteGateLog {
     remoteGateId: string;
+    source: "app" | "totem";
+    action: "open" | "enable" | "disable" | "create" | "delete" | "update";
     timestamp: string;
     userSub: string;
     reason?: string;
     additionalInfo?: any;
 }
-declare const remoteOpeningActionSchema: z$1.ZodObject<{
+declare const remoteGateLogSchema: z$1.ZodObject<{
     remoteGateId: z$1.ZodOptional<z$1.ZodEffects<z$1.ZodString, ObjectId, string>>;
     timestamp: z$1.ZodEffects<z$1.ZodString, string, string>;
     userSub: z$1.ZodString;
@@ -219,7 +216,7 @@ declare const remoteOpeningActionSchema: z$1.ZodObject<{
     reason?: string | undefined;
     additionalInfo?: any;
 }>;
-type RemoteOpeningActionType = z$1.infer<typeof remoteOpeningActionSchema>;
+type RemoteGateLogType = z$1.infer<typeof remoteGateLogSchema>;
 
 /**
  * RemoteDevice Interface represents a gate that can be controlled remotely,
@@ -318,4 +315,4 @@ declare enum UserRoleEnum {
     ADMIN = "admin"
 }
 
-export { MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type RegisterUserResponse, type RemoteGate, type RemoteGateType, type RemoteOpeningAction, type RemoteOpeningActionType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, patchUserSchema, remoteGateSchema, remoteOpeningActionSchema, residentialSchema, userSchema, userSummarySchema };
+export { MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, patchUserSchema, remoteGateLogSchema, remoteGateSchema, residentialSchema, userSchema, userSummarySchema };

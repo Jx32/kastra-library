@@ -35,8 +35,8 @@ __export(src_exports, {
   PHONE_REGEX: () => PHONE_REGEX,
   UserRoleEnum: () => UserRoleEnum,
   patchUserSchema: () => patchUserSchema,
+  remoteGateLogSchema: () => remoteGateLogSchema,
   remoteGateSchema: () => remoteGateSchema,
-  remoteOpeningActionSchema: () => remoteOpeningActionSchema,
   residentialSchema: () => residentialSchema,
   userSchema: () => userSchema,
   userSummarySchema: () => userSummarySchema
@@ -99,10 +99,10 @@ var residentialSchema = import_zod3.default.object({
   monthlyPaymentAmount: import_zod3.default.string()
 }).strict();
 
-// src/dto/remote-opening-action.interface.ts
+// src/dto/remote-gate-log.interface.ts
 var import_zod4 = __toESM(require("zod"));
 var import_mongodb2 = require("mongodb");
-var remoteOpeningActionSchema = import_zod4.default.object({
+var remoteGateLogSchema = import_zod4.default.object({
   remoteGateId: import_zod4.default.string().transform((val) => new import_mongodb2.ObjectId(val)).optional(),
   timestamp: import_zod4.default.string().refine((val) => !isNaN(Date.parse(val)), {
     message: "Invalid timestamp format, must be ISO 8601"
@@ -146,8 +146,8 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   PHONE_REGEX,
   UserRoleEnum,
   patchUserSchema,
+  remoteGateLogSchema,
   remoteGateSchema,
-  remoteOpeningActionSchema,
   residentialSchema,
   userSchema,
   userSummarySchema

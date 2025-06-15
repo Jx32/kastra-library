@@ -56,10 +56,10 @@ var residentialSchema = z3.object({
   monthlyPaymentAmount: z3.string()
 }).strict();
 
-// src/dto/remote-opening-action.interface.ts
+// src/dto/remote-gate-log.interface.ts
 import z4 from "zod";
 import { ObjectId as ObjectId2 } from "mongodb";
-var remoteOpeningActionSchema = z4.object({
+var remoteGateLogSchema = z4.object({
   remoteGateId: z4.string().transform((val) => new ObjectId2(val)).optional(),
   timestamp: z4.string().refine((val) => !isNaN(Date.parse(val)), {
     message: "Invalid timestamp format, must be ISO 8601"
@@ -102,8 +102,8 @@ export {
   PHONE_REGEX,
   UserRoleEnum,
   patchUserSchema,
+  remoteGateLogSchema,
   remoteGateSchema,
-  remoteOpeningActionSchema,
   residentialSchema,
   userSchema,
   userSummarySchema
