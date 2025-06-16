@@ -94,6 +94,22 @@ var userSummarySchema = z6.object({
   topicName: z6.string().min(1, "Topic name cannot be empty")
 }).strict();
 
+// src/dto/invoice.interface.ts
+import { z as z7 } from "zod";
+var invoiceSchema = z7.object({
+  id: z7.string(),
+  status: z7.enum(["draft", "open", "paid", "uncollectible", "void"]),
+  created: z7.number(),
+  total: z7.number(),
+  ammount_remaining: z7.number(),
+  customerId: z7.string(),
+  description: z7.string(),
+  invoice_pdf: z7.string().url().optional(),
+  collection_method: z7.enum(["charge_automatically", "send_invoice"]),
+  days_until_due: z7.number().optional()
+  // Optional, only if collection_method is "send_invoice"
+}).strict();
+
 // src/enum/role.enum.ts
 var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   UserRoleEnum2["HOUSE_OWNER"] = "houseOwner";
@@ -107,6 +123,7 @@ export {
   ObjectId4 as ObjectId,
   PHONE_REGEX,
   UserRoleEnum,
+  invoiceSchema,
   patchUserSchema,
   remoteGateLogSchema,
   remoteGateSchema,

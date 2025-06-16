@@ -331,6 +331,54 @@ interface UserBalance {
     currency: string;
 }
 
+interface Invoice {
+    id: string;
+    status: "draft" | "open" | "paid" | "uncollectible" | "void";
+    created: number;
+    total: number;
+    ammount_remaining: number;
+    customerId: string;
+    description: string;
+    invoice_pdf?: string;
+    collection_method: "charge_automatically" | "send_invoice";
+    days_until_due?: number;
+}
+declare const invoiceSchema: z.ZodObject<{
+    id: z.ZodString;
+    status: z.ZodEnum<["draft", "open", "paid", "uncollectible", "void"]>;
+    created: z.ZodNumber;
+    total: z.ZodNumber;
+    ammount_remaining: z.ZodNumber;
+    customerId: z.ZodString;
+    description: z.ZodString;
+    invoice_pdf: z.ZodOptional<z.ZodString>;
+    collection_method: z.ZodEnum<["charge_automatically", "send_invoice"]>;
+    days_until_due: z.ZodOptional<z.ZodNumber>;
+}, "strict", z.ZodTypeAny, {
+    status: "void" | "open" | "draft" | "paid" | "uncollectible";
+    id: string;
+    created: number;
+    total: number;
+    ammount_remaining: number;
+    customerId: string;
+    description: string;
+    collection_method: "charge_automatically" | "send_invoice";
+    invoice_pdf?: string | undefined;
+    days_until_due?: number | undefined;
+}, {
+    status: "void" | "open" | "draft" | "paid" | "uncollectible";
+    id: string;
+    created: number;
+    total: number;
+    ammount_remaining: number;
+    customerId: string;
+    description: string;
+    collection_method: "charge_automatically" | "send_invoice";
+    invoice_pdf?: string | undefined;
+    days_until_due?: number | undefined;
+}>;
+type InvoiceType = z.infer<typeof invoiceSchema>;
+
 declare enum UserRoleEnum {
     HOUSE_OWNER = "houseOwner",
     HOUSE_RELATED = "houseRelated",
@@ -338,4 +386,4 @@ declare enum UserRoleEnum {
     ADMIN = "admin"
 }
 
-export { MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, patchUserSchema, remoteGateLogSchema, remoteGateSchema, residentialSchema, userSchema, userSummarySchema };
+export { type Invoice, type InvoiceType, MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, invoiceSchema, patchUserSchema, remoteGateLogSchema, remoteGateSchema, residentialSchema, userSchema, userSummarySchema };

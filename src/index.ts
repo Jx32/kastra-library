@@ -9,5 +9,6 @@ export * from "./dto/remote-gate-log.interface";
 export * from "./dto/remote-gate.interface";
 export * from "./dto/user-summary.interface";
 export * from "./dto/user-balance.interface";
+export * from "./dto/invoice.interface";
 
 export * from "./enum/role.enum";

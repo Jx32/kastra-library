@@ -34,6 +34,7 @@ __export(src_exports, {
   ObjectId: () => import_mongodb4.ObjectId,
   PHONE_REGEX: () => PHONE_REGEX,
   UserRoleEnum: () => UserRoleEnum,
+  invoiceSchema: () => invoiceSchema,
   patchUserSchema: () => patchUserSchema,
   remoteGateLogSchema: () => remoteGateLogSchema,
   remoteGateSchema: () => remoteGateSchema,
@@ -137,6 +138,22 @@ var userSummarySchema = import_zod6.default.object({
   topicName: import_zod6.default.string().min(1, "Topic name cannot be empty")
 }).strict();
 
+// src/dto/invoice.interface.ts
+var import_zod7 = require("zod");
+var invoiceSchema = import_zod7.z.object({
+  id: import_zod7.z.string(),
+  status: import_zod7.z.enum(["draft", "open", "paid", "uncollectible", "void"]),
+  created: import_zod7.z.number(),
+  total: import_zod7.z.number(),
+  ammount_remaining: import_zod7.z.number(),
+  customerId: import_zod7.z.string(),
+  description: import_zod7.z.string(),
+  invoice_pdf: import_zod7.z.string().url().optional(),
+  collection_method: import_zod7.z.enum(["charge_automatically", "send_invoice"]),
+  days_until_due: import_zod7.z.number().optional()
+  // Optional, only if collection_method is "send_invoice"
+}).strict();
+
 // src/enum/role.enum.ts
 var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   UserRoleEnum2["HOUSE_OWNER"] = "houseOwner";
@@ -151,6 +168,7 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   ObjectId,
   PHONE_REGEX,
   UserRoleEnum,
+  invoiceSchema,
   patchUserSchema,
   remoteGateLogSchema,
   remoteGateSchema,
