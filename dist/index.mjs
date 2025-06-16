@@ -101,12 +101,12 @@ var invoiceSchema = z7.object({
   status: z7.enum(["draft", "open", "paid", "uncollectible", "void"]),
   created: z7.number(),
   total: z7.number(),
-  ammount_remaining: z7.number(),
+  amount_remaining: z7.number(),
   customerId: z7.string(),
   description: z7.string(),
   invoice_pdf: z7.string().url().optional(),
   collection_method: z7.enum(["charge_automatically", "send_invoice"]),
-  days_until_due: z7.number().optional()
+  due_date: z7.number().optional()
   // Optional, only if collection_method is "send_invoice"
 }).strict();
 
