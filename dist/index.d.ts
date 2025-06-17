@@ -357,6 +357,9 @@ declare const invoiceSchema: z.ZodObject<{
     invoice_pdf: z.ZodOptional<z.ZodString>;
     collection_method: z.ZodEnum<["charge_automatically", "send_invoice"]>;
     due_date: z.ZodOptional<z.ZodNumber>;
+    days_until_due: z.ZodOptional<z.ZodNumber>;
+    monthName: z.ZodString;
+    year: z.ZodNumber;
 }, "strict", z.ZodTypeAny, {
     status: "void" | "open" | "draft" | "paid" | "uncollectible";
     id: string;
@@ -366,8 +369,11 @@ declare const invoiceSchema: z.ZodObject<{
     customerId: string;
     description: string;
     collection_method: "charge_automatically" | "send_invoice";
+    monthName: string;
+    year: number;
     invoice_pdf?: string | undefined;
     due_date?: number | undefined;
+    days_until_due?: number | undefined;
 }, {
     status: "void" | "open" | "draft" | "paid" | "uncollectible";
     id: string;
@@ -377,8 +383,11 @@ declare const invoiceSchema: z.ZodObject<{
     customerId: string;
     description: string;
     collection_method: "charge_automatically" | "send_invoice";
+    monthName: string;
+    year: number;
     invoice_pdf?: string | undefined;
     due_date?: number | undefined;
+    days_until_due?: number | undefined;
 }>;
 type InvoiceType = z.infer<typeof invoiceSchema>;
 

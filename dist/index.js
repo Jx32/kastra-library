@@ -150,8 +150,13 @@ var invoiceSchema = import_zod7.z.object({
   description: import_zod7.z.string(),
   invoice_pdf: import_zod7.z.string().url().optional(),
   collection_method: import_zod7.z.enum(["charge_automatically", "send_invoice"]),
-  due_date: import_zod7.z.number().optional()
+  due_date: import_zod7.z.number().optional(),
   // Optional, only if collection_method is "send_invoice"
+  days_until_due: import_zod7.z.number().optional(),
+  // Optional, only if collection_method is "send_invoice"
+  monthName: import_zod7.z.string(),
+  year: import_zod7.z.number().min(2e3).max(2100)
+  // Year must be a valid year
 }).strict();
 
 // src/enum/role.enum.ts

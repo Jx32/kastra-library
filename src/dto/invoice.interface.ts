@@ -27,6 +27,9 @@ export const invoiceSchema = z.object({
     invoice_pdf: z.string().url().optional(),
     collection_method: z.enum(["charge_automatically", "send_invoice"]),
     due_date: z.number().optional(), // Optional, only if collection_method is "send_invoice"
+    days_until_due: z.number().optional(), // Optional, only if collection_method is "send_invoice"
+    monthName: z.string(),
+    year: z.number().min(2000).max(2100), // Year must be a valid year
 }).strict();
 
 export type InvoiceType = z.infer<typeof invoiceSchema>;
