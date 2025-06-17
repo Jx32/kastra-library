@@ -117,6 +117,21 @@ var invoiceSchema = z7.object({
   // Optional, amount paid by the customer
 }).strict();
 
+// src/dto/payment-method.interface.ts
+import { z as z8 } from "zod";
+var paymentMethodSchema = z8.object({
+  id: z8.string(),
+  type: z8.enum(["card", "bank_account", "paypal"]),
+  brand: z8.string().optional(),
+  // Optional, only for card type
+  last4: z8.string().optional(),
+  // Optional, only for card or bank account type
+  exp_month: z8.number().optional(),
+  // Optional, only for card type
+  exp_year: z8.number().optional()
+  // Optional, only for card type
+}).strict();
+
 // src/enum/role.enum.ts
 var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   UserRoleEnum2["HOUSE_OWNER"] = "houseOwner";
@@ -132,6 +147,7 @@ export {
   UserRoleEnum,
   invoiceSchema,
   patchUserSchema,
+  paymentMethodSchema,
   remoteGateLogSchema,
   remoteGateSchema,
   residentialSchema,

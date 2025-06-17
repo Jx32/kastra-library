@@ -395,6 +395,38 @@ declare const invoiceSchema: z.ZodObject<{
 }>;
 type InvoiceType = z.infer<typeof invoiceSchema>;
 
+interface PaymentMethod {
+    id: string;
+    type: "card" | "bank_account" | "paypal";
+    brand?: string;
+    last4?: string;
+    exp_month?: number;
+    exp_year?: number;
+}
+declare const paymentMethodSchema: z.ZodObject<{
+    id: z.ZodString;
+    type: z.ZodEnum<["card", "bank_account", "paypal"]>;
+    brand: z.ZodOptional<z.ZodString>;
+    last4: z.ZodOptional<z.ZodString>;
+    exp_month: z.ZodOptional<z.ZodNumber>;
+    exp_year: z.ZodOptional<z.ZodNumber>;
+}, "strict", z.ZodTypeAny, {
+    type: "card" | "bank_account" | "paypal";
+    id: string;
+    brand?: string | undefined;
+    last4?: string | undefined;
+    exp_month?: number | undefined;
+    exp_year?: number | undefined;
+}, {
+    type: "card" | "bank_account" | "paypal";
+    id: string;
+    brand?: string | undefined;
+    last4?: string | undefined;
+    exp_month?: number | undefined;
+    exp_year?: number | undefined;
+}>;
+type PaymentMethodType = z.infer<typeof paymentMethodSchema>;
+
 declare enum UserRoleEnum {
     HOUSE_OWNER = "houseOwner",
     HOUSE_RELATED = "houseRelated",
@@ -402,4 +434,4 @@ declare enum UserRoleEnum {
     ADMIN = "admin"
 }
 
-export { type Invoice, type InvoiceType, MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, invoiceSchema, patchUserSchema, remoteGateLogSchema, remoteGateSchema, residentialSchema, userSchema, userSummarySchema };
+export { type Invoice, type InvoiceType, MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentMethod, type PaymentMethodType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, invoiceSchema, patchUserSchema, paymentMethodSchema, remoteGateLogSchema, remoteGateSchema, residentialSchema, userSchema, userSummarySchema };

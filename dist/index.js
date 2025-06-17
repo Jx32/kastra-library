@@ -36,6 +36,7 @@ __export(src_exports, {
   UserRoleEnum: () => UserRoleEnum,
   invoiceSchema: () => invoiceSchema,
   patchUserSchema: () => patchUserSchema,
+  paymentMethodSchema: () => paymentMethodSchema,
   remoteGateLogSchema: () => remoteGateLogSchema,
   remoteGateSchema: () => remoteGateSchema,
   residentialSchema: () => residentialSchema,
@@ -161,6 +162,21 @@ var invoiceSchema = import_zod7.z.object({
   // Optional, amount paid by the customer
 }).strict();
 
+// src/dto/payment-method.interface.ts
+var import_zod8 = require("zod");
+var paymentMethodSchema = import_zod8.z.object({
+  id: import_zod8.z.string(),
+  type: import_zod8.z.enum(["card", "bank_account", "paypal"]),
+  brand: import_zod8.z.string().optional(),
+  // Optional, only for card type
+  last4: import_zod8.z.string().optional(),
+  // Optional, only for card or bank account type
+  exp_month: import_zod8.z.number().optional(),
+  // Optional, only for card type
+  exp_year: import_zod8.z.number().optional()
+  // Optional, only for card type
+}).strict();
+
 // src/enum/role.enum.ts
 var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   UserRoleEnum2["HOUSE_OWNER"] = "houseOwner";
@@ -177,6 +193,7 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   UserRoleEnum,
   invoiceSchema,
   patchUserSchema,
+  paymentMethodSchema,
   remoteGateLogSchema,
   remoteGateSchema,
   residentialSchema,
