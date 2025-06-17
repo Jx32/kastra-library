@@ -111,8 +111,10 @@ var invoiceSchema = z7.object({
   days_until_due: z7.number().optional(),
   // Optional, only if collection_method is "send_invoice"
   monthName: z7.string(),
-  year: z7.number().min(2e3).max(2100)
+  year: z7.number().min(2e3).max(2100),
   // Year must be a valid year
+  paid_amount: z7.number().optional()
+  // Optional, amount paid by the customer
 }).strict();
 
 // src/enum/role.enum.ts

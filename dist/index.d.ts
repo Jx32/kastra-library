@@ -345,6 +345,7 @@ interface Invoice {
     days_until_due?: number;
     monthName: string;
     year: number;
+    paid_amount?: number;
 }
 declare const invoiceSchema: z.ZodObject<{
     id: z.ZodString;
@@ -360,6 +361,7 @@ declare const invoiceSchema: z.ZodObject<{
     days_until_due: z.ZodOptional<z.ZodNumber>;
     monthName: z.ZodString;
     year: z.ZodNumber;
+    paid_amount: z.ZodOptional<z.ZodNumber>;
 }, "strict", z.ZodTypeAny, {
     status: "void" | "open" | "draft" | "paid" | "uncollectible";
     id: string;
@@ -374,6 +376,7 @@ declare const invoiceSchema: z.ZodObject<{
     invoice_pdf?: string | undefined;
     due_date?: number | undefined;
     days_until_due?: number | undefined;
+    paid_amount?: number | undefined;
 }, {
     status: "void" | "open" | "draft" | "paid" | "uncollectible";
     id: string;
@@ -388,6 +391,7 @@ declare const invoiceSchema: z.ZodObject<{
     invoice_pdf?: string | undefined;
     due_date?: number | undefined;
     days_until_due?: number | undefined;
+    paid_amount?: number | undefined;
 }>;
 type InvoiceType = z.infer<typeof invoiceSchema>;
 

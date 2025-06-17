@@ -14,6 +14,7 @@ export interface Invoice {
     days_until_due?: number; // Optional, only if collection_method is "send_invoice"
     monthName: string; // Name of the month for which the invoice is generated
     year: number; // Year for which the invoice is generated
+    paid_amount?: number; // Optional, amount paid by the customer
 }
 
 export const invoiceSchema = z.object({
@@ -30,6 +31,7 @@ export const invoiceSchema = z.object({
     days_until_due: z.number().optional(), // Optional, only if collection_method is "send_invoice"
     monthName: z.string(),
     year: z.number().min(2000).max(2100), // Year must be a valid year
+    paid_amount: z.number().optional(), // Optional, amount paid by the customer
 }).strict();
 
 export type InvoiceType = z.infer<typeof invoiceSchema>;
