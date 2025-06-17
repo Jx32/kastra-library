@@ -342,6 +342,9 @@ interface Invoice {
     invoice_pdf?: string;
     collection_method: "charge_automatically" | "send_invoice";
     due_date?: number;
+    days_until_due?: number;
+    monthName: string;
+    year: number;
 }
 declare const invoiceSchema: z.ZodObject<{
     id: z.ZodString;

@@ -11,6 +11,9 @@ export interface Invoice {
     invoice_pdf?: string; // URL to the invoice PDF
     collection_method: "charge_automatically" | "send_invoice"; // How the invoice will be paid
     due_date?: number; // Optional, only if collection_method is "send_invoice"
+    days_until_due?: number; // Optional, only if collection_method is "send_invoice"
+    monthName: string; // Name of the month for which the invoice is generated
+    year: number; // Year for which the invoice is generated
 }
 
 export const invoiceSchema = z.object({
