@@ -427,6 +427,30 @@ declare const paymentMethodSchema: z.ZodObject<{
 }>;
 type PaymentMethodType = z.infer<typeof paymentMethodSchema>;
 
+interface PaymentIntent {
+    username: string;
+    amount: number;
+    paymentMethodId: string;
+    returnUrl: string;
+}
+declare const paymentIntentSchema: z.ZodObject<{
+    username: z.ZodString;
+    amount: z.ZodNumber;
+    paymentMethodId: z.ZodString;
+    returnUrl: z.ZodString;
+}, "strict", z.ZodTypeAny, {
+    username: string;
+    amount: number;
+    paymentMethodId: string;
+    returnUrl: string;
+}, {
+    username: string;
+    amount: number;
+    paymentMethodId: string;
+    returnUrl: string;
+}>;
+type PaymentIntentType = z.infer<typeof paymentIntentSchema>;
+
 declare enum UserRoleEnum {
     HOUSE_OWNER = "houseOwner",
     HOUSE_RELATED = "houseRelated",
@@ -434,4 +458,4 @@ declare enum UserRoleEnum {
     ADMIN = "admin"
 }
 
-export { type Invoice, type InvoiceType, MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentMethod, type PaymentMethodType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, invoiceSchema, patchUserSchema, paymentMethodSchema, remoteGateLogSchema, remoteGateSchema, residentialSchema, userSchema, userSummarySchema };
+export { type Invoice, type InvoiceType, MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntent, type PaymentIntentType, type PaymentMethod, type PaymentMethodType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, invoiceSchema, patchUserSchema, paymentIntentSchema, paymentMethodSchema, remoteGateLogSchema, remoteGateSchema, residentialSchema, userSchema, userSummarySchema };

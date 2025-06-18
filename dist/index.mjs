@@ -132,6 +132,15 @@ var paymentMethodSchema = z8.object({
   // Optional, only for card type
 }).strict();
 
+// src/dto/payment-intent.interface.ts
+import { z as z9 } from "zod";
+var paymentIntentSchema = z9.object({
+  username: z9.string().min(1, "Username is required"),
+  amount: z9.number().positive("Amount must be a positive number"),
+  paymentMethodId: z9.string().min(1, "Payment method ID is required"),
+  returnUrl: z9.string().url("Return URL must be a valid URL")
+}).strict();
+
 // src/enum/role.enum.ts
 var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   UserRoleEnum2["HOUSE_OWNER"] = "houseOwner";
@@ -147,6 +156,7 @@ export {
   UserRoleEnum,
   invoiceSchema,
   patchUserSchema,
+  paymentIntentSchema,
   paymentMethodSchema,
   remoteGateLogSchema,
   remoteGateSchema,
