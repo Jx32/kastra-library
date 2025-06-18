@@ -146,7 +146,7 @@ var invoiceSchema = import_zod7.z.object({
   status: import_zod7.z.enum(["draft", "open", "paid", "uncollectible", "void"]),
   created: import_zod7.z.number(),
   total: import_zod7.z.number(),
-  amount_remaining: import_zod7.z.number(),
+  ammount_remaining: import_zod7.z.number(),
   customerId: import_zod7.z.string(),
   description: import_zod7.z.string(),
   invoice_pdf: import_zod7.z.string().url().optional(),

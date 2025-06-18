@@ -22,7 +22,7 @@ export const invoiceSchema = z.object({
     status: z.enum(["draft", "open", "paid", "uncollectible", "void"]),
     created: z.number(),
     total: z.number(),
-    amount_remaining: z.number(),
+    ammount_remaining: z.number(),
     customerId: z.string(),
     description: z.string(),
     invoice_pdf: z.string().url().optional(),

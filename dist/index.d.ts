@@ -352,7 +352,7 @@ declare const invoiceSchema: z.ZodObject<{
     status: z.ZodEnum<["draft", "open", "paid", "uncollectible", "void"]>;
     created: z.ZodNumber;
     total: z.ZodNumber;
-    amount_remaining: z.ZodNumber;
+    ammount_remaining: z.ZodNumber;
     customerId: z.ZodString;
     description: z.ZodString;
     invoice_pdf: z.ZodOptional<z.ZodString>;
@@ -367,7 +367,7 @@ declare const invoiceSchema: z.ZodObject<{
     id: string;
     created: number;
     total: number;
-    amount_remaining: number;
+    ammount_remaining: number;
     customerId: string;
     description: string;
     collection_method: "charge_automatically" | "send_invoice";
@@ -382,7 +382,7 @@ declare const invoiceSchema: z.ZodObject<{
     id: string;
     created: number;
     total: number;
-    amount_remaining: number;
+    ammount_remaining: number;
     customerId: string;
     description: string;
     collection_method: "charge_automatically" | "send_invoice";

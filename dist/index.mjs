@@ -101,7 +101,7 @@ var invoiceSchema = z7.object({
   status: z7.enum(["draft", "open", "paid", "uncollectible", "void"]),
   created: z7.number(),
   total: z7.number(),
-  amount_remaining: z7.number(),
+  ammount_remaining: z7.number(),
   customerId: z7.string(),
   description: z7.string(),
   invoice_pdf: z7.string().url().optional(),
