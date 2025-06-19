@@ -141,6 +141,13 @@ var paymentIntentSchema = z9.object({
   returnUrl: z9.string().url("Return URL must be a valid URL")
 }).strict();
 
+// src/dto/video-call-token.interface.ts
+import { z as z10 } from "zod";
+var videoCallTokenSchema = z10.object({
+  token: z10.string(),
+  roomName: z10.string()
+});
+
 // src/enum/role.enum.ts
 var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   UserRoleEnum2["HOUSE_OWNER"] = "houseOwner";
@@ -162,6 +169,7 @@ export {
   remoteGateSchema,
   residentialSchema,
   userSchema,
-  userSummarySchema
+  userSummarySchema,
+  videoCallTokenSchema
 };
 //# sourceMappingURL=index.mjs.map

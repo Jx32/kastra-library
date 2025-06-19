@@ -42,7 +42,8 @@ __export(src_exports, {
   remoteGateSchema: () => remoteGateSchema,
   residentialSchema: () => residentialSchema,
   userSchema: () => userSchema,
-  userSummarySchema: () => userSummarySchema
+  userSummarySchema: () => userSummarySchema,
+  videoCallTokenSchema: () => videoCallTokenSchema
 });
 module.exports = __toCommonJS(src_exports);
 var import_mongodb4 = require("mongodb");
@@ -187,6 +188,13 @@ var paymentIntentSchema = import_zod9.z.object({
   returnUrl: import_zod9.z.string().url("Return URL must be a valid URL")
 }).strict();
 
+// src/dto/video-call-token.interface.ts
+var import_zod10 = require("zod");
+var videoCallTokenSchema = import_zod10.z.object({
+  token: import_zod10.z.string(),
+  roomName: import_zod10.z.string()
+});
+
 // src/enum/role.enum.ts
 var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   UserRoleEnum2["HOUSE_OWNER"] = "houseOwner";
@@ -209,6 +217,7 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   remoteGateSchema,
   residentialSchema,
   userSchema,
-  userSummarySchema
+  userSummarySchema,
+  videoCallTokenSchema
 });
 //# sourceMappingURL=index.js.map
