@@ -1,6 +1,5 @@
 export interface UserBalance {
     balance: number; // Current balance of the user
     currency: string; // Currency of the balance, e.g., "USD", "EUR"
-    // Status were extracted from Stripe documentation (https://docs.stripe.com/api/subscriptions/object?api-version=2025-05-28.basil#subscription_object-status)
-    hasOverdueInvoices: boolean; // Indicates if the user has overdue invoices
+    subscriptionOverdue: boolean; // Indicates if the user has overdue subscription payments
 }

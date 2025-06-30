@@ -329,7 +329,7 @@ type UserSummaryType = z$1.infer<typeof userSummarySchema>;
 interface UserBalance {
     balance: number;
     currency: string;
-    hasOverdueInvoices: boolean;
+    subscriptionOverdue: boolean;
 }
 
 interface Invoice {
