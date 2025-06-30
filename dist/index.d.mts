@@ -329,6 +329,7 @@ type UserSummaryType = z$1.infer<typeof userSummarySchema>;
 interface UserBalance {
     balance: number;
     currency: string;
+    subscriptionStatus: "incomplete" | "incomplete_expired" | "trialing" | "active" | "past_due" | "canceled" | "unpaid" | "paused";
 }
 
 interface Invoice {
