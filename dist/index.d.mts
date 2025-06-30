@@ -330,6 +330,7 @@ interface UserBalance {
     balance: number;
     currency: string;
     subscriptionOverdue: boolean;
+    payBeforeISODate: string;
 }
 
 interface Invoice {
