@@ -13,5 +13,6 @@ export * from "./dto/invoice.interface";
 export * from "./dto/payment-method.interface";
 export * from "./dto/payment-intent.interface"
 export * from "./dto/video-call-token.interface";
+export * from "./dto/payment-intent-response";
 
 export * from "./enum/role.enum";

@@ -469,6 +469,11 @@ declare const videoCallTokenSchema: z.ZodObject<{
 }>;
 type VideoCallTokenType = z.infer<typeof videoCallTokenSchema>;
 
+interface PaymentIntentResponse {
+    clientSecret: string;
+    requiresAction: boolean;
+}
+
 declare enum UserRoleEnum {
     HOUSE_OWNER = "houseOwner",
     HOUSE_RELATED = "houseRelated",
@@ -476,4 +481,4 @@ declare enum UserRoleEnum {
     ADMIN = "admin"
 }
 
-export { type Invoice, type InvoiceType, MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntent, type PaymentIntentType, type PaymentMethod, type PaymentMethodType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type VideoCallToken, type VideoCallTokenType, invoiceSchema, patchUserSchema, paymentIntentSchema, paymentMethodSchema, remoteGateLogSchema, remoteGateSchema, residentialSchema, userSchema, userSummarySchema, videoCallTokenSchema };
+export { type Invoice, type InvoiceType, MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntent, type PaymentIntentResponse, type PaymentIntentType, type PaymentMethod, type PaymentMethodType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type VideoCallToken, type VideoCallTokenType, invoiceSchema, patchUserSchema, paymentIntentSchema, paymentMethodSchema, remoteGateLogSchema, remoteGateSchema, residentialSchema, userSchema, userSummarySchema, videoCallTokenSchema };
