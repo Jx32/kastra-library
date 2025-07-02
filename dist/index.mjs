@@ -136,7 +136,7 @@ var paymentMethodSchema = z8.object({
 import { z as z9 } from "zod";
 var paymentIntentSchema = z9.object({
   username: z9.string().min(1, "Username is required"),
-  amount: z9.number().positive("Amount must be a positive number"),
+  invoiceId: z9.string(),
   paymentMethodId: z9.string().min(1, "Payment method ID is required"),
   returnUrl: z9.string().url("Return URL must be a valid URL")
 }).strict();

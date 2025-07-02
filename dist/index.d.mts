@@ -431,23 +431,23 @@ type PaymentMethodType = z.infer<typeof paymentMethodSchema>;
 
 interface PaymentIntent {
     username: string;
-    amount: number;
+    invoiceId: string;
     paymentMethodId: string;
     returnUrl: string;
 }
 declare const paymentIntentSchema: z.ZodObject<{
     username: z.ZodString;
-    amount: z.ZodNumber;
+    invoiceId: z.ZodString;
     paymentMethodId: z.ZodString;
     returnUrl: z.ZodString;
 }, "strict", z.ZodTypeAny, {
     username: string;
-    amount: number;
+    invoiceId: string;
     paymentMethodId: string;
     returnUrl: string;
 }, {
     username: string;
-    amount: number;
+    invoiceId: string;
     paymentMethodId: string;
     returnUrl: string;
 }>;

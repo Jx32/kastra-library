@@ -183,7 +183,7 @@ var paymentMethodSchema = import_zod8.z.object({
 var import_zod9 = require("zod");
 var paymentIntentSchema = import_zod9.z.object({
   username: import_zod9.z.string().min(1, "Username is required"),
-  amount: import_zod9.z.number().positive("Amount must be a positive number"),
+  invoiceId: import_zod9.z.string(),
   paymentMethodId: import_zod9.z.string().min(1, "Payment method ID is required"),
   returnUrl: import_zod9.z.string().url("Return URL must be a valid URL")
 }).strict();
