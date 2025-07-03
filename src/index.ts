@@ -11,7 +11,7 @@ export * from "./dto/user-summary.interface";
 export * from "./dto/user-balance.interface";
 export * from "./dto/invoice.interface";
 export * from "./dto/payment-method.interface";
-export * from "./dto/payment-intent.interface"
+export * from "./dto/invoice-payment-intent.interface"
 export * from "./dto/video-call-token.interface";
 export * from "./dto/payment-intent-response";
 
