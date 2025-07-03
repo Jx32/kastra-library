@@ -34,7 +34,7 @@ __export(src_exports, {
   ObjectId: () => import_mongodb4.ObjectId,
   PHONE_REGEX: () => PHONE_REGEX,
   UserRoleEnum: () => UserRoleEnum,
-  invoicePaymentIntent: () => invoicePaymentIntent,
+  invoicePaymentIntentSchema: () => invoicePaymentIntentSchema,
   invoiceSchema: () => invoiceSchema,
   patchUserSchema: () => patchUserSchema,
   paymentMethodSchema: () => paymentMethodSchema,
@@ -181,7 +181,7 @@ var paymentMethodSchema = import_zod8.z.object({
 
 // src/dto/invoice-payment-intent.interface.ts
 var import_zod9 = require("zod");
-var invoicePaymentIntent = import_zod9.z.object({
+var invoicePaymentIntentSchema = import_zod9.z.object({
   invoiceId: import_zod9.z.string(),
   paymentMethodId: import_zod9.z.string().min(1, "Payment method ID is required")
 }).strict();
@@ -207,7 +207,7 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   ObjectId,
   PHONE_REGEX,
   UserRoleEnum,
-  invoicePaymentIntent,
+  invoicePaymentIntentSchema,
   invoiceSchema,
   patchUserSchema,
   paymentMethodSchema,

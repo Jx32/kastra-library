@@ -134,7 +134,7 @@ var paymentMethodSchema = z8.object({
 
 // src/dto/invoice-payment-intent.interface.ts
 import { z as z9 } from "zod";
-var invoicePaymentIntent = z9.object({
+var invoicePaymentIntentSchema = z9.object({
   invoiceId: z9.string(),
   paymentMethodId: z9.string().min(1, "Payment method ID is required")
 }).strict();
@@ -159,7 +159,7 @@ export {
   ObjectId4 as ObjectId,
   PHONE_REGEX,
   UserRoleEnum,
-  invoicePaymentIntent,
+  invoicePaymentIntentSchema,
   invoiceSchema,
   patchUserSchema,
   paymentMethodSchema,

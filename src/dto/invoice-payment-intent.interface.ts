@@ -5,7 +5,7 @@ export interface InvoicePaymentIntent {
     paymentMethodId: string;
 }
 
-export const invoicePaymentIntent = z.object({
+export const invoicePaymentIntentSchema = z.object({
     invoiceId: z.string(),
     paymentMethodId: z.string().min(1, "Payment method ID is required"),
 }).strict();
