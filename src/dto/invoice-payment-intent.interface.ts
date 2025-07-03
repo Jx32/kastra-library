@@ -10,4 +10,4 @@ export const invoicePaymentIntentSchema = z.object({
     paymentMethodId: z.string().min(1, "Payment method ID is required"),
 }).strict();
 
-export type InvoicePaymentIntentType = z.infer<typeof invoicePaymentIntent>;
+export type InvoicePaymentIntentType = z.infer<typeof invoicePaymentIntentSchema>;
