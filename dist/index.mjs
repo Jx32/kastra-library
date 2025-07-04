@@ -25,7 +25,7 @@ var userSchema = z.object({
   stripeCustomerId: z.string().optional(),
   // Optional field for Stripe customer ID
   iaBehaviour: z.enum(["formal", "friendly", "funny"]).optional(),
-  avatarUrl: z.string().url().optional()
+  avatarUrl: z.string().optional()
   // Optional field for avatar URL
 }).strict();
 
@@ -39,7 +39,9 @@ var patchUserSchema = z2.object({
   houseNumber: z2.string().optional(),
   street: z2.string().optional(),
   currentPinAccess: z2.string().length(4, "Current PIN must be 4 digits length").optional(),
-  iaBehaviour: z2.enum(["formal", "friendly", "funny"]).optional()
+  iaBehaviour: z2.enum(["formal", "friendly", "funny"]).optional(),
+  avatarUrl: z2.string().optional()
+  // Optional field for avatar URL
 }).strict();
 
 // src/dto/residential.interface.ts

@@ -10,6 +10,7 @@ export interface PatchUser {
     street?: string;
     currentPinAccess?: string;
     iaBehaviour?: "formal" | "friendly" | "funny",
+    avatarUrl?: string; // Optional field for avatar URL
 }
 
 export const patchUserSchema = z.object({
@@ -21,6 +22,7 @@ export const patchUserSchema = z.object({
     street: z.string().optional(),
     currentPinAccess: z.string().length(4, "Current PIN must be 4 digits length").optional(),
     iaBehaviour: z.enum(["formal", "friendly", "funny"]).optional(),
+    avatarUrl: z.string().optional(), // Optional field for avatar URL
 }).strict();
 
 export type PatchUserType = z.infer<typeof patchUserSchema>;

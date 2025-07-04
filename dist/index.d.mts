@@ -91,6 +91,7 @@ interface PatchUser {
     street?: string;
     currentPinAccess?: string;
     iaBehaviour?: "formal" | "friendly" | "funny";
+    avatarUrl?: string;
 }
 declare const patchUserSchema: z.ZodObject<{
     name: z.ZodOptional<z.ZodString>;
@@ -101,6 +102,7 @@ declare const patchUserSchema: z.ZodObject<{
     street: z.ZodOptional<z.ZodString>;
     currentPinAccess: z.ZodOptional<z.ZodString>;
     iaBehaviour: z.ZodOptional<z.ZodEnum<["formal", "friendly", "funny"]>>;
+    avatarUrl: z.ZodOptional<z.ZodString>;
 }, "strict", z.ZodTypeAny, {
     name?: string | undefined;
     email?: string | undefined;
@@ -110,6 +112,7 @@ declare const patchUserSchema: z.ZodObject<{
     street?: string | undefined;
     currentPinAccess?: string | undefined;
     iaBehaviour?: "formal" | "friendly" | "funny" | undefined;
+    avatarUrl?: string | undefined;
 }, {
     name?: string | undefined;
     email?: string | undefined;
@@ -119,6 +122,7 @@ declare const patchUserSchema: z.ZodObject<{
     street?: string | undefined;
     currentPinAccess?: string | undefined;
     iaBehaviour?: "formal" | "friendly" | "funny" | undefined;
+    avatarUrl?: string | undefined;
 }>;
 type PatchUserType = z.infer<typeof patchUserSchema>;
 

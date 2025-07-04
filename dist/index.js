@@ -73,7 +73,7 @@ var userSchema = import_zod.z.object({
   stripeCustomerId: import_zod.z.string().optional(),
   // Optional field for Stripe customer ID
   iaBehaviour: import_zod.z.enum(["formal", "friendly", "funny"]).optional(),
-  avatarUrl: import_zod.z.string().url().optional()
+  avatarUrl: import_zod.z.string().optional()
   // Optional field for avatar URL
 }).strict();
 
@@ -87,7 +87,9 @@ var patchUserSchema = import_zod2.z.object({
   houseNumber: import_zod2.z.string().optional(),
   street: import_zod2.z.string().optional(),
   currentPinAccess: import_zod2.z.string().length(4, "Current PIN must be 4 digits length").optional(),
-  iaBehaviour: import_zod2.z.enum(["formal", "friendly", "funny"]).optional()
+  iaBehaviour: import_zod2.z.enum(["formal", "friendly", "funny"]).optional(),
+  avatarUrl: import_zod2.z.string().optional()
+  // Optional field for avatar URL
 }).strict();
 
 // src/dto/residential.interface.ts
