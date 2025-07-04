@@ -34,6 +34,7 @@ __export(src_exports, {
   ObjectId: () => import_mongodb4.ObjectId,
   PHONE_REGEX: () => PHONE_REGEX,
   UserRoleEnum: () => UserRoleEnum,
+  automaticChargeSchema: () => automaticChargeSchema,
   invoicePaymentIntentSchema: () => invoicePaymentIntentSchema,
   invoiceSchema: () => invoiceSchema,
   patchUserSchema: () => patchUserSchema,
@@ -193,6 +194,13 @@ var videoCallTokenSchema = import_zod10.z.object({
   roomName: import_zod10.z.string()
 });
 
+// src/dto/automatic-charge.ts
+var import_zod11 = require("zod");
+var automaticChargeSchema = import_zod11.z.object({
+  collectionMethod: import_zod11.z.enum(["charge_automatically", "send_invoice"]),
+  paymentMethodId: import_zod11.z.string().optional()
+}).strict();
+
 // src/enum/role.enum.ts
 var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   UserRoleEnum2["HOUSE_OWNER"] = "houseOwner";
@@ -207,6 +215,7 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   ObjectId,
   PHONE_REGEX,
   UserRoleEnum,
+  automaticChargeSchema,
   invoicePaymentIntentSchema,
   invoiceSchema,
   patchUserSchema,

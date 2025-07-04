@@ -146,6 +146,13 @@ var videoCallTokenSchema = z10.object({
   roomName: z10.string()
 });
 
+// src/dto/automatic-charge.ts
+import { z as z11 } from "zod";
+var automaticChargeSchema = z11.object({
+  collectionMethod: z11.enum(["charge_automatically", "send_invoice"]),
+  paymentMethodId: z11.string().optional()
+}).strict();
+
 // src/enum/role.enum.ts
 var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   UserRoleEnum2["HOUSE_OWNER"] = "houseOwner";
@@ -159,6 +166,7 @@ export {
   ObjectId4 as ObjectId,
   PHONE_REGEX,
   UserRoleEnum,
+  automaticChargeSchema,
   invoicePaymentIntentSchema,
   invoiceSchema,
   patchUserSchema,

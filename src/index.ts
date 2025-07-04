@@ -14,5 +14,7 @@ export * from "./dto/payment-method.interface";
 export * from "./dto/invoice-payment-intent.interface"
 export * from "./dto/video-call-token.interface";
 export * from "./dto/payment-intent-response";
+export * from "./dto/automatic-charge";
+export * from "./dto/automatic-charge-summary-response";
 
 export * from "./enum/role.enum";

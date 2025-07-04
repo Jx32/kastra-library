@@ -466,6 +466,27 @@ interface PaymentIntentResponse {
     requiresAction: boolean;
 }
 
+interface AutomaticCharge {
+    collectionMethod: "charge_automatically" | "send_invoice";
+    paymentMethodId?: string;
+}
+declare const automaticChargeSchema: z.ZodObject<{
+    collectionMethod: z.ZodEnum<["charge_automatically", "send_invoice"]>;
+    paymentMethodId: z.ZodOptional<z.ZodString>;
+}, "strict", z.ZodTypeAny, {
+    collectionMethod: "charge_automatically" | "send_invoice";
+    paymentMethodId?: string | undefined;
+}, {
+    collectionMethod: "charge_automatically" | "send_invoice";
+    paymentMethodId?: string | undefined;
+}>;
+type AutomaticChargeType = z.infer<typeof automaticChargeSchema>;
+
+interface AutomaticChargeSummaryResponse {
+    collectionMethod: "charge_automatically" | "send_invoice";
+    last4Digits: string;
+}
+
 declare enum UserRoleEnum {
     HOUSE_OWNER = "houseOwner",
     HOUSE_RELATED = "houseRelated",
@@ -473,4 +494,4 @@ declare enum UserRoleEnum {
     ADMIN = "admin"
 }
 
-export { type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type VideoCallToken, type VideoCallTokenType, invoicePaymentIntentSchema, invoiceSchema, patchUserSchema, paymentMethodSchema, remoteGateLogSchema, remoteGateSchema, residentialSchema, userSchema, userSummarySchema, videoCallTokenSchema };
+export { type AutomaticCharge, type AutomaticChargeSummaryResponse, type AutomaticChargeType, type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type VideoCallToken, type VideoCallTokenType, automaticChargeSchema, invoicePaymentIntentSchema, invoiceSchema, patchUserSchema, paymentMethodSchema, remoteGateLogSchema, remoteGateSchema, residentialSchema, userSchema, userSummarySchema, videoCallTokenSchema };
