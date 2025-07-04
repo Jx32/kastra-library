@@ -149,6 +149,7 @@ var videoCallTokenSchema = z10.object({
 // src/dto/automatic-charge.ts
 import { z as z11 } from "zod";
 var automaticChargeSchema = z11.object({
+  customerId: z11.string(),
   collectionMethod: z11.enum(["charge_automatically", "send_invoice"]),
   paymentMethodId: z11.string().optional()
 }).strict();

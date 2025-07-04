@@ -467,16 +467,20 @@ interface PaymentIntentResponse {
 }
 
 interface AutomaticCharge {
+    customerId: string;
     collectionMethod: "charge_automatically" | "send_invoice";
     paymentMethodId?: string;
 }
 declare const automaticChargeSchema: z.ZodObject<{
+    customerId: z.ZodString;
     collectionMethod: z.ZodEnum<["charge_automatically", "send_invoice"]>;
     paymentMethodId: z.ZodOptional<z.ZodString>;
 }, "strict", z.ZodTypeAny, {
+    customerId: string;
     collectionMethod: "charge_automatically" | "send_invoice";
     paymentMethodId?: string | undefined;
 }, {
+    customerId: string;
     collectionMethod: "charge_automatically" | "send_invoice";
     paymentMethodId?: string | undefined;
 }>;
