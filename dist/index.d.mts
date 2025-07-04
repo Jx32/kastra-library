@@ -23,6 +23,7 @@ interface User {
     currentPinAccess?: string;
     stripeCustomerId?: string;
     iaBehaviour?: "formal" | "friendly" | "funny";
+    avatarUrl?: string;
 }
 declare const userSchema: z.ZodObject<{
     sub: z.ZodOptional<z.ZodString>;
@@ -41,6 +42,7 @@ declare const userSchema: z.ZodObject<{
     currentPinAccess: z.ZodOptional<z.ZodString>;
     stripeCustomerId: z.ZodOptional<z.ZodString>;
     iaBehaviour: z.ZodOptional<z.ZodEnum<["formal", "friendly", "funny"]>>;
+    avatarUrl: z.ZodOptional<z.ZodString>;
 }, "strict", z.ZodTypeAny, {
     name: string;
     email: string;
@@ -58,6 +60,7 @@ declare const userSchema: z.ZodObject<{
     currentPinAccess?: string | undefined;
     stripeCustomerId?: string | undefined;
     iaBehaviour?: "formal" | "friendly" | "funny" | undefined;
+    avatarUrl?: string | undefined;
 }, {
     name: string;
     email: string;
@@ -75,6 +78,7 @@ declare const userSchema: z.ZodObject<{
     currentPinAccess?: string | undefined;
     stripeCustomerId?: string | undefined;
     iaBehaviour?: "formal" | "friendly" | "funny" | undefined;
+    avatarUrl?: string | undefined;
 }>;
 type UserType = z.infer<typeof userSchema>;
 

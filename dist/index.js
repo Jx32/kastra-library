@@ -72,7 +72,9 @@ var userSchema = import_zod.z.object({
   currentPinAccess: import_zod.z.string().length(4, "Current PIN must be 4 digits length").optional(),
   stripeCustomerId: import_zod.z.string().optional(),
   // Optional field for Stripe customer ID
-  iaBehaviour: import_zod.z.enum(["formal", "friendly", "funny"]).optional()
+  iaBehaviour: import_zod.z.enum(["formal", "friendly", "funny"]).optional(),
+  avatarUrl: import_zod.z.string().url().optional()
+  // Optional field for avatar URL
 }).strict();
 
 // src/dto/patch-user.interface.ts

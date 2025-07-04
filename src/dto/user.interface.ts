@@ -18,6 +18,7 @@ export interface User {
     currentPinAccess?: string;
     stripeCustomerId?: string; // Optional field for Stripe customer ID
     iaBehaviour?: "formal" | "friendly" | "funny",
+    avatarUrl?: string; // Optional field for avatar URL
 }
 
 export const userSchema = z.object({
@@ -37,6 +38,7 @@ export const userSchema = z.object({
     currentPinAccess: z.string().length(4, "Current PIN must be 4 digits length").optional(),
     stripeCustomerId: z.string().optional(), // Optional field for Stripe customer ID
     iaBehaviour: z.enum(["formal", "friendly", "funny"]).optional(),
+    avatarUrl: z.string().url().optional(), // Optional field for avatar URL
 }).strict();
 
 export type UserType = z.infer<typeof userSchema>;

@@ -24,7 +24,9 @@ var userSchema = z.object({
   currentPinAccess: z.string().length(4, "Current PIN must be 4 digits length").optional(),
   stripeCustomerId: z.string().optional(),
   // Optional field for Stripe customer ID
-  iaBehaviour: z.enum(["formal", "friendly", "funny"]).optional()
+  iaBehaviour: z.enum(["formal", "friendly", "funny"]).optional(),
+  avatarUrl: z.string().url().optional()
+  // Optional field for avatar URL
 }).strict();
 
 // src/dto/patch-user.interface.ts
