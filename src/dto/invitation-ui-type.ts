@@ -4,4 +4,5 @@ export interface InvitationUIDescription {
     type: InvitationTypeEnum,
     title: string;
     description: string;
+    icon: string;
 }
