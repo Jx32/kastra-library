@@ -499,6 +499,39 @@ interface AutomaticChargeSummaryResponse {
     last4Digits: string;
 }
 
+declare enum InvitationDurationEnum {
+    ONE_HOUR = "1 hour",
+    TWO_HOURS = "2 hours",
+    FOUR_HOURS = "4 hours",
+    SIX_HOURS = "6 hours",
+    TWELVE_HOURS = "12 hours",
+    ONE_DAY = "1 day",
+    TWO_DAYS = "2 days",
+    THREE_DAYS = "3 days",
+    ONE_WEEK = "1 week",
+    TWO_WEEKS = "2 weeks",
+    ONE_MONTH = "1 month",
+    THREE_MONTHS = "3 months"
+}
+
+declare enum InvitationTypeEnum {
+    QR = "qr",
+    PIN = "pin"
+}
+
+interface Invitation {
+    _id?: string;
+    userSub: string;
+    type: InvitationTypeEnum;
+    duration: InvitationDurationEnum;
+    isoDueDate: string;
+}
+
+interface InvitationUIDescription {
+    type: InvitationTypeEnum;
+    description: string;
+}
+
 declare enum UserRoleEnum {
     HOUSE_OWNER = "houseOwner",
     HOUSE_RELATED = "houseRelated",
@@ -506,4 +539,4 @@ declare enum UserRoleEnum {
     ADMIN = "admin"
 }
 
-export { type AutomaticCharge, type AutomaticChargeSummaryResponse, type AutomaticChargeType, type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type VideoCallToken, type VideoCallTokenType, automaticChargeSchema, invoicePaymentIntentSchema, invoiceSchema, patchUserSchema, paymentMethodSchema, remoteGateLogSchema, remoteGateSchema, residentialSchema, userSchema, userSummarySchema, videoCallTokenSchema };
+export { type AutomaticCharge, type AutomaticChargeSummaryResponse, type AutomaticChargeType, type Invitation, InvitationDurationEnum, InvitationTypeEnum, type InvitationUIDescription, type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type VideoCallToken, type VideoCallTokenType, automaticChargeSchema, invoicePaymentIntentSchema, invoiceSchema, patchUserSchema, paymentMethodSchema, remoteGateLogSchema, remoteGateSchema, residentialSchema, userSchema, userSummarySchema, videoCallTokenSchema };

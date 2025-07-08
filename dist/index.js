@@ -30,6 +30,8 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // src/index.ts
 var src_exports = {};
 __export(src_exports, {
+  InvitationDurationEnum: () => InvitationDurationEnum,
+  InvitationTypeEnum: () => InvitationTypeEnum,
   MONGODB_ID_REGEX: () => MONGODB_ID_REGEX,
   ObjectId: () => import_mongodb4.ObjectId,
   PHONE_REGEX: () => PHONE_REGEX,
@@ -206,6 +208,30 @@ var automaticChargeSchema = import_zod11.z.object({
   paymentMethodId: import_zod11.z.string().optional()
 }).strict();
 
+// src/dto/invitation-duration-enum.ts
+var InvitationDurationEnum = /* @__PURE__ */ ((InvitationDurationEnum2) => {
+  InvitationDurationEnum2["ONE_HOUR"] = "1 hour";
+  InvitationDurationEnum2["TWO_HOURS"] = "2 hours";
+  InvitationDurationEnum2["FOUR_HOURS"] = "4 hours";
+  InvitationDurationEnum2["SIX_HOURS"] = "6 hours";
+  InvitationDurationEnum2["TWELVE_HOURS"] = "12 hours";
+  InvitationDurationEnum2["ONE_DAY"] = "1 day";
+  InvitationDurationEnum2["TWO_DAYS"] = "2 days";
+  InvitationDurationEnum2["THREE_DAYS"] = "3 days";
+  InvitationDurationEnum2["ONE_WEEK"] = "1 week";
+  InvitationDurationEnum2["TWO_WEEKS"] = "2 weeks";
+  InvitationDurationEnum2["ONE_MONTH"] = "1 month";
+  InvitationDurationEnum2["THREE_MONTHS"] = "3 months";
+  return InvitationDurationEnum2;
+})(InvitationDurationEnum || {});
+
+// src/dto/invitation-type-enum.ts
+var InvitationTypeEnum = /* @__PURE__ */ ((InvitationTypeEnum2) => {
+  InvitationTypeEnum2["QR"] = "qr";
+  InvitationTypeEnum2["PIN"] = "pin";
+  return InvitationTypeEnum2;
+})(InvitationTypeEnum || {});
+
 // src/enum/role.enum.ts
 var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   UserRoleEnum2["HOUSE_OWNER"] = "houseOwner";
@@ -216,6 +242,8 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
 })(UserRoleEnum || {});
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
+  InvitationDurationEnum,
+  InvitationTypeEnum,
   MONGODB_ID_REGEX,
   ObjectId,
   PHONE_REGEX,

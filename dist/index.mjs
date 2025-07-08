@@ -158,6 +158,30 @@ var automaticChargeSchema = z11.object({
   paymentMethodId: z11.string().optional()
 }).strict();
 
+// src/dto/invitation-duration-enum.ts
+var InvitationDurationEnum = /* @__PURE__ */ ((InvitationDurationEnum2) => {
+  InvitationDurationEnum2["ONE_HOUR"] = "1 hour";
+  InvitationDurationEnum2["TWO_HOURS"] = "2 hours";
+  InvitationDurationEnum2["FOUR_HOURS"] = "4 hours";
+  InvitationDurationEnum2["SIX_HOURS"] = "6 hours";
+  InvitationDurationEnum2["TWELVE_HOURS"] = "12 hours";
+  InvitationDurationEnum2["ONE_DAY"] = "1 day";
+  InvitationDurationEnum2["TWO_DAYS"] = "2 days";
+  InvitationDurationEnum2["THREE_DAYS"] = "3 days";
+  InvitationDurationEnum2["ONE_WEEK"] = "1 week";
+  InvitationDurationEnum2["TWO_WEEKS"] = "2 weeks";
+  InvitationDurationEnum2["ONE_MONTH"] = "1 month";
+  InvitationDurationEnum2["THREE_MONTHS"] = "3 months";
+  return InvitationDurationEnum2;
+})(InvitationDurationEnum || {});
+
+// src/dto/invitation-type-enum.ts
+var InvitationTypeEnum = /* @__PURE__ */ ((InvitationTypeEnum2) => {
+  InvitationTypeEnum2["QR"] = "qr";
+  InvitationTypeEnum2["PIN"] = "pin";
+  return InvitationTypeEnum2;
+})(InvitationTypeEnum || {});
+
 // src/enum/role.enum.ts
 var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   UserRoleEnum2["HOUSE_OWNER"] = "houseOwner";
@@ -167,6 +191,8 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   return UserRoleEnum2;
 })(UserRoleEnum || {});
 export {
+  InvitationDurationEnum,
+  InvitationTypeEnum,
   MONGODB_ID_REGEX,
   ObjectId4 as ObjectId,
   PHONE_REGEX,
