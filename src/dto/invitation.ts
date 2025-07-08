@@ -5,6 +5,6 @@ export interface Invitation {
     _id?: string;
     userSub: string;
     type: InvitationTypeEnum;
-    duration: InvitationDurationEnum,
+    duration: InvitationDurationEnum;
     isoDueDate: string;
 }
