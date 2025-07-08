@@ -1,5 +1,5 @@
-import { InvitationDurationEnum } from "./invitation-duration.enum";
-import { InvitationTypeEnum } from "./invitation-type.enum";
+import { InvitationDurationEnum } from "../enum/invitation-duration.enum";
+import { InvitationTypeEnum } from "../enum/invitation-type.enum";
 
 export interface Invitation {
     _id?: string;

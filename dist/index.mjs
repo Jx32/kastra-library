@@ -158,7 +158,7 @@ var automaticChargeSchema = z11.object({
   paymentMethodId: z11.string().optional()
 }).strict();
 
-// src/dto/invitation-duration.enum.ts
+// src/enum/invitation-duration.enum.ts
 var InvitationDurationEnum = /* @__PURE__ */ ((InvitationDurationEnum2) => {
   InvitationDurationEnum2["ONE_HOUR"] = "1 hour";
   InvitationDurationEnum2["TWO_HOURS"] = "2 hours";
@@ -175,7 +175,7 @@ var InvitationDurationEnum = /* @__PURE__ */ ((InvitationDurationEnum2) => {
   return InvitationDurationEnum2;
 })(InvitationDurationEnum || {});
 
-// src/dto/invitation-type.enum.ts
+// src/enum/invitation-type.enum.ts
 var InvitationTypeEnum = /* @__PURE__ */ ((InvitationTypeEnum2) => {
   InvitationTypeEnum2["QR"] = "qr";
   InvitationTypeEnum2["PIN"] = "pin";

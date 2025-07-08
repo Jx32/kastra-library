@@ -1,4 +1,4 @@
-import { InvitationTypeEnum } from "./invitation-type.enum";
+import { InvitationTypeEnum } from "../enum/invitation-type.enum";
 
 export interface InvitationUIType {
     type: InvitationTypeEnum,
