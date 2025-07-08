@@ -529,6 +529,7 @@ interface Invitation {
 
 interface InvitationUIDescription {
     type: InvitationTypeEnum;
+    title: string;
     description: string;
 }
 
