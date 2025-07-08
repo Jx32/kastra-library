@@ -499,7 +499,7 @@ interface AutomaticChargeSummaryResponse {
     last4Digits: string;
 }
 
-declare enum InvitationDurationEnum {
+declare const enum InvitationDurationEnum {
     ONE_HOUR = "1 hour",
     TWO_HOURS = "2 hours",
     FOUR_HOURS = "4 hours",
@@ -514,7 +514,7 @@ declare enum InvitationDurationEnum {
     THREE_MONTHS = "3 months"
 }
 
-declare enum InvitationTypeEnum {
+declare const enum InvitationTypeEnum {
     QR = "qr",
     PIN = "pin"
 }

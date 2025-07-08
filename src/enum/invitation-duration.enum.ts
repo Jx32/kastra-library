@@ -1,4 +1,4 @@
-export enum InvitationDurationEnum {
+export const enum InvitationDurationEnum {
     ONE_HOUR = "1 hour",
     TWO_HOURS = "2 hours",
     FOUR_HOURS = "4 hours",
