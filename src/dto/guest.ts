@@ -15,4 +15,4 @@ export const guestSchema = z.object({
     isoCreatedOn: z.string().datetime(),
 });
 
-export type GuestSchema = z.infer<typeof guestSchema>;
+export type GuestType = z.infer<typeof guestSchema>;

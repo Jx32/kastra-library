@@ -1,1 +1,0 @@
-export const FALLBACK_AVATAR_URL = `https://ui-avatars.com/api/?name=#NAME#&background=random&size=64&bold=false`;

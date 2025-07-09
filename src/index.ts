@@ -28,5 +28,3 @@ export * from "./dto/basic-user-info";
 export * from "./dto/guest";
 
 export * from "./enum/role.enum";
-
-export * from './constants/constants';
