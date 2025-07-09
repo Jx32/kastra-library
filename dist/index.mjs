@@ -217,23 +217,21 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
 })(UserRoleEnum || {});
 
 // src/util/util-module.ts
-var KastraUtil;
-((KastraUtil2) => {
-  function generateFallbackAvatarUrl(name) {
+var UtilModule = class {
+  static generateFallbackAvatarUrl(name) {
     return `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=random&size=64&bold=false`;
   }
-  KastraUtil2.generateFallbackAvatarUrl = generateFallbackAvatarUrl;
-})(KastraUtil || (KastraUtil = {}));
+};
 export {
   BasicUserInfoSchema,
   BasicUserTypeEnum,
   InvitationDurationEnum,
   InvitationTypeEnum,
-  KastraUtil,
   MONGODB_ID_REGEX,
   ObjectId5 as ObjectId,
   PHONE_REGEX,
   UserRoleEnum,
+  UtilModule,
   automaticChargeSchema,
   basicUserTypeEnumSchema,
   guestSchema,
