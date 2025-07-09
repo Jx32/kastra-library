@@ -521,7 +521,7 @@ declare const enum InvitationTypeEnum {
 
 interface Invitation {
     _id?: string;
-    userSub: string;
+    userId: string;
     type: InvitationTypeEnum;
     duration: InvitationDurationEnum;
     isoDueDate: string;
@@ -563,6 +563,30 @@ declare const BasicUserInfoSchema: z.ZodObject<{
 }>;
 type BasicUserInfoType = z.infer<typeof BasicUserInfoSchema>;
 
+interface Guest {
+    _id?: string;
+    name: string;
+    avatarUrl: string;
+    isoCreatedOn: string;
+}
+declare const guestSchema: z.ZodObject<{
+    _id: z.ZodOptional<z.ZodString>;
+    name: z.ZodString;
+    avatarUrl: z.ZodString;
+    isoCreatedOn: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    name: string;
+    avatarUrl: string;
+    isoCreatedOn: string;
+    _id?: string | undefined;
+}, {
+    name: string;
+    avatarUrl: string;
+    isoCreatedOn: string;
+    _id?: string | undefined;
+}>;
+type GuestSchema = z.infer<typeof guestSchema>;
+
 declare enum UserRoleEnum {
     HOUSE_OWNER = "houseOwner",
     HOUSE_RELATED = "houseRelated",
@@ -570,4 +594,4 @@ declare enum UserRoleEnum {
     ADMIN = "admin"
 }
 
-export { type AutomaticCharge, type AutomaticChargeSummaryResponse, type AutomaticChargeType, type BasicUserInfo, BasicUserInfoSchema, type BasicUserInfoType, BasicUserTypeEnum, type Invitation, InvitationDurationEnum, InvitationTypeEnum, type InvitationUIType, type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type VideoCallToken, type VideoCallTokenType, automaticChargeSchema, basicUserTypeEnumSchema, invoicePaymentIntentSchema, invoiceSchema, patchUserSchema, paymentMethodSchema, remoteGateLogSchema, remoteGateSchema, residentialSchema, userSchema, userSummarySchema, videoCallTokenSchema };
+export { type AutomaticCharge, type AutomaticChargeSummaryResponse, type AutomaticChargeType, type BasicUserInfo, BasicUserInfoSchema, type BasicUserInfoType, BasicUserTypeEnum, type Guest, type GuestSchema, type Invitation, InvitationDurationEnum, InvitationTypeEnum, type InvitationUIType, type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type VideoCallToken, type VideoCallTokenType, automaticChargeSchema, basicUserTypeEnumSchema, guestSchema, invoicePaymentIntentSchema, invoiceSchema, patchUserSchema, paymentMethodSchema, remoteGateLogSchema, remoteGateSchema, residentialSchema, userSchema, userSummarySchema, videoCallTokenSchema };

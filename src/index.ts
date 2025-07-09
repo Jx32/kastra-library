@@ -25,4 +25,6 @@ export * from "./dto/invitation-ui-type";
 
 export * from "./dto/basic-user-info";
 
+export * from "./dto/guest";
+
 export * from "./enum/role.enum";

@@ -197,6 +197,16 @@ var BasicUserInfoSchema = z12.object({
   type: basicUserTypeEnumSchema
 }).strict();
 
+// src/dto/guest.ts
+import { z as z13 } from "zod";
+var guestSchema = z13.object({
+  _id: z13.string().optional(),
+  // Unique identifier for the guest, optional
+  name: z13.string(),
+  avatarUrl: z13.string().url(),
+  isoCreatedOn: z13.string().datetime()
+});
+
 // src/enum/role.enum.ts
 var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   UserRoleEnum2["HOUSE_OWNER"] = "houseOwner";
@@ -216,6 +226,7 @@ export {
   UserRoleEnum,
   automaticChargeSchema,
   basicUserTypeEnumSchema,
+  guestSchema,
   invoicePaymentIntentSchema,
   invoiceSchema,
   patchUserSchema,

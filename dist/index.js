@@ -40,6 +40,7 @@ __export(src_exports, {
   UserRoleEnum: () => UserRoleEnum,
   automaticChargeSchema: () => automaticChargeSchema,
   basicUserTypeEnumSchema: () => basicUserTypeEnumSchema,
+  guestSchema: () => guestSchema,
   invoicePaymentIntentSchema: () => invoicePaymentIntentSchema,
   invoiceSchema: () => invoiceSchema,
   patchUserSchema: () => patchUserSchema,
@@ -250,6 +251,16 @@ var BasicUserInfoSchema = import_zod12.z.object({
   type: basicUserTypeEnumSchema
 }).strict();
 
+// src/dto/guest.ts
+var import_zod13 = require("zod");
+var guestSchema = import_zod13.z.object({
+  _id: import_zod13.z.string().optional(),
+  // Unique identifier for the guest, optional
+  name: import_zod13.z.string(),
+  avatarUrl: import_zod13.z.string().url(),
+  isoCreatedOn: import_zod13.z.string().datetime()
+});
+
 // src/enum/role.enum.ts
 var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   UserRoleEnum2["HOUSE_OWNER"] = "houseOwner";
@@ -270,6 +281,7 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   UserRoleEnum,
   automaticChargeSchema,
   basicUserTypeEnumSchema,
+  guestSchema,
   invoicePaymentIntentSchema,
   invoiceSchema,
   patchUserSchema,
