@@ -29,4 +29,4 @@ export * from "./dto/guest";
 
 export * from "./enum/role.enum";
 
-export * from './util/generate-fallback-avatar-url'
+export * from "./util/util-module";

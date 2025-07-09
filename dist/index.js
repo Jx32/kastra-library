@@ -34,13 +34,13 @@ __export(src_exports, {
   BasicUserTypeEnum: () => BasicUserTypeEnum,
   InvitationDurationEnum: () => InvitationDurationEnum,
   InvitationTypeEnum: () => InvitationTypeEnum,
+  KastraUtil: () => KastraUtil,
   MONGODB_ID_REGEX: () => MONGODB_ID_REGEX,
   ObjectId: () => import_mongodb5.ObjectId,
   PHONE_REGEX: () => PHONE_REGEX,
   UserRoleEnum: () => UserRoleEnum,
   automaticChargeSchema: () => automaticChargeSchema,
   basicUserTypeEnumSchema: () => basicUserTypeEnumSchema,
-  generateFallbackAvatarUrl: () => generateFallbackAvatarUrl,
   guestSchema: () => guestSchema,
   invoicePaymentIntentSchema: () => invoicePaymentIntentSchema,
   invoiceSchema: () => invoiceSchema,
@@ -271,23 +271,27 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   return UserRoleEnum2;
 })(UserRoleEnum || {});
 
-// src/util/generate-fallback-avatar-url.ts
-var generateFallbackAvatarUrl = (name) => {
-  return `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=random&size=64&bold=false`;
-};
+// src/util/util-module.ts
+var KastraUtil;
+((KastraUtil2) => {
+  function generateFallbackAvatarUrl(name) {
+    return `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=random&size=64&bold=false`;
+  }
+  KastraUtil2.generateFallbackAvatarUrl = generateFallbackAvatarUrl;
+})(KastraUtil || (KastraUtil = {}));
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   BasicUserInfoSchema,
   BasicUserTypeEnum,
   InvitationDurationEnum,
   InvitationTypeEnum,
+  KastraUtil,
   MONGODB_ID_REGEX,
   ObjectId,
   PHONE_REGEX,
   UserRoleEnum,
   automaticChargeSchema,
   basicUserTypeEnumSchema,
-  generateFallbackAvatarUrl,
   guestSchema,
   invoicePaymentIntentSchema,
   invoiceSchema,
