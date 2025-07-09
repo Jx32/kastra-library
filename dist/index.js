@@ -35,7 +35,7 @@ __export(src_exports, {
   InvitationDurationEnum: () => InvitationDurationEnum,
   InvitationTypeEnum: () => InvitationTypeEnum,
   MONGODB_ID_REGEX: () => MONGODB_ID_REGEX,
-  ObjectId: () => import_mongodb4.ObjectId,
+  ObjectId: () => import_mongodb5.ObjectId,
   PHONE_REGEX: () => PHONE_REGEX,
   UserRoleEnum: () => UserRoleEnum,
   automaticChargeSchema: () => automaticChargeSchema,
@@ -53,7 +53,7 @@ __export(src_exports, {
   videoCallTokenSchema: () => videoCallTokenSchema
 });
 module.exports = __toCommonJS(src_exports);
-var import_mongodb4 = require("mongodb");
+var import_mongodb5 = require("mongodb");
 
 // src/constants/constants.ts
 var PHONE_REGEX = /^(\+[1-9]{2})\d{10}$/;
@@ -252,10 +252,10 @@ var BasicUserInfoSchema = import_zod12.z.object({
 }).strict();
 
 // src/dto/guest.ts
+var import_mongodb4 = require("mongodb");
 var import_zod13 = require("zod");
 var guestSchema = import_zod13.z.object({
-  _id: import_zod13.z.string().optional(),
-  // Unique identifier for the guest, optional
+  _id: import_zod13.z.string().transform((val) => new import_mongodb4.ObjectId(val)).optional(),
   name: import_zod13.z.string(),
   avatarUrl: import_zod13.z.string().url(),
   isoCreatedOn: import_zod13.z.string().datetime()

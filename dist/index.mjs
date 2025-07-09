@@ -1,5 +1,5 @@
 // src/index.ts
-import { ObjectId as ObjectId4 } from "mongodb";
+import { ObjectId as ObjectId5 } from "mongodb";
 
 // src/constants/constants.ts
 var PHONE_REGEX = /^(\+[1-9]{2})\d{10}$/;
@@ -198,10 +198,10 @@ var BasicUserInfoSchema = z12.object({
 }).strict();
 
 // src/dto/guest.ts
+import { ObjectId as ObjectId4 } from "mongodb";
 import { z as z13 } from "zod";
 var guestSchema = z13.object({
-  _id: z13.string().optional(),
-  // Unique identifier for the guest, optional
+  _id: z13.string().transform((val) => new ObjectId4(val)).optional(),
   name: z13.string(),
   avatarUrl: z13.string().url(),
   isoCreatedOn: z13.string().datetime()
@@ -221,7 +221,7 @@ export {
   InvitationDurationEnum,
   InvitationTypeEnum,
   MONGODB_ID_REGEX,
-  ObjectId4 as ObjectId,
+  ObjectId5 as ObjectId,
   PHONE_REGEX,
   UserRoleEnum,
   automaticChargeSchema,
