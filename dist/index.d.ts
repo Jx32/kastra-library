@@ -595,7 +595,11 @@ declare enum UserRoleEnum {
 }
 
 declare class UtilModule {
-    static generateFallbackAvatarUrl(name: string): string;
+    private static _instance;
+    private constructor();
+    static get instance(): UtilModule;
+    generateFallbackAvatarUrl(name: string): string;
 }
+declare const utilModule: UtilModule;
 
-export { type AutomaticCharge, type AutomaticChargeSummaryResponse, type AutomaticChargeType, type BasicUserInfo, BasicUserInfoSchema, type BasicUserInfoType, BasicUserTypeEnum, type Guest, type GuestSchema, type Invitation, InvitationDurationEnum, InvitationTypeEnum, type InvitationUIType, type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, UtilModule, type VideoCallToken, type VideoCallTokenType, automaticChargeSchema, basicUserTypeEnumSchema, guestSchema, invoicePaymentIntentSchema, invoiceSchema, patchUserSchema, paymentMethodSchema, remoteGateLogSchema, remoteGateSchema, residentialSchema, userSchema, userSummarySchema, videoCallTokenSchema };
+export { type AutomaticCharge, type AutomaticChargeSummaryResponse, type AutomaticChargeType, type BasicUserInfo, BasicUserInfoSchema, type BasicUserInfoType, BasicUserTypeEnum, type Guest, type GuestSchema, type Invitation, InvitationDurationEnum, InvitationTypeEnum, type InvitationUIType, type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type VideoCallToken, type VideoCallTokenType, automaticChargeSchema, basicUserTypeEnumSchema, guestSchema, invoicePaymentIntentSchema, invoiceSchema, patchUserSchema, paymentMethodSchema, remoteGateLogSchema, remoteGateSchema, residentialSchema, userSchema, userSummarySchema, utilModule, videoCallTokenSchema };

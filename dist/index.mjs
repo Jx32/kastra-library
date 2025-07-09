@@ -216,12 +216,20 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   return UserRoleEnum2;
 })(UserRoleEnum || {});
 
-// src/util/util-module.ts
-var UtilModule = class {
-  static generateFallbackAvatarUrl(name) {
+// src/index.ts
+var _UtilModule = class _UtilModule {
+  constructor() {
+  }
+  static get instance() {
+    return this._instance;
+  }
+  generateFallbackAvatarUrl(name) {
     return `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=random&size=64&bold=false`;
   }
 };
+_UtilModule._instance = new _UtilModule();
+var UtilModule = _UtilModule;
+var utilModule = UtilModule.instance;
 export {
   BasicUserInfoSchema,
   BasicUserTypeEnum,
@@ -231,7 +239,6 @@ export {
   ObjectId5 as ObjectId,
   PHONE_REGEX,
   UserRoleEnum,
-  UtilModule,
   automaticChargeSchema,
   basicUserTypeEnumSchema,
   guestSchema,
@@ -244,6 +251,7 @@ export {
   residentialSchema,
   userSchema,
   userSummarySchema,
+  utilModule,
   videoCallTokenSchema
 };
 //# sourceMappingURL=index.mjs.map

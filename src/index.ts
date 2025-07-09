@@ -29,4 +29,18 @@ export * from "./dto/guest";
 
 export * from "./enum/role.enum";
 
-export * from "./util/util-module";
+class UtilModule {
+    private static _instance: UtilModule = new UtilModule();
+
+    private constructor() {}
+
+    static get instance(): UtilModule {
+        return this._instance;
+    }
+
+    public generateFallbackAvatarUrl(name: string): string {
+        return `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=random&size=64&bold=false`;
+    }
+}
+
+export const utilModule = UtilModule.instance;
