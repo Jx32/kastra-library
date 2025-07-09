@@ -30,6 +30,8 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // src/index.ts
 var src_exports = {};
 __export(src_exports, {
+  BasicUserInfoSchema: () => BasicUserInfoSchema,
+  BasicUserTypeEnum: () => BasicUserTypeEnum,
   InvitationDurationEnum: () => InvitationDurationEnum,
   InvitationTypeEnum: () => InvitationTypeEnum,
   MONGODB_ID_REGEX: () => MONGODB_ID_REGEX,
@@ -37,6 +39,7 @@ __export(src_exports, {
   PHONE_REGEX: () => PHONE_REGEX,
   UserRoleEnum: () => UserRoleEnum,
   automaticChargeSchema: () => automaticChargeSchema,
+  basicUserTypeEnumSchema: () => basicUserTypeEnumSchema,
   invoicePaymentIntentSchema: () => invoicePaymentIntentSchema,
   invoiceSchema: () => invoiceSchema,
   patchUserSchema: () => patchUserSchema,
@@ -232,6 +235,21 @@ var InvitationTypeEnum = /* @__PURE__ */ ((InvitationTypeEnum2) => {
   return InvitationTypeEnum2;
 })(InvitationTypeEnum || {});
 
+// src/dto/basic-user-info.ts
+var import_zod12 = require("zod");
+var BasicUserTypeEnum = /* @__PURE__ */ ((BasicUserTypeEnum2) => {
+  BasicUserTypeEnum2["REGISTERED_USER"] = "registeredUser";
+  BasicUserTypeEnum2["GUEST_USER"] = "guestUser";
+  return BasicUserTypeEnum2;
+})(BasicUserTypeEnum || {});
+var basicUserTypeEnumSchema = import_zod12.z.enum(["registeredUser", "guestUser"]);
+var BasicUserInfoSchema = import_zod12.z.object({
+  id: import_zod12.z.string().uuid(),
+  name: import_zod12.z.string(),
+  avatarUrl: import_zod12.z.string().url(),
+  type: basicUserTypeEnumSchema
+}).strict();
+
 // src/enum/role.enum.ts
 var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   UserRoleEnum2["HOUSE_OWNER"] = "houseOwner";
@@ -242,6 +260,8 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
 })(UserRoleEnum || {});
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
+  BasicUserInfoSchema,
+  BasicUserTypeEnum,
   InvitationDurationEnum,
   InvitationTypeEnum,
   MONGODB_ID_REGEX,
@@ -249,6 +269,7 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   PHONE_REGEX,
   UserRoleEnum,
   automaticChargeSchema,
+  basicUserTypeEnumSchema,
   invoicePaymentIntentSchema,
   invoiceSchema,
   patchUserSchema,

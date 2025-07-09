@@ -182,6 +182,21 @@ var InvitationTypeEnum = /* @__PURE__ */ ((InvitationTypeEnum2) => {
   return InvitationTypeEnum2;
 })(InvitationTypeEnum || {});
 
+// src/dto/basic-user-info.ts
+import { z as z12 } from "zod";
+var BasicUserTypeEnum = /* @__PURE__ */ ((BasicUserTypeEnum2) => {
+  BasicUserTypeEnum2["REGISTERED_USER"] = "registeredUser";
+  BasicUserTypeEnum2["GUEST_USER"] = "guestUser";
+  return BasicUserTypeEnum2;
+})(BasicUserTypeEnum || {});
+var basicUserTypeEnumSchema = z12.enum(["registeredUser", "guestUser"]);
+var BasicUserInfoSchema = z12.object({
+  id: z12.string().uuid(),
+  name: z12.string(),
+  avatarUrl: z12.string().url(),
+  type: basicUserTypeEnumSchema
+}).strict();
+
 // src/enum/role.enum.ts
 var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   UserRoleEnum2["HOUSE_OWNER"] = "houseOwner";
@@ -191,6 +206,8 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   return UserRoleEnum2;
 })(UserRoleEnum || {});
 export {
+  BasicUserInfoSchema,
+  BasicUserTypeEnum,
   InvitationDurationEnum,
   InvitationTypeEnum,
   MONGODB_ID_REGEX,
@@ -198,6 +215,7 @@ export {
   PHONE_REGEX,
   UserRoleEnum,
   automaticChargeSchema,
+  basicUserTypeEnumSchema,
   invoicePaymentIntentSchema,
   invoiceSchema,
   patchUserSchema,
