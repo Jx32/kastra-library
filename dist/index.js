@@ -40,6 +40,7 @@ __export(src_exports, {
   UserRoleEnum: () => UserRoleEnum,
   automaticChargeSchema: () => automaticChargeSchema,
   basicUserTypeEnumSchema: () => basicUserTypeEnumSchema,
+  generateFallbackAvatarUrl: () => generateFallbackAvatarUrl,
   guestSchema: () => guestSchema,
   invoicePaymentIntentSchema: () => invoicePaymentIntentSchema,
   invoiceSchema: () => invoiceSchema,
@@ -50,7 +51,6 @@ __export(src_exports, {
   residentialSchema: () => residentialSchema,
   userSchema: () => userSchema,
   userSummarySchema: () => userSummarySchema,
-  utilModule: () => utilModule,
   videoCallTokenSchema: () => videoCallTokenSchema
 });
 module.exports = __toCommonJS(src_exports);
@@ -272,19 +272,9 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
 })(UserRoleEnum || {});
 
 // src/index.ts
-var _UtilModule = class _UtilModule {
-  constructor() {
-  }
-  static get instance() {
-    return this._instance;
-  }
-  generateFallbackAvatarUrl(name) {
-    return `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=random&size=64&bold=false`;
-  }
+var generateFallbackAvatarUrl = (name) => {
+  return `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=random&size=64&bold=false`;
 };
-_UtilModule._instance = new _UtilModule();
-var UtilModule = _UtilModule;
-var utilModule = UtilModule.instance;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   BasicUserInfoSchema,
@@ -297,6 +287,7 @@ var utilModule = UtilModule.instance;
   UserRoleEnum,
   automaticChargeSchema,
   basicUserTypeEnumSchema,
+  generateFallbackAvatarUrl,
   guestSchema,
   invoicePaymentIntentSchema,
   invoiceSchema,
@@ -307,7 +298,6 @@ var utilModule = UtilModule.instance;
   residentialSchema,
   userSchema,
   userSummarySchema,
-  utilModule,
   videoCallTokenSchema
 });
 //# sourceMappingURL=index.js.map

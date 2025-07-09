@@ -217,19 +217,9 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
 })(UserRoleEnum || {});
 
 // src/index.ts
-var _UtilModule = class _UtilModule {
-  constructor() {
-  }
-  static get instance() {
-    return this._instance;
-  }
-  generateFallbackAvatarUrl(name) {
-    return `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=random&size=64&bold=false`;
-  }
+var generateFallbackAvatarUrl = (name) => {
+  return `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=random&size=64&bold=false`;
 };
-_UtilModule._instance = new _UtilModule();
-var UtilModule = _UtilModule;
-var utilModule = UtilModule.instance;
 export {
   BasicUserInfoSchema,
   BasicUserTypeEnum,
@@ -241,6 +231,7 @@ export {
   UserRoleEnum,
   automaticChargeSchema,
   basicUserTypeEnumSchema,
+  generateFallbackAvatarUrl,
   guestSchema,
   invoicePaymentIntentSchema,
   invoiceSchema,
@@ -251,7 +242,6 @@ export {
   residentialSchema,
   userSchema,
   userSummarySchema,
-  utilModule,
   videoCallTokenSchema
 };
 //# sourceMappingURL=index.mjs.map
