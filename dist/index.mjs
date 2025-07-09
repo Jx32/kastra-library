@@ -215,11 +215,6 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   UserRoleEnum2["ADMIN"] = "admin";
   return UserRoleEnum2;
 })(UserRoleEnum || {});
-
-// src/index.ts
-var generateFallbackAvatarUrl = (name) => {
-  return `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=random&size=64&bold=false`;
-};
 export {
   BasicUserInfoSchema,
   BasicUserTypeEnum,
@@ -231,7 +226,6 @@ export {
   UserRoleEnum,
   automaticChargeSchema,
   basicUserTypeEnumSchema,
-  generateFallbackAvatarUrl,
   guestSchema,
   invoicePaymentIntentSchema,
   invoiceSchema,

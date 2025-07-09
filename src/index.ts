@@ -29,6 +29,4 @@ export * from "./dto/guest";
 
 export * from "./enum/role.enum";
 
-export const generateFallbackAvatarUrl = (name: string): string => {
-        return `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=random&size=64&bold=false`;
-    }
+export * from './constants/constants';

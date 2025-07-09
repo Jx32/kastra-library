@@ -40,7 +40,6 @@ __export(src_exports, {
   UserRoleEnum: () => UserRoleEnum,
   automaticChargeSchema: () => automaticChargeSchema,
   basicUserTypeEnumSchema: () => basicUserTypeEnumSchema,
-  generateFallbackAvatarUrl: () => generateFallbackAvatarUrl,
   guestSchema: () => guestSchema,
   invoicePaymentIntentSchema: () => invoicePaymentIntentSchema,
   invoiceSchema: () => invoiceSchema,
@@ -270,11 +269,6 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   UserRoleEnum2["ADMIN"] = "admin";
   return UserRoleEnum2;
 })(UserRoleEnum || {});
-
-// src/index.ts
-var generateFallbackAvatarUrl = (name) => {
-  return `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=random&size=64&bold=false`;
-};
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   BasicUserInfoSchema,
@@ -287,7 +281,6 @@ var generateFallbackAvatarUrl = (name) => {
   UserRoleEnum,
   automaticChargeSchema,
   basicUserTypeEnumSchema,
-  generateFallbackAvatarUrl,
   guestSchema,
   invoicePaymentIntentSchema,
   invoiceSchema,
