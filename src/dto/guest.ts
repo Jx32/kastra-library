@@ -3,6 +3,7 @@ import { z } from "zod";
 
 export interface Guest {
     _id?: ObjectId; // Unique identifier for the guest
+    userSub: string; // User ID of the guest (usually the host)
     name: string; // Name of the guest
     avatarUrl: string; // URL of the guest's avatar image
     isoCreatedOn: string; // Date when the guest was created
@@ -10,6 +11,7 @@ export interface Guest {
 
 export const guestSchema = z.object({
     _id: z.string().transform(val => new ObjectId(val)).optional(),
+    userSub: z.string().uuid(),
     name: z.string(),
     avatarUrl: z.string().url(),
     isoCreatedOn: z.string().datetime(),

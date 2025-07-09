@@ -256,6 +256,7 @@ var import_mongodb4 = require("mongodb");
 var import_zod13 = require("zod");
 var guestSchema = import_zod13.z.object({
   _id: import_zod13.z.string().transform((val) => new import_mongodb4.ObjectId(val)).optional(),
+  userSub: import_zod13.z.string().uuid(),
   name: import_zod13.z.string(),
   avatarUrl: import_zod13.z.string().url(),
   isoCreatedOn: import_zod13.z.string().datetime()

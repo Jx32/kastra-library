@@ -565,23 +565,27 @@ type BasicUserInfoType = z.infer<typeof BasicUserInfoSchema>;
 
 interface Guest {
     _id?: ObjectId;
+    userSub: string;
     name: string;
     avatarUrl: string;
     isoCreatedOn: string;
 }
 declare const guestSchema: z.ZodObject<{
     _id: z.ZodOptional<z.ZodEffects<z.ZodString, ObjectId, string>>;
+    userSub: z.ZodString;
     name: z.ZodString;
     avatarUrl: z.ZodString;
     isoCreatedOn: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     name: string;
     avatarUrl: string;
+    userSub: string;
     isoCreatedOn: string;
     _id?: ObjectId | undefined;
 }, {
     name: string;
     avatarUrl: string;
+    userSub: string;
     isoCreatedOn: string;
     _id?: string | undefined;
 }>;

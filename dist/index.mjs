@@ -202,6 +202,7 @@ import { ObjectId as ObjectId4 } from "mongodb";
 import { z as z13 } from "zod";
 var guestSchema = z13.object({
   _id: z13.string().transform((val) => new ObjectId4(val)).optional(),
+  userSub: z13.string().uuid(),
   name: z13.string(),
   avatarUrl: z13.string().url(),
   isoCreatedOn: z13.string().datetime()
