@@ -214,18 +214,18 @@ var automaticChargeSchema = import_zod11.z.object({
 
 // src/enum/invitation-duration.enum.ts
 var InvitationDurationEnum = /* @__PURE__ */ ((InvitationDurationEnum2) => {
-  InvitationDurationEnum2["ONE_HOUR"] = "1 hour";
-  InvitationDurationEnum2["TWO_HOURS"] = "2 hours";
-  InvitationDurationEnum2["FOUR_HOURS"] = "4 hours";
-  InvitationDurationEnum2["SIX_HOURS"] = "6 hours";
-  InvitationDurationEnum2["TWELVE_HOURS"] = "12 hours";
-  InvitationDurationEnum2["ONE_DAY"] = "1 day";
-  InvitationDurationEnum2["TWO_DAYS"] = "2 days";
-  InvitationDurationEnum2["THREE_DAYS"] = "3 days";
-  InvitationDurationEnum2["ONE_WEEK"] = "1 week";
-  InvitationDurationEnum2["TWO_WEEKS"] = "2 weeks";
-  InvitationDurationEnum2["ONE_MONTH"] = "1 month";
-  InvitationDurationEnum2["THREE_MONTHS"] = "3 months";
+  InvitationDurationEnum2[InvitationDurationEnum2["ONE_HOUR"] = 0] = "ONE_HOUR";
+  InvitationDurationEnum2[InvitationDurationEnum2["TWO_HOURS"] = 1] = "TWO_HOURS";
+  InvitationDurationEnum2[InvitationDurationEnum2["FOUR_HOURS"] = 2] = "FOUR_HOURS";
+  InvitationDurationEnum2[InvitationDurationEnum2["SIX_HOURS"] = 3] = "SIX_HOURS";
+  InvitationDurationEnum2[InvitationDurationEnum2["TWELVE_HOURS"] = 4] = "TWELVE_HOURS";
+  InvitationDurationEnum2[InvitationDurationEnum2["ONE_DAY"] = 5] = "ONE_DAY";
+  InvitationDurationEnum2[InvitationDurationEnum2["TWO_DAYS"] = 6] = "TWO_DAYS";
+  InvitationDurationEnum2[InvitationDurationEnum2["THREE_DAYS"] = 7] = "THREE_DAYS";
+  InvitationDurationEnum2[InvitationDurationEnum2["ONE_WEEK"] = 8] = "ONE_WEEK";
+  InvitationDurationEnum2[InvitationDurationEnum2["TWO_WEEKS"] = 9] = "TWO_WEEKS";
+  InvitationDurationEnum2[InvitationDurationEnum2["ONE_MONTH"] = 10] = "ONE_MONTH";
+  InvitationDurationEnum2[InvitationDurationEnum2["THREE_MONTHS"] = 11] = "THREE_MONTHS";
   return InvitationDurationEnum2;
 })(InvitationDurationEnum || {});
 
