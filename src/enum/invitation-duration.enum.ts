@@ -1,5 +1,3 @@
-import { Value } from "../dto/value";
-
 export const enum InvitationDurationEnum {
     ONE_HOUR = "1 hour",
     TWO_HOURS = "2 hours",
