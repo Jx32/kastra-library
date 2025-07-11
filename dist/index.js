@@ -33,6 +33,7 @@ __export(src_exports, {
   BasicUserInfoSchema: () => BasicUserInfoSchema,
   BasicUserTypeEnum: () => BasicUserTypeEnum,
   InvitationDurationEnum: () => InvitationDurationEnum,
+  InvitationDurationValues: () => InvitationDurationValues,
   InvitationTypeEnum: () => InvitationTypeEnum,
   MONGODB_ID_REGEX: () => MONGODB_ID_REGEX,
   ObjectId: () => import_mongodb5.ObjectId,
@@ -228,6 +229,20 @@ var InvitationDurationEnum = /* @__PURE__ */ ((InvitationDurationEnum2) => {
   InvitationDurationEnum2["THREE_MONTHS"] = "3 months";
   return InvitationDurationEnum2;
 })(InvitationDurationEnum || {});
+var InvitationDurationValues = [
+  { value: "1 hour" /* ONE_HOUR */, label: "1 hora" },
+  { value: "2 hours" /* TWO_HOURS */, label: "2 horas" },
+  { value: "4 hours" /* FOUR_HOURS */, label: "4 horas" },
+  { value: "6 hours" /* SIX_HOURS */, label: "6 horas" },
+  { value: "12 hours" /* TWELVE_HOURS */, label: "12 horas" },
+  { value: "1 day" /* ONE_DAY */, label: "1 d\xEDa" },
+  { value: "2 days" /* TWO_DAYS */, label: "2 d\xEDas" },
+  { value: "3 days" /* THREE_DAYS */, label: "3 d\xEDas" },
+  { value: "1 week" /* ONE_WEEK */, label: "1 semana" },
+  { value: "2 weeks" /* TWO_WEEKS */, label: "2 semanas" },
+  { value: "1 month" /* ONE_MONTH */, label: "1 mes" },
+  { value: "3 months" /* THREE_MONTHS */, label: "3 meses" }
+];
 
 // src/enum/invitation-type.enum.ts
 var InvitationTypeEnum = /* @__PURE__ */ ((InvitationTypeEnum2) => {
@@ -275,6 +290,7 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   BasicUserInfoSchema,
   BasicUserTypeEnum,
   InvitationDurationEnum,
+  InvitationDurationValues,
   InvitationTypeEnum,
   MONGODB_ID_REGEX,
   ObjectId,
