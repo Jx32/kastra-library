@@ -599,7 +599,7 @@ declare enum UserRoleEnum {
 }
 
 interface Value {
-    value: string;
+    value: string | number;
     label: string;
 }
 
