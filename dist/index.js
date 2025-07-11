@@ -33,6 +33,7 @@ __export(src_exports, {
   BasicUserInfoSchema: () => BasicUserInfoSchema,
   BasicUserTypeEnum: () => BasicUserTypeEnum,
   InvitationDurationEnum: () => InvitationDurationEnum,
+  InvitationDurationEnumValues: () => InvitationDurationEnumValues,
   InvitationTypeEnum: () => InvitationTypeEnum,
   MONGODB_ID_REGEX: () => MONGODB_ID_REGEX,
   ObjectId: () => import_mongodb5.ObjectId,
@@ -228,6 +229,21 @@ var InvitationDurationEnum = /* @__PURE__ */ ((InvitationDurationEnum2) => {
   InvitationDurationEnum2["THREE_MONTHS"] = "3 months";
   return InvitationDurationEnum2;
 })(InvitationDurationEnum || {});
+var InvitationDurationEnumValues = /* @__PURE__ */ ((InvitationDurationEnumValues2) => {
+  InvitationDurationEnumValues2["ONE_HOUR"] = "1 hour";
+  InvitationDurationEnumValues2["TWO_HOURS"] = "2 hours";
+  InvitationDurationEnumValues2["FOUR_HOURS"] = "4 hours";
+  InvitationDurationEnumValues2["SIX_HOURS"] = "6 hours";
+  InvitationDurationEnumValues2["TWELVE_HOURS"] = "12 hours";
+  InvitationDurationEnumValues2["ONE_DAY"] = "1 day";
+  InvitationDurationEnumValues2["TWO_DAYS"] = "2 days";
+  InvitationDurationEnumValues2["THREE_DAYS"] = "3 days";
+  InvitationDurationEnumValues2["ONE_WEEK"] = "1 week";
+  InvitationDurationEnumValues2["TWO_WEEKS"] = "2 weeks";
+  InvitationDurationEnumValues2["ONE_MONTH"] = "1 month";
+  InvitationDurationEnumValues2["THREE_MONTHS"] = "3 months";
+  return InvitationDurationEnumValues2;
+})(InvitationDurationEnumValues || {});
 
 // src/enum/invitation-type.enum.ts
 var InvitationTypeEnum = /* @__PURE__ */ ((InvitationTypeEnum2) => {
@@ -275,6 +291,7 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   BasicUserInfoSchema,
   BasicUserTypeEnum,
   InvitationDurationEnum,
+  InvitationDurationEnumValues,
   InvitationTypeEnum,
   MONGODB_ID_REGEX,
   ObjectId,

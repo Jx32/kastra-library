@@ -10,7 +10,8 @@
         "esModuleInterop": true,
         "allowJs": true,
         "resolveJsonModule": true,
-        "moduleResolution": "NodeNext"
+        "moduleResolution": "NodeNext",
+        "preserveConstEnums": true,
     },
     "include": [
         "src/**/*.ts"
