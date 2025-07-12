@@ -525,6 +525,7 @@ interface Invitation {
     type: string;
     duration: string;
     isoDueDate: string;
+    dummy?: boolean;
 }
 
 interface InvitationUIType {

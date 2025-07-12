@@ -4,4 +4,5 @@ export interface Invitation {
     type: string;
     duration: string;
     isoDueDate: string;
+    dummy?: boolean; // Indicates if the invitation is a dummy, used for testing purposes
 }
