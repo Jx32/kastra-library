@@ -34,7 +34,6 @@ __export(src_exports, {
   BasicUserTypeEnum: () => BasicUserTypeEnum,
   InvitationDurationEnum: () => InvitationDurationEnum,
   InvitationTypeEnum: () => InvitationTypeEnum,
-  MONGODB_ID_REGEX: () => MONGODB_ID_REGEX,
   PHONE_REGEX: () => PHONE_REGEX,
   UserRoleEnum: () => UserRoleEnum,
   automaticChargeSchema: () => automaticChargeSchema,
@@ -55,7 +54,6 @@ module.exports = __toCommonJS(src_exports);
 
 // src/constants/constants.ts
 var PHONE_REGEX = /^(\+[1-9]{2})\d{10}$/;
-var MONGODB_ID_REGEX = /^[a-f\d]{24}$/i;
 
 // src/dto/user.interface.ts
 var import_zod = require("zod");
@@ -270,7 +268,6 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   BasicUserTypeEnum,
   InvitationDurationEnum,
   InvitationTypeEnum,
-  MONGODB_ID_REGEX,
   PHONE_REGEX,
   UserRoleEnum,
   automaticChargeSchema,

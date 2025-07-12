@@ -1,7 +1,6 @@
 import z$1, { z } from 'zod';
 
 declare const PHONE_REGEX: RegExp;
-declare const MONGODB_ID_REGEX: RegExp;
 
 interface User {
     sub?: string;
@@ -600,4 +599,4 @@ interface Value {
     label: string;
 }
 
-export { type AutomaticCharge, type AutomaticChargeSummaryResponse, type AutomaticChargeType, type BasicUserInfo, BasicUserInfoSchema, type BasicUserInfoType, BasicUserTypeEnum, type Guest, type GuestType, type Invitation2, InvitationDurationEnum, InvitationTypeEnum, type InvitationUIType, type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, MONGODB_ID_REGEX, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type Value, type VideoCallToken, type VideoCallTokenType, automaticChargeSchema, basicUserTypeEnumSchema, guestSchema, invoicePaymentIntentSchema, invoiceSchema, patchUserSchema, paymentMethodSchema, remoteGateLogSchema, remoteGateSchema, residentialSchema, userSchema, userSummarySchema, videoCallTokenSchema };
+export { type AutomaticCharge, type AutomaticChargeSummaryResponse, type AutomaticChargeType, type BasicUserInfo, BasicUserInfoSchema, type BasicUserInfoType, BasicUserTypeEnum, type Guest, type GuestType, type Invitation2, InvitationDurationEnum, InvitationTypeEnum, type InvitationUIType, type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type Value, type VideoCallToken, type VideoCallTokenType, automaticChargeSchema, basicUserTypeEnumSchema, guestSchema, invoicePaymentIntentSchema, invoiceSchema, patchUserSchema, paymentMethodSchema, remoteGateLogSchema, remoteGateSchema, residentialSchema, userSchema, userSummarySchema, videoCallTokenSchema };
