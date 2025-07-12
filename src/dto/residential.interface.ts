@@ -6,7 +6,6 @@
  */
 
 import z from "zod";
-import { ObjectId } from "mongodb";
 
 export interface Residential {
     _id: string;
@@ -24,7 +23,7 @@ export interface Residential {
 }
 
 export const residentialSchema = z.object({
-    _id: z.string().transform(val => new ObjectId(val)).optional(),
+    _id: z.string().optional(),
     name: z.string(),
     address: z.string(),
     city: z.string(),

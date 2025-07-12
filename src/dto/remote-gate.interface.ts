@@ -6,7 +6,6 @@
  */
 
 import { z } from "zod";
-import { ObjectId } from "mongodb";
 
 export interface RemoteGate {
     _id?: string;
@@ -18,8 +17,8 @@ export interface RemoteGate {
 }
 
 export const remoteGateSchema = z.object({
-    _id: z.string().transform(val => new ObjectId(val)).optional(),
-    residentialId: z.string().transform(val => new ObjectId(val)),
+    _id: z.string().optional(),
+    residentialId: z.string(),
     name: z.string(),
     type: z.enum(["entrance", "exit"]),
     thingName: z.string(),

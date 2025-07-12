@@ -6,7 +6,6 @@
  */
 
 import { z } from "zod";
-import { ObjectId } from "mongodb";
 
 export interface Payment {
     _id?: string;
@@ -20,7 +19,7 @@ export interface Payment {
 }
 
 export const PaymentSchema = z.object({
-    _id: z.string().transform(val => new ObjectId(val)).optional(),
+    _id: z.string().optional(),
     userSub: z.string().uuid(),
     amount: z.number(),
     currency: z.string(),

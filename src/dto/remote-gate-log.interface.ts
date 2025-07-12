@@ -7,7 +7,6 @@
  */
 
 import z from "zod";
-import { ObjectId } from "mongodb";
 
 export interface RemoteGateLog {
     remoteGateId: string;
@@ -20,7 +19,7 @@ export interface RemoteGateLog {
 }
 
 export const remoteGateLogSchema = z.object({
-    remoteGateId: z.string().transform(val => new ObjectId(val)).optional(),
+    remoteGateId: z.string().optional(),
     source: z.enum(["app", "totem"]),
     action: z.enum(["open", "enable", "disable", "create", "delete", "update"]),
     timestamp: z.string().refine((val) => !isNaN(Date.parse(val)), {
