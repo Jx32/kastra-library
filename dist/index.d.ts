@@ -522,8 +522,8 @@ declare const enum InvitationTypeEnum {
 interface Invitation {
     _id?: string;
     userId: string;
-    type: InvitationTypeEnum;
-    duration: InvitationDurationEnum;
+    type: string;
+    duration: string;
     isoDueDate: string;
 }
 
