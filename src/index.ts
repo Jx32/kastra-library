@@ -20,7 +20,7 @@ export * from "./dto/automatic-charge-summary-response";
 
 export * from "./enum/invitation-duration.enum";
 export * from "./enum/invitation-type.enum";
-export * from "./dto/invitation";
+export * from "./dto/invitation2";
 export * from "./dto/invitation-ui-type";
 
 export * from "./dto/basic-user-info";
