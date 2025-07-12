@@ -18,7 +18,7 @@ export * from "./dto/automatic-charge-summary-response";
 
 export * from "./dto/invitation2";
 export * from "./enum/invitation-duration.enum";
-export { InvitationTypeEnum } from "./enum/invitation-type.enum";
+export * from "./enum/invitation-type.enum";
 export * from "./dto/invitation-ui-type";
 
 export * from "./dto/basic-user-info";
