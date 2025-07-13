@@ -515,21 +515,6 @@ declare const enum InvitationTypeEnum {
     PIN = "pin"
 }
 
-interface Invitation {
-    _id?: string;
-    userId: string;
-    type: InvitationTypeEnum;
-    duration: InvitationDurationEnum;
-    isoDueDate: string;
-}
-
-interface InvitationUIType {
-    type: InvitationTypeEnum;
-    title: string;
-    description: string;
-    icon: string;
-}
-
 declare const enum BasicUserTypeEnum {
     REGISTERED_USER = "registeredUser",
     GUEST_USER = "guestUser"
@@ -558,6 +543,22 @@ declare const BasicUserInfoSchema: z.ZodObject<{
     id: string;
 }>;
 type BasicUserInfoType = z.infer<typeof BasicUserInfoSchema>;
+
+interface Invitation {
+    _id?: string;
+    userId: string;
+    userType: BasicUserInfoType;
+    type: InvitationTypeEnum;
+    duration: InvitationDurationEnum;
+    isoDueDate: string;
+}
+
+interface InvitationUIType {
+    type: InvitationTypeEnum;
+    title: string;
+    description: string;
+    icon: string;
+}
 
 interface Guest {
     _id?: string;
