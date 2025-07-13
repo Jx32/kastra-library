@@ -22,3 +22,5 @@ export const invitationSchema = z.object({
     isoDueDate: z.string(),
     quantity: z.number().int().min(1).max(20),
 });
+
+export type InvitationType = z.infer<typeof invitationSchema>;
