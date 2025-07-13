@@ -596,6 +596,7 @@ interface InvitationData {
 }
 
 interface InvitationCreationResponse {
+    _id: string;
     invitation: Invitation;
     data: InvitationData;
 }
