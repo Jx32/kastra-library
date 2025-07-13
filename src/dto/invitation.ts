@@ -10,6 +10,7 @@ export interface Invitation {
     type: InvitationTypeEnum;
     duration: InvitationDurationEnum;
     isoDueDate: string;
+    quantity: number;
 }
 
 export const invitationSchema = z.object({
@@ -17,6 +18,7 @@ export const invitationSchema = z.object({
     userId: z.string().optional(),
     userType: basicUserTypeEnumSchema.optional(),
     type: invitationTypeEnumSchema,
-    duration: invitationDurationEnumSchema,
+    duration: invitationDurationEnumSchema.optional(),
     isoDueDate: z.string(),
+    quantity: z.number().int().min(1).max(20),
 });
