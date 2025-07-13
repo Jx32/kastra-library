@@ -495,14 +495,6 @@ interface AutomaticChargeSummaryResponse {
     last4Digits: string;
 }
 
-interface Invitation {
-    _id?: string;
-    userId: string;
-    type: string;
-    duration: string;
-    isoDueDate: string;
-}
-
 declare const enum InvitationDurationEnum {
     ONE_HOUR = 0,
     TWO_HOURS = 1,
@@ -521,6 +513,14 @@ declare const enum InvitationDurationEnum {
 declare const enum InvitationTypeEnum {
     QR = "qr",
     PIN = "pin"
+}
+
+interface Invitation {
+    _id?: string;
+    userId: string;
+    type: InvitationTypeEnum;
+    duration: InvitationDurationEnum;
+    isoDueDate: string;
 }
 
 interface InvitationUIType {
