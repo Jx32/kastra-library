@@ -547,7 +547,7 @@ type BasicUserInfoType = z.infer<typeof BasicUserInfoSchema>;
 interface Invitation {
     _id?: string;
     userId: string;
-    userType: BasicUserInfoType;
+    userType: BasicUserTypeEnum;
     type: InvitationTypeEnum;
     duration: InvitationDurationEnum;
     isoDueDate: string;
