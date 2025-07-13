@@ -596,7 +596,7 @@ interface InvitationData {
 
 interface InvitationCreationResponse {
     invitation: Invitation;
-    data: InvitationData[];
+    data: InvitationData;
 }
 
 interface Guest {
