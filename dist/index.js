@@ -39,6 +39,9 @@ __export(src_exports, {
   automaticChargeSchema: () => automaticChargeSchema,
   basicUserTypeEnumSchema: () => basicUserTypeEnumSchema,
   guestSchema: () => guestSchema,
+  invitationDurationEnumSchema: () => invitationDurationEnumSchema,
+  invitationSchema: () => invitationSchema,
+  invitationTypeEnumSchema: () => invitationTypeEnumSchema,
   invoicePaymentIntentSchema: () => invoicePaymentIntentSchema,
   invoiceSchema: () => invoiceSchema,
   patchUserSchema: () => patchUserSchema,
@@ -205,53 +208,87 @@ var automaticChargeSchema = import_zod11.z.object({
   paymentMethodId: import_zod11.z.string().optional()
 }).strict();
 
+// src/dto/invitation.ts
+var import_zod15 = require("zod");
+
 // src/enum/invitation-duration.enum.ts
-var InvitationDurationEnum = /* @__PURE__ */ ((InvitationDurationEnum2) => {
-  InvitationDurationEnum2[InvitationDurationEnum2["ONE_HOUR"] = 0] = "ONE_HOUR";
-  InvitationDurationEnum2[InvitationDurationEnum2["TWO_HOURS"] = 1] = "TWO_HOURS";
-  InvitationDurationEnum2[InvitationDurationEnum2["FOUR_HOURS"] = 2] = "FOUR_HOURS";
-  InvitationDurationEnum2[InvitationDurationEnum2["SIX_HOURS"] = 3] = "SIX_HOURS";
-  InvitationDurationEnum2[InvitationDurationEnum2["TWELVE_HOURS"] = 4] = "TWELVE_HOURS";
-  InvitationDurationEnum2[InvitationDurationEnum2["ONE_DAY"] = 5] = "ONE_DAY";
-  InvitationDurationEnum2[InvitationDurationEnum2["TWO_DAYS"] = 6] = "TWO_DAYS";
-  InvitationDurationEnum2[InvitationDurationEnum2["THREE_DAYS"] = 7] = "THREE_DAYS";
-  InvitationDurationEnum2[InvitationDurationEnum2["ONE_WEEK"] = 8] = "ONE_WEEK";
-  InvitationDurationEnum2[InvitationDurationEnum2["TWO_WEEKS"] = 9] = "TWO_WEEKS";
-  InvitationDurationEnum2[InvitationDurationEnum2["ONE_MONTH"] = 10] = "ONE_MONTH";
-  InvitationDurationEnum2[InvitationDurationEnum2["THREE_MONTHS"] = 11] = "THREE_MONTHS";
-  return InvitationDurationEnum2;
+var import_zod12 = __toESM(require("zod"));
+var InvitationDurationEnum = /* @__PURE__ */ ((InvitationDurationEnum3) => {
+  InvitationDurationEnum3[InvitationDurationEnum3["ONE_HOUR"] = 0] = "ONE_HOUR";
+  InvitationDurationEnum3[InvitationDurationEnum3["TWO_HOURS"] = 1] = "TWO_HOURS";
+  InvitationDurationEnum3[InvitationDurationEnum3["FOUR_HOURS"] = 2] = "FOUR_HOURS";
+  InvitationDurationEnum3[InvitationDurationEnum3["SIX_HOURS"] = 3] = "SIX_HOURS";
+  InvitationDurationEnum3[InvitationDurationEnum3["TWELVE_HOURS"] = 4] = "TWELVE_HOURS";
+  InvitationDurationEnum3[InvitationDurationEnum3["ONE_DAY"] = 5] = "ONE_DAY";
+  InvitationDurationEnum3[InvitationDurationEnum3["TWO_DAYS"] = 6] = "TWO_DAYS";
+  InvitationDurationEnum3[InvitationDurationEnum3["THREE_DAYS"] = 7] = "THREE_DAYS";
+  InvitationDurationEnum3[InvitationDurationEnum3["ONE_WEEK"] = 8] = "ONE_WEEK";
+  InvitationDurationEnum3[InvitationDurationEnum3["TWO_WEEKS"] = 9] = "TWO_WEEKS";
+  InvitationDurationEnum3[InvitationDurationEnum3["ONE_MONTH"] = 10] = "ONE_MONTH";
+  InvitationDurationEnum3[InvitationDurationEnum3["THREE_MONTHS"] = 11] = "THREE_MONTHS";
+  return InvitationDurationEnum3;
 })(InvitationDurationEnum || {});
+var invitationDurationEnumSchema = import_zod12.default.enum([
+  0 /* ONE_HOUR */.toString(),
+  1 /* TWO_HOURS */.toString(),
+  2 /* FOUR_HOURS */.toString(),
+  3 /* SIX_HOURS */.toString(),
+  4 /* TWELVE_HOURS */.toString(),
+  5 /* ONE_DAY */.toString(),
+  6 /* TWO_DAYS */.toString(),
+  7 /* THREE_DAYS */.toString(),
+  8 /* ONE_WEEK */.toString(),
+  9 /* TWO_WEEKS */.toString(),
+  10 /* ONE_MONTH */.toString(),
+  11 /* THREE_MONTHS */.toString()
+]);
 
 // src/enum/invitation-type.enum.ts
-var InvitationTypeEnum = /* @__PURE__ */ ((InvitationTypeEnum2) => {
-  InvitationTypeEnum2["QR"] = "qr";
-  InvitationTypeEnum2["PIN"] = "pin";
-  return InvitationTypeEnum2;
+var import_zod13 = require("zod");
+var InvitationTypeEnum = /* @__PURE__ */ ((InvitationTypeEnum3) => {
+  InvitationTypeEnum3["QR"] = "qr";
+  InvitationTypeEnum3["PIN"] = "pin";
+  return InvitationTypeEnum3;
 })(InvitationTypeEnum || {});
+var invitationTypeEnumSchema = import_zod13.z.enum([
+  "qr" /* QR */,
+  "pin" /* PIN */
+]);
 
 // src/dto/basic-user-info.ts
-var import_zod12 = require("zod");
-var BasicUserTypeEnum = /* @__PURE__ */ ((BasicUserTypeEnum2) => {
-  BasicUserTypeEnum2["REGISTERED_USER"] = "registeredUser";
-  BasicUserTypeEnum2["GUEST_USER"] = "guestUser";
-  return BasicUserTypeEnum2;
+var import_zod14 = require("zod");
+var BasicUserTypeEnum = /* @__PURE__ */ ((BasicUserTypeEnum3) => {
+  BasicUserTypeEnum3["REGISTERED_USER"] = "registeredUser";
+  BasicUserTypeEnum3["GUEST_USER"] = "guestUser";
+  return BasicUserTypeEnum3;
 })(BasicUserTypeEnum || {});
-var basicUserTypeEnumSchema = import_zod12.z.enum(["registeredUser", "guestUser"]);
-var BasicUserInfoSchema = import_zod12.z.object({
-  id: import_zod12.z.string().uuid(),
-  name: import_zod12.z.string(),
-  avatarUrl: import_zod12.z.string().url(),
+var basicUserTypeEnumSchema = import_zod14.z.enum(["registeredUser", "guestUser"]);
+var BasicUserInfoSchema = import_zod14.z.object({
+  id: import_zod14.z.string().uuid(),
+  name: import_zod14.z.string(),
+  avatarUrl: import_zod14.z.string().url(),
   type: basicUserTypeEnumSchema
 }).strict();
 
+// src/dto/invitation.ts
+var invitationSchema = import_zod15.z.object({
+  _id: import_zod15.z.string().optional(),
+  userId: import_zod15.z.string().optional(),
+  userType: basicUserTypeEnumSchema.optional(),
+  type: invitationTypeEnumSchema,
+  duration: invitationDurationEnumSchema,
+  isoDueDate: import_zod15.z.string(),
+  used: import_zod15.z.boolean().optional()
+});
+
 // src/dto/guest.ts
-var import_zod13 = require("zod");
-var guestSchema = import_zod13.z.object({
-  _id: import_zod13.z.string().optional(),
-  userSub: import_zod13.z.string().uuid(),
-  name: import_zod13.z.string(),
-  avatarUrl: import_zod13.z.string().url(),
-  isoCreatedOn: import_zod13.z.string().datetime()
+var import_zod16 = require("zod");
+var guestSchema = import_zod16.z.object({
+  _id: import_zod16.z.string().optional(),
+  userSub: import_zod16.z.string().uuid(),
+  name: import_zod16.z.string(),
+  avatarUrl: import_zod16.z.string().url(),
+  isoCreatedOn: import_zod16.z.string().datetime()
 });
 
 // src/enum/role.enum.ts
@@ -273,6 +310,9 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   automaticChargeSchema,
   basicUserTypeEnumSchema,
   guestSchema,
+  invitationDurationEnumSchema,
+  invitationSchema,
+  invitationTypeEnumSchema,
   invoicePaymentIntentSchema,
   invoiceSchema,
   patchUserSchema,

@@ -1,6 +1,7 @@
-import { InvitationDurationEnum } from "../enum/invitation-duration.enum";
-import { InvitationTypeEnum } from "../enum/invitation-type.enum";
-import { BasicUserTypeEnum } from "./basic-user-info";
+import { z } from "zod";
+import { InvitationDurationEnum, invitationDurationEnumSchema } from "../enum/invitation-duration.enum";
+import { InvitationTypeEnum, invitationTypeEnumSchema } from "../enum/invitation-type.enum";
+import { BasicUserTypeEnum, basicUserTypeEnumSchema } from "./basic-user-info";
 
 export interface Invitation {
     _id?: string;
@@ -11,3 +12,13 @@ export interface Invitation {
     isoDueDate: string;
     used?: boolean;
 }
+
+export const invitationSchema = z.object({
+    _id: z.string().optional(),
+    userId: z.string().optional(),
+    userType: basicUserTypeEnumSchema.optional(),
+    type: invitationTypeEnumSchema,
+    duration: invitationDurationEnumSchema,
+    isoDueDate: z.string(),
+    used: z.boolean().optional(),
+});

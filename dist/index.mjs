@@ -151,53 +151,87 @@ var automaticChargeSchema = z11.object({
   paymentMethodId: z11.string().optional()
 }).strict();
 
+// src/dto/invitation.ts
+import { z as z15 } from "zod";
+
 // src/enum/invitation-duration.enum.ts
-var InvitationDurationEnum = /* @__PURE__ */ ((InvitationDurationEnum2) => {
-  InvitationDurationEnum2[InvitationDurationEnum2["ONE_HOUR"] = 0] = "ONE_HOUR";
-  InvitationDurationEnum2[InvitationDurationEnum2["TWO_HOURS"] = 1] = "TWO_HOURS";
-  InvitationDurationEnum2[InvitationDurationEnum2["FOUR_HOURS"] = 2] = "FOUR_HOURS";
-  InvitationDurationEnum2[InvitationDurationEnum2["SIX_HOURS"] = 3] = "SIX_HOURS";
-  InvitationDurationEnum2[InvitationDurationEnum2["TWELVE_HOURS"] = 4] = "TWELVE_HOURS";
-  InvitationDurationEnum2[InvitationDurationEnum2["ONE_DAY"] = 5] = "ONE_DAY";
-  InvitationDurationEnum2[InvitationDurationEnum2["TWO_DAYS"] = 6] = "TWO_DAYS";
-  InvitationDurationEnum2[InvitationDurationEnum2["THREE_DAYS"] = 7] = "THREE_DAYS";
-  InvitationDurationEnum2[InvitationDurationEnum2["ONE_WEEK"] = 8] = "ONE_WEEK";
-  InvitationDurationEnum2[InvitationDurationEnum2["TWO_WEEKS"] = 9] = "TWO_WEEKS";
-  InvitationDurationEnum2[InvitationDurationEnum2["ONE_MONTH"] = 10] = "ONE_MONTH";
-  InvitationDurationEnum2[InvitationDurationEnum2["THREE_MONTHS"] = 11] = "THREE_MONTHS";
-  return InvitationDurationEnum2;
+import z12 from "zod";
+var InvitationDurationEnum = /* @__PURE__ */ ((InvitationDurationEnum3) => {
+  InvitationDurationEnum3[InvitationDurationEnum3["ONE_HOUR"] = 0] = "ONE_HOUR";
+  InvitationDurationEnum3[InvitationDurationEnum3["TWO_HOURS"] = 1] = "TWO_HOURS";
+  InvitationDurationEnum3[InvitationDurationEnum3["FOUR_HOURS"] = 2] = "FOUR_HOURS";
+  InvitationDurationEnum3[InvitationDurationEnum3["SIX_HOURS"] = 3] = "SIX_HOURS";
+  InvitationDurationEnum3[InvitationDurationEnum3["TWELVE_HOURS"] = 4] = "TWELVE_HOURS";
+  InvitationDurationEnum3[InvitationDurationEnum3["ONE_DAY"] = 5] = "ONE_DAY";
+  InvitationDurationEnum3[InvitationDurationEnum3["TWO_DAYS"] = 6] = "TWO_DAYS";
+  InvitationDurationEnum3[InvitationDurationEnum3["THREE_DAYS"] = 7] = "THREE_DAYS";
+  InvitationDurationEnum3[InvitationDurationEnum3["ONE_WEEK"] = 8] = "ONE_WEEK";
+  InvitationDurationEnum3[InvitationDurationEnum3["TWO_WEEKS"] = 9] = "TWO_WEEKS";
+  InvitationDurationEnum3[InvitationDurationEnum3["ONE_MONTH"] = 10] = "ONE_MONTH";
+  InvitationDurationEnum3[InvitationDurationEnum3["THREE_MONTHS"] = 11] = "THREE_MONTHS";
+  return InvitationDurationEnum3;
 })(InvitationDurationEnum || {});
+var invitationDurationEnumSchema = z12.enum([
+  0 /* ONE_HOUR */.toString(),
+  1 /* TWO_HOURS */.toString(),
+  2 /* FOUR_HOURS */.toString(),
+  3 /* SIX_HOURS */.toString(),
+  4 /* TWELVE_HOURS */.toString(),
+  5 /* ONE_DAY */.toString(),
+  6 /* TWO_DAYS */.toString(),
+  7 /* THREE_DAYS */.toString(),
+  8 /* ONE_WEEK */.toString(),
+  9 /* TWO_WEEKS */.toString(),
+  10 /* ONE_MONTH */.toString(),
+  11 /* THREE_MONTHS */.toString()
+]);
 
 // src/enum/invitation-type.enum.ts
-var InvitationTypeEnum = /* @__PURE__ */ ((InvitationTypeEnum2) => {
-  InvitationTypeEnum2["QR"] = "qr";
-  InvitationTypeEnum2["PIN"] = "pin";
-  return InvitationTypeEnum2;
+import { z as z13 } from "zod";
+var InvitationTypeEnum = /* @__PURE__ */ ((InvitationTypeEnum3) => {
+  InvitationTypeEnum3["QR"] = "qr";
+  InvitationTypeEnum3["PIN"] = "pin";
+  return InvitationTypeEnum3;
 })(InvitationTypeEnum || {});
+var invitationTypeEnumSchema = z13.enum([
+  "qr" /* QR */,
+  "pin" /* PIN */
+]);
 
 // src/dto/basic-user-info.ts
-import { z as z12 } from "zod";
-var BasicUserTypeEnum = /* @__PURE__ */ ((BasicUserTypeEnum2) => {
-  BasicUserTypeEnum2["REGISTERED_USER"] = "registeredUser";
-  BasicUserTypeEnum2["GUEST_USER"] = "guestUser";
-  return BasicUserTypeEnum2;
+import { z as z14 } from "zod";
+var BasicUserTypeEnum = /* @__PURE__ */ ((BasicUserTypeEnum3) => {
+  BasicUserTypeEnum3["REGISTERED_USER"] = "registeredUser";
+  BasicUserTypeEnum3["GUEST_USER"] = "guestUser";
+  return BasicUserTypeEnum3;
 })(BasicUserTypeEnum || {});
-var basicUserTypeEnumSchema = z12.enum(["registeredUser", "guestUser"]);
-var BasicUserInfoSchema = z12.object({
-  id: z12.string().uuid(),
-  name: z12.string(),
-  avatarUrl: z12.string().url(),
+var basicUserTypeEnumSchema = z14.enum(["registeredUser", "guestUser"]);
+var BasicUserInfoSchema = z14.object({
+  id: z14.string().uuid(),
+  name: z14.string(),
+  avatarUrl: z14.string().url(),
   type: basicUserTypeEnumSchema
 }).strict();
 
+// src/dto/invitation.ts
+var invitationSchema = z15.object({
+  _id: z15.string().optional(),
+  userId: z15.string().optional(),
+  userType: basicUserTypeEnumSchema.optional(),
+  type: invitationTypeEnumSchema,
+  duration: invitationDurationEnumSchema,
+  isoDueDate: z15.string(),
+  used: z15.boolean().optional()
+});
+
 // src/dto/guest.ts
-import { z as z13 } from "zod";
-var guestSchema = z13.object({
-  _id: z13.string().optional(),
-  userSub: z13.string().uuid(),
-  name: z13.string(),
-  avatarUrl: z13.string().url(),
-  isoCreatedOn: z13.string().datetime()
+import { z as z16 } from "zod";
+var guestSchema = z16.object({
+  _id: z16.string().optional(),
+  userSub: z16.string().uuid(),
+  name: z16.string(),
+  avatarUrl: z16.string().url(),
+  isoCreatedOn: z16.string().datetime()
 });
 
 // src/enum/role.enum.ts
@@ -218,6 +252,9 @@ export {
   automaticChargeSchema,
   basicUserTypeEnumSchema,
   guestSchema,
+  invitationDurationEnumSchema,
+  invitationSchema,
+  invitationTypeEnumSchema,
   invoicePaymentIntentSchema,
   invoiceSchema,
   patchUserSchema,

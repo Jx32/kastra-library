@@ -509,11 +509,13 @@ declare const enum InvitationDurationEnum {
     ONE_MONTH = 10,
     THREE_MONTHS = 11
 }
+declare const invitationDurationEnumSchema: z$1.ZodEnum<[string, string, string, string, string, string, string, string, string, string, string, string]>;
 
 declare const enum InvitationTypeEnum {
     QR = "qr",
     PIN = "pin"
 }
+declare const invitationTypeEnumSchema: z.ZodEnum<[InvitationTypeEnum.QR, InvitationTypeEnum.PIN]>;
 
 declare const enum BasicUserTypeEnum {
     REGISTERED_USER = "registeredUser",
@@ -553,6 +555,31 @@ interface Invitation {
     isoDueDate: string;
     used?: boolean;
 }
+declare const invitationSchema: z.ZodObject<{
+    _id: z.ZodOptional<z.ZodString>;
+    userId: z.ZodOptional<z.ZodString>;
+    userType: z.ZodOptional<z.ZodEnum<["registeredUser", "guestUser"]>>;
+    type: z.ZodEnum<[InvitationTypeEnum.QR, InvitationTypeEnum.PIN]>;
+    duration: z.ZodEnum<[string, string, string, string, string, string, string, string, string, string, string, string]>;
+    isoDueDate: z.ZodString;
+    used: z.ZodOptional<z.ZodBoolean>;
+}, "strip", z.ZodTypeAny, {
+    type: InvitationTypeEnum;
+    duration: string;
+    isoDueDate: string;
+    _id?: string | undefined;
+    userId?: string | undefined;
+    userType?: "registeredUser" | "guestUser" | undefined;
+    used?: boolean | undefined;
+}, {
+    type: InvitationTypeEnum;
+    duration: string;
+    isoDueDate: string;
+    _id?: string | undefined;
+    userId?: string | undefined;
+    userType?: "registeredUser" | "guestUser" | undefined;
+    used?: boolean | undefined;
+}>;
 
 interface InvitationUIType {
     type: InvitationTypeEnum;
@@ -601,4 +628,4 @@ interface Value {
     label: string;
 }
 
-export { type AutomaticCharge, type AutomaticChargeSummaryResponse, type AutomaticChargeType, type BasicUserInfo, BasicUserInfoSchema, type BasicUserInfoType, BasicUserTypeEnum, type Guest, type GuestType, type Invitation, InvitationDurationEnum, InvitationTypeEnum, type InvitationUIType, type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type Value, type VideoCallToken, type VideoCallTokenType, automaticChargeSchema, basicUserTypeEnumSchema, guestSchema, invoicePaymentIntentSchema, invoiceSchema, patchUserSchema, paymentMethodSchema, remoteGateLogSchema, remoteGateSchema, residentialSchema, userSchema, userSummarySchema, videoCallTokenSchema };
+export { type AutomaticCharge, type AutomaticChargeSummaryResponse, type AutomaticChargeType, type BasicUserInfo, BasicUserInfoSchema, type BasicUserInfoType, BasicUserTypeEnum, type Guest, type GuestType, type Invitation, InvitationDurationEnum, InvitationTypeEnum, type InvitationUIType, type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type Value, type VideoCallToken, type VideoCallTokenType, automaticChargeSchema, basicUserTypeEnumSchema, guestSchema, invitationDurationEnumSchema, invitationSchema, invitationTypeEnumSchema, invoicePaymentIntentSchema, invoiceSchema, patchUserSchema, paymentMethodSchema, remoteGateLogSchema, remoteGateSchema, residentialSchema, userSchema, userSummarySchema, videoCallTokenSchema };
