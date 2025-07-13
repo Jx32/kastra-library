@@ -21,6 +21,7 @@ export * from "./enum/invitation-duration.enum";
 export * from "./enum/invitation-type.enum";
 export * from "./dto/invitation-ui-type";
 export * from "./dto/invitation-creation-response";
+export * from "./dto/invitation-data";
 
 export * from "./dto/basic-user-info";
 

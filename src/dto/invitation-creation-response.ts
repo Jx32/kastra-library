@@ -1,6 +1,7 @@
-import { InvitationTypeEnum } from "../enum/invitation-type.enum";
+import { Invitation } from "./invitation";
+import { InvitationData } from "./invitation-data";
 
 export interface InvitationCreationResponse {
-    type: InvitationTypeEnum;
-    data: string[];
+    invitation: Invitation;
+    data: InvitationData[];
 }
