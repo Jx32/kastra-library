@@ -5,7 +5,7 @@ export const enum BasicUserTypeEnum {
      GUEST_USER = "guestUser",
 }
 
-export const basicUserTypeEnumSchema = z.enum(["registeredUser", "guestUser"]);
+export const basicUserTypeEnumSchema = z.enum([BasicUserTypeEnum.REGISTERED_USER, BasicUserTypeEnum.GUEST_USER]);
 
 export interface BasicUserInfo {
   id: string;

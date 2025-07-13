@@ -157,33 +157,33 @@ import { z as z15 } from "zod";
 // src/enum/invitation-duration.enum.ts
 import z12 from "zod";
 var InvitationDurationEnum = /* @__PURE__ */ ((InvitationDurationEnum3) => {
-  InvitationDurationEnum3[InvitationDurationEnum3["ONE_HOUR"] = 0] = "ONE_HOUR";
-  InvitationDurationEnum3[InvitationDurationEnum3["TWO_HOURS"] = 1] = "TWO_HOURS";
-  InvitationDurationEnum3[InvitationDurationEnum3["FOUR_HOURS"] = 2] = "FOUR_HOURS";
-  InvitationDurationEnum3[InvitationDurationEnum3["SIX_HOURS"] = 3] = "SIX_HOURS";
-  InvitationDurationEnum3[InvitationDurationEnum3["TWELVE_HOURS"] = 4] = "TWELVE_HOURS";
-  InvitationDurationEnum3[InvitationDurationEnum3["ONE_DAY"] = 5] = "ONE_DAY";
-  InvitationDurationEnum3[InvitationDurationEnum3["TWO_DAYS"] = 6] = "TWO_DAYS";
-  InvitationDurationEnum3[InvitationDurationEnum3["THREE_DAYS"] = 7] = "THREE_DAYS";
-  InvitationDurationEnum3[InvitationDurationEnum3["ONE_WEEK"] = 8] = "ONE_WEEK";
-  InvitationDurationEnum3[InvitationDurationEnum3["TWO_WEEKS"] = 9] = "TWO_WEEKS";
-  InvitationDurationEnum3[InvitationDurationEnum3["ONE_MONTH"] = 10] = "ONE_MONTH";
-  InvitationDurationEnum3[InvitationDurationEnum3["THREE_MONTHS"] = 11] = "THREE_MONTHS";
+  InvitationDurationEnum3["ONE_HOUR"] = "1 hour";
+  InvitationDurationEnum3["TWO_HOURS"] = "2 hours";
+  InvitationDurationEnum3["FOUR_HOURS"] = "4 hours";
+  InvitationDurationEnum3["SIX_HOURS"] = "6 hours";
+  InvitationDurationEnum3["TWELVE_HOURS"] = "12 hours";
+  InvitationDurationEnum3["ONE_DAY"] = "1 day";
+  InvitationDurationEnum3["TWO_DAYS"] = "2 days";
+  InvitationDurationEnum3["THREE_DAYS"] = "3 days";
+  InvitationDurationEnum3["ONE_WEEK"] = "1 week";
+  InvitationDurationEnum3["TWO_WEEKS"] = "2 weeks";
+  InvitationDurationEnum3["ONE_MONTH"] = "1 month";
+  InvitationDurationEnum3["THREE_MONTHS"] = "3 months";
   return InvitationDurationEnum3;
 })(InvitationDurationEnum || {});
 var invitationDurationEnumSchema = z12.enum([
-  0 /* ONE_HOUR */.toString(),
-  1 /* TWO_HOURS */.toString(),
-  2 /* FOUR_HOURS */.toString(),
-  3 /* SIX_HOURS */.toString(),
-  4 /* TWELVE_HOURS */.toString(),
-  5 /* ONE_DAY */.toString(),
-  6 /* TWO_DAYS */.toString(),
-  7 /* THREE_DAYS */.toString(),
-  8 /* ONE_WEEK */.toString(),
-  9 /* TWO_WEEKS */.toString(),
-  10 /* ONE_MONTH */.toString(),
-  11 /* THREE_MONTHS */.toString()
+  "1 hour" /* ONE_HOUR */,
+  "2 hours" /* TWO_HOURS */,
+  "4 hours" /* FOUR_HOURS */,
+  "6 hours" /* SIX_HOURS */,
+  "12 hours" /* TWELVE_HOURS */,
+  "1 day" /* ONE_DAY */,
+  "2 days" /* TWO_DAYS */,
+  "3 days" /* THREE_DAYS */,
+  "1 week" /* ONE_WEEK */,
+  "2 weeks" /* TWO_WEEKS */,
+  "1 month" /* ONE_MONTH */,
+  "3 months" /* THREE_MONTHS */
 ]);
 
 // src/enum/invitation-type.enum.ts
@@ -205,7 +205,7 @@ var BasicUserTypeEnum = /* @__PURE__ */ ((BasicUserTypeEnum3) => {
   BasicUserTypeEnum3["GUEST_USER"] = "guestUser";
   return BasicUserTypeEnum3;
 })(BasicUserTypeEnum || {});
-var basicUserTypeEnumSchema = z14.enum(["registeredUser", "guestUser"]);
+var basicUserTypeEnumSchema = z14.enum(["registeredUser" /* REGISTERED_USER */, "guestUser" /* GUEST_USER */]);
 var BasicUserInfoSchema = z14.object({
   id: z14.string().uuid(),
   name: z14.string(),
@@ -219,10 +219,21 @@ var invitationSchema = z15.object({
   userId: z15.string().optional(),
   userType: basicUserTypeEnumSchema.optional(),
   type: invitationTypeEnumSchema,
-  duration: invitationDurationEnumSchema.optional(),
+  duration: invitationDurationEnumSchema,
   isoDueDate: z15.string(),
   quantity: z15.number().int().min(1).max(20)
 });
+var invitationSchemaToInterface = (data) => {
+  return {
+    _id: data._id,
+    userId: data.userId,
+    userType: data.userType,
+    type: data.type,
+    duration: data.duration,
+    isoDueDate: data.isoDueDate,
+    quantity: data.quantity
+  };
+};
 
 // src/dto/guest.ts
 import { z as z16 } from "zod";
@@ -254,6 +265,7 @@ export {
   guestSchema,
   invitationDurationEnumSchema,
   invitationSchema,
+  invitationSchemaToInterface,
   invitationTypeEnumSchema,
   invoicePaymentIntentSchema,
   invoiceSchema,
