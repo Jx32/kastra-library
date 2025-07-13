@@ -220,8 +220,7 @@ var invitationSchema = z15.object({
   userType: basicUserTypeEnumSchema.optional(),
   type: invitationTypeEnumSchema,
   duration: invitationDurationEnumSchema,
-  isoDueDate: z15.string(),
-  used: z15.boolean().optional()
+  isoDueDate: z15.string()
 });
 
 // src/dto/guest.ts

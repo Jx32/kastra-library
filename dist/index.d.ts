@@ -553,7 +553,6 @@ interface Invitation {
     type: InvitationTypeEnum;
     duration: InvitationDurationEnum;
     isoDueDate: string;
-    used?: boolean;
 }
 declare const invitationSchema: z.ZodObject<{
     _id: z.ZodOptional<z.ZodString>;
@@ -562,7 +561,6 @@ declare const invitationSchema: z.ZodObject<{
     type: z.ZodEnum<[InvitationTypeEnum.QR, InvitationTypeEnum.PIN]>;
     duration: z.ZodEnum<[string, string, string, string, string, string, string, string, string, string, string, string]>;
     isoDueDate: z.ZodString;
-    used: z.ZodOptional<z.ZodBoolean>;
 }, "strip", z.ZodTypeAny, {
     type: InvitationTypeEnum;
     duration: string;
@@ -570,7 +568,6 @@ declare const invitationSchema: z.ZodObject<{
     _id?: string | undefined;
     userId?: string | undefined;
     userType?: "registeredUser" | "guestUser" | undefined;
-    used?: boolean | undefined;
 }, {
     type: InvitationTypeEnum;
     duration: string;
@@ -578,7 +575,6 @@ declare const invitationSchema: z.ZodObject<{
     _id?: string | undefined;
     userId?: string | undefined;
     userType?: "registeredUser" | "guestUser" | undefined;
-    used?: boolean | undefined;
 }>;
 
 interface InvitationUIType {

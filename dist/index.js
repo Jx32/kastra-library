@@ -277,8 +277,7 @@ var invitationSchema = import_zod15.z.object({
   userType: basicUserTypeEnumSchema.optional(),
   type: invitationTypeEnumSchema,
   duration: invitationDurationEnumSchema,
-  isoDueDate: import_zod15.z.string(),
-  used: import_zod15.z.boolean().optional()
+  isoDueDate: import_zod15.z.string()
 });
 
 // src/dto/guest.ts
