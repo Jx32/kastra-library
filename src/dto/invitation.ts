@@ -10,7 +10,8 @@ export interface Invitation {
     type: InvitationTypeEnum;
     duration: InvitationDurationEnum;
     isoDueDate: string;
-    quantity: number;
+    used?: boolean; // Indicates if the invitation has been used
+    oneTimeUse: boolean; // Indicates if the invitation can only be used once
 }
 
 export const invitationSchema = z.object({
