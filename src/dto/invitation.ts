@@ -21,7 +21,8 @@ export const invitationSchema = z.object({
     type: invitationTypeEnumSchema,
     duration: invitationDurationEnumSchema,
     isoDueDate: z.string(),
-    quantity: z.number().int().min(1).max(20),
+    used: z.boolean().optional(),
+    oneTimeUse: z.boolean(),
 });
 
 export type InvitationType = z.infer<typeof invitationSchema>;
@@ -34,6 +35,7 @@ export const invitationSchemaToInterface = (data: InvitationType): Invitation =>
         type: data.type,
         duration: data.duration,
         isoDueDate: data.isoDueDate,
-        quantity: data.quantity,
+        used: data.used,
+        oneTimeUse: data.oneTimeUse,
     };
 }

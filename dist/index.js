@@ -279,7 +279,8 @@ var invitationSchema = import_zod15.z.object({
   type: invitationTypeEnumSchema,
   duration: invitationDurationEnumSchema,
   isoDueDate: import_zod15.z.string(),
-  quantity: import_zod15.z.number().int().min(1).max(20)
+  used: import_zod15.z.boolean().optional(),
+  oneTimeUse: import_zod15.z.boolean()
 });
 var invitationSchemaToInterface = (data) => {
   return {
@@ -289,7 +290,8 @@ var invitationSchemaToInterface = (data) => {
     type: data.type,
     duration: data.duration,
     isoDueDate: data.isoDueDate,
-    quantity: data.quantity
+    used: data.used,
+    oneTimeUse: data.oneTimeUse
   };
 };
 

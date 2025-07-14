@@ -221,7 +221,8 @@ var invitationSchema = z15.object({
   type: invitationTypeEnumSchema,
   duration: invitationDurationEnumSchema,
   isoDueDate: z15.string(),
-  quantity: z15.number().int().min(1).max(20)
+  used: z15.boolean().optional(),
+  oneTimeUse: z15.boolean()
 });
 var invitationSchemaToInterface = (data) => {
   return {
@@ -231,7 +232,8 @@ var invitationSchemaToInterface = (data) => {
     type: data.type,
     duration: data.duration,
     isoDueDate: data.isoDueDate,
-    quantity: data.quantity
+    used: data.used,
+    oneTimeUse: data.oneTimeUse
   };
 };
 
