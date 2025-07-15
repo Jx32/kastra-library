@@ -311,6 +311,7 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   UserRoleEnum2["HOUSE_RELATED"] = "houseRelated";
   UserRoleEnum2["HELP_DESK"] = "helpDesk";
   UserRoleEnum2["ADMIN"] = "admin";
+  UserRoleEnum2["TENANT"] = "tenant";
   return UserRoleEnum2;
 })(UserRoleEnum || {});
 // Annotate the CommonJS export names for ESM import in node:
