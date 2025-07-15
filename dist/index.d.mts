@@ -12,7 +12,7 @@ interface User {
     phone_number_verified?: boolean;
     firstLogin: boolean;
     houseNumber: string;
-    role: "houseOwner" | "houseRelated" | "helpDesk" | "admin";
+    role: "houseOwner" | "houseRelated" | "helpDesk" | "admin" | "tenant";
     street: string;
     residentialId: string;
     houseOwnerSub?: string;
