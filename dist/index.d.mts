@@ -601,6 +601,7 @@ interface InvitationData {
 
 interface InvitationCreationResponse {
     _id: string;
+    indexedId: string;
     invitation: Invitation;
     data: InvitationData;
 }
