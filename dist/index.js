@@ -47,6 +47,8 @@ __export(src_exports, {
   invoiceSchema: () => invoiceSchema,
   patchUserSchema: () => patchUserSchema,
   paymentMethodSchema: () => paymentMethodSchema,
+  projectSchema: () => projectSchema,
+  projectUpdateSchema: () => projectUpdateSchema,
   remoteGateLogSchema: () => remoteGateLogSchema,
   remoteGateSchema: () => remoteGateSchema,
   residentialSchema: () => residentialSchema,
@@ -314,6 +316,24 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   UserRoleEnum2["TENANT"] = "tenant";
   return UserRoleEnum2;
 })(UserRoleEnum || {});
+
+// src/dto/project.ts
+var import_zod17 = require("zod");
+var projectUpdateSchema = import_zod17.z.object({
+  updateText: import_zod17.z.string(),
+  isoCreatedAt: import_zod17.z.string()
+});
+var projectSchema = import_zod17.z.object({
+  _id: import_zod17.z.string().optional(),
+  title: import_zod17.z.string(),
+  description: import_zod17.z.string(),
+  progress: import_zod17.z.number().min(0).max(100),
+  isoCreatedAt: import_zod17.z.string(),
+  updatedAt: import_zod17.z.string().optional(),
+  lastUpdateText: import_zod17.z.string().optional(),
+  isFinished: import_zod17.z.boolean(),
+  updates: import_zod17.z.array(projectUpdateSchema).optional()
+});
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   BasicUserInfoSchema,
@@ -333,6 +353,8 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   invoiceSchema,
   patchUserSchema,
   paymentMethodSchema,
+  projectSchema,
+  projectUpdateSchema,
   remoteGateLogSchema,
   remoteGateSchema,
   residentialSchema,

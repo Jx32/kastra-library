@@ -256,6 +256,24 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
   UserRoleEnum2["TENANT"] = "tenant";
   return UserRoleEnum2;
 })(UserRoleEnum || {});
+
+// src/dto/project.ts
+import { z as z17 } from "zod";
+var projectUpdateSchema = z17.object({
+  updateText: z17.string(),
+  isoCreatedAt: z17.string()
+});
+var projectSchema = z17.object({
+  _id: z17.string().optional(),
+  title: z17.string(),
+  description: z17.string(),
+  progress: z17.number().min(0).max(100),
+  isoCreatedAt: z17.string(),
+  updatedAt: z17.string().optional(),
+  lastUpdateText: z17.string().optional(),
+  isFinished: z17.boolean(),
+  updates: z17.array(projectUpdateSchema).optional()
+});
 export {
   BasicUserInfoSchema,
   BasicUserTypeEnum,
@@ -274,6 +292,8 @@ export {
   invoiceSchema,
   patchUserSchema,
   paymentMethodSchema,
+  projectSchema,
+  projectUpdateSchema,
   remoteGateLogSchema,
   remoteGateSchema,
   residentialSchema,

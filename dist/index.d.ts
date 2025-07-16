@@ -662,5 +662,63 @@ interface Project {
     isFinished: boolean;
     updates?: ProjectUpdate[];
 }
+declare const projectUpdateSchema: z.ZodObject<{
+    updateText: z.ZodString;
+    isoCreatedAt: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    updateText: string;
+    isoCreatedAt: string;
+}, {
+    updateText: string;
+    isoCreatedAt: string;
+}>;
+declare const projectSchema: z.ZodObject<{
+    _id: z.ZodOptional<z.ZodString>;
+    title: z.ZodString;
+    description: z.ZodString;
+    progress: z.ZodNumber;
+    isoCreatedAt: z.ZodString;
+    updatedAt: z.ZodOptional<z.ZodString>;
+    lastUpdateText: z.ZodOptional<z.ZodString>;
+    isFinished: z.ZodBoolean;
+    updates: z.ZodOptional<z.ZodArray<z.ZodObject<{
+        updateText: z.ZodString;
+        isoCreatedAt: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        updateText: string;
+        isoCreatedAt: string;
+    }, {
+        updateText: string;
+        isoCreatedAt: string;
+    }>, "many">>;
+}, "strip", z.ZodTypeAny, {
+    description: string;
+    isoCreatedAt: string;
+    title: string;
+    progress: number;
+    isFinished: boolean;
+    _id?: string | undefined;
+    updatedAt?: string | undefined;
+    lastUpdateText?: string | undefined;
+    updates?: {
+        updateText: string;
+        isoCreatedAt: string;
+    }[] | undefined;
+}, {
+    description: string;
+    isoCreatedAt: string;
+    title: string;
+    progress: number;
+    isFinished: boolean;
+    _id?: string | undefined;
+    updatedAt?: string | undefined;
+    lastUpdateText?: string | undefined;
+    updates?: {
+        updateText: string;
+        isoCreatedAt: string;
+    }[] | undefined;
+}>;
+type ProjectUpdateType = z.infer<typeof projectUpdateSchema>;
+type ProjectType = z.infer<typeof projectSchema>;
 
-export { type AutomaticCharge, type AutomaticChargeSummaryResponse, type AutomaticChargeType, type BasicUserInfo, BasicUserInfoSchema, type BasicUserInfoType, BasicUserTypeEnum, type Guest, type GuestType, type Invitation, type InvitationCreationResponse, type InvitationData, InvitationDurationEnum, type InvitationType, InvitationTypeEnum, type InvitationUIType, type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type Project, type ProjectUpdate, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type Value, type VideoCallToken, type VideoCallTokenType, automaticChargeSchema, basicUserTypeEnumSchema, guestSchema, invitationDurationEnumSchema, invitationSchema, invitationSchemaToInterface, invitationTypeEnumSchema, invoicePaymentIntentSchema, invoiceSchema, patchUserSchema, paymentMethodSchema, remoteGateLogSchema, remoteGateSchema, residentialSchema, userSchema, userSummarySchema, videoCallTokenSchema };
+export { type AutomaticCharge, type AutomaticChargeSummaryResponse, type AutomaticChargeType, type BasicUserInfo, BasicUserInfoSchema, type BasicUserInfoType, BasicUserTypeEnum, type Guest, type GuestType, type Invitation, type InvitationCreationResponse, type InvitationData, InvitationDurationEnum, type InvitationType, InvitationTypeEnum, type InvitationUIType, type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type Project, type ProjectType, type ProjectUpdate, type ProjectUpdateType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type Value, type VideoCallToken, type VideoCallTokenType, automaticChargeSchema, basicUserTypeEnumSchema, guestSchema, invitationDurationEnumSchema, invitationSchema, invitationSchemaToInterface, invitationTypeEnumSchema, invoicePaymentIntentSchema, invoiceSchema, patchUserSchema, paymentMethodSchema, projectSchema, projectUpdateSchema, remoteGateLogSchema, remoteGateSchema, residentialSchema, userSchema, userSummarySchema, videoCallTokenSchema };
