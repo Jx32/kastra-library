@@ -30,3 +30,5 @@ export * from "./dto/guest";
 export * from "./enum/role.enum";
 
 export * from "./dto/value";
+
+export * from "./dto/project";
