@@ -7,6 +7,7 @@ export interface ProjectUpdate {
 
 export interface Project {
     _id?: string;
+    residentialId: string;
     title: string;
     description: string;
     progress: number;
@@ -24,6 +25,7 @@ export const projectUpdateSchema = z.object({
 
 export const projectSchema = z.object({
     _id: z.string().optional(),
+    residentialId: z.string(),
     title: z.string(),
     description: z.string(),
     progress: z.number().min(0).max(100),

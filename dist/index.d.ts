@@ -653,6 +653,7 @@ interface ProjectUpdate {
 }
 interface Project {
     _id?: string;
+    residentialId: string;
     title: string;
     description: string;
     progress: number;
@@ -674,6 +675,7 @@ declare const projectUpdateSchema: z.ZodObject<{
 }>;
 declare const projectSchema: z.ZodObject<{
     _id: z.ZodOptional<z.ZodString>;
+    residentialId: z.ZodString;
     title: z.ZodString;
     description: z.ZodString;
     progress: z.ZodNumber;
@@ -692,6 +694,7 @@ declare const projectSchema: z.ZodObject<{
         isoCreatedAt: string;
     }>, "many">>;
 }, "strip", z.ZodTypeAny, {
+    residentialId: string;
     description: string;
     isoCreatedAt: string;
     title: string;
@@ -705,6 +708,7 @@ declare const projectSchema: z.ZodObject<{
         isoCreatedAt: string;
     }[] | undefined;
 }, {
+    residentialId: string;
     description: string;
     isoCreatedAt: string;
     title: string;
