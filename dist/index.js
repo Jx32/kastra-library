@@ -328,7 +328,7 @@ var projectSchema = import_zod17.z.object({
   residentialId: import_zod17.z.string(),
   title: import_zod17.z.string(),
   description: import_zod17.z.string(),
-  progress: import_zod17.z.number().min(0).max(100),
+  progress: import_zod17.z.number().min(0).max(1),
   isoCreatedAt: import_zod17.z.string(),
   updatedAt: import_zod17.z.string().optional(),
   lastUpdateText: import_zod17.z.string().optional(),

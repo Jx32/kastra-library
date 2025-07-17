@@ -268,7 +268,7 @@ var projectSchema = z17.object({
   residentialId: z17.string(),
   title: z17.string(),
   description: z17.string(),
-  progress: z17.number().min(0).max(100),
+  progress: z17.number().min(0).max(1),
   isoCreatedAt: z17.string(),
   updatedAt: z17.string().optional(),
   lastUpdateText: z17.string().optional(),

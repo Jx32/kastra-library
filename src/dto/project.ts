@@ -28,7 +28,7 @@ export const projectSchema = z.object({
     residentialId: z.string(),
     title: z.string(),
     description: z.string(),
-    progress: z.number().min(0).max(100),
+    progress: z.number().min(0).max(1),
     isoCreatedAt: z.string(),
     updatedAt: z.string().optional(),
     lastUpdateText: z.string().optional(),
