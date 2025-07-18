@@ -15,6 +15,7 @@ export interface Project {
     updatedAt?: string;
     lastUpdateText?: string;
     isFinished: boolean;
+    isArchived?: boolean;
     updates?: ProjectUpdate[];
 }
 
@@ -33,6 +34,7 @@ export const projectSchema = z.object({
     updatedAt: z.string().optional(),
     lastUpdateText: z.string().optional(),
     isFinished: z.boolean(),
+    isArchived: z.boolean().optional(),
     updates: z.array(projectUpdateSchema).optional(),
 });
 

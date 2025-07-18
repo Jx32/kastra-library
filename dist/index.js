@@ -333,6 +333,7 @@ var projectSchema = import_zod17.z.object({
   updatedAt: import_zod17.z.string().optional(),
   lastUpdateText: import_zod17.z.string().optional(),
   isFinished: import_zod17.z.boolean(),
+  isArchived: import_zod17.z.boolean().optional(),
   updates: import_zod17.z.array(projectUpdateSchema).optional()
 });
 // Annotate the CommonJS export names for ESM import in node:

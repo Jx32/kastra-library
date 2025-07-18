@@ -273,6 +273,7 @@ var projectSchema = z17.object({
   updatedAt: z17.string().optional(),
   lastUpdateText: z17.string().optional(),
   isFinished: z17.boolean(),
+  isArchived: z17.boolean().optional(),
   updates: z17.array(projectUpdateSchema).optional()
 });
 export {

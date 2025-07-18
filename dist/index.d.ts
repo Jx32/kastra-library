@@ -661,6 +661,7 @@ interface Project {
     updatedAt?: string;
     lastUpdateText?: string;
     isFinished: boolean;
+    isArchived?: boolean;
     updates?: ProjectUpdate[];
 }
 declare const projectUpdateSchema: z.ZodObject<{
@@ -683,6 +684,7 @@ declare const projectSchema: z.ZodObject<{
     updatedAt: z.ZodOptional<z.ZodString>;
     lastUpdateText: z.ZodOptional<z.ZodString>;
     isFinished: z.ZodBoolean;
+    isArchived: z.ZodOptional<z.ZodBoolean>;
     updates: z.ZodOptional<z.ZodArray<z.ZodObject<{
         updateText: z.ZodString;
         isoCreatedAt: z.ZodString;
@@ -703,6 +705,7 @@ declare const projectSchema: z.ZodObject<{
     _id?: string | undefined;
     updatedAt?: string | undefined;
     lastUpdateText?: string | undefined;
+    isArchived?: boolean | undefined;
     updates?: {
         updateText: string;
         isoCreatedAt: string;
@@ -717,6 +720,7 @@ declare const projectSchema: z.ZodObject<{
     _id?: string | undefined;
     updatedAt?: string | undefined;
     lastUpdateText?: string | undefined;
+    isArchived?: boolean | undefined;
     updates?: {
         updateText: string;
         isoCreatedAt: string;
