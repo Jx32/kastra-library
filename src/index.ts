@@ -2,6 +2,7 @@ export * from "./constants/constants";
 
 export * from "./dto/user.interface";
 export * from "./dto/patch-user.interface"
+export * from "./dto/reset-password";
 export * from "./dto/register-user-response.interface";
 export * from "./dto/residential.interface";
 export * from "./dto/remote-gate-log.interface";
