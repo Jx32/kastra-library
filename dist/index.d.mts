@@ -144,7 +144,7 @@ type ResetPasswordType = z$1.infer<typeof resetPasswordSchema>;
 
 interface ForgotPasswordResponse {
     destination: string;
-    deliveryMethod: "EMAIL" | "SMS";
+    deliveryMethod: string;
 }
 
 interface RegisterUserResponse {
