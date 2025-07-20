@@ -51,6 +51,7 @@ __export(src_exports, {
   projectUpdateSchema: () => projectUpdateSchema,
   remoteGateLogSchema: () => remoteGateLogSchema,
   remoteGateSchema: () => remoteGateSchema,
+  resetPasswordSchema: () => resetPasswordSchema,
   residentialSchema: () => residentialSchema,
   userSchema: () => userSchema,
   userSummarySchema: () => userSummarySchema,
@@ -100,122 +101,130 @@ var patchUserSchema = import_zod2.z.object({
   // Optional field for avatar URL
 }).strict();
 
-// src/dto/residential.interface.ts
+// src/dto/reset-password.ts
 var import_zod3 = __toESM(require("zod"));
-var residentialSchema = import_zod3.default.object({
-  _id: import_zod3.default.string().optional(),
-  name: import_zod3.default.string(),
-  address: import_zod3.default.string(),
-  city: import_zod3.default.string(),
-  state: import_zod3.default.string(),
-  country: import_zod3.default.string(),
-  postalCode: import_zod3.default.string(),
-  contactNumber: import_zod3.default.string().optional(),
-  status: import_zod3.default.enum(["active", "inactive"]),
-  topicName: import_zod3.default.string(),
-  monthlyPaymentStripePriceId: import_zod3.default.string().optional(),
-  monthlyPaymentAmount: import_zod3.default.string()
+var resetPasswordSchema = import_zod3.default.object({
+  accessToken: import_zod3.default.string(),
+  previousPassword: import_zod3.default.string(),
+  newPassword: import_zod3.default.string().min(8, "New password must be at least 8 characters long").regex(/[0-9]/, "New password must contain at least one number").regex(/[!@#$%^&*(),.?":{}|<>]/, "New password must contain at least one special character").regex(/[A-Z]/, "New password must contain at least one uppercase letter").regex(/[a-z]/, "New password must contain at least one lowercase letter")
+});
+
+// src/dto/residential.interface.ts
+var import_zod4 = __toESM(require("zod"));
+var residentialSchema = import_zod4.default.object({
+  _id: import_zod4.default.string().optional(),
+  name: import_zod4.default.string(),
+  address: import_zod4.default.string(),
+  city: import_zod4.default.string(),
+  state: import_zod4.default.string(),
+  country: import_zod4.default.string(),
+  postalCode: import_zod4.default.string(),
+  contactNumber: import_zod4.default.string().optional(),
+  status: import_zod4.default.enum(["active", "inactive"]),
+  topicName: import_zod4.default.string(),
+  monthlyPaymentStripePriceId: import_zod4.default.string().optional(),
+  monthlyPaymentAmount: import_zod4.default.string()
 }).strict();
 
 // src/dto/remote-gate-log.interface.ts
-var import_zod4 = __toESM(require("zod"));
-var remoteGateLogSchema = import_zod4.default.object({
-  remoteGateId: import_zod4.default.string().optional(),
-  source: import_zod4.default.enum(["app", "totem"]),
-  action: import_zod4.default.enum(["open", "enable", "disable", "create", "delete", "update"]),
-  timestamp: import_zod4.default.string().refine((val) => !isNaN(Date.parse(val)), {
+var import_zod5 = __toESM(require("zod"));
+var remoteGateLogSchema = import_zod5.default.object({
+  remoteGateId: import_zod5.default.string().optional(),
+  source: import_zod5.default.enum(["app", "totem"]),
+  action: import_zod5.default.enum(["open", "enable", "disable", "create", "delete", "update"]),
+  timestamp: import_zod5.default.string().refine((val) => !isNaN(Date.parse(val)), {
     message: "Invalid timestamp format, must be ISO 8601"
   }),
-  userSub: import_zod4.default.string().uuid(),
-  reason: import_zod4.default.string().optional(),
-  additionalInfo: import_zod4.default.any().optional()
+  userSub: import_zod5.default.string().uuid(),
+  reason: import_zod5.default.string().optional(),
+  additionalInfo: import_zod5.default.any().optional()
 }).strict();
 
 // src/dto/remote-gate.interface.ts
-var import_zod5 = require("zod");
-var remoteGateSchema = import_zod5.z.object({
-  _id: import_zod5.z.string().optional(),
-  residentialId: import_zod5.z.string(),
-  name: import_zod5.z.string(),
-  type: import_zod5.z.enum(["entrance", "exit"]),
-  thingName: import_zod5.z.string(),
-  enabled: import_zod5.z.boolean().optional()
+var import_zod6 = require("zod");
+var remoteGateSchema = import_zod6.z.object({
+  _id: import_zod6.z.string().optional(),
+  residentialId: import_zod6.z.string(),
+  name: import_zod6.z.string(),
+  type: import_zod6.z.enum(["entrance", "exit"]),
+  thingName: import_zod6.z.string(),
+  enabled: import_zod6.z.boolean().optional()
   // Optional field to indicate if the gate is enabled
 }).strict();
 
 // src/dto/user-summary.interface.ts
-var import_zod6 = __toESM(require("zod"));
-var userSummarySchema = import_zod6.default.object({
-  remoteGates: import_zod6.default.array(remoteGateSchema),
-  currentPinAccess: import_zod6.default.string().length(4, "Current PIN must be 4 digits length"),
-  topicName: import_zod6.default.string().min(1, "Topic name cannot be empty")
+var import_zod7 = __toESM(require("zod"));
+var userSummarySchema = import_zod7.default.object({
+  remoteGates: import_zod7.default.array(remoteGateSchema),
+  currentPinAccess: import_zod7.default.string().length(4, "Current PIN must be 4 digits length"),
+  topicName: import_zod7.default.string().min(1, "Topic name cannot be empty")
 }).strict();
 
 // src/dto/invoice.interface.ts
-var import_zod7 = require("zod");
-var invoiceSchema = import_zod7.z.object({
-  id: import_zod7.z.string(),
-  status: import_zod7.z.enum(["draft", "open", "paid", "uncollectible", "void"]),
-  created: import_zod7.z.number(),
-  total: import_zod7.z.number(),
-  ammount_remaining: import_zod7.z.number(),
-  customerId: import_zod7.z.string(),
-  description: import_zod7.z.string(),
-  invoice_pdf: import_zod7.z.string().url().optional(),
-  collection_method: import_zod7.z.enum(["charge_automatically", "send_invoice"]),
-  due_date: import_zod7.z.number().optional(),
+var import_zod8 = require("zod");
+var invoiceSchema = import_zod8.z.object({
+  id: import_zod8.z.string(),
+  status: import_zod8.z.enum(["draft", "open", "paid", "uncollectible", "void"]),
+  created: import_zod8.z.number(),
+  total: import_zod8.z.number(),
+  ammount_remaining: import_zod8.z.number(),
+  customerId: import_zod8.z.string(),
+  description: import_zod8.z.string(),
+  invoice_pdf: import_zod8.z.string().url().optional(),
+  collection_method: import_zod8.z.enum(["charge_automatically", "send_invoice"]),
+  due_date: import_zod8.z.number().optional(),
   // Optional, only if collection_method is "send_invoice"
-  days_until_due: import_zod7.z.number().optional(),
+  days_until_due: import_zod8.z.number().optional(),
   // Optional, only if collection_method is "send_invoice"
-  monthName: import_zod7.z.string(),
-  year: import_zod7.z.number().min(2e3).max(2100),
+  monthName: import_zod8.z.string(),
+  year: import_zod8.z.number().min(2e3).max(2100),
   // Year must be a valid year
-  paid_amount: import_zod7.z.number().optional()
+  paid_amount: import_zod8.z.number().optional()
   // Optional, amount paid by the customer
 }).strict();
 
 // src/dto/payment-method.interface.ts
-var import_zod8 = require("zod");
-var paymentMethodSchema = import_zod8.z.object({
-  id: import_zod8.z.string(),
-  type: import_zod8.z.enum(["card", "bank_account", "paypal"]),
-  brand: import_zod8.z.string().optional(),
+var import_zod9 = require("zod");
+var paymentMethodSchema = import_zod9.z.object({
+  id: import_zod9.z.string(),
+  type: import_zod9.z.enum(["card", "bank_account", "paypal"]),
+  brand: import_zod9.z.string().optional(),
   // Optional, only for card type
-  last4: import_zod8.z.string().optional(),
+  last4: import_zod9.z.string().optional(),
   // Optional, only for card or bank account type
-  exp_month: import_zod8.z.number().optional(),
+  exp_month: import_zod9.z.number().optional(),
   // Optional, only for card type
-  exp_year: import_zod8.z.number().optional()
+  exp_year: import_zod9.z.number().optional()
   // Optional, only for card type
 }).strict();
 
 // src/dto/invoice-payment-intent.interface.ts
-var import_zod9 = require("zod");
-var invoicePaymentIntentSchema = import_zod9.z.object({
-  invoiceId: import_zod9.z.string(),
-  paymentMethodId: import_zod9.z.string().min(1, "Payment method ID is required")
+var import_zod10 = require("zod");
+var invoicePaymentIntentSchema = import_zod10.z.object({
+  invoiceId: import_zod10.z.string(),
+  paymentMethodId: import_zod10.z.string().min(1, "Payment method ID is required")
 }).strict();
 
 // src/dto/video-call-token.interface.ts
-var import_zod10 = require("zod");
-var videoCallTokenSchema = import_zod10.z.object({
-  token: import_zod10.z.string(),
-  roomName: import_zod10.z.string()
+var import_zod11 = require("zod");
+var videoCallTokenSchema = import_zod11.z.object({
+  token: import_zod11.z.string(),
+  roomName: import_zod11.z.string()
 });
 
 // src/dto/automatic-charge.ts
-var import_zod11 = require("zod");
-var automaticChargeSchema = import_zod11.z.object({
-  customerId: import_zod11.z.string(),
-  collectionMethod: import_zod11.z.enum(["charge_automatically", "send_invoice"]),
-  paymentMethodId: import_zod11.z.string().optional()
+var import_zod12 = require("zod");
+var automaticChargeSchema = import_zod12.z.object({
+  customerId: import_zod12.z.string(),
+  collectionMethod: import_zod12.z.enum(["charge_automatically", "send_invoice"]),
+  paymentMethodId: import_zod12.z.string().optional()
 }).strict();
 
 // src/dto/invitation.ts
-var import_zod15 = require("zod");
+var import_zod16 = require("zod");
 
 // src/enum/invitation-duration.enum.ts
-var import_zod12 = __toESM(require("zod"));
+var import_zod13 = __toESM(require("zod"));
 var InvitationDurationEnum = /* @__PURE__ */ ((InvitationDurationEnum3) => {
   InvitationDurationEnum3["ONE_HOUR"] = "1 hour";
   InvitationDurationEnum3["TWO_HOURS"] = "2 hours";
@@ -231,7 +240,7 @@ var InvitationDurationEnum = /* @__PURE__ */ ((InvitationDurationEnum3) => {
   InvitationDurationEnum3["THREE_MONTHS"] = "3 months";
   return InvitationDurationEnum3;
 })(InvitationDurationEnum || {});
-var invitationDurationEnumSchema = import_zod12.default.enum([
+var invitationDurationEnumSchema = import_zod13.default.enum([
   "1 hour" /* ONE_HOUR */,
   "2 hours" /* TWO_HOURS */,
   "4 hours" /* FOUR_HOURS */,
@@ -247,42 +256,42 @@ var invitationDurationEnumSchema = import_zod12.default.enum([
 ]);
 
 // src/enum/invitation-type.enum.ts
-var import_zod13 = require("zod");
+var import_zod14 = require("zod");
 var InvitationTypeEnum = /* @__PURE__ */ ((InvitationTypeEnum3) => {
   InvitationTypeEnum3["QR"] = "qr";
   InvitationTypeEnum3["PIN"] = "pin";
   return InvitationTypeEnum3;
 })(InvitationTypeEnum || {});
-var invitationTypeEnumSchema = import_zod13.z.enum([
+var invitationTypeEnumSchema = import_zod14.z.enum([
   "qr" /* QR */,
   "pin" /* PIN */
 ]);
 
 // src/dto/basic-user-info.ts
-var import_zod14 = require("zod");
+var import_zod15 = require("zod");
 var BasicUserTypeEnum = /* @__PURE__ */ ((BasicUserTypeEnum3) => {
   BasicUserTypeEnum3["REGISTERED_USER"] = "registeredUser";
   BasicUserTypeEnum3["GUEST_USER"] = "guestUser";
   return BasicUserTypeEnum3;
 })(BasicUserTypeEnum || {});
-var basicUserTypeEnumSchema = import_zod14.z.enum(["registeredUser" /* REGISTERED_USER */, "guestUser" /* GUEST_USER */]);
-var BasicUserInfoSchema = import_zod14.z.object({
-  id: import_zod14.z.string().uuid(),
-  name: import_zod14.z.string(),
-  avatarUrl: import_zod14.z.string().url(),
+var basicUserTypeEnumSchema = import_zod15.z.enum(["registeredUser" /* REGISTERED_USER */, "guestUser" /* GUEST_USER */]);
+var BasicUserInfoSchema = import_zod15.z.object({
+  id: import_zod15.z.string().uuid(),
+  name: import_zod15.z.string(),
+  avatarUrl: import_zod15.z.string().url(),
   type: basicUserTypeEnumSchema
 }).strict();
 
 // src/dto/invitation.ts
-var invitationSchema = import_zod15.z.object({
-  _id: import_zod15.z.string().optional(),
-  userId: import_zod15.z.string().optional(),
+var invitationSchema = import_zod16.z.object({
+  _id: import_zod16.z.string().optional(),
+  userId: import_zod16.z.string().optional(),
   userType: basicUserTypeEnumSchema.optional(),
   type: invitationTypeEnumSchema,
   duration: invitationDurationEnumSchema,
-  isoDueDate: import_zod15.z.string(),
-  used: import_zod15.z.boolean().optional(),
-  oneTimeUse: import_zod15.z.boolean()
+  isoDueDate: import_zod16.z.string(),
+  used: import_zod16.z.boolean().optional(),
+  oneTimeUse: import_zod16.z.boolean()
 });
 var invitationSchemaToInterface = (data) => {
   return {
@@ -298,13 +307,13 @@ var invitationSchemaToInterface = (data) => {
 };
 
 // src/dto/guest.ts
-var import_zod16 = require("zod");
-var guestSchema = import_zod16.z.object({
-  _id: import_zod16.z.string().optional(),
-  userSub: import_zod16.z.string().uuid(),
-  name: import_zod16.z.string(),
-  avatarUrl: import_zod16.z.string().url(),
-  isoCreatedOn: import_zod16.z.string().datetime()
+var import_zod17 = require("zod");
+var guestSchema = import_zod17.z.object({
+  _id: import_zod17.z.string().optional(),
+  userSub: import_zod17.z.string().uuid(),
+  name: import_zod17.z.string(),
+  avatarUrl: import_zod17.z.string().url(),
+  isoCreatedOn: import_zod17.z.string().datetime()
 });
 
 // src/enum/role.enum.ts
@@ -318,23 +327,23 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
 })(UserRoleEnum || {});
 
 // src/dto/project.ts
-var import_zod17 = require("zod");
-var projectUpdateSchema = import_zod17.z.object({
-  updateText: import_zod17.z.string(),
-  isoCreatedAt: import_zod17.z.string()
+var import_zod18 = require("zod");
+var projectUpdateSchema = import_zod18.z.object({
+  updateText: import_zod18.z.string(),
+  isoCreatedAt: import_zod18.z.string()
 });
-var projectSchema = import_zod17.z.object({
-  _id: import_zod17.z.string().optional(),
-  residentialId: import_zod17.z.string(),
-  title: import_zod17.z.string(),
-  description: import_zod17.z.string(),
-  progress: import_zod17.z.number().min(0).max(1),
-  isoCreatedAt: import_zod17.z.string(),
-  updatedAt: import_zod17.z.string().optional(),
-  lastUpdateText: import_zod17.z.string().optional(),
-  isFinished: import_zod17.z.boolean(),
-  isArchived: import_zod17.z.boolean().optional(),
-  updates: import_zod17.z.array(projectUpdateSchema).optional()
+var projectSchema = import_zod18.z.object({
+  _id: import_zod18.z.string().optional(),
+  residentialId: import_zod18.z.string(),
+  title: import_zod18.z.string(),
+  description: import_zod18.z.string(),
+  progress: import_zod18.z.number().min(0).max(1),
+  isoCreatedAt: import_zod18.z.string(),
+  updatedAt: import_zod18.z.string().optional(),
+  lastUpdateText: import_zod18.z.string().optional(),
+  isFinished: import_zod18.z.boolean(),
+  isArchived: import_zod18.z.boolean().optional(),
+  updates: import_zod18.z.array(projectUpdateSchema).optional()
 });
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
@@ -359,6 +368,7 @@ var projectSchema = import_zod17.z.object({
   projectUpdateSchema,
   remoteGateLogSchema,
   remoteGateSchema,
+  resetPasswordSchema,
   residentialSchema,
   userSchema,
   userSummarySchema,

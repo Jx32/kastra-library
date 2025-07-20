@@ -40,122 +40,130 @@ var patchUserSchema = z2.object({
   // Optional field for avatar URL
 }).strict();
 
-// src/dto/residential.interface.ts
+// src/dto/reset-password.ts
 import z3 from "zod";
-var residentialSchema = z3.object({
-  _id: z3.string().optional(),
-  name: z3.string(),
-  address: z3.string(),
-  city: z3.string(),
-  state: z3.string(),
-  country: z3.string(),
-  postalCode: z3.string(),
-  contactNumber: z3.string().optional(),
-  status: z3.enum(["active", "inactive"]),
-  topicName: z3.string(),
-  monthlyPaymentStripePriceId: z3.string().optional(),
-  monthlyPaymentAmount: z3.string()
+var resetPasswordSchema = z3.object({
+  accessToken: z3.string(),
+  previousPassword: z3.string(),
+  newPassword: z3.string().min(8, "New password must be at least 8 characters long").regex(/[0-9]/, "New password must contain at least one number").regex(/[!@#$%^&*(),.?":{}|<>]/, "New password must contain at least one special character").regex(/[A-Z]/, "New password must contain at least one uppercase letter").regex(/[a-z]/, "New password must contain at least one lowercase letter")
+});
+
+// src/dto/residential.interface.ts
+import z4 from "zod";
+var residentialSchema = z4.object({
+  _id: z4.string().optional(),
+  name: z4.string(),
+  address: z4.string(),
+  city: z4.string(),
+  state: z4.string(),
+  country: z4.string(),
+  postalCode: z4.string(),
+  contactNumber: z4.string().optional(),
+  status: z4.enum(["active", "inactive"]),
+  topicName: z4.string(),
+  monthlyPaymentStripePriceId: z4.string().optional(),
+  monthlyPaymentAmount: z4.string()
 }).strict();
 
 // src/dto/remote-gate-log.interface.ts
-import z4 from "zod";
-var remoteGateLogSchema = z4.object({
-  remoteGateId: z4.string().optional(),
-  source: z4.enum(["app", "totem"]),
-  action: z4.enum(["open", "enable", "disable", "create", "delete", "update"]),
-  timestamp: z4.string().refine((val) => !isNaN(Date.parse(val)), {
+import z5 from "zod";
+var remoteGateLogSchema = z5.object({
+  remoteGateId: z5.string().optional(),
+  source: z5.enum(["app", "totem"]),
+  action: z5.enum(["open", "enable", "disable", "create", "delete", "update"]),
+  timestamp: z5.string().refine((val) => !isNaN(Date.parse(val)), {
     message: "Invalid timestamp format, must be ISO 8601"
   }),
-  userSub: z4.string().uuid(),
-  reason: z4.string().optional(),
-  additionalInfo: z4.any().optional()
+  userSub: z5.string().uuid(),
+  reason: z5.string().optional(),
+  additionalInfo: z5.any().optional()
 }).strict();
 
 // src/dto/remote-gate.interface.ts
-import { z as z5 } from "zod";
-var remoteGateSchema = z5.object({
-  _id: z5.string().optional(),
-  residentialId: z5.string(),
-  name: z5.string(),
-  type: z5.enum(["entrance", "exit"]),
-  thingName: z5.string(),
-  enabled: z5.boolean().optional()
+import { z as z6 } from "zod";
+var remoteGateSchema = z6.object({
+  _id: z6.string().optional(),
+  residentialId: z6.string(),
+  name: z6.string(),
+  type: z6.enum(["entrance", "exit"]),
+  thingName: z6.string(),
+  enabled: z6.boolean().optional()
   // Optional field to indicate if the gate is enabled
 }).strict();
 
 // src/dto/user-summary.interface.ts
-import z6 from "zod";
-var userSummarySchema = z6.object({
-  remoteGates: z6.array(remoteGateSchema),
-  currentPinAccess: z6.string().length(4, "Current PIN must be 4 digits length"),
-  topicName: z6.string().min(1, "Topic name cannot be empty")
+import z7 from "zod";
+var userSummarySchema = z7.object({
+  remoteGates: z7.array(remoteGateSchema),
+  currentPinAccess: z7.string().length(4, "Current PIN must be 4 digits length"),
+  topicName: z7.string().min(1, "Topic name cannot be empty")
 }).strict();
 
 // src/dto/invoice.interface.ts
-import { z as z7 } from "zod";
-var invoiceSchema = z7.object({
-  id: z7.string(),
-  status: z7.enum(["draft", "open", "paid", "uncollectible", "void"]),
-  created: z7.number(),
-  total: z7.number(),
-  ammount_remaining: z7.number(),
-  customerId: z7.string(),
-  description: z7.string(),
-  invoice_pdf: z7.string().url().optional(),
-  collection_method: z7.enum(["charge_automatically", "send_invoice"]),
-  due_date: z7.number().optional(),
+import { z as z8 } from "zod";
+var invoiceSchema = z8.object({
+  id: z8.string(),
+  status: z8.enum(["draft", "open", "paid", "uncollectible", "void"]),
+  created: z8.number(),
+  total: z8.number(),
+  ammount_remaining: z8.number(),
+  customerId: z8.string(),
+  description: z8.string(),
+  invoice_pdf: z8.string().url().optional(),
+  collection_method: z8.enum(["charge_automatically", "send_invoice"]),
+  due_date: z8.number().optional(),
   // Optional, only if collection_method is "send_invoice"
-  days_until_due: z7.number().optional(),
+  days_until_due: z8.number().optional(),
   // Optional, only if collection_method is "send_invoice"
-  monthName: z7.string(),
-  year: z7.number().min(2e3).max(2100),
+  monthName: z8.string(),
+  year: z8.number().min(2e3).max(2100),
   // Year must be a valid year
-  paid_amount: z7.number().optional()
+  paid_amount: z8.number().optional()
   // Optional, amount paid by the customer
 }).strict();
 
 // src/dto/payment-method.interface.ts
-import { z as z8 } from "zod";
-var paymentMethodSchema = z8.object({
-  id: z8.string(),
-  type: z8.enum(["card", "bank_account", "paypal"]),
-  brand: z8.string().optional(),
+import { z as z9 } from "zod";
+var paymentMethodSchema = z9.object({
+  id: z9.string(),
+  type: z9.enum(["card", "bank_account", "paypal"]),
+  brand: z9.string().optional(),
   // Optional, only for card type
-  last4: z8.string().optional(),
+  last4: z9.string().optional(),
   // Optional, only for card or bank account type
-  exp_month: z8.number().optional(),
+  exp_month: z9.number().optional(),
   // Optional, only for card type
-  exp_year: z8.number().optional()
+  exp_year: z9.number().optional()
   // Optional, only for card type
 }).strict();
 
 // src/dto/invoice-payment-intent.interface.ts
-import { z as z9 } from "zod";
-var invoicePaymentIntentSchema = z9.object({
-  invoiceId: z9.string(),
-  paymentMethodId: z9.string().min(1, "Payment method ID is required")
+import { z as z10 } from "zod";
+var invoicePaymentIntentSchema = z10.object({
+  invoiceId: z10.string(),
+  paymentMethodId: z10.string().min(1, "Payment method ID is required")
 }).strict();
 
 // src/dto/video-call-token.interface.ts
-import { z as z10 } from "zod";
-var videoCallTokenSchema = z10.object({
-  token: z10.string(),
-  roomName: z10.string()
+import { z as z11 } from "zod";
+var videoCallTokenSchema = z11.object({
+  token: z11.string(),
+  roomName: z11.string()
 });
 
 // src/dto/automatic-charge.ts
-import { z as z11 } from "zod";
-var automaticChargeSchema = z11.object({
-  customerId: z11.string(),
-  collectionMethod: z11.enum(["charge_automatically", "send_invoice"]),
-  paymentMethodId: z11.string().optional()
+import { z as z12 } from "zod";
+var automaticChargeSchema = z12.object({
+  customerId: z12.string(),
+  collectionMethod: z12.enum(["charge_automatically", "send_invoice"]),
+  paymentMethodId: z12.string().optional()
 }).strict();
 
 // src/dto/invitation.ts
-import { z as z15 } from "zod";
+import { z as z16 } from "zod";
 
 // src/enum/invitation-duration.enum.ts
-import z12 from "zod";
+import z13 from "zod";
 var InvitationDurationEnum = /* @__PURE__ */ ((InvitationDurationEnum3) => {
   InvitationDurationEnum3["ONE_HOUR"] = "1 hour";
   InvitationDurationEnum3["TWO_HOURS"] = "2 hours";
@@ -171,7 +179,7 @@ var InvitationDurationEnum = /* @__PURE__ */ ((InvitationDurationEnum3) => {
   InvitationDurationEnum3["THREE_MONTHS"] = "3 months";
   return InvitationDurationEnum3;
 })(InvitationDurationEnum || {});
-var invitationDurationEnumSchema = z12.enum([
+var invitationDurationEnumSchema = z13.enum([
   "1 hour" /* ONE_HOUR */,
   "2 hours" /* TWO_HOURS */,
   "4 hours" /* FOUR_HOURS */,
@@ -187,42 +195,42 @@ var invitationDurationEnumSchema = z12.enum([
 ]);
 
 // src/enum/invitation-type.enum.ts
-import { z as z13 } from "zod";
+import { z as z14 } from "zod";
 var InvitationTypeEnum = /* @__PURE__ */ ((InvitationTypeEnum3) => {
   InvitationTypeEnum3["QR"] = "qr";
   InvitationTypeEnum3["PIN"] = "pin";
   return InvitationTypeEnum3;
 })(InvitationTypeEnum || {});
-var invitationTypeEnumSchema = z13.enum([
+var invitationTypeEnumSchema = z14.enum([
   "qr" /* QR */,
   "pin" /* PIN */
 ]);
 
 // src/dto/basic-user-info.ts
-import { z as z14 } from "zod";
+import { z as z15 } from "zod";
 var BasicUserTypeEnum = /* @__PURE__ */ ((BasicUserTypeEnum3) => {
   BasicUserTypeEnum3["REGISTERED_USER"] = "registeredUser";
   BasicUserTypeEnum3["GUEST_USER"] = "guestUser";
   return BasicUserTypeEnum3;
 })(BasicUserTypeEnum || {});
-var basicUserTypeEnumSchema = z14.enum(["registeredUser" /* REGISTERED_USER */, "guestUser" /* GUEST_USER */]);
-var BasicUserInfoSchema = z14.object({
-  id: z14.string().uuid(),
-  name: z14.string(),
-  avatarUrl: z14.string().url(),
+var basicUserTypeEnumSchema = z15.enum(["registeredUser" /* REGISTERED_USER */, "guestUser" /* GUEST_USER */]);
+var BasicUserInfoSchema = z15.object({
+  id: z15.string().uuid(),
+  name: z15.string(),
+  avatarUrl: z15.string().url(),
   type: basicUserTypeEnumSchema
 }).strict();
 
 // src/dto/invitation.ts
-var invitationSchema = z15.object({
-  _id: z15.string().optional(),
-  userId: z15.string().optional(),
+var invitationSchema = z16.object({
+  _id: z16.string().optional(),
+  userId: z16.string().optional(),
   userType: basicUserTypeEnumSchema.optional(),
   type: invitationTypeEnumSchema,
   duration: invitationDurationEnumSchema,
-  isoDueDate: z15.string(),
-  used: z15.boolean().optional(),
-  oneTimeUse: z15.boolean()
+  isoDueDate: z16.string(),
+  used: z16.boolean().optional(),
+  oneTimeUse: z16.boolean()
 });
 var invitationSchemaToInterface = (data) => {
   return {
@@ -238,13 +246,13 @@ var invitationSchemaToInterface = (data) => {
 };
 
 // src/dto/guest.ts
-import { z as z16 } from "zod";
-var guestSchema = z16.object({
-  _id: z16.string().optional(),
-  userSub: z16.string().uuid(),
-  name: z16.string(),
-  avatarUrl: z16.string().url(),
-  isoCreatedOn: z16.string().datetime()
+import { z as z17 } from "zod";
+var guestSchema = z17.object({
+  _id: z17.string().optional(),
+  userSub: z17.string().uuid(),
+  name: z17.string(),
+  avatarUrl: z17.string().url(),
+  isoCreatedOn: z17.string().datetime()
 });
 
 // src/enum/role.enum.ts
@@ -258,23 +266,23 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
 })(UserRoleEnum || {});
 
 // src/dto/project.ts
-import { z as z17 } from "zod";
-var projectUpdateSchema = z17.object({
-  updateText: z17.string(),
-  isoCreatedAt: z17.string()
+import { z as z18 } from "zod";
+var projectUpdateSchema = z18.object({
+  updateText: z18.string(),
+  isoCreatedAt: z18.string()
 });
-var projectSchema = z17.object({
-  _id: z17.string().optional(),
-  residentialId: z17.string(),
-  title: z17.string(),
-  description: z17.string(),
-  progress: z17.number().min(0).max(1),
-  isoCreatedAt: z17.string(),
-  updatedAt: z17.string().optional(),
-  lastUpdateText: z17.string().optional(),
-  isFinished: z17.boolean(),
-  isArchived: z17.boolean().optional(),
-  updates: z17.array(projectUpdateSchema).optional()
+var projectSchema = z18.object({
+  _id: z18.string().optional(),
+  residentialId: z18.string(),
+  title: z18.string(),
+  description: z18.string(),
+  progress: z18.number().min(0).max(1),
+  isoCreatedAt: z18.string(),
+  updatedAt: z18.string().optional(),
+  lastUpdateText: z18.string().optional(),
+  isFinished: z18.boolean(),
+  isArchived: z18.boolean().optional(),
+  updates: z18.array(projectUpdateSchema).optional()
 });
 export {
   BasicUserInfoSchema,
@@ -298,6 +306,7 @@ export {
   projectUpdateSchema,
   remoteGateLogSchema,
   remoteGateSchema,
+  resetPasswordSchema,
   residentialSchema,
   userSchema,
   userSummarySchema,
