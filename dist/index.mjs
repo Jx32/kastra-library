@@ -30,6 +30,8 @@ var userSchema = z.object({
 // src/dto/patch-user.interface.ts
 import { z as z2 } from "zod";
 var patchUserSchema = z2.object({
+  residentialId: z2.string().optional(),
+  // Optional field for residential ID
   name: z2.string().optional(),
   email: z2.string().email().optional(),
   phone_number: z2.string().regex(PHONE_REGEX).optional(),
@@ -38,8 +40,10 @@ var patchUserSchema = z2.object({
   street: z2.string().optional(),
   currentPinAccess: z2.string().length(4, "Current PIN must be 4 digits length").optional(),
   iaBehaviour: z2.enum(["formal", "friendly", "funny"]).optional(),
-  avatarUrl: z2.string().optional()
+  avatarUrl: z2.string().optional(),
   // Optional field for avatar URL
+  role: z2.enum(["houseOwner", "houseRelated", "helpDesk", "admin", "tenant"]).optional()
+  // Optional field for user role
 }).strict();
 
 // src/dto/reset-password.ts

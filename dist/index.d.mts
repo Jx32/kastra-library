@@ -82,6 +82,7 @@ declare const userSchema: z.ZodObject<{
 type UserType = z.infer<typeof userSchema>;
 
 interface PatchUser {
+    residentialId?: string;
     name?: string;
     email?: string;
     phone_number?: string;
@@ -91,8 +92,10 @@ interface PatchUser {
     currentPinAccess?: string;
     iaBehaviour?: "formal" | "friendly" | "funny";
     avatarUrl?: string;
+    role?: "houseOwner" | "houseRelated" | "helpDesk" | "admin" | "tenant";
 }
 declare const patchUserSchema: z.ZodObject<{
+    residentialId: z.ZodOptional<z.ZodString>;
     name: z.ZodOptional<z.ZodString>;
     email: z.ZodOptional<z.ZodString>;
     phone_number: z.ZodOptional<z.ZodString>;
@@ -102,13 +105,16 @@ declare const patchUserSchema: z.ZodObject<{
     currentPinAccess: z.ZodOptional<z.ZodString>;
     iaBehaviour: z.ZodOptional<z.ZodEnum<["formal", "friendly", "funny"]>>;
     avatarUrl: z.ZodOptional<z.ZodString>;
+    role: z.ZodOptional<z.ZodEnum<["houseOwner", "houseRelated", "helpDesk", "admin", "tenant"]>>;
 }, "strict", z.ZodTypeAny, {
     name?: string | undefined;
     email?: string | undefined;
     phone_number?: string | undefined;
     firstLogin?: boolean | undefined;
     houseNumber?: string | undefined;
+    role?: "houseOwner" | "houseRelated" | "helpDesk" | "admin" | "tenant" | undefined;
     street?: string | undefined;
+    residentialId?: string | undefined;
     currentPinAccess?: string | undefined;
     iaBehaviour?: "formal" | "friendly" | "funny" | undefined;
     avatarUrl?: string | undefined;
@@ -118,7 +124,9 @@ declare const patchUserSchema: z.ZodObject<{
     phone_number?: string | undefined;
     firstLogin?: boolean | undefined;
     houseNumber?: string | undefined;
+    role?: "houseOwner" | "houseRelated" | "helpDesk" | "admin" | "tenant" | undefined;
     street?: string | undefined;
+    residentialId?: string | undefined;
     currentPinAccess?: string | undefined;
     iaBehaviour?: "formal" | "friendly" | "funny" | undefined;
     avatarUrl?: string | undefined;

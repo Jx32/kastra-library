@@ -92,6 +92,8 @@ var userSchema = import_zod.z.object({
 // src/dto/patch-user.interface.ts
 var import_zod2 = require("zod");
 var patchUserSchema = import_zod2.z.object({
+  residentialId: import_zod2.z.string().optional(),
+  // Optional field for residential ID
   name: import_zod2.z.string().optional(),
   email: import_zod2.z.string().email().optional(),
   phone_number: import_zod2.z.string().regex(PHONE_REGEX).optional(),
@@ -100,8 +102,10 @@ var patchUserSchema = import_zod2.z.object({
   street: import_zod2.z.string().optional(),
   currentPinAccess: import_zod2.z.string().length(4, "Current PIN must be 4 digits length").optional(),
   iaBehaviour: import_zod2.z.enum(["formal", "friendly", "funny"]).optional(),
-  avatarUrl: import_zod2.z.string().optional()
+  avatarUrl: import_zod2.z.string().optional(),
   // Optional field for avatar URL
+  role: import_zod2.z.enum(["houseOwner", "houseRelated", "helpDesk", "admin", "tenant"]).optional()
+  // Optional field for user role
 }).strict();
 
 // src/dto/reset-password.ts
