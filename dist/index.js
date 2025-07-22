@@ -83,8 +83,10 @@ var userSchema = import_zod.z.object({
   stripeCustomerId: import_zod.z.string().optional(),
   // Optional field for Stripe customer ID
   iaBehaviour: import_zod.z.enum(["formal", "friendly", "funny"]).optional(),
-  avatarUrl: import_zod.z.string().optional()
+  avatarUrl: import_zod.z.string().optional(),
   // Optional field for avatar URL
+  isUserDebtor: import_zod.z.boolean().optional()
+  // Optional field to indicate if the user is a debtor
 }).strict();
 
 // src/dto/patch-user.interface.ts

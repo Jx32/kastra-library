@@ -39,6 +39,7 @@ declare const userSchema: z.ZodObject<{
     stripeCustomerId: z.ZodOptional<z.ZodString>;
     iaBehaviour: z.ZodOptional<z.ZodEnum<["formal", "friendly", "funny"]>>;
     avatarUrl: z.ZodOptional<z.ZodString>;
+    isUserDebtor: z.ZodOptional<z.ZodBoolean>;
 }, "strict", z.ZodTypeAny, {
     name: string;
     email: string;
@@ -57,6 +58,7 @@ declare const userSchema: z.ZodObject<{
     stripeCustomerId?: string | undefined;
     iaBehaviour?: "formal" | "friendly" | "funny" | undefined;
     avatarUrl?: string | undefined;
+    isUserDebtor?: boolean | undefined;
 }, {
     name: string;
     email: string;
@@ -75,6 +77,7 @@ declare const userSchema: z.ZodObject<{
     stripeCustomerId?: string | undefined;
     iaBehaviour?: "formal" | "friendly" | "funny" | undefined;
     avatarUrl?: string | undefined;
+    isUserDebtor?: boolean | undefined;
 }>;
 type UserType = z.infer<typeof userSchema>;
 

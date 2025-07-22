@@ -21,8 +21,10 @@ var userSchema = z.object({
   stripeCustomerId: z.string().optional(),
   // Optional field for Stripe customer ID
   iaBehaviour: z.enum(["formal", "friendly", "funny"]).optional(),
-  avatarUrl: z.string().optional()
+  avatarUrl: z.string().optional(),
   // Optional field for avatar URL
+  isUserDebtor: z.boolean().optional()
+  // Optional field to indicate if the user is a debtor
 }).strict();
 
 // src/dto/patch-user.interface.ts
