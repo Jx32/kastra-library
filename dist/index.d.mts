@@ -31,7 +31,7 @@ declare const userSchema: z.ZodObject<{
     phone_number_verified: z.ZodOptional<z.ZodBoolean>;
     firstLogin: z.ZodBoolean;
     houseNumber: z.ZodString;
-    role: z.ZodEnum<["houseOwner", "houseRelated", "helpDesk", "admin"]>;
+    role: z.ZodEnum<["houseOwner", "houseRelated", "helpDesk", "admin", "tenant"]>;
     street: z.ZodString;
     residentialId: z.ZodString;
     houseOwnerSub: z.ZodOptional<z.ZodString>;
@@ -45,7 +45,7 @@ declare const userSchema: z.ZodObject<{
     email: string;
     firstLogin: boolean;
     houseNumber: string;
-    role: "houseOwner" | "houseRelated" | "helpDesk" | "admin";
+    role: "houseOwner" | "houseRelated" | "helpDesk" | "admin" | "tenant";
     street: string;
     residentialId: string;
     sub?: string | undefined;
@@ -64,7 +64,7 @@ declare const userSchema: z.ZodObject<{
     email: string;
     firstLogin: boolean;
     houseNumber: string;
-    role: "houseOwner" | "houseRelated" | "helpDesk" | "admin";
+    role: "houseOwner" | "houseRelated" | "helpDesk" | "admin" | "tenant";
     street: string;
     residentialId: string;
     sub?: string | undefined;

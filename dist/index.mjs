@@ -13,7 +13,7 @@ var userSchema = z.object({
   phone_number_verified: z.boolean().optional(),
   firstLogin: z.boolean(),
   houseNumber: z.string(),
-  role: z.enum(["houseOwner", "houseRelated", "helpDesk", "admin"]),
+  role: z.enum(["houseOwner", "houseRelated", "helpDesk", "admin", "tenant"]),
   street: z.string(),
   residentialId: z.string(),
   houseOwnerSub: z.string().uuid().optional(),

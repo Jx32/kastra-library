@@ -75,7 +75,7 @@ var userSchema = import_zod.z.object({
   phone_number_verified: import_zod.z.boolean().optional(),
   firstLogin: import_zod.z.boolean(),
   houseNumber: import_zod.z.string(),
-  role: import_zod.z.enum(["houseOwner", "houseRelated", "helpDesk", "admin"]),
+  role: import_zod.z.enum(["houseOwner", "houseRelated", "helpDesk", "admin", "tenant"]),
   street: import_zod.z.string(),
   residentialId: import_zod.z.string(),
   houseOwnerSub: import_zod.z.string().uuid().optional(),
