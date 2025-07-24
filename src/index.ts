@@ -35,3 +35,5 @@ export * from "./enum/role.enum";
 export * from "./dto/value";
 
 export * from "./dto/project";
+
+export * from "./dto/action-log";
