@@ -786,6 +786,7 @@ type ProjectUpdateType = z.infer<typeof projectUpdateSchema>;
 type ProjectType = z.infer<typeof projectSchema>;
 
 interface ActionLog {
+    residentialId: string;
     action: string;
     userId: string;
     isoTimestamp: string;
