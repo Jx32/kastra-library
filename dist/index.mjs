@@ -298,6 +298,16 @@ var projectSchema = z19.object({
   isArchived: z19.boolean().optional(),
   updates: z19.array(projectUpdateSchema).optional()
 });
+
+// src/dto/action-log.ts
+import { z as z20 } from "zod";
+var actionLogSchema = z20.object({
+  residentialId: z20.string(),
+  action: z20.string().min(1, "Action description cannot be empty"),
+  userId: z20.string(),
+  isoTimestamp: z20.string().datetime({ offset: false }),
+  details: z20.string().optional()
+});
 export {
   BasicUserInfoSchema,
   BasicUserTypeEnum,
@@ -305,6 +315,7 @@ export {
   InvitationTypeEnum,
   PHONE_REGEX,
   UserRoleEnum,
+  actionLogSchema,
   automaticChargeSchema,
   basicUserTypeEnumSchema,
   confirmForgotPasswordSchema,

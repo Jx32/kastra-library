@@ -792,5 +792,25 @@ interface ActionLog {
     isoTimestamp: string;
     details?: string;
 }
+declare const actionLogSchema: z.ZodObject<{
+    residentialId: z.ZodString;
+    action: z.ZodString;
+    userId: z.ZodString;
+    isoTimestamp: z.ZodString;
+    details: z.ZodOptional<z.ZodString>;
+}, "strip", z.ZodTypeAny, {
+    residentialId: string;
+    action: string;
+    userId: string;
+    isoTimestamp: string;
+    details?: string | undefined;
+}, {
+    residentialId: string;
+    action: string;
+    userId: string;
+    isoTimestamp: string;
+    details?: string | undefined;
+}>;
+type ActionLogType = z.infer<typeof actionLogSchema>;
 
-export { type ActionLog, type AutomaticCharge, type AutomaticChargeSummaryResponse, type AutomaticChargeType, type BasicUserInfo, BasicUserInfoSchema, type BasicUserInfoType, BasicUserTypeEnum, type ConfirmForgotPassword, type ConfirmForgotPasswordType, type ForgotPasswordResponse, type Guest, type GuestType, type Invitation, type InvitationCreationResponse, type InvitationData, InvitationDurationEnum, type InvitationType, InvitationTypeEnum, type InvitationUIType, type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type Project, type ProjectType, type ProjectUpdate, type ProjectUpdateType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type ResetPassword, type ResetPasswordType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type Value, type VideoCallToken, type VideoCallTokenType, automaticChargeSchema, basicUserTypeEnumSchema, confirmForgotPasswordSchema, guestSchema, invitationDurationEnumSchema, invitationSchema, invitationSchemaToInterface, invitationTypeEnumSchema, invoicePaymentIntentSchema, invoiceSchema, patchUserSchema, paymentMethodSchema, projectSchema, projectUpdateSchema, remoteGateLogSchema, remoteGateSchema, resetPasswordSchema, residentialSchema, userSchema, userSummarySchema, videoCallTokenSchema };
+export { type ActionLog, type ActionLogType, type AutomaticCharge, type AutomaticChargeSummaryResponse, type AutomaticChargeType, type BasicUserInfo, BasicUserInfoSchema, type BasicUserInfoType, BasicUserTypeEnum, type ConfirmForgotPassword, type ConfirmForgotPasswordType, type ForgotPasswordResponse, type Guest, type GuestType, type Invitation, type InvitationCreationResponse, type InvitationData, InvitationDurationEnum, type InvitationType, InvitationTypeEnum, type InvitationUIType, type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type Project, type ProjectType, type ProjectUpdate, type ProjectUpdateType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type ResetPassword, type ResetPasswordType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type Value, type VideoCallToken, type VideoCallTokenType, actionLogSchema, automaticChargeSchema, basicUserTypeEnumSchema, confirmForgotPasswordSchema, guestSchema, invitationDurationEnumSchema, invitationSchema, invitationSchemaToInterface, invitationTypeEnumSchema, invoicePaymentIntentSchema, invoiceSchema, patchUserSchema, paymentMethodSchema, projectSchema, projectUpdateSchema, remoteGateLogSchema, remoteGateSchema, resetPasswordSchema, residentialSchema, userSchema, userSummarySchema, videoCallTokenSchema };

@@ -36,6 +36,7 @@ __export(src_exports, {
   InvitationTypeEnum: () => InvitationTypeEnum,
   PHONE_REGEX: () => PHONE_REGEX,
   UserRoleEnum: () => UserRoleEnum,
+  actionLogSchema: () => actionLogSchema,
   automaticChargeSchema: () => automaticChargeSchema,
   basicUserTypeEnumSchema: () => basicUserTypeEnumSchema,
   confirmForgotPasswordSchema: () => confirmForgotPasswordSchema,
@@ -360,6 +361,16 @@ var projectSchema = import_zod19.z.object({
   isArchived: import_zod19.z.boolean().optional(),
   updates: import_zod19.z.array(projectUpdateSchema).optional()
 });
+
+// src/dto/action-log.ts
+var import_zod20 = require("zod");
+var actionLogSchema = import_zod20.z.object({
+  residentialId: import_zod20.z.string(),
+  action: import_zod20.z.string().min(1, "Action description cannot be empty"),
+  userId: import_zod20.z.string(),
+  isoTimestamp: import_zod20.z.string().datetime({ offset: false }),
+  details: import_zod20.z.string().optional()
+});
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   BasicUserInfoSchema,
@@ -368,6 +379,7 @@ var projectSchema = import_zod19.z.object({
   InvitationTypeEnum,
   PHONE_REGEX,
   UserRoleEnum,
+  actionLogSchema,
   automaticChargeSchema,
   basicUserTypeEnumSchema,
   confirmForgotPasswordSchema,
