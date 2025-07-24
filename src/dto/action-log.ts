@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export interface ActionLog {
-    residentialId: string; // ID of the residential unit where the action took place
+    residentialId?: string; // ID of the residential unit where the action took place
     action: string; // Description of the action performed
     userId: string; // ID of the user who performed the action
     isoTimestamp: string; // Timestamp of when the action was performed
@@ -9,7 +9,7 @@ export interface ActionLog {
 }
 
 export const actionLogSchema = z.object({
-    residentialId: z.string(),
+    residentialId: z.string().optional(),
     action: z.string().min(1, "Action description cannot be empty"),
     userId: z.string(),
     isoTimestamp: z.string().datetime({ offset: false }),

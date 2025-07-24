@@ -365,7 +365,7 @@ var projectSchema = import_zod19.z.object({
 // src/dto/action-log.ts
 var import_zod20 = require("zod");
 var actionLogSchema = import_zod20.z.object({
-  residentialId: import_zod20.z.string(),
+  residentialId: import_zod20.z.string().optional(),
   action: import_zod20.z.string().min(1, "Action description cannot be empty"),
   userId: import_zod20.z.string(),
   isoTimestamp: import_zod20.z.string().datetime({ offset: false }),
