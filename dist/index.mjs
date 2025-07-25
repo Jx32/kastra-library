@@ -303,7 +303,8 @@ var projectSchema = z19.object({
 import { z as z20 } from "zod";
 var actionLogSchema = z20.object({
   residentialId: z20.string().optional(),
-  action: z20.string().min(1, "Action description cannot be empty"),
+  module: z20.string(),
+  httpMethod: z20.string(),
   userId: z20.string(),
   isoTimestamp: z20.string().datetime({ offset: false }),
   details: z20.string().optional()

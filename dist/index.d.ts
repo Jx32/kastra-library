@@ -787,26 +787,30 @@ type ProjectType = z.infer<typeof projectSchema>;
 
 interface ActionLog {
     residentialId?: string;
-    action: string;
+    module: string;
+    httpMethod: string;
     userId: string;
     isoTimestamp: string;
     details?: string;
 }
 declare const actionLogSchema: z.ZodObject<{
     residentialId: z.ZodOptional<z.ZodString>;
-    action: z.ZodString;
+    module: z.ZodString;
+    httpMethod: z.ZodString;
     userId: z.ZodString;
     isoTimestamp: z.ZodString;
     details: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
-    action: string;
     userId: string;
+    module: string;
+    httpMethod: string;
     isoTimestamp: string;
     residentialId?: string | undefined;
     details?: string | undefined;
 }, {
-    action: string;
     userId: string;
+    module: string;
+    httpMethod: string;
     isoTimestamp: string;
     residentialId?: string | undefined;
     details?: string | undefined;
