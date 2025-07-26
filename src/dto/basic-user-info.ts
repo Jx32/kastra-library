@@ -9,6 +9,7 @@ export const basicUserTypeEnumSchema = z.enum([BasicUserTypeEnum.REGISTERED_USER
 
 export interface BasicUserInfo {
   id: string;
+  username: string;
   name: string;
   avatarUrl: string;
   type: BasicUserTypeEnum;
@@ -16,6 +17,7 @@ export interface BasicUserInfo {
 
 export const BasicUserInfoSchema = z.object({
   id: z.string().uuid(),
+  username: z.string().min(1),
   name: z.string(),
   avatarUrl: z.string().url(),
   type: basicUserTypeEnumSchema,

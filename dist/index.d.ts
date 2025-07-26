@@ -580,21 +580,25 @@ declare const enum BasicUserTypeEnum {
 declare const basicUserTypeEnumSchema: z.ZodEnum<[BasicUserTypeEnum.REGISTERED_USER, BasicUserTypeEnum.GUEST_USER]>;
 interface BasicUserInfo {
     id: string;
+    username: string;
     name: string;
     avatarUrl: string;
     type: BasicUserTypeEnum;
 }
 declare const BasicUserInfoSchema: z.ZodObject<{
     id: z.ZodString;
+    username: z.ZodString;
     name: z.ZodString;
     avatarUrl: z.ZodString;
     type: z.ZodEnum<[BasicUserTypeEnum.REGISTERED_USER, BasicUserTypeEnum.GUEST_USER]>;
 }, "strict", z.ZodTypeAny, {
+    username: string;
     name: string;
     type: BasicUserTypeEnum;
     avatarUrl: string;
     id: string;
 }, {
+    username: string;
     name: string;
     type: BasicUserTypeEnum;
     avatarUrl: string;

@@ -230,6 +230,7 @@ var BasicUserTypeEnum = /* @__PURE__ */ ((BasicUserTypeEnum3) => {
 var basicUserTypeEnumSchema = z16.enum(["registeredUser" /* REGISTERED_USER */, "guestUser" /* GUEST_USER */]);
 var BasicUserInfoSchema = z16.object({
   id: z16.string().uuid(),
+  username: z16.string().min(1),
   name: z16.string(),
   avatarUrl: z16.string().url(),
   type: basicUserTypeEnumSchema

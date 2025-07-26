@@ -293,6 +293,7 @@ var BasicUserTypeEnum = /* @__PURE__ */ ((BasicUserTypeEnum3) => {
 var basicUserTypeEnumSchema = import_zod16.z.enum(["registeredUser" /* REGISTERED_USER */, "guestUser" /* GUEST_USER */]);
 var BasicUserInfoSchema = import_zod16.z.object({
   id: import_zod16.z.string().uuid(),
+  username: import_zod16.z.string().min(1),
   name: import_zod16.z.string(),
   avatarUrl: import_zod16.z.string().url(),
   type: basicUserTypeEnumSchema
