@@ -3,6 +3,7 @@ export * from "./constants/constants";
 export * from "./dto/user.interface";
 export * from "./dto/patch-user.interface"
 export * from "./dto/reset-password";
+export * from "./dto/reset-password-response";
 export * from "./dto/forgot-password-response";
 export * from "./dto/confirm-forgot-password";
 export * from "./dto/register-user-response.interface";
