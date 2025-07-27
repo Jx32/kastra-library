@@ -147,6 +147,7 @@ type ResetPasswordType = z$1.infer<typeof resetPasswordSchema>;
 
 interface ResetPasswordResponse {
     result: "OK" | "EMAIL_ERROR";
+    temporaryPassword: string;
 }
 
 interface ForgotPasswordResponse {

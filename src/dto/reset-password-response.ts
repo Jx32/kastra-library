@@ -1,3 +1,4 @@
 export interface ResetPasswordResponse {
-    result: "OK" | "EMAIL_ERROR"
+    result: "OK" | "EMAIL_ERROR",
+    temporaryPassword: string
 }
