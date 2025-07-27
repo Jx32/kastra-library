@@ -49,9 +49,7 @@ var patchUserSchema = z2.object({
 // src/dto/reset-password.ts
 import z3 from "zod";
 var resetPasswordSchema = z3.object({
-  accessToken: z3.string(),
-  previousPassword: z3.string(),
-  newPassword: z3.string().min(8, "New password must be at least 8 characters long").regex(/[0-9]/, "New password must contain at least one number").regex(/[!@#$%^&*(),.?":{}|<>]/, "New password must contain at least one special character").regex(/[A-Z]/, "New password must contain at least one uppercase letter").regex(/[a-z]/, "New password must contain at least one lowercase letter")
+  username: z3.string().min(1, "Username is required")
 });
 
 // src/dto/confirm-forgot-password.ts

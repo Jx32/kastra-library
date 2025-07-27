@@ -134,22 +134,14 @@ declare const patchUserSchema: z.ZodObject<{
 type PatchUserType = z.infer<typeof patchUserSchema>;
 
 interface ResetPassword {
-    accessToken: string;
-    previousPassword: string;
-    newPassword: string;
+    username: string;
 }
 declare const resetPasswordSchema: z$1.ZodObject<{
-    accessToken: z$1.ZodString;
-    previousPassword: z$1.ZodString;
-    newPassword: z$1.ZodString;
+    username: z$1.ZodString;
 }, "strip", z$1.ZodTypeAny, {
-    accessToken: string;
-    previousPassword: string;
-    newPassword: string;
+    username: string;
 }, {
-    accessToken: string;
-    previousPassword: string;
-    newPassword: string;
+    username: string;
 }>;
 type ResetPasswordType = z$1.infer<typeof resetPasswordSchema>;
 

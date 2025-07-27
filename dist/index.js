@@ -112,9 +112,7 @@ var patchUserSchema = import_zod2.z.object({
 // src/dto/reset-password.ts
 var import_zod3 = __toESM(require("zod"));
 var resetPasswordSchema = import_zod3.default.object({
-  accessToken: import_zod3.default.string(),
-  previousPassword: import_zod3.default.string(),
-  newPassword: import_zod3.default.string().min(8, "New password must be at least 8 characters long").regex(/[0-9]/, "New password must contain at least one number").regex(/[!@#$%^&*(),.?":{}|<>]/, "New password must contain at least one special character").regex(/[A-Z]/, "New password must contain at least one uppercase letter").regex(/[a-z]/, "New password must contain at least one lowercase letter")
+  username: import_zod3.default.string().min(1, "Username is required")
 });
 
 // src/dto/confirm-forgot-password.ts
