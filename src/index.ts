@@ -1,6 +1,7 @@
 export * from "./constants/constants";
 
 export * from "./dto/user.interface";
+export * from "./dto/get-user-response";
 export * from "./dto/patch-user.interface"
 export * from "./dto/reset-password";
 export * from "./dto/reset-password-response";
