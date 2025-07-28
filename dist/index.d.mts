@@ -80,6 +80,65 @@ declare const userSchema: z.ZodObject<{
     isUserDebtor?: boolean | undefined;
 }>;
 type UserType = z.infer<typeof userSchema>;
+declare const userSchemaPartial: z.ZodObject<{
+    sub: z.ZodOptional<z.ZodOptional<z.ZodString>>;
+    username: z.ZodOptional<z.ZodOptional<z.ZodString>>;
+    name: z.ZodOptional<z.ZodString>;
+    email: z.ZodOptional<z.ZodString>;
+    email_verified: z.ZodOptional<z.ZodOptional<z.ZodBoolean>>;
+    phone_number: z.ZodOptional<z.ZodOptional<z.ZodString>>;
+    phone_number_verified: z.ZodOptional<z.ZodOptional<z.ZodBoolean>>;
+    firstLogin: z.ZodOptional<z.ZodBoolean>;
+    houseNumber: z.ZodOptional<z.ZodString>;
+    role: z.ZodOptional<z.ZodEnum<["houseOwner", "houseRelated", "helpDesk", "admin", "tenant"]>>;
+    street: z.ZodOptional<z.ZodString>;
+    residentialId: z.ZodOptional<z.ZodString>;
+    houseOwnerSub: z.ZodOptional<z.ZodOptional<z.ZodString>>;
+    currentPinAccess: z.ZodOptional<z.ZodOptional<z.ZodString>>;
+    stripeCustomerId: z.ZodOptional<z.ZodOptional<z.ZodString>>;
+    iaBehaviour: z.ZodOptional<z.ZodOptional<z.ZodEnum<["formal", "friendly", "funny"]>>>;
+    avatarUrl: z.ZodOptional<z.ZodOptional<z.ZodString>>;
+    isUserDebtor: z.ZodOptional<z.ZodOptional<z.ZodBoolean>>;
+}, "strict", z.ZodTypeAny, {
+    sub?: string | undefined;
+    username?: string | undefined;
+    name?: string | undefined;
+    email?: string | undefined;
+    email_verified?: boolean | undefined;
+    phone_number?: string | undefined;
+    phone_number_verified?: boolean | undefined;
+    firstLogin?: boolean | undefined;
+    houseNumber?: string | undefined;
+    role?: "houseOwner" | "houseRelated" | "helpDesk" | "admin" | "tenant" | undefined;
+    street?: string | undefined;
+    residentialId?: string | undefined;
+    houseOwnerSub?: string | undefined;
+    currentPinAccess?: string | undefined;
+    stripeCustomerId?: string | undefined;
+    iaBehaviour?: "formal" | "friendly" | "funny" | undefined;
+    avatarUrl?: string | undefined;
+    isUserDebtor?: boolean | undefined;
+}, {
+    sub?: string | undefined;
+    username?: string | undefined;
+    name?: string | undefined;
+    email?: string | undefined;
+    email_verified?: boolean | undefined;
+    phone_number?: string | undefined;
+    phone_number_verified?: boolean | undefined;
+    firstLogin?: boolean | undefined;
+    houseNumber?: string | undefined;
+    role?: "houseOwner" | "houseRelated" | "helpDesk" | "admin" | "tenant" | undefined;
+    street?: string | undefined;
+    residentialId?: string | undefined;
+    houseOwnerSub?: string | undefined;
+    currentPinAccess?: string | undefined;
+    stripeCustomerId?: string | undefined;
+    iaBehaviour?: "formal" | "friendly" | "funny" | undefined;
+    avatarUrl?: string | undefined;
+    isUserDebtor?: boolean | undefined;
+}>;
+type UserTypePartial = z.infer<typeof userSchemaPartial>;
 
 interface GetUserResponse {
     users: User[];
@@ -822,4 +881,4 @@ declare const actionLogSchema: z.ZodObject<{
 }>;
 type ActionLogType = z.infer<typeof actionLogSchema>;
 
-export { type ActionLog, type ActionLogType, type AutomaticCharge, type AutomaticChargeSummaryResponse, type AutomaticChargeType, type BasicUserInfo, BasicUserInfoSchema, type BasicUserInfoType, BasicUserTypeEnum, type ConfirmForgotPassword, type ConfirmForgotPasswordType, type ForgotPasswordResponse, type GetUserResponse, type Guest, type GuestType, type Invitation, type InvitationCreationResponse, type InvitationData, InvitationDurationEnum, type InvitationType, InvitationTypeEnum, type InvitationUIType, type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type Project, type ProjectType, type ProjectUpdate, type ProjectUpdateType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type ResetPassword, type ResetPasswordResponse, type ResetPasswordType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type Value, type VideoCallToken, type VideoCallTokenType, actionLogSchema, automaticChargeSchema, basicUserTypeEnumSchema, confirmForgotPasswordSchema, guestSchema, invitationDurationEnumSchema, invitationSchema, invitationSchemaToInterface, invitationTypeEnumSchema, invoicePaymentIntentSchema, invoiceSchema, patchUserSchema, paymentMethodSchema, projectSchema, projectUpdateSchema, remoteGateLogSchema, remoteGateSchema, resetPasswordSchema, residentialSchema, userSchema, userSummarySchema, videoCallTokenSchema };
+export { type ActionLog, type ActionLogType, type AutomaticCharge, type AutomaticChargeSummaryResponse, type AutomaticChargeType, type BasicUserInfo, BasicUserInfoSchema, type BasicUserInfoType, BasicUserTypeEnum, type ConfirmForgotPassword, type ConfirmForgotPasswordType, type ForgotPasswordResponse, type GetUserResponse, type Guest, type GuestType, type Invitation, type InvitationCreationResponse, type InvitationData, InvitationDurationEnum, type InvitationType, InvitationTypeEnum, type InvitationUIType, type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type Project, type ProjectType, type ProjectUpdate, type ProjectUpdateType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type ResetPassword, type ResetPasswordResponse, type ResetPasswordType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type UserTypePartial, type Value, type VideoCallToken, type VideoCallTokenType, actionLogSchema, automaticChargeSchema, basicUserTypeEnumSchema, confirmForgotPasswordSchema, guestSchema, invitationDurationEnumSchema, invitationSchema, invitationSchemaToInterface, invitationTypeEnumSchema, invoicePaymentIntentSchema, invoiceSchema, patchUserSchema, paymentMethodSchema, projectSchema, projectUpdateSchema, remoteGateLogSchema, remoteGateSchema, resetPasswordSchema, residentialSchema, userSchema, userSchemaPartial, userSummarySchema, videoCallTokenSchema };

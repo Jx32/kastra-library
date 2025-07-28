@@ -26,6 +26,7 @@ var userSchema = z.object({
   isUserDebtor: z.boolean().optional()
   // Optional field to indicate if the user is a debtor
 }).strict();
+var userSchemaPartial = userSchema.partial();
 
 // src/dto/patch-user.interface.ts
 import { z as z2 } from "zod";
@@ -335,6 +336,7 @@ export {
   resetPasswordSchema,
   residentialSchema,
   userSchema,
+  userSchemaPartial,
   userSummarySchema,
   videoCallTokenSchema
 };

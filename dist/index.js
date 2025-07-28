@@ -56,6 +56,7 @@ __export(src_exports, {
   resetPasswordSchema: () => resetPasswordSchema,
   residentialSchema: () => residentialSchema,
   userSchema: () => userSchema,
+  userSchemaPartial: () => userSchemaPartial,
   userSummarySchema: () => userSummarySchema,
   videoCallTokenSchema: () => videoCallTokenSchema
 });
@@ -89,6 +90,7 @@ var userSchema = import_zod.z.object({
   isUserDebtor: import_zod.z.boolean().optional()
   // Optional field to indicate if the user is a debtor
 }).strict();
+var userSchemaPartial = userSchema.partial();
 
 // src/dto/patch-user.interface.ts
 var import_zod2 = require("zod");
@@ -399,6 +401,7 @@ var actionLogSchema = import_zod20.z.object({
   resetPasswordSchema,
   residentialSchema,
   userSchema,
+  userSchemaPartial,
   userSummarySchema,
   videoCallTokenSchema
 });

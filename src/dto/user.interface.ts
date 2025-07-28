@@ -43,3 +43,6 @@ export const userSchema = z.object({
 }).strict();
 
 export type UserType = z.infer<typeof userSchema>;
+
+export const userSchemaPartial = userSchema.partial();
+export type UserTypePartial = z.infer<typeof userSchemaPartial>;
