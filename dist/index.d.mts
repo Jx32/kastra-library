@@ -20,6 +20,7 @@ interface User {
     stripeCustomerId?: string;
     iaBehaviour?: "formal" | "friendly" | "funny";
     avatarUrl?: string;
+    enabled: boolean;
 }
 declare const userSchema: z.ZodObject<{
     sub: z.ZodOptional<z.ZodString>;
@@ -40,6 +41,7 @@ declare const userSchema: z.ZodObject<{
     iaBehaviour: z.ZodOptional<z.ZodEnum<["formal", "friendly", "funny"]>>;
     avatarUrl: z.ZodOptional<z.ZodString>;
     isUserDebtor: z.ZodOptional<z.ZodBoolean>;
+    enabled: z.ZodBoolean;
 }, "strict", z.ZodTypeAny, {
     name: string;
     email: string;
@@ -48,6 +50,7 @@ declare const userSchema: z.ZodObject<{
     role: "houseOwner" | "houseRelated" | "helpDesk" | "admin" | "tenant";
     street: string;
     residentialId: string;
+    enabled: boolean;
     sub?: string | undefined;
     username?: string | undefined;
     email_verified?: boolean | undefined;
@@ -67,6 +70,7 @@ declare const userSchema: z.ZodObject<{
     role: "houseOwner" | "houseRelated" | "helpDesk" | "admin" | "tenant";
     street: string;
     residentialId: string;
+    enabled: boolean;
     sub?: string | undefined;
     username?: string | undefined;
     email_verified?: boolean | undefined;
@@ -99,6 +103,7 @@ declare const userSchemaPartial: z.ZodObject<{
     iaBehaviour: z.ZodOptional<z.ZodOptional<z.ZodEnum<["formal", "friendly", "funny"]>>>;
     avatarUrl: z.ZodOptional<z.ZodOptional<z.ZodString>>;
     isUserDebtor: z.ZodOptional<z.ZodOptional<z.ZodBoolean>>;
+    enabled: z.ZodOptional<z.ZodBoolean>;
 }, "strict", z.ZodTypeAny, {
     sub?: string | undefined;
     username?: string | undefined;
@@ -118,6 +123,7 @@ declare const userSchemaPartial: z.ZodObject<{
     iaBehaviour?: "formal" | "friendly" | "funny" | undefined;
     avatarUrl?: string | undefined;
     isUserDebtor?: boolean | undefined;
+    enabled?: boolean | undefined;
 }, {
     sub?: string | undefined;
     username?: string | undefined;
@@ -137,6 +143,7 @@ declare const userSchemaPartial: z.ZodObject<{
     iaBehaviour?: "formal" | "friendly" | "funny" | undefined;
     avatarUrl?: string | undefined;
     isUserDebtor?: boolean | undefined;
+    enabled?: boolean | undefined;
 }>;
 type UserTypePartial = z.infer<typeof userSchemaPartial>;
 
@@ -383,15 +390,15 @@ declare const remoteGateSchema: z.ZodObject<{
     type: "entrance" | "exit";
     residentialId: string;
     thingName: string;
-    _id?: string | undefined;
     enabled?: boolean | undefined;
+    _id?: string | undefined;
 }, {
     name: string;
     type: "entrance" | "exit";
     residentialId: string;
     thingName: string;
-    _id?: string | undefined;
     enabled?: boolean | undefined;
+    _id?: string | undefined;
 }>;
 type RemoteGateType = z.infer<typeof remoteGateSchema>;
 
@@ -413,15 +420,15 @@ declare const userSummarySchema: z$1.ZodObject<{
         type: "entrance" | "exit";
         residentialId: string;
         thingName: string;
-        _id?: string | undefined;
         enabled?: boolean | undefined;
+        _id?: string | undefined;
     }, {
         name: string;
         type: "entrance" | "exit";
         residentialId: string;
         thingName: string;
-        _id?: string | undefined;
         enabled?: boolean | undefined;
+        _id?: string | undefined;
     }>, "many">;
     currentPinAccess: z$1.ZodString;
     topicName: z$1.ZodString;
@@ -433,8 +440,8 @@ declare const userSummarySchema: z$1.ZodObject<{
         type: "entrance" | "exit";
         residentialId: string;
         thingName: string;
-        _id?: string | undefined;
         enabled?: boolean | undefined;
+        _id?: string | undefined;
     }[];
 }, {
     currentPinAccess: string;
@@ -444,8 +451,8 @@ declare const userSummarySchema: z$1.ZodObject<{
         type: "entrance" | "exit";
         residentialId: string;
         thingName: string;
-        _id?: string | undefined;
         enabled?: boolean | undefined;
+        _id?: string | undefined;
     }[];
 }>;
 type UserSummaryType = z$1.infer<typeof userSummarySchema>;

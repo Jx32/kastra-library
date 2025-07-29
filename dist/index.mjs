@@ -23,8 +23,9 @@ var userSchema = z.object({
   iaBehaviour: z.enum(["formal", "friendly", "funny"]).optional(),
   avatarUrl: z.string().optional(),
   // Optional field for avatar URL
-  isUserDebtor: z.boolean().optional()
+  isUserDebtor: z.boolean().optional(),
   // Optional field to indicate if the user is a debtor
+  enabled: z.boolean()
 }).strict();
 var userSchemaPartial = userSchema.partial();
 

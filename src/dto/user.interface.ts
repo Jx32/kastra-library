@@ -19,6 +19,7 @@ export interface User {
     stripeCustomerId?: string; // Optional field for Stripe customer ID
     iaBehaviour?: "formal" | "friendly" | "funny",
     avatarUrl?: string; // Optional field for avatar URL
+    enabled: boolean;
 }
 
 export const userSchema = z.object({
@@ -40,6 +41,7 @@ export const userSchema = z.object({
     iaBehaviour: z.enum(["formal", "friendly", "funny"]).optional(),
     avatarUrl: z.string().optional(), // Optional field for avatar URL
     isUserDebtor: z.boolean().optional(), // Optional field to indicate if the user is a debtor
+    enabled: z.boolean(),
 }).strict();
 
 export type UserType = z.infer<typeof userSchema>;
