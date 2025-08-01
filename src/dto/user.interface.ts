@@ -20,6 +20,7 @@ export interface User {
     iaBehaviour?: "formal" | "friendly" | "funny",
     avatarUrl?: string; // Optional field for avatar URL
     enabled: boolean;
+    accessEnabled: boolean;
 }
 
 export const userSchema = z.object({
@@ -42,6 +43,7 @@ export const userSchema = z.object({
     avatarUrl: z.string().optional(), // Optional field for avatar URL
     isUserDebtor: z.boolean().optional(), // Optional field to indicate if the user is a debtor
     enabled: z.boolean(),
+    accessEnabled: z.boolean(),
 }).strict();
 
 export type UserType = z.infer<typeof userSchema>;

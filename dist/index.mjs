@@ -25,7 +25,8 @@ var userSchema = z.object({
   // Optional field for avatar URL
   isUserDebtor: z.boolean().optional(),
   // Optional field to indicate if the user is a debtor
-  enabled: z.boolean()
+  enabled: z.boolean(),
+  accessEnabled: z.boolean()
 }).strict();
 var userSchemaPartial = userSchema.partial();
 

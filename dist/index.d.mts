@@ -21,6 +21,7 @@ interface User {
     iaBehaviour?: "formal" | "friendly" | "funny";
     avatarUrl?: string;
     enabled: boolean;
+    accessEnabled: boolean;
 }
 declare const userSchema: z.ZodObject<{
     sub: z.ZodOptional<z.ZodString>;
@@ -42,6 +43,7 @@ declare const userSchema: z.ZodObject<{
     avatarUrl: z.ZodOptional<z.ZodString>;
     isUserDebtor: z.ZodOptional<z.ZodBoolean>;
     enabled: z.ZodBoolean;
+    accessEnabled: z.ZodBoolean;
 }, "strict", z.ZodTypeAny, {
     name: string;
     email: string;
@@ -51,6 +53,7 @@ declare const userSchema: z.ZodObject<{
     street: string;
     residentialId: string;
     enabled: boolean;
+    accessEnabled: boolean;
     sub?: string | undefined;
     username?: string | undefined;
     email_verified?: boolean | undefined;
@@ -71,6 +74,7 @@ declare const userSchema: z.ZodObject<{
     street: string;
     residentialId: string;
     enabled: boolean;
+    accessEnabled: boolean;
     sub?: string | undefined;
     username?: string | undefined;
     email_verified?: boolean | undefined;
@@ -104,6 +108,7 @@ declare const userSchemaPartial: z.ZodObject<{
     avatarUrl: z.ZodOptional<z.ZodOptional<z.ZodString>>;
     isUserDebtor: z.ZodOptional<z.ZodOptional<z.ZodBoolean>>;
     enabled: z.ZodOptional<z.ZodBoolean>;
+    accessEnabled: z.ZodOptional<z.ZodBoolean>;
 }, "strict", z.ZodTypeAny, {
     sub?: string | undefined;
     username?: string | undefined;
@@ -124,6 +129,7 @@ declare const userSchemaPartial: z.ZodObject<{
     avatarUrl?: string | undefined;
     isUserDebtor?: boolean | undefined;
     enabled?: boolean | undefined;
+    accessEnabled?: boolean | undefined;
 }, {
     sub?: string | undefined;
     username?: string | undefined;
@@ -144,6 +150,7 @@ declare const userSchemaPartial: z.ZodObject<{
     avatarUrl?: string | undefined;
     isUserDebtor?: boolean | undefined;
     enabled?: boolean | undefined;
+    accessEnabled?: boolean | undefined;
 }>;
 type UserTypePartial = z.infer<typeof userSchemaPartial>;
 

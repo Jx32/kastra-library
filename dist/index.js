@@ -89,7 +89,8 @@ var userSchema = import_zod.z.object({
   // Optional field for avatar URL
   isUserDebtor: import_zod.z.boolean().optional(),
   // Optional field to indicate if the user is a debtor
-  enabled: import_zod.z.boolean()
+  enabled: import_zod.z.boolean(),
+  accessEnabled: import_zod.z.boolean()
 }).strict();
 var userSchemaPartial = userSchema.partial();
 
