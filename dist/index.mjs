@@ -327,7 +327,8 @@ var notificationSchema = z21.object({
   title: z21.string(),
   content: z21.string().max(250, "Content must be at most 500 characters long"),
   url: z21.string(),
-  isoCreatedAt: z21.string().datetime({ offset: false })
+  isoCreatedAt: z21.string().datetime({ offset: false }),
+  status: z21.enum(["creating", "sending", "ok", "error"]).default("creating")
 }).strict();
 export {
   BasicUserInfoSchema,

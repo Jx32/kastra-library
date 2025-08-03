@@ -919,6 +919,7 @@ interface Notification {
     content: string;
     url: string;
     isoCreatedAt: string;
+    status: "creating" | "sending" | "ok" | "error";
 }
 declare const notificationSchema: z.ZodObject<{
     _id: z.ZodOptional<z.ZodString>;
@@ -929,7 +930,9 @@ declare const notificationSchema: z.ZodObject<{
     content: z.ZodString;
     url: z.ZodString;
     isoCreatedAt: z.ZodString;
+    status: z.ZodDefault<z.ZodEnum<["creating", "sending", "ok", "error"]>>;
 }, "strict", z.ZodTypeAny, {
+    status: "ok" | "error" | "creating" | "sending";
     isoCreatedAt: string;
     title: string;
     content: string;
@@ -944,6 +947,7 @@ declare const notificationSchema: z.ZodObject<{
     content: string;
     url: string;
     username?: string | undefined;
+    status?: "ok" | "error" | "creating" | "sending" | undefined;
     residentialId?: string | undefined;
     _id?: string | undefined;
     isGlobal?: boolean | undefined;

@@ -9,6 +9,7 @@ export interface Notification {
     content: string,
     url: string,
     isoCreatedAt: string,
+    status: "creating" | "sending" | "ok" | "error",
 }
 
 export const notificationSchema = z.object({
@@ -20,6 +21,7 @@ export const notificationSchema = z.object({
     content: z.string().max(250, "Content must be at most 500 characters long"),
     url: z.string(),
     isoCreatedAt: z.string().datetime({ offset: false }),
+    status: z.enum(["creating", "sending", "ok", "error"]).default("creating"),
 }).strict();
 
 export type NotificationType = z.infer<typeof notificationSchema>;
