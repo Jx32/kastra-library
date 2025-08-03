@@ -91,7 +91,9 @@ var userSchema = import_zod.z.object({
   isUserDebtor: import_zod.z.boolean().optional(),
   // Optional field to indicate if the user is a debtor
   enabled: import_zod.z.boolean(),
-  accessEnabled: import_zod.z.boolean()
+  accessEnabled: import_zod.z.boolean(),
+  fcmToken: import_zod.z.string().optional()
+  // Optional field for FCM token
 }).strict();
 var userSchemaPartial = userSchema.partial();
 

@@ -26,7 +26,9 @@ var userSchema = z.object({
   isUserDebtor: z.boolean().optional(),
   // Optional field to indicate if the user is a debtor
   enabled: z.boolean(),
-  accessEnabled: z.boolean()
+  accessEnabled: z.boolean(),
+  fcmToken: z.string().optional()
+  // Optional field for FCM token
 }).strict();
 var userSchemaPartial = userSchema.partial();
 

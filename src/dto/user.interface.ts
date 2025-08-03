@@ -21,6 +21,7 @@ export interface User {
     avatarUrl?: string; // Optional field for avatar URL
     enabled: boolean;
     accessEnabled: boolean;
+    fcmToken?: string; // Optional field for FCM token
 }
 
 export const userSchema = z.object({
@@ -44,6 +45,7 @@ export const userSchema = z.object({
     isUserDebtor: z.boolean().optional(), // Optional field to indicate if the user is a debtor
     enabled: z.boolean(),
     accessEnabled: z.boolean(),
+    fcmToken: z.string().optional(), // Optional field for FCM token
 }).strict();
 
 export type UserType = z.infer<typeof userSchema>;

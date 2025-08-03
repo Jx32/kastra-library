@@ -22,6 +22,7 @@ interface User {
     avatarUrl?: string;
     enabled: boolean;
     accessEnabled: boolean;
+    fcmToken?: string;
 }
 declare const userSchema: z.ZodObject<{
     sub: z.ZodOptional<z.ZodString>;
@@ -44,6 +45,7 @@ declare const userSchema: z.ZodObject<{
     isUserDebtor: z.ZodOptional<z.ZodBoolean>;
     enabled: z.ZodBoolean;
     accessEnabled: z.ZodBoolean;
+    fcmToken: z.ZodOptional<z.ZodString>;
 }, "strict", z.ZodTypeAny, {
     name: string;
     email: string;
@@ -65,6 +67,7 @@ declare const userSchema: z.ZodObject<{
     iaBehaviour?: "formal" | "friendly" | "funny" | undefined;
     avatarUrl?: string | undefined;
     isUserDebtor?: boolean | undefined;
+    fcmToken?: string | undefined;
 }, {
     name: string;
     email: string;
@@ -86,6 +89,7 @@ declare const userSchema: z.ZodObject<{
     iaBehaviour?: "formal" | "friendly" | "funny" | undefined;
     avatarUrl?: string | undefined;
     isUserDebtor?: boolean | undefined;
+    fcmToken?: string | undefined;
 }>;
 type UserType = z.infer<typeof userSchema>;
 declare const userSchemaPartial: z.ZodObject<{
@@ -109,6 +113,7 @@ declare const userSchemaPartial: z.ZodObject<{
     isUserDebtor: z.ZodOptional<z.ZodOptional<z.ZodBoolean>>;
     enabled: z.ZodOptional<z.ZodBoolean>;
     accessEnabled: z.ZodOptional<z.ZodBoolean>;
+    fcmToken: z.ZodOptional<z.ZodOptional<z.ZodString>>;
 }, "strict", z.ZodTypeAny, {
     sub?: string | undefined;
     username?: string | undefined;
@@ -130,6 +135,7 @@ declare const userSchemaPartial: z.ZodObject<{
     isUserDebtor?: boolean | undefined;
     enabled?: boolean | undefined;
     accessEnabled?: boolean | undefined;
+    fcmToken?: string | undefined;
 }, {
     sub?: string | undefined;
     username?: string | undefined;
@@ -151,6 +157,7 @@ declare const userSchemaPartial: z.ZodObject<{
     isUserDebtor?: boolean | undefined;
     enabled?: boolean | undefined;
     accessEnabled?: boolean | undefined;
+    fcmToken?: string | undefined;
 }>;
 type UserTypePartial = z.infer<typeof userSchemaPartial>;
 
