@@ -393,7 +393,9 @@ var notificationSchema = import_zod21.z.object({
   content: import_zod21.z.string().max(250, "Content must be at most 500 characters long"),
   url: import_zod21.z.string(),
   isoCreatedAt: import_zod21.z.string().datetime({ offset: false }),
-  status: import_zod21.z.enum(["creating", "sending", "ok", "error"]).default("creating")
+  status: import_zod21.z.enum(["creating", "sending", "ok", "error"]).default("creating"),
+  message: import_zod21.z.string().optional()
+  // Optional field for additional message
 }).strict();
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {

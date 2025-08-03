@@ -10,6 +10,7 @@ export interface Notification {
     url: string,
     isoCreatedAt: string,
     status: "creating" | "sending" | "ok" | "error",
+    message?: string, // Optional field for additional message
 }
 
 export const notificationSchema = z.object({
@@ -22,6 +23,7 @@ export const notificationSchema = z.object({
     url: z.string(),
     isoCreatedAt: z.string().datetime({ offset: false }),
     status: z.enum(["creating", "sending", "ok", "error"]).default("creating"),
+    message: z.string().optional(), // Optional field for additional message
 }).strict();
 
 export type NotificationType = z.infer<typeof notificationSchema>;
