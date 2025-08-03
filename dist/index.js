@@ -383,7 +383,7 @@ var actionLogSchema = import_zod20.z.object({
 var import_zod21 = require("zod");
 var notificationSchema = import_zod21.z.object({
   _id: import_zod21.z.string().optional(),
-  userId: import_zod21.z.string().optional(),
+  username: import_zod21.z.string().optional(),
   // Optional field to associate the notification with a user
   residentialId: import_zod21.z.string().optional(),
   // Optional field to associate the notification with a residential

@@ -318,7 +318,7 @@ var actionLogSchema = z20.object({
 import { z as z21 } from "zod";
 var notificationSchema = z21.object({
   _id: z21.string().optional(),
-  userId: z21.string().optional(),
+  username: z21.string().optional(),
   // Optional field to associate the notification with a user
   residentialId: z21.string().optional(),
   // Optional field to associate the notification with a residential

@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export interface Notification {
     _id?: string,
-    userId?: string, // Optional field to associate the notification with a user
+    username?: string, // Optional field to associate the notification with a user
     residentialId?: string, // Optional field to associate the notification with a residential
     isGlobal?: boolean, // Optional field to indicate if the notification is global
     title: string,
@@ -13,7 +13,7 @@ export interface Notification {
 
 export const notificationSchema = z.object({
     _id: z.string().optional(),
-    userId: z.string().optional(), // Optional field to associate the notification with a user
+    username: z.string().optional(), // Optional field to associate the notification with a user
     residentialId: z.string().optional(), // Optional field to associate the notification with a residential
     isGlobal: z.boolean().optional(), // Optional field to indicate if the notification is global
     title: z.string(),
