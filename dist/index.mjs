@@ -329,8 +329,8 @@ var notificationSchema = z21.object({
   url: z21.string(),
   isoCreatedAt: z21.string().datetime({ offset: false }),
   status: z21.enum(["creating", "sending", "ok", "error"]).default("creating"),
-  message: z21.string().optional()
-  // Optional field for additional message
+  message: z21.string()
+  // field for additional message
 }).strict();
 export {
   BasicUserInfoSchema,

@@ -920,7 +920,7 @@ interface Notification {
     url: string;
     isoCreatedAt: string;
     status: "creating" | "sending" | "ok" | "error";
-    message?: string;
+    message: string;
 }
 declare const notificationSchema: z.ZodObject<{
     _id: z.ZodOptional<z.ZodString>;
@@ -932,26 +932,26 @@ declare const notificationSchema: z.ZodObject<{
     url: z.ZodString;
     isoCreatedAt: z.ZodString;
     status: z.ZodDefault<z.ZodEnum<["creating", "sending", "ok", "error"]>>;
-    message: z.ZodOptional<z.ZodString>;
+    message: z.ZodString;
 }, "strict", z.ZodTypeAny, {
     status: "ok" | "error" | "creating" | "sending";
+    message: string;
     isoCreatedAt: string;
     title: string;
     content: string;
     url: string;
     username?: string | undefined;
-    message?: string | undefined;
     residentialId?: string | undefined;
     _id?: string | undefined;
     isGlobal?: boolean | undefined;
 }, {
+    message: string;
     isoCreatedAt: string;
     title: string;
     content: string;
     url: string;
     username?: string | undefined;
     status?: "ok" | "error" | "creating" | "sending" | undefined;
-    message?: string | undefined;
     residentialId?: string | undefined;
     _id?: string | undefined;
     isGlobal?: boolean | undefined;
