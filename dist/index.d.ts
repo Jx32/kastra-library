@@ -903,4 +903,32 @@ declare const actionLogSchema: z.ZodObject<{
 }>;
 type ActionLogType = z.infer<typeof actionLogSchema>;
 
-export { type ActionLog, type ActionLogType, type AutomaticCharge, type AutomaticChargeSummaryResponse, type AutomaticChargeType, type BasicUserInfo, BasicUserInfoSchema, type BasicUserInfoType, BasicUserTypeEnum, type ConfirmForgotPassword, type ConfirmForgotPasswordType, type DeleteUserResponse, type ForgotPasswordResponse, type Guest, type GuestType, type Invitation, type InvitationCreationResponse, type InvitationData, InvitationDurationEnum, type InvitationType, InvitationTypeEnum, type InvitationUIType, type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type Project, type ProjectType, type ProjectUpdate, type ProjectUpdateType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type ResetPassword, type ResetPasswordResponse, type ResetPasswordType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type UserTypePartial, type UsernameGenerationResponse, type Value, type VideoCallToken, type VideoCallTokenType, actionLogSchema, automaticChargeSchema, basicUserTypeEnumSchema, confirmForgotPasswordSchema, guestSchema, invitationDurationEnumSchema, invitationSchema, invitationSchemaToInterface, invitationTypeEnumSchema, invoicePaymentIntentSchema, invoiceSchema, patchUserSchema, paymentMethodSchema, projectSchema, projectUpdateSchema, remoteGateLogSchema, remoteGateSchema, resetPasswordSchema, residentialSchema, userSchema, userSchemaPartial, userSummarySchema, videoCallTokenSchema };
+interface Notification {
+    _id?: string;
+    title: string;
+    content: string;
+    url: string;
+    isoCreatedAt: string;
+}
+declare const notificationSchema: z.ZodObject<{
+    _id: z.ZodOptional<z.ZodString>;
+    title: z.ZodString;
+    content: z.ZodString;
+    url: z.ZodString;
+    isoCreatedAt: z.ZodString;
+}, "strict", z.ZodTypeAny, {
+    isoCreatedAt: string;
+    title: string;
+    content: string;
+    url: string;
+    _id?: string | undefined;
+}, {
+    isoCreatedAt: string;
+    title: string;
+    content: string;
+    url: string;
+    _id?: string | undefined;
+}>;
+type NotificationType = z.infer<typeof notificationSchema>;
+
+export { type ActionLog, type ActionLogType, type AutomaticCharge, type AutomaticChargeSummaryResponse, type AutomaticChargeType, type BasicUserInfo, BasicUserInfoSchema, type BasicUserInfoType, BasicUserTypeEnum, type ConfirmForgotPassword, type ConfirmForgotPasswordType, type DeleteUserResponse, type ForgotPasswordResponse, type Guest, type GuestType, type Invitation, type InvitationCreationResponse, type InvitationData, InvitationDurationEnum, type InvitationType, InvitationTypeEnum, type InvitationUIType, type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, type Notification, type NotificationType, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type Project, type ProjectType, type ProjectUpdate, type ProjectUpdateType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type ResetPassword, type ResetPasswordResponse, type ResetPasswordType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type UserTypePartial, type UsernameGenerationResponse, type Value, type VideoCallToken, type VideoCallTokenType, actionLogSchema, automaticChargeSchema, basicUserTypeEnumSchema, confirmForgotPasswordSchema, guestSchema, invitationDurationEnumSchema, invitationSchema, invitationSchemaToInterface, invitationTypeEnumSchema, invoicePaymentIntentSchema, invoiceSchema, notificationSchema, patchUserSchema, paymentMethodSchema, projectSchema, projectUpdateSchema, remoteGateLogSchema, remoteGateSchema, resetPasswordSchema, residentialSchema, userSchema, userSchemaPartial, userSummarySchema, videoCallTokenSchema };

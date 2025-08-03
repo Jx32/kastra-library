@@ -47,6 +47,7 @@ __export(src_exports, {
   invitationTypeEnumSchema: () => invitationTypeEnumSchema,
   invoicePaymentIntentSchema: () => invoicePaymentIntentSchema,
   invoiceSchema: () => invoiceSchema,
+  notificationSchema: () => notificationSchema,
   patchUserSchema: () => patchUserSchema,
   paymentMethodSchema: () => paymentMethodSchema,
   projectSchema: () => projectSchema,
@@ -375,6 +376,16 @@ var actionLogSchema = import_zod20.z.object({
   isoTimestamp: import_zod20.z.string().datetime({ offset: false }),
   details: import_zod20.z.string().optional()
 });
+
+// src/dto/notification.ts
+var import_zod21 = require("zod");
+var notificationSchema = import_zod21.z.object({
+  _id: import_zod21.z.string().optional(),
+  title: import_zod21.z.string(),
+  content: import_zod21.z.string().max(250, "Content must be at most 500 characters long"),
+  url: import_zod21.z.string(),
+  isoCreatedAt: import_zod21.z.string().datetime({ offset: false })
+}).strict();
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   BasicUserInfoSchema,
@@ -394,6 +405,7 @@ var actionLogSchema = import_zod20.z.object({
   invitationTypeEnumSchema,
   invoicePaymentIntentSchema,
   invoiceSchema,
+  notificationSchema,
   patchUserSchema,
   paymentMethodSchema,
   projectSchema,

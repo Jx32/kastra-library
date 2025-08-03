@@ -311,6 +311,16 @@ var actionLogSchema = z20.object({
   isoTimestamp: z20.string().datetime({ offset: false }),
   details: z20.string().optional()
 });
+
+// src/dto/notification.ts
+import { z as z21 } from "zod";
+var notificationSchema = z21.object({
+  _id: z21.string().optional(),
+  title: z21.string(),
+  content: z21.string().max(250, "Content must be at most 500 characters long"),
+  url: z21.string(),
+  isoCreatedAt: z21.string().datetime({ offset: false })
+}).strict();
 export {
   BasicUserInfoSchema,
   BasicUserTypeEnum,
@@ -329,6 +339,7 @@ export {
   invitationTypeEnumSchema,
   invoicePaymentIntentSchema,
   invoiceSchema,
+  notificationSchema,
   patchUserSchema,
   paymentMethodSchema,
   projectSchema,

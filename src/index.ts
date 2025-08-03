@@ -40,3 +40,5 @@ export * from "./dto/value";
 export * from "./dto/project";
 
 export * from "./dto/action-log";
+
+export * from "./dto/notification";
