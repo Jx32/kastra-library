@@ -905,6 +905,9 @@ type ActionLogType = z.infer<typeof actionLogSchema>;
 
 interface Notification {
     _id?: string;
+    userId?: string;
+    residentialId?: string;
+    isGlobal?: boolean;
     title: string;
     content: string;
     url: string;
@@ -912,6 +915,9 @@ interface Notification {
 }
 declare const notificationSchema: z.ZodObject<{
     _id: z.ZodOptional<z.ZodString>;
+    userId: z.ZodOptional<z.ZodString>;
+    residentialId: z.ZodOptional<z.ZodString>;
+    isGlobal: z.ZodOptional<z.ZodBoolean>;
     title: z.ZodString;
     content: z.ZodString;
     url: z.ZodString;
@@ -921,13 +927,19 @@ declare const notificationSchema: z.ZodObject<{
     title: string;
     content: string;
     url: string;
+    residentialId?: string | undefined;
     _id?: string | undefined;
+    userId?: string | undefined;
+    isGlobal?: boolean | undefined;
 }, {
     isoCreatedAt: string;
     title: string;
     content: string;
     url: string;
+    residentialId?: string | undefined;
     _id?: string | undefined;
+    userId?: string | undefined;
+    isGlobal?: boolean | undefined;
 }>;
 type NotificationType = z.infer<typeof notificationSchema>;
 

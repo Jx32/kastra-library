@@ -316,6 +316,12 @@ var actionLogSchema = z20.object({
 import { z as z21 } from "zod";
 var notificationSchema = z21.object({
   _id: z21.string().optional(),
+  userId: z21.string().optional(),
+  // Optional field to associate the notification with a user
+  residentialId: z21.string().optional(),
+  // Optional field to associate the notification with a residential
+  isGlobal: z21.boolean().optional(),
+  // Optional field to indicate if the notification is global
   title: z21.string(),
   content: z21.string().max(250, "Content must be at most 500 characters long"),
   url: z21.string(),
