@@ -310,6 +310,8 @@ declare const residentialSchema: z$1.ZodObject<{
     topicName: z$1.ZodString;
     monthlyPaymentStripePriceId: z$1.ZodOptional<z$1.ZodString>;
     monthlyPaymentAmount: z$1.ZodString;
+    bankBanxicoKey: z$1.ZodOptional<z$1.ZodString>;
+    bankCLABE: z$1.ZodOptional<z$1.ZodString>;
 }, "strict", z$1.ZodTypeAny, {
     name: string;
     status: "active" | "inactive";
@@ -323,6 +325,8 @@ declare const residentialSchema: z$1.ZodObject<{
     _id?: string | undefined;
     contactNumber?: string | undefined;
     monthlyPaymentStripePriceId?: string | undefined;
+    bankBanxicoKey?: string | undefined;
+    bankCLABE?: string | undefined;
 }, {
     name: string;
     status: "active" | "inactive";
@@ -336,6 +340,8 @@ declare const residentialSchema: z$1.ZodObject<{
     _id?: string | undefined;
     contactNumber?: string | undefined;
     monthlyPaymentStripePriceId?: string | undefined;
+    bankBanxicoKey?: string | undefined;
+    bankCLABE?: string | undefined;
 }>;
 type ResidentialType = z$1.infer<typeof residentialSchema>;
 

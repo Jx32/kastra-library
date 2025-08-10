@@ -79,7 +79,11 @@ var residentialSchema = z5.object({
   status: z5.enum(["active", "inactive"]),
   topicName: z5.string(),
   monthlyPaymentStripePriceId: z5.string().optional(),
-  monthlyPaymentAmount: z5.string()
+  monthlyPaymentAmount: z5.string(),
+  bankBanxicoKey: z5.string().optional(),
+  // Optional field for Banxico key
+  bankCLABE: z5.string().optional()
+  // Optional field for bank account number
 }).strict();
 
 // src/dto/remote-gate-log.interface.ts

@@ -37,6 +37,8 @@ export const residentialSchema = z.object({
     topicName: z.string(),
     monthlyPaymentStripePriceId: z.string().optional(),
     monthlyPaymentAmount: z.string(),
+    bankBanxicoKey: z.string().optional(), // Optional field for Banxico key
+    bankCLABE: z.string().optional(), // Optional field for bank account number
 }).strict();
 
 export type ResidentialType = z.infer<typeof residentialSchema>;
