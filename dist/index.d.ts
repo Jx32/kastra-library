@@ -294,6 +294,8 @@ interface Residential {
     topicName: string;
     monthlyPaymentStripePriceId?: string;
     monthlyPaymentAmount: string;
+    bankBanxicoKey?: string;
+    bankCLABE?: string;
 }
 declare const residentialSchema: z$1.ZodObject<{
     _id: z$1.ZodOptional<z$1.ZodString>;

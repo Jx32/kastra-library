@@ -20,6 +20,8 @@ export interface Residential {
     topicName: string;
     monthlyPaymentStripePriceId?: string;
     monthlyPaymentAmount: string;
+    bankBanxicoKey?: string; // Optional field for Banxico key
+    bankCLABE?: string; // Optional field for bank account number
 }
 
 export const residentialSchema = z.object({
