@@ -35,11 +35,13 @@ __export(src_exports, {
   InvitationDurationEnum: () => InvitationDurationEnum,
   InvitationTypeEnum: () => InvitationTypeEnum,
   PHONE_REGEX: () => PHONE_REGEX,
+  PaymentProofSchema: () => PaymentProofSchema,
   UserRoleEnum: () => UserRoleEnum,
   actionLogSchema: () => actionLogSchema,
   automaticChargeSchema: () => automaticChargeSchema,
   basicUserTypeEnumSchema: () => basicUserTypeEnumSchema,
   confirmForgotPasswordSchema: () => confirmForgotPasswordSchema,
+  fileSchema: () => fileSchema,
   guestSchema: () => guestSchema,
   invitationDurationEnumSchema: () => invitationDurationEnumSchema,
   invitationSchema: () => invitationSchema,
@@ -245,11 +247,27 @@ var automaticChargeSchema = import_zod13.z.object({
   paymentMethodId: import_zod13.z.string().optional()
 }).strict();
 
+// src/dto/file.interface.ts
+var import_zod14 = require("zod");
+var fileSchema = import_zod14.z.object({
+  name: import_zod14.z.string(),
+  mimeType: import_zod14.z.string(),
+  data: import_zod14.z.string().base64()
+});
+
+// src/dto/payment-proof.interface.ts
+var import_zod15 = require("zod");
+var PaymentProofSchema = import_zod15.z.object({
+  _id: import_zod15.z.string().optional(),
+  invoiceId: import_zod15.z.string(),
+  file: fileSchema
+});
+
 // src/dto/invitation.ts
-var import_zod17 = require("zod");
+var import_zod19 = require("zod");
 
 // src/enum/invitation-duration.enum.ts
-var import_zod14 = __toESM(require("zod"));
+var import_zod16 = __toESM(require("zod"));
 var InvitationDurationEnum = /* @__PURE__ */ ((InvitationDurationEnum3) => {
   InvitationDurationEnum3["ONE_HOUR"] = "1 hour";
   InvitationDurationEnum3["TWO_HOURS"] = "2 hours";
@@ -265,7 +283,7 @@ var InvitationDurationEnum = /* @__PURE__ */ ((InvitationDurationEnum3) => {
   InvitationDurationEnum3["THREE_MONTHS"] = "3 months";
   return InvitationDurationEnum3;
 })(InvitationDurationEnum || {});
-var invitationDurationEnumSchema = import_zod14.default.enum([
+var invitationDurationEnumSchema = import_zod16.default.enum([
   "1 hour" /* ONE_HOUR */,
   "2 hours" /* TWO_HOURS */,
   "4 hours" /* FOUR_HOURS */,
@@ -281,43 +299,43 @@ var invitationDurationEnumSchema = import_zod14.default.enum([
 ]);
 
 // src/enum/invitation-type.enum.ts
-var import_zod15 = require("zod");
+var import_zod17 = require("zod");
 var InvitationTypeEnum = /* @__PURE__ */ ((InvitationTypeEnum3) => {
   InvitationTypeEnum3["QR"] = "qr";
   InvitationTypeEnum3["PIN"] = "pin";
   return InvitationTypeEnum3;
 })(InvitationTypeEnum || {});
-var invitationTypeEnumSchema = import_zod15.z.enum([
+var invitationTypeEnumSchema = import_zod17.z.enum([
   "qr" /* QR */,
   "pin" /* PIN */
 ]);
 
 // src/dto/basic-user-info.ts
-var import_zod16 = require("zod");
+var import_zod18 = require("zod");
 var BasicUserTypeEnum = /* @__PURE__ */ ((BasicUserTypeEnum3) => {
   BasicUserTypeEnum3["REGISTERED_USER"] = "registeredUser";
   BasicUserTypeEnum3["GUEST_USER"] = "guestUser";
   return BasicUserTypeEnum3;
 })(BasicUserTypeEnum || {});
-var basicUserTypeEnumSchema = import_zod16.z.enum(["registeredUser" /* REGISTERED_USER */, "guestUser" /* GUEST_USER */]);
-var BasicUserInfoSchema = import_zod16.z.object({
-  id: import_zod16.z.string().uuid(),
-  username: import_zod16.z.string().min(1),
-  name: import_zod16.z.string(),
-  avatarUrl: import_zod16.z.string().url(),
+var basicUserTypeEnumSchema = import_zod18.z.enum(["registeredUser" /* REGISTERED_USER */, "guestUser" /* GUEST_USER */]);
+var BasicUserInfoSchema = import_zod18.z.object({
+  id: import_zod18.z.string().uuid(),
+  username: import_zod18.z.string().min(1),
+  name: import_zod18.z.string(),
+  avatarUrl: import_zod18.z.string().url(),
   type: basicUserTypeEnumSchema
 }).strict();
 
 // src/dto/invitation.ts
-var invitationSchema = import_zod17.z.object({
-  _id: import_zod17.z.string().optional(),
-  userId: import_zod17.z.string().optional(),
+var invitationSchema = import_zod19.z.object({
+  _id: import_zod19.z.string().optional(),
+  userId: import_zod19.z.string().optional(),
   userType: basicUserTypeEnumSchema.optional(),
   type: invitationTypeEnumSchema,
   duration: invitationDurationEnumSchema,
-  isoDueDate: import_zod17.z.string(),
-  used: import_zod17.z.boolean().optional(),
-  oneTimeUse: import_zod17.z.boolean()
+  isoDueDate: import_zod19.z.string(),
+  used: import_zod19.z.boolean().optional(),
+  oneTimeUse: import_zod19.z.boolean()
 });
 var invitationSchemaToInterface = (data) => {
   return {
@@ -333,13 +351,13 @@ var invitationSchemaToInterface = (data) => {
 };
 
 // src/dto/guest.ts
-var import_zod18 = require("zod");
-var guestSchema = import_zod18.z.object({
-  _id: import_zod18.z.string().optional(),
-  userSub: import_zod18.z.string().uuid(),
-  name: import_zod18.z.string(),
-  avatarUrl: import_zod18.z.string().url(),
-  isoCreatedOn: import_zod18.z.string().datetime()
+var import_zod20 = require("zod");
+var guestSchema = import_zod20.z.object({
+  _id: import_zod20.z.string().optional(),
+  userSub: import_zod20.z.string().uuid(),
+  name: import_zod20.z.string(),
+  avatarUrl: import_zod20.z.string().url(),
+  isoCreatedOn: import_zod20.z.string().datetime()
 });
 
 // src/enum/role.enum.ts
@@ -353,52 +371,52 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
 })(UserRoleEnum || {});
 
 // src/dto/project.ts
-var import_zod19 = require("zod");
-var projectUpdateSchema = import_zod19.z.object({
-  updateText: import_zod19.z.string(),
-  isoCreatedAt: import_zod19.z.string()
+var import_zod21 = require("zod");
+var projectUpdateSchema = import_zod21.z.object({
+  updateText: import_zod21.z.string(),
+  isoCreatedAt: import_zod21.z.string()
 });
-var projectSchema = import_zod19.z.object({
-  _id: import_zod19.z.string().optional(),
-  residentialId: import_zod19.z.string(),
-  title: import_zod19.z.string(),
-  description: import_zod19.z.string(),
-  progress: import_zod19.z.number().min(0).max(1),
-  isoCreatedAt: import_zod19.z.string(),
-  updatedAt: import_zod19.z.string().optional(),
-  lastUpdateText: import_zod19.z.string().optional(),
-  isFinished: import_zod19.z.boolean(),
-  isArchived: import_zod19.z.boolean().optional(),
-  updates: import_zod19.z.array(projectUpdateSchema).optional()
+var projectSchema = import_zod21.z.object({
+  _id: import_zod21.z.string().optional(),
+  residentialId: import_zod21.z.string(),
+  title: import_zod21.z.string(),
+  description: import_zod21.z.string(),
+  progress: import_zod21.z.number().min(0).max(1),
+  isoCreatedAt: import_zod21.z.string(),
+  updatedAt: import_zod21.z.string().optional(),
+  lastUpdateText: import_zod21.z.string().optional(),
+  isFinished: import_zod21.z.boolean(),
+  isArchived: import_zod21.z.boolean().optional(),
+  updates: import_zod21.z.array(projectUpdateSchema).optional()
 });
 
 // src/dto/action-log.ts
-var import_zod20 = require("zod");
-var actionLogSchema = import_zod20.z.object({
-  residentialId: import_zod20.z.string().optional(),
-  module: import_zod20.z.string(),
-  httpMethod: import_zod20.z.string(),
-  userId: import_zod20.z.string(),
-  isoTimestamp: import_zod20.z.string().datetime({ offset: false }),
-  details: import_zod20.z.string().optional()
+var import_zod22 = require("zod");
+var actionLogSchema = import_zod22.z.object({
+  residentialId: import_zod22.z.string().optional(),
+  module: import_zod22.z.string(),
+  httpMethod: import_zod22.z.string(),
+  userId: import_zod22.z.string(),
+  isoTimestamp: import_zod22.z.string().datetime({ offset: false }),
+  details: import_zod22.z.string().optional()
 });
 
 // src/dto/notification.ts
-var import_zod21 = require("zod");
-var notificationSchema = import_zod21.z.object({
-  _id: import_zod21.z.string().optional(),
-  username: import_zod21.z.string().optional(),
+var import_zod23 = require("zod");
+var notificationSchema = import_zod23.z.object({
+  _id: import_zod23.z.string().optional(),
+  username: import_zod23.z.string().optional(),
   // Optional field to associate the notification with a user
-  residentialId: import_zod21.z.string().optional(),
+  residentialId: import_zod23.z.string().optional(),
   // Optional field to associate the notification with a residential
-  isGlobal: import_zod21.z.boolean().optional(),
+  isGlobal: import_zod23.z.boolean().optional(),
   // Optional field to indicate if the notification is global
-  title: import_zod21.z.string(),
-  content: import_zod21.z.string().max(250, "Content must be at most 500 characters long"),
-  url: import_zod21.z.string(),
-  isoCreatedAt: import_zod21.z.string().datetime({ offset: false }),
-  status: import_zod21.z.enum(["creating", "sending", "ok", "error"]).default("creating"),
-  message: import_zod21.z.string()
+  title: import_zod23.z.string(),
+  content: import_zod23.z.string().max(250, "Content must be at most 500 characters long"),
+  url: import_zod23.z.string(),
+  isoCreatedAt: import_zod23.z.string().datetime({ offset: false }),
+  status: import_zod23.z.enum(["creating", "sending", "ok", "error"]).default("creating"),
+  message: import_zod23.z.string()
   // field for additional message
 }).strict();
 // Annotate the CommonJS export names for ESM import in node:
@@ -408,11 +426,13 @@ var notificationSchema = import_zod21.z.object({
   InvitationDurationEnum,
   InvitationTypeEnum,
   PHONE_REGEX,
+  PaymentProofSchema,
   UserRoleEnum,
   actionLogSchema,
   automaticChargeSchema,
   basicUserTypeEnumSchema,
   confirmForgotPasswordSchema,
+  fileSchema,
   guestSchema,
   invitationDurationEnumSchema,
   invitationSchema,

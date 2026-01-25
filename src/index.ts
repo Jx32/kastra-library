@@ -21,6 +21,8 @@ export * from "./dto/video-call-token.interface";
 export * from "./dto/payment-intent-response";
 export * from "./dto/automatic-charge";
 export * from "./dto/automatic-charge-summary-response";
+export * from "./dto/file.interface";
+export * from "./dto/payment-proof.interface";
 
 export * from "./dto/invitation";
 export * from "./enum/invitation-duration.enum";
