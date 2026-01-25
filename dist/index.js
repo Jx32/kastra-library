@@ -35,7 +35,6 @@ __export(src_exports, {
   InvitationDurationEnum: () => InvitationDurationEnum,
   InvitationTypeEnum: () => InvitationTypeEnum,
   PHONE_REGEX: () => PHONE_REGEX,
-  PaymentProofSchema: () => PaymentProofSchema,
   UserRoleEnum: () => UserRoleEnum,
   actionLogSchema: () => actionLogSchema,
   automaticChargeSchema: () => automaticChargeSchema,
@@ -52,6 +51,7 @@ __export(src_exports, {
   notificationSchema: () => notificationSchema,
   patchUserSchema: () => patchUserSchema,
   paymentMethodSchema: () => paymentMethodSchema,
+  paymentProofSchema: () => paymentProofSchema,
   projectSchema: () => projectSchema,
   projectUpdateSchema: () => projectUpdateSchema,
   remoteGateLogSchema: () => remoteGateLogSchema,
@@ -257,7 +257,7 @@ var fileSchema = import_zod14.z.object({
 
 // src/dto/payment-proof.interface.ts
 var import_zod15 = require("zod");
-var PaymentProofSchema = import_zod15.z.object({
+var paymentProofSchema = import_zod15.z.object({
   _id: import_zod15.z.string().optional(),
   invoiceId: import_zod15.z.string(),
   file: fileSchema
@@ -426,7 +426,6 @@ var notificationSchema = import_zod23.z.object({
   InvitationDurationEnum,
   InvitationTypeEnum,
   PHONE_REGEX,
-  PaymentProofSchema,
   UserRoleEnum,
   actionLogSchema,
   automaticChargeSchema,
@@ -443,6 +442,7 @@ var notificationSchema = import_zod23.z.object({
   notificationSchema,
   patchUserSchema,
   paymentMethodSchema,
+  paymentProofSchema,
   projectSchema,
   projectUpdateSchema,
   remoteGateLogSchema,

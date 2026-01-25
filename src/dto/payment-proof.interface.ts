@@ -7,10 +7,10 @@ export interface PaymentProof {
     file: File;
 }
 
-export const PaymentProofSchema = z.object({
+export const paymentProofSchema = z.object({
     _id: z.string().optional(),
     invoiceId: z.string(),
     file: fileSchema,
 });
 
-export type PaymentProofType = z.infer<typeof PaymentProofSchema>;
+export type PaymentProofType = z.infer<typeof paymentProofSchema>;

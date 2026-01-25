@@ -673,7 +673,7 @@ interface PaymentProof {
     invoiceId: string;
     file: File;
 }
-declare const PaymentProofSchema: z.ZodObject<{
+declare const paymentProofSchema: z.ZodObject<{
     _id: z.ZodOptional<z.ZodString>;
     invoiceId: z.ZodString;
     file: z.ZodObject<{
@@ -706,7 +706,7 @@ declare const PaymentProofSchema: z.ZodObject<{
     };
     _id?: string | undefined;
 }>;
-type PaymentProofType = z.infer<typeof PaymentProofSchema>;
+type PaymentProofType = z.infer<typeof paymentProofSchema>;
 
 declare const enum InvitationDurationEnum {
     ONE_HOUR = "1 hour",
@@ -1026,4 +1026,4 @@ declare const notificationSchema: z.ZodObject<{
 }>;
 type NotificationType = z.infer<typeof notificationSchema>;
 
-export { type ActionLog, type ActionLogType, type AutomaticCharge, type AutomaticChargeSummaryResponse, type AutomaticChargeType, type BasicUserInfo, BasicUserInfoSchema, type BasicUserInfoType, BasicUserTypeEnum, type ConfirmForgotPassword, type ConfirmForgotPasswordType, type DeleteUserResponse, type File, type FileType, type ForgotPasswordResponse, type Guest, type GuestType, type Invitation, type InvitationCreationResponse, type InvitationData, InvitationDurationEnum, type InvitationType, InvitationTypeEnum, type InvitationUIType, type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, type Notification, type NotificationType, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type PaymentProof, PaymentProofSchema, type PaymentProofType, type Project, type ProjectType, type ProjectUpdate, type ProjectUpdateType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type ResetPassword, type ResetPasswordResponse, type ResetPasswordType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type UserTypePartial, type UsernameGenerationResponse, type Value, type VideoCallToken, type VideoCallTokenType, actionLogSchema, automaticChargeSchema, basicUserTypeEnumSchema, confirmForgotPasswordSchema, fileSchema, guestSchema, invitationDurationEnumSchema, invitationSchema, invitationSchemaToInterface, invitationTypeEnumSchema, invoicePaymentIntentSchema, invoiceSchema, notificationSchema, patchUserSchema, paymentMethodSchema, projectSchema, projectUpdateSchema, remoteGateLogSchema, remoteGateSchema, resetPasswordSchema, residentialSchema, userSchema, userSchemaPartial, userSummarySchema, videoCallTokenSchema };
+export { type ActionLog, type ActionLogType, type AutomaticCharge, type AutomaticChargeSummaryResponse, type AutomaticChargeType, type BasicUserInfo, BasicUserInfoSchema, type BasicUserInfoType, BasicUserTypeEnum, type ConfirmForgotPassword, type ConfirmForgotPasswordType, type DeleteUserResponse, type File, type FileType, type ForgotPasswordResponse, type Guest, type GuestType, type Invitation, type InvitationCreationResponse, type InvitationData, InvitationDurationEnum, type InvitationType, InvitationTypeEnum, type InvitationUIType, type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, type Notification, type NotificationType, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type PaymentProof, type PaymentProofType, type Project, type ProjectType, type ProjectUpdate, type ProjectUpdateType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type ResetPassword, type ResetPasswordResponse, type ResetPasswordType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type UserTypePartial, type UsernameGenerationResponse, type Value, type VideoCallToken, type VideoCallTokenType, actionLogSchema, automaticChargeSchema, basicUserTypeEnumSchema, confirmForgotPasswordSchema, fileSchema, guestSchema, invitationDurationEnumSchema, invitationSchema, invitationSchemaToInterface, invitationTypeEnumSchema, invoicePaymentIntentSchema, invoiceSchema, notificationSchema, patchUserSchema, paymentMethodSchema, paymentProofSchema, projectSchema, projectUpdateSchema, remoteGateLogSchema, remoteGateSchema, resetPasswordSchema, residentialSchema, userSchema, userSchemaPartial, userSummarySchema, videoCallTokenSchema };
