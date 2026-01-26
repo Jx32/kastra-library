@@ -669,12 +669,10 @@ declare const fileSchema: z.ZodObject<{
 type FileType = z.infer<typeof fileSchema>;
 
 interface PaymentProof {
-    _id?: string;
     invoiceId: string;
     file: File;
 }
 declare const paymentProofSchema: z.ZodObject<{
-    _id: z.ZodOptional<z.ZodString>;
     invoiceId: z.ZodString;
     file: z.ZodObject<{
         name: z.ZodString;
@@ -696,7 +694,6 @@ declare const paymentProofSchema: z.ZodObject<{
         mimeType: string;
         data: string;
     };
-    _id?: string | undefined;
 }, {
     invoiceId: string;
     file: {
@@ -704,7 +701,6 @@ declare const paymentProofSchema: z.ZodObject<{
         mimeType: string;
         data: string;
     };
-    _id?: string | undefined;
 }>;
 type PaymentProofType = z.infer<typeof paymentProofSchema>;
 

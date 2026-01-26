@@ -191,7 +191,6 @@ var fileSchema = z14.object({
 // src/dto/payment-proof.interface.ts
 import { z as z15 } from "zod";
 var paymentProofSchema = z15.object({
-  _id: z15.string().optional(),
   invoiceId: z15.string(),
   file: fileSchema
 });

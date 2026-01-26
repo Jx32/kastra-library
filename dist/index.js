@@ -258,7 +258,6 @@ var fileSchema = import_zod14.z.object({
 // src/dto/payment-proof.interface.ts
 var import_zod15 = require("zod");
 var paymentProofSchema = import_zod15.z.object({
-  _id: import_zod15.z.string().optional(),
   invoiceId: import_zod15.z.string(),
   file: fileSchema
 });
