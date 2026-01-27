@@ -352,6 +352,17 @@ var notificationSchema = z23.object({
   message: z23.string()
   // field for additional message
 }).strict();
+
+// src/dto/notification-dto.ts
+import { z as z24 } from "zod";
+var notificationDtoSchema = z24.object({
+  title: z24.string(),
+  content: z24.string().max(250, "Content must be at most 250 characters long"),
+  url: z24.string(),
+  isoCreatedAt: z24.string().datetime({ offset: false }),
+  message: z24.string()
+  // field for additional message
+}).strict();
 export {
   BasicUserInfoSchema,
   BasicUserTypeEnum,
@@ -371,6 +382,7 @@ export {
   invitationTypeEnumSchema,
   invoicePaymentIntentSchema,
   invoiceSchema,
+  notificationDtoSchema,
   notificationSchema,
   patchUserSchema,
   paymentMethodSchema,

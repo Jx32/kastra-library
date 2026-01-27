@@ -48,6 +48,7 @@ __export(src_exports, {
   invitationTypeEnumSchema: () => invitationTypeEnumSchema,
   invoicePaymentIntentSchema: () => invoicePaymentIntentSchema,
   invoiceSchema: () => invoiceSchema,
+  notificationDtoSchema: () => notificationDtoSchema,
   notificationSchema: () => notificationSchema,
   patchUserSchema: () => patchUserSchema,
   paymentMethodSchema: () => paymentMethodSchema,
@@ -419,6 +420,17 @@ var notificationSchema = import_zod23.z.object({
   message: import_zod23.z.string()
   // field for additional message
 }).strict();
+
+// src/dto/notification-dto.ts
+var import_zod24 = require("zod");
+var notificationDtoSchema = import_zod24.z.object({
+  title: import_zod24.z.string(),
+  content: import_zod24.z.string().max(250, "Content must be at most 250 characters long"),
+  url: import_zod24.z.string(),
+  isoCreatedAt: import_zod24.z.string().datetime({ offset: false }),
+  message: import_zod24.z.string()
+  // field for additional message
+}).strict();
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   BasicUserInfoSchema,
@@ -439,6 +451,7 @@ var notificationSchema = import_zod23.z.object({
   invitationTypeEnumSchema,
   invoicePaymentIntentSchema,
   invoiceSchema,
+  notificationDtoSchema,
   notificationSchema,
   patchUserSchema,
   paymentMethodSchema,
