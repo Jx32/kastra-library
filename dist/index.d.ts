@@ -505,6 +505,7 @@ interface Invoice {
     monthName: string;
     year: number;
     paid_amount?: number;
+    have_payment_proof_file: boolean;
 }
 declare const invoiceSchema: z.ZodObject<{
     id: z.ZodString;
@@ -521,6 +522,7 @@ declare const invoiceSchema: z.ZodObject<{
     monthName: z.ZodString;
     year: z.ZodNumber;
     paid_amount: z.ZodOptional<z.ZodNumber>;
+    have_payment_proof_file: z.ZodBoolean;
 }, "strict", z.ZodTypeAny, {
     status: "void" | "open" | "draft" | "paid" | "uncollectible";
     id: string;
@@ -532,6 +534,7 @@ declare const invoiceSchema: z.ZodObject<{
     collection_method: "charge_automatically" | "send_invoice";
     monthName: string;
     year: number;
+    have_payment_proof_file: boolean;
     invoice_pdf?: string | undefined;
     due_date?: number | undefined;
     days_until_due?: number | undefined;
@@ -547,6 +550,7 @@ declare const invoiceSchema: z.ZodObject<{
     collection_method: "charge_automatically" | "send_invoice";
     monthName: string;
     year: number;
+    have_payment_proof_file: boolean;
     invoice_pdf?: string | undefined;
     due_date?: number | undefined;
     days_until_due?: number | undefined;

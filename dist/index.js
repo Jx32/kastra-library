@@ -206,8 +206,9 @@ var invoiceSchema = import_zod9.z.object({
   monthName: import_zod9.z.string(),
   year: import_zod9.z.number().min(2e3).max(2100),
   // Year must be a valid year
-  paid_amount: import_zod9.z.number().optional()
+  paid_amount: import_zod9.z.number().optional(),
   // Optional, amount paid by the customer
+  have_payment_proof_file: import_zod9.z.boolean()
 }).strict();
 
 // src/dto/payment-method.interface.ts

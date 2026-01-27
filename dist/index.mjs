@@ -139,8 +139,9 @@ var invoiceSchema = z9.object({
   monthName: z9.string(),
   year: z9.number().min(2e3).max(2100),
   // Year must be a valid year
-  paid_amount: z9.number().optional()
+  paid_amount: z9.number().optional(),
   // Optional, amount paid by the customer
+  have_payment_proof_file: z9.boolean()
 }).strict();
 
 // src/dto/payment-method.interface.ts

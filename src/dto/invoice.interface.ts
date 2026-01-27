@@ -15,6 +15,7 @@ export interface Invoice {
     monthName: string; // Name of the month for which the invoice is generated
     year: number; // Year for which the invoice is generated
     paid_amount?: number; // Optional, amount paid by the customer
+    have_payment_proof_file: boolean;
 }
 
 export const invoiceSchema = z.object({
@@ -32,6 +33,7 @@ export const invoiceSchema = z.object({
     monthName: z.string(),
     year: z.number().min(2000).max(2100), // Year must be a valid year
     paid_amount: z.number().optional(), // Optional, amount paid by the customer
+    have_payment_proof_file: z.boolean(),
 }).strict();
 
 export type InvoiceType = z.infer<typeof invoiceSchema>;
