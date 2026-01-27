@@ -1027,30 +1027,38 @@ declare const notificationSchema: z.ZodObject<{
 type NotificationType = z.infer<typeof notificationSchema>;
 
 interface NotificationDto {
+    id?: string;
     title: string;
     content: string;
     url: string;
     isoCreatedAt: string;
     message: string;
+    read: boolean;
 }
 declare const notificationDtoSchema: z.ZodObject<{
+    id: z.ZodOptional<z.ZodString>;
     title: z.ZodString;
     content: z.ZodString;
     url: z.ZodString;
     isoCreatedAt: z.ZodString;
     message: z.ZodString;
+    read: z.ZodBoolean;
 }, "strict", z.ZodTypeAny, {
     message: string;
     isoCreatedAt: string;
     title: string;
     content: string;
     url: string;
+    read: boolean;
+    id?: string | undefined;
 }, {
     message: string;
     isoCreatedAt: string;
     title: string;
     content: string;
     url: string;
+    read: boolean;
+    id?: string | undefined;
 }>;
 type NotificationDtoType = z.infer<typeof notificationDtoSchema>;
 

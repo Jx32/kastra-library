@@ -424,12 +424,14 @@ var notificationSchema = import_zod23.z.object({
 // src/dto/notification-dto.ts
 var import_zod24 = require("zod");
 var notificationDtoSchema = import_zod24.z.object({
+  id: import_zod24.z.string().optional(),
   title: import_zod24.z.string(),
   content: import_zod24.z.string().max(250, "Content must be at most 250 characters long"),
   url: import_zod24.z.string(),
   isoCreatedAt: import_zod24.z.string().datetime({ offset: false }),
-  message: import_zod24.z.string()
+  message: import_zod24.z.string(),
   // field for additional message
+  read: import_zod24.z.boolean()
 }).strict();
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {

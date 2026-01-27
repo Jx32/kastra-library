@@ -356,12 +356,14 @@ var notificationSchema = z23.object({
 // src/dto/notification-dto.ts
 import { z as z24 } from "zod";
 var notificationDtoSchema = z24.object({
+  id: z24.string().optional(),
   title: z24.string(),
   content: z24.string().max(250, "Content must be at most 250 characters long"),
   url: z24.string(),
   isoCreatedAt: z24.string().datetime({ offset: false }),
-  message: z24.string()
+  message: z24.string(),
   // field for additional message
+  read: z24.boolean()
 }).strict();
 export {
   BasicUserInfoSchema,
