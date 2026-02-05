@@ -47,7 +47,7 @@ declare const userSchema: z.ZodObject<{
     enabled: z.ZodBoolean;
     accessEnabled: z.ZodBoolean;
     fcmToken: z.ZodOptional<z.ZodString>;
-    allowNotifications: z.ZodDefault<z.ZodOptional<z.ZodBoolean>>;
+    allowNotifications: z.ZodOptional<z.ZodBoolean>;
 }, "strict", z.ZodTypeAny, {
     name: string;
     email: string;
@@ -58,7 +58,6 @@ declare const userSchema: z.ZodObject<{
     residentialId: string;
     enabled: boolean;
     accessEnabled: boolean;
-    allowNotifications: boolean;
     sub?: string | undefined;
     username?: string | undefined;
     email_verified?: boolean | undefined;
@@ -71,6 +70,7 @@ declare const userSchema: z.ZodObject<{
     avatarUrl?: string | undefined;
     isUserDebtor?: boolean | undefined;
     fcmToken?: string | undefined;
+    allowNotifications?: boolean | undefined;
 }, {
     name: string;
     email: string;
@@ -118,7 +118,7 @@ declare const userSchemaPartial: z.ZodObject<{
     enabled: z.ZodOptional<z.ZodBoolean>;
     accessEnabled: z.ZodOptional<z.ZodBoolean>;
     fcmToken: z.ZodOptional<z.ZodOptional<z.ZodString>>;
-    allowNotifications: z.ZodOptional<z.ZodDefault<z.ZodOptional<z.ZodBoolean>>>;
+    allowNotifications: z.ZodOptional<z.ZodOptional<z.ZodBoolean>>;
 }, "strict", z.ZodTypeAny, {
     sub?: string | undefined;
     username?: string | undefined;
@@ -194,9 +194,8 @@ declare const patchUserSchema: z.ZodObject<{
     iaBehaviour: z.ZodOptional<z.ZodEnum<["formal", "friendly", "funny"]>>;
     avatarUrl: z.ZodOptional<z.ZodString>;
     role: z.ZodOptional<z.ZodEnum<["houseOwner", "houseRelated", "helpDesk", "admin", "tenant"]>>;
-    allowNotifications: z.ZodDefault<z.ZodBoolean>;
+    allowNotifications: z.ZodOptional<z.ZodBoolean>;
 }, "strict", z.ZodTypeAny, {
-    allowNotifications: boolean;
     name?: string | undefined;
     email?: string | undefined;
     phone_number?: string | undefined;
@@ -208,6 +207,7 @@ declare const patchUserSchema: z.ZodObject<{
     currentPinAccess?: string | undefined;
     iaBehaviour?: "formal" | "friendly" | "funny" | undefined;
     avatarUrl?: string | undefined;
+    allowNotifications?: boolean | undefined;
 }, {
     name?: string | undefined;
     email?: string | undefined;

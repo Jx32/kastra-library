@@ -47,7 +47,7 @@ export const userSchema = z.object({
     enabled: z.boolean(),
     accessEnabled: z.boolean(),
     fcmToken: z.string().optional(), // Optional field for FCM token
-    allowNotifications: z.boolean().optional().default(true)
+    allowNotifications: z.boolean().optional()
 }).strict();
 
 export type UserType = z.infer<typeof userSchema>;

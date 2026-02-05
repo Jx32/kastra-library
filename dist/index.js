@@ -97,7 +97,7 @@ var userSchema = import_zod.z.object({
   accessEnabled: import_zod.z.boolean(),
   fcmToken: import_zod.z.string().optional(),
   // Optional field for FCM token
-  allowNotifications: import_zod.z.boolean().optional().default(true)
+  allowNotifications: import_zod.z.boolean().optional()
 }).strict();
 var userSchemaPartial = userSchema.partial();
 
@@ -118,7 +118,7 @@ var patchUserSchema = import_zod2.z.object({
   // Optional field for avatar URL
   role: import_zod2.z.enum(["houseOwner", "houseRelated", "helpDesk", "admin", "tenant"]).optional(),
   // Optional field for user role
-  allowNotifications: import_zod2.z.boolean().default(true)
+  allowNotifications: import_zod2.z.boolean().optional()
 }).strict();
 
 // src/dto/reset-password.ts

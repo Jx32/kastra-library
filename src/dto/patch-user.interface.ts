@@ -28,7 +28,7 @@ export const patchUserSchema = z.object({
     iaBehaviour: z.enum(["formal", "friendly", "funny"]).optional(),
     avatarUrl: z.string().optional(), // Optional field for avatar URL
     role: z.enum(["houseOwner", "houseRelated", "helpDesk", "admin", "tenant"]).optional(), // Optional field for user role
-    allowNotifications: z.boolean().default(true)
+    allowNotifications: z.boolean().optional()
 }).strict();
 
 export type PatchUserType = z.infer<typeof patchUserSchema>;

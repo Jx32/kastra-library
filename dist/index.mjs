@@ -29,7 +29,7 @@ var userSchema = z.object({
   accessEnabled: z.boolean(),
   fcmToken: z.string().optional(),
   // Optional field for FCM token
-  allowNotifications: z.boolean().optional().default(true)
+  allowNotifications: z.boolean().optional()
 }).strict();
 var userSchemaPartial = userSchema.partial();
 
@@ -50,7 +50,7 @@ var patchUserSchema = z2.object({
   // Optional field for avatar URL
   role: z2.enum(["houseOwner", "houseRelated", "helpDesk", "admin", "tenant"]).optional(),
   // Optional field for user role
-  allowNotifications: z2.boolean().default(true)
+  allowNotifications: z2.boolean().optional()
 }).strict();
 
 // src/dto/reset-password.ts
