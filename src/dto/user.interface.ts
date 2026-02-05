@@ -22,6 +22,7 @@ export interface User {
     enabled: boolean;
     accessEnabled: boolean;
     fcmToken?: string; // Optional field for FCM token
+    allowNotifications?: boolean;
 }
 
 export const userSchema = z.object({
@@ -46,6 +47,7 @@ export const userSchema = z.object({
     enabled: z.boolean(),
     accessEnabled: z.boolean(),
     fcmToken: z.string().optional(), // Optional field for FCM token
+    allowNotifications: z.boolean().optional().default(true)
 }).strict();
 
 export type UserType = z.infer<typeof userSchema>;

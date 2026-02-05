@@ -23,6 +23,7 @@ interface User {
     enabled: boolean;
     accessEnabled: boolean;
     fcmToken?: string;
+    allowNotifications?: boolean;
 }
 declare const userSchema: z.ZodObject<{
     sub: z.ZodOptional<z.ZodString>;
@@ -46,6 +47,7 @@ declare const userSchema: z.ZodObject<{
     enabled: z.ZodBoolean;
     accessEnabled: z.ZodBoolean;
     fcmToken: z.ZodOptional<z.ZodString>;
+    allowNotifications: z.ZodDefault<z.ZodOptional<z.ZodBoolean>>;
 }, "strict", z.ZodTypeAny, {
     name: string;
     email: string;
@@ -56,6 +58,7 @@ declare const userSchema: z.ZodObject<{
     residentialId: string;
     enabled: boolean;
     accessEnabled: boolean;
+    allowNotifications: boolean;
     sub?: string | undefined;
     username?: string | undefined;
     email_verified?: boolean | undefined;
@@ -90,6 +93,7 @@ declare const userSchema: z.ZodObject<{
     avatarUrl?: string | undefined;
     isUserDebtor?: boolean | undefined;
     fcmToken?: string | undefined;
+    allowNotifications?: boolean | undefined;
 }>;
 type UserType = z.infer<typeof userSchema>;
 declare const userSchemaPartial: z.ZodObject<{
@@ -114,6 +118,7 @@ declare const userSchemaPartial: z.ZodObject<{
     enabled: z.ZodOptional<z.ZodBoolean>;
     accessEnabled: z.ZodOptional<z.ZodBoolean>;
     fcmToken: z.ZodOptional<z.ZodOptional<z.ZodString>>;
+    allowNotifications: z.ZodOptional<z.ZodDefault<z.ZodOptional<z.ZodBoolean>>>;
 }, "strict", z.ZodTypeAny, {
     sub?: string | undefined;
     username?: string | undefined;
@@ -136,6 +141,7 @@ declare const userSchemaPartial: z.ZodObject<{
     enabled?: boolean | undefined;
     accessEnabled?: boolean | undefined;
     fcmToken?: string | undefined;
+    allowNotifications?: boolean | undefined;
 }, {
     sub?: string | undefined;
     username?: string | undefined;
@@ -158,6 +164,7 @@ declare const userSchemaPartial: z.ZodObject<{
     enabled?: boolean | undefined;
     accessEnabled?: boolean | undefined;
     fcmToken?: string | undefined;
+    allowNotifications?: boolean | undefined;
 }>;
 type UserTypePartial = z.infer<typeof userSchemaPartial>;
 
@@ -173,6 +180,7 @@ interface PatchUser {
     iaBehaviour?: "formal" | "friendly" | "funny";
     avatarUrl?: string;
     role?: "houseOwner" | "houseRelated" | "helpDesk" | "admin" | "tenant";
+    allowNotifications?: boolean;
 }
 declare const patchUserSchema: z.ZodObject<{
     residentialId: z.ZodOptional<z.ZodString>;
@@ -186,7 +194,9 @@ declare const patchUserSchema: z.ZodObject<{
     iaBehaviour: z.ZodOptional<z.ZodEnum<["formal", "friendly", "funny"]>>;
     avatarUrl: z.ZodOptional<z.ZodString>;
     role: z.ZodOptional<z.ZodEnum<["houseOwner", "houseRelated", "helpDesk", "admin", "tenant"]>>;
+    allowNotifications: z.ZodDefault<z.ZodBoolean>;
 }, "strict", z.ZodTypeAny, {
+    allowNotifications: boolean;
     name?: string | undefined;
     email?: string | undefined;
     phone_number?: string | undefined;
@@ -210,6 +220,7 @@ declare const patchUserSchema: z.ZodObject<{
     currentPinAccess?: string | undefined;
     iaBehaviour?: "formal" | "friendly" | "funny" | undefined;
     avatarUrl?: string | undefined;
+    allowNotifications?: boolean | undefined;
 }>;
 type PatchUserType = z.infer<typeof patchUserSchema>;
 

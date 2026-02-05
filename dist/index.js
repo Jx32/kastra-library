@@ -95,8 +95,9 @@ var userSchema = import_zod.z.object({
   // Optional field to indicate if the user is a debtor
   enabled: import_zod.z.boolean(),
   accessEnabled: import_zod.z.boolean(),
-  fcmToken: import_zod.z.string().optional()
+  fcmToken: import_zod.z.string().optional(),
   // Optional field for FCM token
+  allowNotifications: import_zod.z.boolean().optional().default(true)
 }).strict();
 var userSchemaPartial = userSchema.partial();
 
@@ -115,8 +116,9 @@ var patchUserSchema = import_zod2.z.object({
   iaBehaviour: import_zod2.z.enum(["formal", "friendly", "funny"]).optional(),
   avatarUrl: import_zod2.z.string().optional(),
   // Optional field for avatar URL
-  role: import_zod2.z.enum(["houseOwner", "houseRelated", "helpDesk", "admin", "tenant"]).optional()
+  role: import_zod2.z.enum(["houseOwner", "houseRelated", "helpDesk", "admin", "tenant"]).optional(),
   // Optional field for user role
+  allowNotifications: import_zod2.z.boolean().default(true)
 }).strict();
 
 // src/dto/reset-password.ts

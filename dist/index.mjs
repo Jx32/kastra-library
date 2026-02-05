@@ -27,8 +27,9 @@ var userSchema = z.object({
   // Optional field to indicate if the user is a debtor
   enabled: z.boolean(),
   accessEnabled: z.boolean(),
-  fcmToken: z.string().optional()
+  fcmToken: z.string().optional(),
   // Optional field for FCM token
+  allowNotifications: z.boolean().optional().default(true)
 }).strict();
 var userSchemaPartial = userSchema.partial();
 
@@ -47,8 +48,9 @@ var patchUserSchema = z2.object({
   iaBehaviour: z2.enum(["formal", "friendly", "funny"]).optional(),
   avatarUrl: z2.string().optional(),
   // Optional field for avatar URL
-  role: z2.enum(["houseOwner", "houseRelated", "helpDesk", "admin", "tenant"]).optional()
+  role: z2.enum(["houseOwner", "houseRelated", "helpDesk", "admin", "tenant"]).optional(),
   // Optional field for user role
+  allowNotifications: z2.boolean().default(true)
 }).strict();
 
 // src/dto/reset-password.ts

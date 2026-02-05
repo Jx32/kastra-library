@@ -13,6 +13,7 @@ export interface PatchUser {
     iaBehaviour?: "formal" | "friendly" | "funny",
     avatarUrl?: string; // Optional field for avatar URL
     role?: "houseOwner" | "houseRelated" | "helpDesk" | "admin" | "tenant"; // Optional field for user role
+    allowNotifications?: boolean;
 }
 
 export const patchUserSchema = z.object({
@@ -26,7 +27,8 @@ export const patchUserSchema = z.object({
     currentPinAccess: z.string().length(4, "Current PIN must be 4 digits length").optional(),
     iaBehaviour: z.enum(["formal", "friendly", "funny"]).optional(),
     avatarUrl: z.string().optional(), // Optional field for avatar URL
-    role: z.enum(["houseOwner", "houseRelated", "helpDesk", "admin", "tenant"]).optional() // Optional field for user role
+    role: z.enum(["houseOwner", "houseRelated", "helpDesk", "admin", "tenant"]).optional(), // Optional field for user role
+    allowNotifications: z.boolean().default(true)
 }).strict();
 
 export type PatchUserType = z.infer<typeof patchUserSchema>;
