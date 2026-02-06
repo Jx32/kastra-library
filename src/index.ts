@@ -17,7 +17,6 @@ export * from "./dto/user-balance.interface";
 export * from "./dto/invoice.interface";
 export * from "./dto/payment-method.interface";
 export * from "./dto/invoice-payment-intent.interface"
-export * from "./dto/video-call-token.interface";
 export * from "./dto/payment-intent-response";
 export * from "./dto/automatic-charge";
 export * from "./dto/automatic-charge-summary-response";
@@ -45,3 +44,6 @@ export * from "./dto/action-log";
 
 export * from "./dto/notification";
 export * from "./dto/notification-dto";
+
+export * from "./dto/video-call-token.interface";
+export * from "./dto/totem-call";

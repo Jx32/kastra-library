@@ -617,22 +617,6 @@ declare const invoicePaymentIntentSchema: z.ZodObject<{
 }>;
 type InvoicePaymentIntentType = z.infer<typeof invoicePaymentIntentSchema>;
 
-interface VideoCallToken {
-    token: string;
-    roomName: string;
-}
-declare const videoCallTokenSchema: z.ZodObject<{
-    token: z.ZodString;
-    roomName: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    token: string;
-    roomName: string;
-}, {
-    token: string;
-    roomName: string;
-}>;
-type VideoCallTokenType = z.infer<typeof videoCallTokenSchema>;
-
 interface PaymentIntentResponse {
     clientSecret: string;
     requiresAction: boolean;
@@ -1073,4 +1057,71 @@ declare const notificationDtoSchema: z.ZodObject<{
 }>;
 type NotificationDtoType = z.infer<typeof notificationDtoSchema>;
 
-export { type ActionLog, type ActionLogType, type AutomaticCharge, type AutomaticChargeSummaryResponse, type AutomaticChargeType, type BasicUserInfo, BasicUserInfoSchema, type BasicUserInfoType, BasicUserTypeEnum, type ConfirmForgotPassword, type ConfirmForgotPasswordType, type DeleteUserResponse, type File, type FileType, type ForgotPasswordResponse, type Guest, type GuestType, type Invitation, type InvitationCreationResponse, type InvitationData, InvitationDurationEnum, type InvitationType, InvitationTypeEnum, type InvitationUIType, type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, type Notification, type NotificationDto, type NotificationDtoType, type NotificationType, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type PaymentProof, type PaymentProofType, type Project, type ProjectType, type ProjectUpdate, type ProjectUpdateType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type ResetPassword, type ResetPasswordResponse, type ResetPasswordType, type Residential, type ResidentialType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type UserTypePartial, type UsernameGenerationResponse, type Value, type VideoCallToken, type VideoCallTokenType, actionLogSchema, automaticChargeSchema, basicUserTypeEnumSchema, confirmForgotPasswordSchema, fileSchema, guestSchema, invitationDurationEnumSchema, invitationSchema, invitationSchemaToInterface, invitationTypeEnumSchema, invoicePaymentIntentSchema, invoiceSchema, notificationDtoSchema, notificationSchema, patchUserSchema, paymentMethodSchema, paymentProofSchema, projectSchema, projectUpdateSchema, remoteGateLogSchema, remoteGateSchema, resetPasswordSchema, residentialSchema, userSchema, userSchemaPartial, userSummarySchema, videoCallTokenSchema };
+interface VideoCallToken {
+    token: string;
+    roomName: string;
+}
+declare const videoCallTokenSchema: z.ZodObject<{
+    token: z.ZodString;
+    roomName: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    token: string;
+    roomName: string;
+}, {
+    token: string;
+    roomName: string;
+}>;
+type VideoCallTokenType = z.infer<typeof videoCallTokenSchema>;
+
+interface TotemCall {
+    _id?: string;
+    residentialId: string;
+    residentialName?: string;
+    remoteGateId: string;
+    remoteGateName?: string;
+    isoCreatedAt: string;
+    videoCallToken?: VideoCallToken;
+}
+declare const totemCallSchema: z.ZodObject<{
+    _id: z.ZodOptional<z.ZodString>;
+    residentialId: z.ZodString;
+    residentialName: z.ZodOptional<z.ZodString>;
+    remoteGateId: z.ZodString;
+    remoteGateName: z.ZodOptional<z.ZodString>;
+    isoCreatedAt: z.ZodString;
+    videoCallToken: z.ZodOptional<z.ZodObject<{
+        token: z.ZodString;
+        roomName: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        token: string;
+        roomName: string;
+    }, {
+        token: string;
+        roomName: string;
+    }>>;
+}, "strict", z.ZodTypeAny, {
+    residentialId: string;
+    remoteGateId: string;
+    isoCreatedAt: string;
+    _id?: string | undefined;
+    residentialName?: string | undefined;
+    remoteGateName?: string | undefined;
+    videoCallToken?: {
+        token: string;
+        roomName: string;
+    } | undefined;
+}, {
+    residentialId: string;
+    remoteGateId: string;
+    isoCreatedAt: string;
+    _id?: string | undefined;
+    residentialName?: string | undefined;
+    remoteGateName?: string | undefined;
+    videoCallToken?: {
+        token: string;
+        roomName: string;
+    } | undefined;
+}>;
+type TotemCallType = z.infer<typeof totemCallSchema>;
+
+export { type ActionLog, type ActionLogType, type AutomaticCharge, type AutomaticChargeSummaryResponse, type AutomaticChargeType, type BasicUserInfo, BasicUserInfoSchema, type BasicUserInfoType, BasicUserTypeEnum, type ConfirmForgotPassword, type ConfirmForgotPasswordType, type DeleteUserResponse, type File, type FileType, type ForgotPasswordResponse, type Guest, type GuestType, type Invitation, type InvitationCreationResponse, type InvitationData, InvitationDurationEnum, type InvitationType, InvitationTypeEnum, type InvitationUIType, type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, type Notification, type NotificationDto, type NotificationDtoType, type NotificationType, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type PaymentProof, type PaymentProofType, type Project, type ProjectType, type ProjectUpdate, type ProjectUpdateType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type ResetPassword, type ResetPasswordResponse, type ResetPasswordType, type Residential, type ResidentialType, type TotemCall, type TotemCallType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type UserTypePartial, type UsernameGenerationResponse, type Value, type VideoCallToken, type VideoCallTokenType, actionLogSchema, automaticChargeSchema, basicUserTypeEnumSchema, confirmForgotPasswordSchema, fileSchema, guestSchema, invitationDurationEnumSchema, invitationSchema, invitationSchemaToInterface, invitationTypeEnumSchema, invoicePaymentIntentSchema, invoiceSchema, notificationDtoSchema, notificationSchema, patchUserSchema, paymentMethodSchema, paymentProofSchema, projectSchema, projectUpdateSchema, remoteGateLogSchema, remoteGateSchema, resetPasswordSchema, residentialSchema, totemCallSchema, userSchema, userSchemaPartial, userSummarySchema, videoCallTokenSchema };
