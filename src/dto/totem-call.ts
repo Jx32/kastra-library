@@ -1,24 +1,47 @@
 import { z } from "zod";
-import { VideoCallToken, videoCallTokenSchema } from "./video-call-token.interface";
+
+export interface TotemCallStatus {
+    status: "waiting" | "rejected" | "onCall" | "ended",
+    message: string,
+    isoCreatedAt: string
+}
+
+export interface TotemCallAction {
+    action: "doorOpen",
+    reason: "resident" | "publicServices" | "thrashRecollection" | "emergencyServices" | "other",
+    remoteGateId: string,
+    isoCreatedAt: string
+}
 
 export interface TotemCall {
     _id?: string,
     residentialId: string,
     residentialName?: string, // This field should be gathered on the backend, not in the physical device
-    remoteGateId: string,
-    remoteGateName?: string, // This field should be gathered on the backend, not in the physical device
     isoCreatedAt: string,
-    videoCallToken?: VideoCallToken // This field will be generated on the backend
+    statusList?: TotemCallStatus[],
+    actionList?: TotemCallAction[],
 }
+
+export const totemCallStatusSchema = z.object({
+    status: z.enum(["waiting", "rejected", "onCall", "ended"]),
+    message: z.string(),
+    isoCreatedAt: z.string().datetime({ offset: false })
+}).strict();
+
+export const totemCallActionSchema = z.object({
+    action: z.literal("doorOpen"),
+    reason: z.enum(["resident", "publicServices", "thrashRecollection", "emergencyServices", "other"]),
+    remoteGateId: z.string(),
+    isoCreatedAt: z.string().datetime({ offset: false })
+}).strict();
 
 export const totemCallSchema = z.object({
     _id: z.string().optional(),
     residentialId: z.string(),
     residentialName: z.string().optional(),
-    remoteGateId: z.string(),
-    remoteGateName: z.string().optional(),
     isoCreatedAt: z.string().datetime({ offset: false }),
-    videoCallToken: videoCallTokenSchema.optional()
+    statusList: z.array(totemCallStatusSchema).optional(),
+    actionList: z.array(totemCallActionSchema).optional()
 }).strict();
 
 export type TotemCallType = z.infer<typeof totemCallSchema>;

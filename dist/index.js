@@ -59,7 +59,9 @@ __export(src_exports, {
   remoteGateSchema: () => remoteGateSchema,
   resetPasswordSchema: () => resetPasswordSchema,
   residentialSchema: () => residentialSchema,
+  totemCallActionSchema: () => totemCallActionSchema,
   totemCallSchema: () => totemCallSchema,
+  totemCallStatusSchema: () => totemCallStatusSchema,
   userSchema: () => userSchema,
   userSchemaPartial: () => userSchemaPartial,
   userSummarySchema: () => userSummarySchema,
@@ -439,14 +441,24 @@ var videoCallTokenSchema = import_zod24.z.object({
 
 // src/dto/totem-call.ts
 var import_zod25 = require("zod");
+var totemCallStatusSchema = import_zod25.z.object({
+  status: import_zod25.z.enum(["waiting", "rejected", "onCall", "ended"]),
+  message: import_zod25.z.string(),
+  isoCreatedAt: import_zod25.z.string().datetime({ offset: false })
+}).strict();
+var totemCallActionSchema = import_zod25.z.object({
+  action: import_zod25.z.literal("doorOpen"),
+  reason: import_zod25.z.enum(["resident", "publicServices", "thrashRecollection", "emergencyServices", "other"]),
+  remoteGateId: import_zod25.z.string(),
+  isoCreatedAt: import_zod25.z.string().datetime({ offset: false })
+}).strict();
 var totemCallSchema = import_zod25.z.object({
   _id: import_zod25.z.string().optional(),
   residentialId: import_zod25.z.string(),
   residentialName: import_zod25.z.string().optional(),
-  remoteGateId: import_zod25.z.string(),
-  remoteGateName: import_zod25.z.string().optional(),
   isoCreatedAt: import_zod25.z.string().datetime({ offset: false }),
-  videoCallToken: videoCallTokenSchema.optional()
+  statusList: import_zod25.z.array(totemCallStatusSchema).optional(),
+  actionList: import_zod25.z.array(totemCallActionSchema).optional()
 }).strict();
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
@@ -479,7 +491,9 @@ var totemCallSchema = import_zod25.z.object({
   remoteGateSchema,
   resetPasswordSchema,
   residentialSchema,
+  totemCallActionSchema,
   totemCallSchema,
+  totemCallStatusSchema,
   userSchema,
   userSchemaPartial,
   userSummarySchema,

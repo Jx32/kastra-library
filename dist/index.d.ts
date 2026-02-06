@@ -1073,55 +1073,121 @@ declare const videoCallTokenSchema: z.ZodObject<{
 }>;
 type VideoCallTokenType = z.infer<typeof videoCallTokenSchema>;
 
+interface TotemCallStatus {
+    status: "waiting" | "rejected" | "onCall" | "ended";
+    message: string;
+    isoCreatedAt: string;
+}
+interface TotemCallAction {
+    action: "doorOpen";
+    reason: "resident" | "publicServices" | "thrashRecollection" | "emergencyServices" | "other";
+    remoteGateId: string;
+    isoCreatedAt: string;
+}
 interface TotemCall {
     _id?: string;
     residentialId: string;
     residentialName?: string;
-    remoteGateId: string;
-    remoteGateName?: string;
     isoCreatedAt: string;
-    videoCallToken?: VideoCallToken;
+    statusList?: TotemCallStatus[];
+    actionList?: TotemCallAction[];
 }
+declare const totemCallStatusSchema: z.ZodObject<{
+    status: z.ZodEnum<["waiting", "rejected", "onCall", "ended"]>;
+    message: z.ZodString;
+    isoCreatedAt: z.ZodString;
+}, "strict", z.ZodTypeAny, {
+    status: "waiting" | "rejected" | "onCall" | "ended";
+    message: string;
+    isoCreatedAt: string;
+}, {
+    status: "waiting" | "rejected" | "onCall" | "ended";
+    message: string;
+    isoCreatedAt: string;
+}>;
+declare const totemCallActionSchema: z.ZodObject<{
+    action: z.ZodLiteral<"doorOpen">;
+    reason: z.ZodEnum<["resident", "publicServices", "thrashRecollection", "emergencyServices", "other"]>;
+    remoteGateId: z.ZodString;
+    isoCreatedAt: z.ZodString;
+}, "strict", z.ZodTypeAny, {
+    remoteGateId: string;
+    action: "doorOpen";
+    reason: "resident" | "publicServices" | "thrashRecollection" | "emergencyServices" | "other";
+    isoCreatedAt: string;
+}, {
+    remoteGateId: string;
+    action: "doorOpen";
+    reason: "resident" | "publicServices" | "thrashRecollection" | "emergencyServices" | "other";
+    isoCreatedAt: string;
+}>;
 declare const totemCallSchema: z.ZodObject<{
     _id: z.ZodOptional<z.ZodString>;
     residentialId: z.ZodString;
     residentialName: z.ZodOptional<z.ZodString>;
-    remoteGateId: z.ZodString;
-    remoteGateName: z.ZodOptional<z.ZodString>;
     isoCreatedAt: z.ZodString;
-    videoCallToken: z.ZodOptional<z.ZodObject<{
-        token: z.ZodString;
-        roomName: z.ZodString;
-    }, "strip", z.ZodTypeAny, {
-        token: string;
-        roomName: string;
+    statusList: z.ZodOptional<z.ZodArray<z.ZodObject<{
+        status: z.ZodEnum<["waiting", "rejected", "onCall", "ended"]>;
+        message: z.ZodString;
+        isoCreatedAt: z.ZodString;
+    }, "strict", z.ZodTypeAny, {
+        status: "waiting" | "rejected" | "onCall" | "ended";
+        message: string;
+        isoCreatedAt: string;
     }, {
-        token: string;
-        roomName: string;
-    }>>;
+        status: "waiting" | "rejected" | "onCall" | "ended";
+        message: string;
+        isoCreatedAt: string;
+    }>, "many">>;
+    actionList: z.ZodOptional<z.ZodArray<z.ZodObject<{
+        action: z.ZodLiteral<"doorOpen">;
+        reason: z.ZodEnum<["resident", "publicServices", "thrashRecollection", "emergencyServices", "other"]>;
+        remoteGateId: z.ZodString;
+        isoCreatedAt: z.ZodString;
+    }, "strict", z.ZodTypeAny, {
+        remoteGateId: string;
+        action: "doorOpen";
+        reason: "resident" | "publicServices" | "thrashRecollection" | "emergencyServices" | "other";
+        isoCreatedAt: string;
+    }, {
+        remoteGateId: string;
+        action: "doorOpen";
+        reason: "resident" | "publicServices" | "thrashRecollection" | "emergencyServices" | "other";
+        isoCreatedAt: string;
+    }>, "many">>;
 }, "strict", z.ZodTypeAny, {
     residentialId: string;
-    remoteGateId: string;
     isoCreatedAt: string;
     _id?: string | undefined;
     residentialName?: string | undefined;
-    remoteGateName?: string | undefined;
-    videoCallToken?: {
-        token: string;
-        roomName: string;
-    } | undefined;
+    statusList?: {
+        status: "waiting" | "rejected" | "onCall" | "ended";
+        message: string;
+        isoCreatedAt: string;
+    }[] | undefined;
+    actionList?: {
+        remoteGateId: string;
+        action: "doorOpen";
+        reason: "resident" | "publicServices" | "thrashRecollection" | "emergencyServices" | "other";
+        isoCreatedAt: string;
+    }[] | undefined;
 }, {
     residentialId: string;
-    remoteGateId: string;
     isoCreatedAt: string;
     _id?: string | undefined;
     residentialName?: string | undefined;
-    remoteGateName?: string | undefined;
-    videoCallToken?: {
-        token: string;
-        roomName: string;
-    } | undefined;
+    statusList?: {
+        status: "waiting" | "rejected" | "onCall" | "ended";
+        message: string;
+        isoCreatedAt: string;
+    }[] | undefined;
+    actionList?: {
+        remoteGateId: string;
+        action: "doorOpen";
+        reason: "resident" | "publicServices" | "thrashRecollection" | "emergencyServices" | "other";
+        isoCreatedAt: string;
+    }[] | undefined;
 }>;
 type TotemCallType = z.infer<typeof totemCallSchema>;
 
-export { type ActionLog, type ActionLogType, type AutomaticCharge, type AutomaticChargeSummaryResponse, type AutomaticChargeType, type BasicUserInfo, BasicUserInfoSchema, type BasicUserInfoType, BasicUserTypeEnum, type ConfirmForgotPassword, type ConfirmForgotPasswordType, type DeleteUserResponse, type File, type FileType, type ForgotPasswordResponse, type Guest, type GuestType, type Invitation, type InvitationCreationResponse, type InvitationData, InvitationDurationEnum, type InvitationType, InvitationTypeEnum, type InvitationUIType, type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, type Notification, type NotificationDto, type NotificationDtoType, type NotificationType, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type PaymentProof, type PaymentProofType, type Project, type ProjectType, type ProjectUpdate, type ProjectUpdateType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type ResetPassword, type ResetPasswordResponse, type ResetPasswordType, type Residential, type ResidentialType, type TotemCall, type TotemCallType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type UserTypePartial, type UsernameGenerationResponse, type Value, type VideoCallToken, type VideoCallTokenType, actionLogSchema, automaticChargeSchema, basicUserTypeEnumSchema, confirmForgotPasswordSchema, fileSchema, guestSchema, invitationDurationEnumSchema, invitationSchema, invitationSchemaToInterface, invitationTypeEnumSchema, invoicePaymentIntentSchema, invoiceSchema, notificationDtoSchema, notificationSchema, patchUserSchema, paymentMethodSchema, paymentProofSchema, projectSchema, projectUpdateSchema, remoteGateLogSchema, remoteGateSchema, resetPasswordSchema, residentialSchema, totemCallSchema, userSchema, userSchemaPartial, userSummarySchema, videoCallTokenSchema };
+export { type ActionLog, type ActionLogType, type AutomaticCharge, type AutomaticChargeSummaryResponse, type AutomaticChargeType, type BasicUserInfo, BasicUserInfoSchema, type BasicUserInfoType, BasicUserTypeEnum, type ConfirmForgotPassword, type ConfirmForgotPasswordType, type DeleteUserResponse, type File, type FileType, type ForgotPasswordResponse, type Guest, type GuestType, type Invitation, type InvitationCreationResponse, type InvitationData, InvitationDurationEnum, type InvitationType, InvitationTypeEnum, type InvitationUIType, type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, type Notification, type NotificationDto, type NotificationDtoType, type NotificationType, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type PaymentProof, type PaymentProofType, type Project, type ProjectType, type ProjectUpdate, type ProjectUpdateType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type ResetPassword, type ResetPasswordResponse, type ResetPasswordType, type Residential, type ResidentialType, type TotemCall, type TotemCallAction, type TotemCallStatus, type TotemCallType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type UserTypePartial, type UsernameGenerationResponse, type Value, type VideoCallToken, type VideoCallTokenType, actionLogSchema, automaticChargeSchema, basicUserTypeEnumSchema, confirmForgotPasswordSchema, fileSchema, guestSchema, invitationDurationEnumSchema, invitationSchema, invitationSchemaToInterface, invitationTypeEnumSchema, invoicePaymentIntentSchema, invoiceSchema, notificationDtoSchema, notificationSchema, patchUserSchema, paymentMethodSchema, paymentProofSchema, projectSchema, projectUpdateSchema, remoteGateLogSchema, remoteGateSchema, resetPasswordSchema, residentialSchema, totemCallActionSchema, totemCallSchema, totemCallStatusSchema, userSchema, userSchemaPartial, userSummarySchema, videoCallTokenSchema };

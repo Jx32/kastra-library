@@ -370,14 +370,24 @@ var videoCallTokenSchema = z24.object({
 
 // src/dto/totem-call.ts
 import { z as z25 } from "zod";
+var totemCallStatusSchema = z25.object({
+  status: z25.enum(["waiting", "rejected", "onCall", "ended"]),
+  message: z25.string(),
+  isoCreatedAt: z25.string().datetime({ offset: false })
+}).strict();
+var totemCallActionSchema = z25.object({
+  action: z25.literal("doorOpen"),
+  reason: z25.enum(["resident", "publicServices", "thrashRecollection", "emergencyServices", "other"]),
+  remoteGateId: z25.string(),
+  isoCreatedAt: z25.string().datetime({ offset: false })
+}).strict();
 var totemCallSchema = z25.object({
   _id: z25.string().optional(),
   residentialId: z25.string(),
   residentialName: z25.string().optional(),
-  remoteGateId: z25.string(),
-  remoteGateName: z25.string().optional(),
   isoCreatedAt: z25.string().datetime({ offset: false }),
-  videoCallToken: videoCallTokenSchema.optional()
+  statusList: z25.array(totemCallStatusSchema).optional(),
+  actionList: z25.array(totemCallActionSchema).optional()
 }).strict();
 export {
   BasicUserInfoSchema,
@@ -409,7 +419,9 @@ export {
   remoteGateSchema,
   resetPasswordSchema,
   residentialSchema,
+  totemCallActionSchema,
   totemCallSchema,
+  totemCallStatusSchema,
   userSchema,
   userSchemaPartial,
   userSummarySchema,
