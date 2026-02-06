@@ -17,6 +17,7 @@ export interface TotemCall {
     _id?: string,
     residentialId: string,
     residentialName?: string, // This field should be gathered on the backend, not in the physical device
+    status: "waiting" | "rejected" | "onCall" | "ended",
     isoCreatedAt: string,
     statusList?: TotemCallStatus[],
     actionList?: TotemCallAction[],
@@ -39,6 +40,7 @@ export const totemCallSchema = z.object({
     _id: z.string().optional(),
     residentialId: z.string(),
     residentialName: z.string().optional(),
+    status: z.enum(["waiting", "rejected", "onCall", "ended"]),
     isoCreatedAt: z.string().datetime({ offset: false }),
     statusList: z.array(totemCallStatusSchema).optional(),
     actionList: z.array(totemCallActionSchema).optional()

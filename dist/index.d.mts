@@ -1088,6 +1088,7 @@ interface TotemCall {
     _id?: string;
     residentialId: string;
     residentialName?: string;
+    status: "waiting" | "rejected" | "onCall" | "ended";
     isoCreatedAt: string;
     statusList?: TotemCallStatus[];
     actionList?: TotemCallAction[];
@@ -1125,6 +1126,7 @@ declare const totemCallSchema: z.ZodObject<{
     _id: z.ZodOptional<z.ZodString>;
     residentialId: z.ZodString;
     residentialName: z.ZodOptional<z.ZodString>;
+    status: z.ZodEnum<["waiting", "rejected", "onCall", "ended"]>;
     isoCreatedAt: z.ZodString;
     statusList: z.ZodOptional<z.ZodArray<z.ZodObject<{
         status: z.ZodEnum<["waiting", "rejected", "onCall", "ended"]>;
@@ -1156,6 +1158,7 @@ declare const totemCallSchema: z.ZodObject<{
         isoCreatedAt: string;
     }>, "many">>;
 }, "strict", z.ZodTypeAny, {
+    status: "waiting" | "rejected" | "onCall" | "ended";
     residentialId: string;
     isoCreatedAt: string;
     _id?: string | undefined;
@@ -1172,6 +1175,7 @@ declare const totemCallSchema: z.ZodObject<{
         isoCreatedAt: string;
     }[] | undefined;
 }, {
+    status: "waiting" | "rejected" | "onCall" | "ended";
     residentialId: string;
     isoCreatedAt: string;
     _id?: string | undefined;

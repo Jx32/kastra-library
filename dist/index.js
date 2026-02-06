@@ -456,6 +456,7 @@ var totemCallSchema = import_zod25.z.object({
   _id: import_zod25.z.string().optional(),
   residentialId: import_zod25.z.string(),
   residentialName: import_zod25.z.string().optional(),
+  status: import_zod25.z.enum(["waiting", "rejected", "onCall", "ended"]),
   isoCreatedAt: import_zod25.z.string().datetime({ offset: false }),
   statusList: import_zod25.z.array(totemCallStatusSchema).optional(),
   actionList: import_zod25.z.array(totemCallActionSchema).optional()
