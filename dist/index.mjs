@@ -387,6 +387,7 @@ var totemCallSchema = z25.object({
   residentialName: z25.string().optional(),
   status: z25.enum(["waiting", "rejected", "onCall", "ended"]),
   isoCreatedAt: z25.string().datetime({ offset: false }),
+  attendedByUsername: z25.string(),
   statusList: z25.array(totemCallStatusSchema).optional(),
   actionList: z25.array(totemCallActionSchema).optional()
 }).strict();
