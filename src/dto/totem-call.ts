@@ -20,7 +20,7 @@ export interface TotemCall {
     status: "waiting" | "rejected" | "onCall" | "ended",
     isoCreatedAt: string,
     attendedByUsername?: string,
-    roomSid?: string,
+    roomName?: string, // This should be unique globally
     statusList?: TotemCallStatus[],
     actionList?: TotemCallAction[],
 }
@@ -45,7 +45,7 @@ export const totemCallSchema = z.object({
     status: z.enum(["waiting", "rejected", "onCall", "ended"]),
     isoCreatedAt: z.string().datetime({ offset: false }),
     attendedByUsername: z.string().optional(),
-    roomSid: z.string().optional(),
+    roomName: z.string().optional(),
     statusList: z.array(totemCallStatusSchema).optional(),
     actionList: z.array(totemCallActionSchema).optional()
 }).strict();
