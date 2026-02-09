@@ -1090,7 +1090,7 @@ interface TotemCall {
     residentialName?: string;
     status: "waiting" | "rejected" | "onCall" | "ended";
     isoCreatedAt: string;
-    attendedByUsername: string;
+    attendedByUsername?: string;
     statusList?: TotemCallStatus[];
     actionList?: TotemCallAction[];
 }

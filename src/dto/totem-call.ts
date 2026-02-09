@@ -19,7 +19,7 @@ export interface TotemCall {
     residentialName?: string, // This field should be gathered on the backend, not in the physical device
     status: "waiting" | "rejected" | "onCall" | "ended",
     isoCreatedAt: string,
-    attendedByUsername: string,
+    attendedByUsername?: string,
     statusList?: TotemCallStatus[],
     actionList?: TotemCallAction[],
 }
