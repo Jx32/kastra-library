@@ -1129,7 +1129,7 @@ declare const totemCallSchema: z.ZodObject<{
     residentialName: z.ZodOptional<z.ZodString>;
     status: z.ZodEnum<["waiting", "rejected", "onCall", "ended"]>;
     isoCreatedAt: z.ZodString;
-    attendedByUsername: z.ZodString;
+    attendedByUsername: z.ZodOptional<z.ZodString>;
     statusList: z.ZodOptional<z.ZodArray<z.ZodObject<{
         status: z.ZodEnum<["waiting", "rejected", "onCall", "ended"]>;
         message: z.ZodString;
@@ -1163,9 +1163,9 @@ declare const totemCallSchema: z.ZodObject<{
     status: "waiting" | "rejected" | "onCall" | "ended";
     residentialId: string;
     isoCreatedAt: string;
-    attendedByUsername: string;
     _id?: string | undefined;
     residentialName?: string | undefined;
+    attendedByUsername?: string | undefined;
     statusList?: {
         status: "waiting" | "rejected" | "onCall" | "ended";
         message: string;
@@ -1181,9 +1181,9 @@ declare const totemCallSchema: z.ZodObject<{
     status: "waiting" | "rejected" | "onCall" | "ended";
     residentialId: string;
     isoCreatedAt: string;
-    attendedByUsername: string;
     _id?: string | undefined;
     residentialName?: string | undefined;
+    attendedByUsername?: string | undefined;
     statusList?: {
         status: "waiting" | "rejected" | "onCall" | "ended";
         message: string;

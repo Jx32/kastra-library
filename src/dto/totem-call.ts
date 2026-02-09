@@ -43,7 +43,7 @@ export const totemCallSchema = z.object({
     residentialName: z.string().optional(),
     status: z.enum(["waiting", "rejected", "onCall", "ended"]),
     isoCreatedAt: z.string().datetime({ offset: false }),
-    attendedByUsername: z.string(),
+    attendedByUsername: z.string().optional(),
     statusList: z.array(totemCallStatusSchema).optional(),
     actionList: z.array(totemCallActionSchema).optional()
 }).strict();
