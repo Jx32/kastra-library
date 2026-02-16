@@ -215,7 +215,9 @@ var invoiceSchema = import_zod9.z.object({
   // Year must be a valid year
   paid_amount: import_zod9.z.number().optional(),
   // Optional, amount paid by the customer
-  have_payment_proof_file: import_zod9.z.boolean()
+  have_payment_proof_file: import_zod9.z.boolean(),
+  invoice_url: import_zod9.z.string().url().optional()
+  // URL to the invoice PDF
 }).strict();
 
 // src/dto/payment-method.interface.ts
