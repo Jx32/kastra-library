@@ -119,7 +119,8 @@ import z8 from "zod";
 var userSummarySchema = z8.object({
   remoteGates: z8.array(remoteGateSchema),
   currentPinAccess: z8.string().length(4, "Current PIN must be 4 digits length"),
-  topicName: z8.string().min(1, "Topic name cannot be empty")
+  topicName: z8.string().min(1, "Topic name cannot be empty"),
+  accessEnabled: z8.boolean()
 }).strict();
 
 // src/dto/invoice.interface.ts

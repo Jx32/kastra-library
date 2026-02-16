@@ -443,6 +443,7 @@ interface UserSummary {
     remoteGates: RemoteGate[];
     currentPinAccess: string;
     topicName: string;
+    accessEnabled: boolean;
 }
 declare const userSummarySchema: z$1.ZodObject<{
     remoteGates: z$1.ZodArray<z$1.ZodObject<{
@@ -469,8 +470,10 @@ declare const userSummarySchema: z$1.ZodObject<{
     }>, "many">;
     currentPinAccess: z$1.ZodString;
     topicName: z$1.ZodString;
+    accessEnabled: z$1.ZodBoolean;
 }, "strict", z$1.ZodTypeAny, {
     currentPinAccess: string;
+    accessEnabled: boolean;
     topicName: string;
     remoteGates: {
         name: string;
@@ -482,6 +485,7 @@ declare const userSummarySchema: z$1.ZodObject<{
     }[];
 }, {
     currentPinAccess: string;
+    accessEnabled: boolean;
     topicName: string;
     remoteGates: {
         name: string;

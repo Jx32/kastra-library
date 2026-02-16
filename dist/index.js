@@ -190,7 +190,8 @@ var import_zod8 = __toESM(require("zod"));
 var userSummarySchema = import_zod8.default.object({
   remoteGates: import_zod8.default.array(remoteGateSchema),
   currentPinAccess: import_zod8.default.string().length(4, "Current PIN must be 4 digits length"),
-  topicName: import_zod8.default.string().min(1, "Topic name cannot be empty")
+  topicName: import_zod8.default.string().min(1, "Topic name cannot be empty"),
+  accessEnabled: import_zod8.default.boolean()
 }).strict();
 
 // src/dto/invoice.interface.ts
