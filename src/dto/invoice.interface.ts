@@ -16,7 +16,6 @@ export interface Invoice {
     year: number; // Year for which the invoice is generated
     paid_amount?: number; // Optional, amount paid by the customer
     have_payment_proof_file: boolean;
-    invoice_url?: string; // URL to the invoice PDF
 }
 
 export const invoiceSchema = z.object({
@@ -35,7 +34,6 @@ export const invoiceSchema = z.object({
     year: z.number().min(2000).max(2100), // Year must be a valid year
     paid_amount: z.number().optional(), // Optional, amount paid by the customer
     have_payment_proof_file: z.boolean(),
-    invoice_url: z.string().url().optional(), // URL to the invoice PDF
 }).strict();
 
 export type InvoiceType = z.infer<typeof invoiceSchema>;
