@@ -22,6 +22,7 @@ export interface Residential {
     monthlyPaymentAmount: string;
     bankBanxicoKey?: string; // Optional field for Banxico key
     bankCLABE?: string; // Optional field for bank account number
+    onboardingStatus: "pending" | "completed";
 }
 
 export const residentialSchema = z.object({
@@ -39,6 +40,7 @@ export const residentialSchema = z.object({
     monthlyPaymentAmount: z.string(),
     bankBanxicoKey: z.string().optional(), // Optional field for Banxico key
     bankCLABE: z.string().optional(), // Optional field for bank account number
+    onboardingStatus: z.enum(["pending", "completed"]),
 }).strict();
 
 export type ResidentialType = z.infer<typeof residentialSchema>;

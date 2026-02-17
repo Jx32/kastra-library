@@ -155,8 +155,9 @@ var residentialSchema = import_zod5.default.object({
   monthlyPaymentAmount: import_zod5.default.string(),
   bankBanxicoKey: import_zod5.default.string().optional(),
   // Optional field for Banxico key
-  bankCLABE: import_zod5.default.string().optional()
+  bankCLABE: import_zod5.default.string().optional(),
   // Optional field for bank account number
+  onboardingStatus: import_zod5.default.enum(["pending", "completed"])
 }).strict();
 
 // src/dto/remote-gate-log.interface.ts
