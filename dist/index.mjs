@@ -144,7 +144,9 @@ var invoiceSchema = z9.object({
   // Year must be a valid year
   paid_amount: z9.number().optional(),
   // Optional, amount paid by the customer
-  have_payment_proof_file: z9.boolean()
+  have_payment_proof_file: z9.boolean(),
+  receipt_url: z9.string().url().optional()
+  // URL to the receipt PDF
 }).strict();
 
 // src/dto/payment-method.interface.ts
