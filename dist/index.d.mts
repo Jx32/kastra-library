@@ -304,7 +304,7 @@ interface Residential {
     status: "active" | "inactive";
     topicName: string;
     monthlyPaymentStripePriceId?: string;
-    monthlyPaymentAmount: string;
+    monthlyPaymentAmount: number;
     bankBanxicoKey?: string;
     bankCLABE?: string;
     onboardingStatus: "pending" | "completed";
@@ -321,7 +321,7 @@ declare const residentialSchema: z$1.ZodObject<{
     status: z$1.ZodEnum<["active", "inactive"]>;
     topicName: z$1.ZodString;
     monthlyPaymentStripePriceId: z$1.ZodOptional<z$1.ZodString>;
-    monthlyPaymentAmount: z$1.ZodString;
+    monthlyPaymentAmount: z$1.ZodNumber;
     bankBanxicoKey: z$1.ZodOptional<z$1.ZodString>;
     bankCLABE: z$1.ZodOptional<z$1.ZodString>;
     onboardingStatus: z$1.ZodEnum<["pending", "completed"]>;
@@ -334,7 +334,7 @@ declare const residentialSchema: z$1.ZodObject<{
     country: string;
     postalCode: string;
     topicName: string;
-    monthlyPaymentAmount: string;
+    monthlyPaymentAmount: number;
     onboardingStatus: "pending" | "completed";
     _id?: string | undefined;
     contactNumber?: string | undefined;
@@ -350,7 +350,7 @@ declare const residentialSchema: z$1.ZodObject<{
     country: string;
     postalCode: string;
     topicName: string;
-    monthlyPaymentAmount: string;
+    monthlyPaymentAmount: number;
     onboardingStatus: "pending" | "completed";
     _id?: string | undefined;
     contactNumber?: string | undefined;

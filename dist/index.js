@@ -152,7 +152,7 @@ var residentialSchema = import_zod5.default.object({
   status: import_zod5.default.enum(["active", "inactive"]),
   topicName: import_zod5.default.string(),
   monthlyPaymentStripePriceId: import_zod5.default.string().optional(),
-  monthlyPaymentAmount: import_zod5.default.string(),
+  monthlyPaymentAmount: import_zod5.default.number(),
   bankBanxicoKey: import_zod5.default.string().optional(),
   // Optional field for Banxico key
   bankCLABE: import_zod5.default.string().optional(),

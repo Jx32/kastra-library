@@ -81,7 +81,7 @@ var residentialSchema = z5.object({
   status: z5.enum(["active", "inactive"]),
   topicName: z5.string(),
   monthlyPaymentStripePriceId: z5.string().optional(),
-  monthlyPaymentAmount: z5.string(),
+  monthlyPaymentAmount: z5.number(),
   bankBanxicoKey: z5.string().optional(),
   // Optional field for Banxico key
   bankCLABE: z5.string().optional(),
