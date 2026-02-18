@@ -20,6 +20,7 @@ export interface Residential {
     topicName: string;
     monthlyPaymentStripePriceId?: string;
     monthlyPaymentAmount: number;
+    lastMonthlyPaymentUpdatedAt?: number;
     bankBanxicoKey?: string; // Optional field for Banxico key
     bankCLABE?: string; // Optional field for bank account number
     onboardingStatus: "pending" | "completed";
@@ -38,6 +39,7 @@ export const residentialSchema = z.object({
     topicName: z.string(),
     monthlyPaymentStripePriceId: z.string().optional(),
     monthlyPaymentAmount: z.number(),
+    lastMonthlyPaymentUpdatedAt: z.number().optional(),
     bankBanxicoKey: z.string().optional(), // Optional field for Banxico key
     bankCLABE: z.string().optional(), // Optional field for bank account number
     onboardingStatus: z.enum(["pending", "completed"]),

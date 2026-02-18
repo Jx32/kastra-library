@@ -82,6 +82,7 @@ var residentialSchema = z5.object({
   topicName: z5.string(),
   monthlyPaymentStripePriceId: z5.string().optional(),
   monthlyPaymentAmount: z5.number(),
+  lastMonthlyPaymentUpdatedAt: z5.number().optional(),
   bankBanxicoKey: z5.string().optional(),
   // Optional field for Banxico key
   bankCLABE: z5.string().optional(),
