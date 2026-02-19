@@ -311,6 +311,7 @@ interface Residential {
     bankCLABE?: string;
     onboardingStatus: "pending" | "completed";
     businessType: "individual" | "company";
+    stripeAccountId?: string;
 }
 declare const residentialSchema: z$1.ZodObject<{
     _id: z$1.ZodOptional<z$1.ZodString>;
@@ -331,6 +332,7 @@ declare const residentialSchema: z$1.ZodObject<{
     bankCLABE: z$1.ZodOptional<z$1.ZodString>;
     onboardingStatus: z$1.ZodEnum<["pending", "completed"]>;
     businessType: z$1.ZodEnum<["individual", "company"]>;
+    stripeAccountId: z$1.ZodOptional<z$1.ZodString>;
 }, "strict", z$1.ZodTypeAny, {
     name: string;
     status: "active" | "inactive";
@@ -350,6 +352,7 @@ declare const residentialSchema: z$1.ZodObject<{
     lastMonthlyPaymentUpdatedAt?: number | undefined;
     bankBanxicoKey?: string | undefined;
     bankCLABE?: string | undefined;
+    stripeAccountId?: string | undefined;
 }, {
     name: string;
     status: "active" | "inactive";
@@ -369,6 +372,7 @@ declare const residentialSchema: z$1.ZodObject<{
     lastMonthlyPaymentUpdatedAt?: number | undefined;
     bankBanxicoKey?: string | undefined;
     bankCLABE?: string | undefined;
+    stripeAccountId?: string | undefined;
 }>;
 type ResidentialType = z$1.infer<typeof residentialSchema>;
 

@@ -89,7 +89,8 @@ var residentialSchema = z5.object({
   bankCLABE: z5.string().optional(),
   // Optional field for bank account number
   onboardingStatus: z5.enum(["pending", "completed"]),
-  businessType: z5.enum(["individual", "company"])
+  businessType: z5.enum(["individual", "company"]),
+  stripeAccountId: z5.string().optional()
 }).strict();
 
 // src/dto/remote-gate-log.interface.ts

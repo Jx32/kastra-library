@@ -26,6 +26,7 @@ export interface Residential {
     bankCLABE?: string; // Optional field for bank account number
     onboardingStatus: "pending" | "completed";
     businessType: "individual" | "company";
+    stripeAccountId?: string;
 }
 
 export const residentialSchema = z.object({
@@ -47,6 +48,7 @@ export const residentialSchema = z.object({
     bankCLABE: z.string().optional(), // Optional field for bank account number
     onboardingStatus: z.enum(["pending", "completed"]),
     businessType: z.enum(["individual", "company"]),
+    stripeAccountId: z.string().optional(),
 }).strict();
 
 export type ResidentialType = z.infer<typeof residentialSchema>;
