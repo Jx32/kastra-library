@@ -89,7 +89,6 @@ var residentialSchema = z5.object({
   bankCLABE: z5.string().optional(),
   // Optional field for bank account number
   onboardingStatus: z5.enum(["pending", "completed"]),
-  onboardingLink: z5.string().optional(),
   businessType: z5.enum(["individual", "company"]),
   stripeAccountId: z5.string().optional()
 }).strict();
