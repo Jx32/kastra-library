@@ -87,7 +87,8 @@ var residentialSchema = z5.object({
   // Optional field for Banxico key
   bankCLABE: z5.string().optional(),
   // Optional field for bank account number
-  onboardingStatus: z5.enum(["pending", "completed"])
+  onboardingStatus: z5.enum(["pending", "completed"]),
+  businessType: z5.enum(["individual", "company"])
 }).strict();
 
 // src/dto/remote-gate-log.interface.ts

@@ -158,7 +158,8 @@ var residentialSchema = import_zod5.default.object({
   // Optional field for Banxico key
   bankCLABE: import_zod5.default.string().optional(),
   // Optional field for bank account number
-  onboardingStatus: import_zod5.default.enum(["pending", "completed"])
+  onboardingStatus: import_zod5.default.enum(["pending", "completed"]),
+  businessType: import_zod5.default.enum(["individual", "company"])
 }).strict();
 
 // src/dto/remote-gate-log.interface.ts

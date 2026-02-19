@@ -309,6 +309,7 @@ interface Residential {
     bankBanxicoKey?: string;
     bankCLABE?: string;
     onboardingStatus: "pending" | "completed";
+    businessType: "individual" | "company";
 }
 declare const residentialSchema: z$1.ZodObject<{
     _id: z$1.ZodOptional<z$1.ZodString>;
@@ -327,6 +328,7 @@ declare const residentialSchema: z$1.ZodObject<{
     bankBanxicoKey: z$1.ZodOptional<z$1.ZodString>;
     bankCLABE: z$1.ZodOptional<z$1.ZodString>;
     onboardingStatus: z$1.ZodEnum<["pending", "completed"]>;
+    businessType: z$1.ZodEnum<["individual", "company"]>;
 }, "strict", z$1.ZodTypeAny, {
     name: string;
     status: "active" | "inactive";
@@ -338,6 +340,7 @@ declare const residentialSchema: z$1.ZodObject<{
     topicName: string;
     monthlyPaymentAmount: number;
     onboardingStatus: "pending" | "completed";
+    businessType: "individual" | "company";
     _id?: string | undefined;
     contactNumber?: string | undefined;
     monthlyPaymentStripePriceId?: string | undefined;
@@ -355,6 +358,7 @@ declare const residentialSchema: z$1.ZodObject<{
     topicName: string;
     monthlyPaymentAmount: number;
     onboardingStatus: "pending" | "completed";
+    businessType: "individual" | "company";
     _id?: string | undefined;
     contactNumber?: string | undefined;
     monthlyPaymentStripePriceId?: string | undefined;
