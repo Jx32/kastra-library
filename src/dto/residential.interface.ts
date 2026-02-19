@@ -16,6 +16,7 @@ export interface Residential {
     country: string;
     postalCode: string;
     contactNumber?: string;
+    contactEmail: string,
     status: "active" | "inactive";
     topicName: string;
     monthlyPaymentStripePriceId?: string;
@@ -36,6 +37,7 @@ export const residentialSchema = z.object({
     country: z.string(),
     postalCode: z.string(),
     contactNumber: z.string().optional(),
+    contactEmail: z.string().email(),
     status: z.enum(["active", "inactive"]),
     topicName: z.string(),
     monthlyPaymentStripePriceId: z.string().optional(),

@@ -149,6 +149,7 @@ var residentialSchema = import_zod5.default.object({
   country: import_zod5.default.string(),
   postalCode: import_zod5.default.string(),
   contactNumber: import_zod5.default.string().optional(),
+  contactEmail: import_zod5.default.string().email(),
   status: import_zod5.default.enum(["active", "inactive"]),
   topicName: import_zod5.default.string(),
   monthlyPaymentStripePriceId: import_zod5.default.string().optional(),

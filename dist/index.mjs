@@ -78,6 +78,7 @@ var residentialSchema = z5.object({
   country: z5.string(),
   postalCode: z5.string(),
   contactNumber: z5.string().optional(),
+  contactEmail: z5.string().email(),
   status: z5.enum(["active", "inactive"]),
   topicName: z5.string(),
   monthlyPaymentStripePriceId: z5.string().optional(),
