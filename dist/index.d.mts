@@ -376,6 +376,22 @@ declare const residentialSchema: z$1.ZodObject<{
 }>;
 type ResidentialType = z$1.infer<typeof residentialSchema>;
 
+interface ResidentialOnboardingLinkDto {
+    onboardingLink: string;
+    expiresAt: number;
+}
+declare const residentialOnboardingLinkDtoSchema: z$1.ZodObject<{
+    onboardingLink: z$1.ZodString;
+    expiresAt: z$1.ZodNumber;
+}, "strict", z$1.ZodTypeAny, {
+    onboardingLink: string;
+    expiresAt: number;
+}, {
+    onboardingLink: string;
+    expiresAt: number;
+}>;
+type ResidentialOnboardingLinkDtoType = z$1.infer<typeof residentialOnboardingLinkDtoSchema>;
+
 /**
  * RemoteOpeningAction interface represents an action that will be performed on a remote device,
  * such as opening or closing a gate, and includes metadata about the action.
@@ -1230,4 +1246,4 @@ declare const totemCallSchema: z.ZodObject<{
 }>;
 type TotemCallType = z.infer<typeof totemCallSchema>;
 
-export { type ActionLog, type ActionLogType, type AutomaticCharge, type AutomaticChargeSummaryResponse, type AutomaticChargeType, type BasicUserInfo, BasicUserInfoSchema, type BasicUserInfoType, BasicUserTypeEnum, type ConfirmForgotPassword, type ConfirmForgotPasswordType, type DeleteUserResponse, type File, type FileType, type ForgotPasswordResponse, type Guest, type GuestType, type Invitation, type InvitationCreationResponse, type InvitationData, InvitationDurationEnum, type InvitationType, InvitationTypeEnum, type InvitationUIType, type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, type Notification, type NotificationDto, type NotificationDtoType, type NotificationType, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type PaymentProof, type PaymentProofType, type Project, type ProjectType, type ProjectUpdate, type ProjectUpdateType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type ResetPassword, type ResetPasswordResponse, type ResetPasswordType, type Residential, type ResidentialType, type TotemCall, type TotemCallAction, type TotemCallStatus, type TotemCallType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type UserTypePartial, type UsernameGenerationResponse, type Value, type VideoCallToken, type VideoCallTokenType, actionLogSchema, automaticChargeSchema, basicUserTypeEnumSchema, confirmForgotPasswordSchema, fileSchema, guestSchema, invitationDurationEnumSchema, invitationSchema, invitationSchemaToInterface, invitationTypeEnumSchema, invoicePaymentIntentSchema, invoiceSchema, notificationDtoSchema, notificationSchema, patchUserSchema, paymentMethodSchema, paymentProofSchema, projectSchema, projectUpdateSchema, remoteGateLogSchema, remoteGateSchema, resetPasswordSchema, residentialSchema, totemCallActionSchema, totemCallSchema, totemCallStatusSchema, userSchema, userSchemaPartial, userSummarySchema, videoCallTokenSchema };
+export { type ActionLog, type ActionLogType, type AutomaticCharge, type AutomaticChargeSummaryResponse, type AutomaticChargeType, type BasicUserInfo, BasicUserInfoSchema, type BasicUserInfoType, BasicUserTypeEnum, type ConfirmForgotPassword, type ConfirmForgotPasswordType, type DeleteUserResponse, type File, type FileType, type ForgotPasswordResponse, type Guest, type GuestType, type Invitation, type InvitationCreationResponse, type InvitationData, InvitationDurationEnum, type InvitationType, InvitationTypeEnum, type InvitationUIType, type Invoice, type InvoicePaymentIntent, type InvoicePaymentIntentType, type InvoiceType, type Notification, type NotificationDto, type NotificationDtoType, type NotificationType, PHONE_REGEX, type PatchUser, type PatchUserType, type PaymentIntentResponse, type PaymentMethod, type PaymentMethodType, type PaymentProof, type PaymentProofType, type Project, type ProjectType, type ProjectUpdate, type ProjectUpdateType, type RegisterUserResponse, type RemoteGate, type RemoteGateLog, type RemoteGateLogType, type RemoteGateType, type ResetPassword, type ResetPasswordResponse, type ResetPasswordType, type Residential, type ResidentialOnboardingLinkDto, type ResidentialOnboardingLinkDtoType, type ResidentialType, type TotemCall, type TotemCallAction, type TotemCallStatus, type TotemCallType, type User, type UserBalance, UserRoleEnum, type UserSummary, type UserSummaryType, type UserType, type UserTypePartial, type UsernameGenerationResponse, type Value, type VideoCallToken, type VideoCallTokenType, actionLogSchema, automaticChargeSchema, basicUserTypeEnumSchema, confirmForgotPasswordSchema, fileSchema, guestSchema, invitationDurationEnumSchema, invitationSchema, invitationSchemaToInterface, invitationTypeEnumSchema, invoicePaymentIntentSchema, invoiceSchema, notificationDtoSchema, notificationSchema, patchUserSchema, paymentMethodSchema, paymentProofSchema, projectSchema, projectUpdateSchema, remoteGateLogSchema, remoteGateSchema, resetPasswordSchema, residentialOnboardingLinkDtoSchema, residentialSchema, totemCallActionSchema, totemCallSchema, totemCallStatusSchema, userSchema, userSchemaPartial, userSummarySchema, videoCallTokenSchema };

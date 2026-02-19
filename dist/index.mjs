@@ -93,117 +93,124 @@ var residentialSchema = z5.object({
   stripeAccountId: z5.string().optional()
 }).strict();
 
-// src/dto/remote-gate-log.interface.ts
+// src/dto/residential-onboarding-link-dto.interface.ts
 import z6 from "zod";
-var remoteGateLogSchema = z6.object({
-  remoteGateId: z6.string().optional(),
-  source: z6.enum(["app", "totem"]),
-  action: z6.enum(["open", "enable", "disable", "create", "delete", "update"]),
-  timestamp: z6.string().refine((val) => !isNaN(Date.parse(val)), {
+var residentialOnboardingLinkDtoSchema = z6.object({
+  onboardingLink: z6.string(),
+  expiresAt: z6.number()
+}).strict();
+
+// src/dto/remote-gate-log.interface.ts
+import z7 from "zod";
+var remoteGateLogSchema = z7.object({
+  remoteGateId: z7.string().optional(),
+  source: z7.enum(["app", "totem"]),
+  action: z7.enum(["open", "enable", "disable", "create", "delete", "update"]),
+  timestamp: z7.string().refine((val) => !isNaN(Date.parse(val)), {
     message: "Invalid timestamp format, must be ISO 8601"
   }),
-  userSub: z6.string().uuid(),
-  reason: z6.string().optional(),
-  additionalInfo: z6.any().optional()
+  userSub: z7.string().uuid(),
+  reason: z7.string().optional(),
+  additionalInfo: z7.any().optional()
 }).strict();
 
 // src/dto/remote-gate.interface.ts
-import { z as z7 } from "zod";
-var remoteGateSchema = z7.object({
-  _id: z7.string().optional(),
-  residentialId: z7.string(),
-  name: z7.string(),
-  type: z7.enum(["entrance", "exit"]),
-  thingName: z7.string(),
-  enabled: z7.boolean().optional()
+import { z as z8 } from "zod";
+var remoteGateSchema = z8.object({
+  _id: z8.string().optional(),
+  residentialId: z8.string(),
+  name: z8.string(),
+  type: z8.enum(["entrance", "exit"]),
+  thingName: z8.string(),
+  enabled: z8.boolean().optional()
   // Optional field to indicate if the gate is enabled
 }).strict();
 
 // src/dto/user-summary.interface.ts
-import z8 from "zod";
-var userSummarySchema = z8.object({
-  remoteGates: z8.array(remoteGateSchema),
-  currentPinAccess: z8.string().length(4, "Current PIN must be 4 digits length"),
-  topicName: z8.string().min(1, "Topic name cannot be empty"),
-  accessEnabled: z8.boolean()
+import z9 from "zod";
+var userSummarySchema = z9.object({
+  remoteGates: z9.array(remoteGateSchema),
+  currentPinAccess: z9.string().length(4, "Current PIN must be 4 digits length"),
+  topicName: z9.string().min(1, "Topic name cannot be empty"),
+  accessEnabled: z9.boolean()
 }).strict();
 
 // src/dto/invoice.interface.ts
-import { z as z9 } from "zod";
-var invoiceSchema = z9.object({
-  id: z9.string(),
-  status: z9.enum(["draft", "open", "paid", "uncollectible", "void"]),
-  created: z9.number(),
-  total: z9.number(),
-  ammount_remaining: z9.number(),
-  customerId: z9.string(),
-  description: z9.string(),
-  invoice_pdf: z9.string().url().optional(),
-  collection_method: z9.enum(["charge_automatically", "send_invoice"]),
-  due_date: z9.number().optional(),
+import { z as z10 } from "zod";
+var invoiceSchema = z10.object({
+  id: z10.string(),
+  status: z10.enum(["draft", "open", "paid", "uncollectible", "void"]),
+  created: z10.number(),
+  total: z10.number(),
+  ammount_remaining: z10.number(),
+  customerId: z10.string(),
+  description: z10.string(),
+  invoice_pdf: z10.string().url().optional(),
+  collection_method: z10.enum(["charge_automatically", "send_invoice"]),
+  due_date: z10.number().optional(),
   // Optional, only if collection_method is "send_invoice"
-  days_until_due: z9.number().optional(),
+  days_until_due: z10.number().optional(),
   // Optional, only if collection_method is "send_invoice"
-  monthName: z9.string(),
-  year: z9.number().min(2e3).max(2100),
+  monthName: z10.string(),
+  year: z10.number().min(2e3).max(2100),
   // Year must be a valid year
-  paid_amount: z9.number().optional(),
+  paid_amount: z10.number().optional(),
   // Optional, amount paid by the customer
-  have_payment_proof_file: z9.boolean(),
-  receipt_url: z9.string().url().optional()
+  have_payment_proof_file: z10.boolean(),
+  receipt_url: z10.string().url().optional()
   // URL to the receipt PDF
 }).strict();
 
 // src/dto/payment-method.interface.ts
-import { z as z10 } from "zod";
-var paymentMethodSchema = z10.object({
-  id: z10.string(),
-  type: z10.enum(["card", "bank_account", "paypal"]),
-  brand: z10.string().optional(),
+import { z as z11 } from "zod";
+var paymentMethodSchema = z11.object({
+  id: z11.string(),
+  type: z11.enum(["card", "bank_account", "paypal"]),
+  brand: z11.string().optional(),
   // Optional, only for card type
-  last4: z10.string().optional(),
+  last4: z11.string().optional(),
   // Optional, only for card or bank account type
-  exp_month: z10.number().optional(),
+  exp_month: z11.number().optional(),
   // Optional, only for card type
-  exp_year: z10.number().optional()
+  exp_year: z11.number().optional()
   // Optional, only for card type
 }).strict();
 
 // src/dto/invoice-payment-intent.interface.ts
-import { z as z11 } from "zod";
-var invoicePaymentIntentSchema = z11.object({
-  invoiceId: z11.string(),
-  paymentMethodId: z11.string().min(1, "Payment method ID is required")
+import { z as z12 } from "zod";
+var invoicePaymentIntentSchema = z12.object({
+  invoiceId: z12.string(),
+  paymentMethodId: z12.string().min(1, "Payment method ID is required")
 }).strict();
 
 // src/dto/automatic-charge.ts
-import { z as z12 } from "zod";
-var automaticChargeSchema = z12.object({
-  customerId: z12.string(),
-  collectionMethod: z12.enum(["charge_automatically", "send_invoice"]),
-  paymentMethodId: z12.string().optional()
+import { z as z13 } from "zod";
+var automaticChargeSchema = z13.object({
+  customerId: z13.string(),
+  collectionMethod: z13.enum(["charge_automatically", "send_invoice"]),
+  paymentMethodId: z13.string().optional()
 }).strict();
 
 // src/dto/file.interface.ts
-import { z as z13 } from "zod";
-var fileSchema = z13.object({
-  name: z13.string(),
-  mimeType: z13.string(),
-  data: z13.string().base64()
+import { z as z14 } from "zod";
+var fileSchema = z14.object({
+  name: z14.string(),
+  mimeType: z14.string(),
+  data: z14.string().base64()
 });
 
 // src/dto/payment-proof.interface.ts
-import { z as z14 } from "zod";
-var paymentProofSchema = z14.object({
-  invoiceId: z14.string(),
+import { z as z15 } from "zod";
+var paymentProofSchema = z15.object({
+  invoiceId: z15.string(),
   file: fileSchema
 });
 
 // src/dto/invitation.ts
-import { z as z18 } from "zod";
+import { z as z19 } from "zod";
 
 // src/enum/invitation-duration.enum.ts
-import z15 from "zod";
+import z16 from "zod";
 var InvitationDurationEnum = /* @__PURE__ */ ((InvitationDurationEnum3) => {
   InvitationDurationEnum3["ONE_HOUR"] = "1 hour";
   InvitationDurationEnum3["TWO_HOURS"] = "2 hours";
@@ -219,7 +226,7 @@ var InvitationDurationEnum = /* @__PURE__ */ ((InvitationDurationEnum3) => {
   InvitationDurationEnum3["THREE_MONTHS"] = "3 months";
   return InvitationDurationEnum3;
 })(InvitationDurationEnum || {});
-var invitationDurationEnumSchema = z15.enum([
+var invitationDurationEnumSchema = z16.enum([
   "1 hour" /* ONE_HOUR */,
   "2 hours" /* TWO_HOURS */,
   "4 hours" /* FOUR_HOURS */,
@@ -235,43 +242,43 @@ var invitationDurationEnumSchema = z15.enum([
 ]);
 
 // src/enum/invitation-type.enum.ts
-import { z as z16 } from "zod";
+import { z as z17 } from "zod";
 var InvitationTypeEnum = /* @__PURE__ */ ((InvitationTypeEnum3) => {
   InvitationTypeEnum3["QR"] = "qr";
   InvitationTypeEnum3["PIN"] = "pin";
   return InvitationTypeEnum3;
 })(InvitationTypeEnum || {});
-var invitationTypeEnumSchema = z16.enum([
+var invitationTypeEnumSchema = z17.enum([
   "qr" /* QR */,
   "pin" /* PIN */
 ]);
 
 // src/dto/basic-user-info.ts
-import { z as z17 } from "zod";
+import { z as z18 } from "zod";
 var BasicUserTypeEnum = /* @__PURE__ */ ((BasicUserTypeEnum3) => {
   BasicUserTypeEnum3["REGISTERED_USER"] = "registeredUser";
   BasicUserTypeEnum3["GUEST_USER"] = "guestUser";
   return BasicUserTypeEnum3;
 })(BasicUserTypeEnum || {});
-var basicUserTypeEnumSchema = z17.enum(["registeredUser" /* REGISTERED_USER */, "guestUser" /* GUEST_USER */]);
-var BasicUserInfoSchema = z17.object({
-  id: z17.string().uuid(),
-  username: z17.string().min(1),
-  name: z17.string(),
-  avatarUrl: z17.string().url(),
+var basicUserTypeEnumSchema = z18.enum(["registeredUser" /* REGISTERED_USER */, "guestUser" /* GUEST_USER */]);
+var BasicUserInfoSchema = z18.object({
+  id: z18.string().uuid(),
+  username: z18.string().min(1),
+  name: z18.string(),
+  avatarUrl: z18.string().url(),
   type: basicUserTypeEnumSchema
 }).strict();
 
 // src/dto/invitation.ts
-var invitationSchema = z18.object({
-  _id: z18.string().optional(),
-  userId: z18.string().optional(),
+var invitationSchema = z19.object({
+  _id: z19.string().optional(),
+  userId: z19.string().optional(),
   userType: basicUserTypeEnumSchema.optional(),
   type: invitationTypeEnumSchema,
   duration: invitationDurationEnumSchema,
-  isoDueDate: z18.string(),
-  used: z18.boolean().optional(),
-  oneTimeUse: z18.boolean()
+  isoDueDate: z19.string(),
+  used: z19.boolean().optional(),
+  oneTimeUse: z19.boolean()
 });
 var invitationSchemaToInterface = (data) => {
   return {
@@ -287,13 +294,13 @@ var invitationSchemaToInterface = (data) => {
 };
 
 // src/dto/guest.ts
-import { z as z19 } from "zod";
-var guestSchema = z19.object({
-  _id: z19.string().optional(),
-  userSub: z19.string().uuid(),
-  name: z19.string(),
-  avatarUrl: z19.string().url(),
-  isoCreatedOn: z19.string().datetime()
+import { z as z20 } from "zod";
+var guestSchema = z20.object({
+  _id: z20.string().optional(),
+  userSub: z20.string().uuid(),
+  name: z20.string(),
+  avatarUrl: z20.string().url(),
+  isoCreatedOn: z20.string().datetime()
 });
 
 // src/enum/role.enum.ts
@@ -307,98 +314,98 @@ var UserRoleEnum = /* @__PURE__ */ ((UserRoleEnum2) => {
 })(UserRoleEnum || {});
 
 // src/dto/project.ts
-import { z as z20 } from "zod";
-var projectUpdateSchema = z20.object({
-  updateText: z20.string(),
-  isoCreatedAt: z20.string()
+import { z as z21 } from "zod";
+var projectUpdateSchema = z21.object({
+  updateText: z21.string(),
+  isoCreatedAt: z21.string()
 });
-var projectSchema = z20.object({
-  _id: z20.string().optional(),
-  residentialId: z20.string(),
-  title: z20.string(),
-  description: z20.string(),
-  progress: z20.number().min(0).max(1),
-  isoCreatedAt: z20.string(),
-  updatedAt: z20.string().optional(),
-  lastUpdateText: z20.string().optional(),
-  isFinished: z20.boolean(),
-  isArchived: z20.boolean().optional(),
-  updates: z20.array(projectUpdateSchema).optional()
+var projectSchema = z21.object({
+  _id: z21.string().optional(),
+  residentialId: z21.string(),
+  title: z21.string(),
+  description: z21.string(),
+  progress: z21.number().min(0).max(1),
+  isoCreatedAt: z21.string(),
+  updatedAt: z21.string().optional(),
+  lastUpdateText: z21.string().optional(),
+  isFinished: z21.boolean(),
+  isArchived: z21.boolean().optional(),
+  updates: z21.array(projectUpdateSchema).optional()
 });
 
 // src/dto/action-log.ts
-import { z as z21 } from "zod";
-var actionLogSchema = z21.object({
-  residentialId: z21.string().optional(),
-  module: z21.string(),
-  httpMethod: z21.string(),
-  userId: z21.string(),
-  isoTimestamp: z21.string().datetime({ offset: false }),
-  details: z21.string().optional()
+import { z as z22 } from "zod";
+var actionLogSchema = z22.object({
+  residentialId: z22.string().optional(),
+  module: z22.string(),
+  httpMethod: z22.string(),
+  userId: z22.string(),
+  isoTimestamp: z22.string().datetime({ offset: false }),
+  details: z22.string().optional()
 });
 
 // src/dto/notification.ts
-import { z as z22 } from "zod";
-var notificationSchema = z22.object({
-  _id: z22.string().optional(),
-  username: z22.string().optional(),
+import { z as z23 } from "zod";
+var notificationSchema = z23.object({
+  _id: z23.string().optional(),
+  username: z23.string().optional(),
   // Optional field to associate the notification with a user
-  residentialId: z22.string().optional(),
+  residentialId: z23.string().optional(),
   // Optional field to associate the notification with a residential
-  isGlobal: z22.boolean().optional(),
+  isGlobal: z23.boolean().optional(),
   // Optional field to indicate if the notification is global
-  title: z22.string(),
-  content: z22.string().max(250, "Content must be at most 500 characters long"),
-  url: z22.string(),
-  isoCreatedAt: z22.string().datetime({ offset: false }),
-  status: z22.enum(["creating", "sending", "ok", "error"]).default("creating"),
-  message: z22.string()
+  title: z23.string(),
+  content: z23.string().max(250, "Content must be at most 500 characters long"),
+  url: z23.string(),
+  isoCreatedAt: z23.string().datetime({ offset: false }),
+  status: z23.enum(["creating", "sending", "ok", "error"]).default("creating"),
+  message: z23.string()
   // field for additional message
 }).strict();
 
 // src/dto/notification-dto.ts
-import { z as z23 } from "zod";
-var notificationDtoSchema = z23.object({
-  id: z23.string().optional(),
-  title: z23.string(),
-  content: z23.string().max(250, "Content must be at most 250 characters long"),
-  url: z23.string(),
-  isoCreatedAt: z23.string().datetime({ offset: false }),
-  message: z23.string(),
+import { z as z24 } from "zod";
+var notificationDtoSchema = z24.object({
+  id: z24.string().optional(),
+  title: z24.string(),
+  content: z24.string().max(250, "Content must be at most 250 characters long"),
+  url: z24.string(),
+  isoCreatedAt: z24.string().datetime({ offset: false }),
+  message: z24.string(),
   // field for additional message
-  read: z23.boolean()
+  read: z24.boolean()
 }).strict();
 
 // src/dto/video-call-token.interface.ts
-import { z as z24 } from "zod";
-var videoCallTokenSchema = z24.object({
-  token: z24.string(),
-  roomName: z24.string()
+import { z as z25 } from "zod";
+var videoCallTokenSchema = z25.object({
+  token: z25.string(),
+  roomName: z25.string()
 });
 
 // src/dto/totem-call.ts
-import { z as z25 } from "zod";
-var totemCallStatusSchema = z25.object({
-  status: z25.enum(["waiting", "rejected", "onCall", "ended"]),
-  message: z25.string(),
-  isoCreatedAt: z25.string().datetime({ offset: false })
+import { z as z26 } from "zod";
+var totemCallStatusSchema = z26.object({
+  status: z26.enum(["waiting", "rejected", "onCall", "ended"]),
+  message: z26.string(),
+  isoCreatedAt: z26.string().datetime({ offset: false })
 }).strict();
-var totemCallActionSchema = z25.object({
-  action: z25.literal("doorOpen"),
-  reason: z25.enum(["resident", "publicServices", "thrashRecollection", "emergencyServices", "other"]),
-  remoteGateId: z25.string(),
-  isoCreatedAt: z25.string().datetime({ offset: false })
+var totemCallActionSchema = z26.object({
+  action: z26.literal("doorOpen"),
+  reason: z26.enum(["resident", "publicServices", "thrashRecollection", "emergencyServices", "other"]),
+  remoteGateId: z26.string(),
+  isoCreatedAt: z26.string().datetime({ offset: false })
 }).strict();
-var totemCallSchema = z25.object({
-  _id: z25.string().optional(),
-  residentialId: z25.string(),
-  residentialName: z25.string().optional(),
-  status: z25.enum(["waiting", "rejected", "onCall", "ended"]),
-  isoCreatedAt: z25.string().datetime({ offset: false }),
-  attendedByUsername: z25.string().optional(),
-  roomName: z25.string().optional(),
-  statusList: z25.array(totemCallStatusSchema).optional(),
-  actionList: z25.array(totemCallActionSchema).optional()
+var totemCallSchema = z26.object({
+  _id: z26.string().optional(),
+  residentialId: z26.string(),
+  residentialName: z26.string().optional(),
+  status: z26.enum(["waiting", "rejected", "onCall", "ended"]),
+  isoCreatedAt: z26.string().datetime({ offset: false }),
+  attendedByUsername: z26.string().optional(),
+  roomName: z26.string().optional(),
+  statusList: z26.array(totemCallStatusSchema).optional(),
+  actionList: z26.array(totemCallActionSchema).optional()
 }).strict();
 export {
   BasicUserInfoSchema,
@@ -429,6 +436,7 @@ export {
   remoteGateLogSchema,
   remoteGateSchema,
   resetPasswordSchema,
+  residentialOnboardingLinkDtoSchema,
   residentialSchema,
   totemCallActionSchema,
   totemCallSchema,
