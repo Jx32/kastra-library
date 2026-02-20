@@ -58,7 +58,7 @@ __export(src_exports, {
   remoteGateLogSchema: () => remoteGateLogSchema,
   remoteGateSchema: () => remoteGateSchema,
   resetPasswordSchema: () => resetPasswordSchema,
-  residentialOnboardingLinkDtoSchema: () => residentialOnboardingLinkDtoSchema,
+  residentialAccountLinkDtoSchema: () => residentialAccountLinkDtoSchema,
   residentialSchema: () => residentialSchema,
   totemCallActionSchema: () => totemCallActionSchema,
   totemCallSchema: () => totemCallSchema,
@@ -166,10 +166,10 @@ var residentialSchema = import_zod5.default.object({
   stripeAccountId: import_zod5.default.string().optional()
 }).strict();
 
-// src/dto/residential-onboarding-link-dto.interface.ts
+// src/dto/residential-account-link-dto.interface.ts
 var import_zod6 = __toESM(require("zod"));
-var residentialOnboardingLinkDtoSchema = import_zod6.default.object({
-  onboardingLink: import_zod6.default.string(),
+var residentialAccountLinkDtoSchema = import_zod6.default.object({
+  link: import_zod6.default.string(),
   expiresAt: import_zod6.default.number()
 }).strict();
 
@@ -510,7 +510,7 @@ var totemCallSchema = import_zod26.z.object({
   remoteGateLogSchema,
   remoteGateSchema,
   resetPasswordSchema,
-  residentialOnboardingLinkDtoSchema,
+  residentialAccountLinkDtoSchema,
   residentialSchema,
   totemCallActionSchema,
   totemCallSchema,

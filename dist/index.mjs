@@ -94,10 +94,10 @@ var residentialSchema = z5.object({
   stripeAccountId: z5.string().optional()
 }).strict();
 
-// src/dto/residential-onboarding-link-dto.interface.ts
+// src/dto/residential-account-link-dto.interface.ts
 import z6 from "zod";
-var residentialOnboardingLinkDtoSchema = z6.object({
-  onboardingLink: z6.string(),
+var residentialAccountLinkDtoSchema = z6.object({
+  link: z6.string(),
   expiresAt: z6.number()
 }).strict();
 
@@ -437,7 +437,7 @@ export {
   remoteGateLogSchema,
   remoteGateSchema,
   resetPasswordSchema,
-  residentialOnboardingLinkDtoSchema,
+  residentialAccountLinkDtoSchema,
   residentialSchema,
   totemCallActionSchema,
   totemCallSchema,

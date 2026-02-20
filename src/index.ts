@@ -10,7 +10,7 @@ export * from "./dto/confirm-forgot-password";
 export * from "./dto/register-user-response.interface";
 export * from "./dto/username-generation-response";
 export * from "./dto/residential.interface";
-export * from "./dto/residential-onboarding-link-dto.interface";
+export * from "./dto/residential-account-link-dto.interface";
 export * from "./dto/remote-gate-log.interface";
 export * from "./dto/remote-gate.interface";
 export * from "./dto/user-summary.interface";
