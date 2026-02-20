@@ -161,6 +161,7 @@ var residentialSchema = import_zod5.default.object({
   bankCLABE: import_zod5.default.string().optional(),
   // Optional field for bank account number
   onboardingStatus: import_zod5.default.enum(["pending", "completed"]),
+  onboardingUsernameInCharge: import_zod5.default.string().optional(),
   businessType: import_zod5.default.enum(["individual", "company"]),
   stripeAccountId: import_zod5.default.string().optional()
 }).strict();

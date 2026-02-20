@@ -25,6 +25,7 @@ export interface Residential {
     bankBanxicoKey?: string; // Optional field for Banxico key
     bankCLABE?: string; // Optional field for bank account number
     onboardingStatus: "pending" | "completed";
+    onboardingUsernameInCharge?: string;
     businessType: "individual" | "company";
     stripeAccountId?: string;
 }
@@ -47,6 +48,7 @@ export const residentialSchema = z.object({
     bankBanxicoKey: z.string().optional(), // Optional field for Banxico key
     bankCLABE: z.string().optional(), // Optional field for bank account number
     onboardingStatus: z.enum(["pending", "completed"]),
+    onboardingUsernameInCharge: z.string().optional(),
     businessType: z.enum(["individual", "company"]),
     stripeAccountId: z.string().optional(),
 }).strict();
